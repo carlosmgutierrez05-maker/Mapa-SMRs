@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMR EXPLORER 3D | Modelo Interactivo de Componentes y Planta (Inspirado en Sketchfab y Energy Encyclopedia)</title>
+  
+  <!-- Tipografía moderna Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Estilos del Simulador 3D -->
+  <link rel="stylesheet" href="css/smr-3d.css">
+</head>
+<body>
+
+  <!-- Contenedor del Lienzo 3D WebGL -->
+  <div id="canvas-3d-container"></div>
+
+  <!-- Capa SVG de Líneas Guía CAD de Alta Precisión y Nodos Concéntricos -->
+  <svg id="cad-annotations-overlay" class="cad-annotations-overlay">
+    <defs>
+      <filter id="cad-glow-cyan" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+      <filter id="cad-glow-amber" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+      <filter id="cad-glow-teal" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="3" result="blur" />
+        <feMerge>
+          <feMergeNode in="blur" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+    <g id="cad-svg-lines-group"></g>
+    <g id="cad-svg-nodes-group"></g>
+  </svg>
+
+  <!-- Tooltip flotante 3D que sigue al cursor en hover -->
+  <div id="hover-tooltip-3d" class="hover-tooltip-3d">
+    <span id="tooltip-icon" class="tooltip-icon">🔍</span>
+    <span id="tooltip-text" class="tooltip-text">Componente</span>
+  </div>
+
+  <!-- Etiqueta 3D Flotante con Puntero / Línea Guía Directa al Componente Activo -->
+  <div id="smr-3d-callout-tag" class="smr-3d-callout-tag hidden">
+    <div class="callout-card">
+      <div class="callout-header">
+        <span id="callout-icon" class="callout-icon">⚛️</span>
+        <span id="callout-title" class="callout-title">Vasija RPV</span>
+        <span class="callout-badge">Seleccionado</span>
+      </div>
+      <div id="callout-desc" class="callout-desc">Alberga el circuito primario a 155 bar de presión continua.</div>
+    </div>
+  </div>
+
+  <!-- Pines de Anotación Técnica Guía Directa al Entorno (Referencia Visual Industrial) -->
+  <div id="pin-seismic-supports" class="smr-3d-pin-label pin-seismic-theme hidden" data-comp="seismic-supports" title="Ver Estructuras de Soporte Sísmico">
+    <div class="pin-card"><span class="pin-icon">🛡️</span> Estructuras de Soporte Sísmico</div>
+  </div>
+  <div id="pin-steam-lines" class="smr-3d-pin-label pin-steam-theme hidden" data-comp="steam-lines" title="Ver Líneas de Vapor">
+    <div class="pin-card"><span class="pin-icon">💨</span> Líneas de Vapor</div>
+  </div>
+  <div id="pin-pool-uhs" class="smr-3d-pin-label pin-pool-theme hidden" data-comp="pool" title="Ver Piscina UHS">
+    <div class="pin-card"><span class="pin-icon">🌊</span> Piscina de Enfriamiento Pasivo (UHS)</div>
+  </div>
+  <div id="pin-heat-exchangers" class="smr-3d-pin-label pin-hx-theme hidden" data-comp="heat-exchangers" title="Ver Intercambiadores de Calor">
+    <div class="pin-card"><span class="pin-icon">❄️</span> Intercambiadores de Calor</div>
+  </div>
+  <div id="pin-reactor-core" class="smr-3d-pin-label pin-core-theme hidden" data-comp="core" title="Ver Núcleo del Reactor y Ensamblajes Combustibles">
+    <div class="pin-card"><span class="pin-icon">🔥</span> Núcleo del Reactor y Ensamblajes Combustibles</div>
+  </div>
+
+  <!-- =========================================================================
+       CABECERA SUPERIOR (HUD HEADER)
+       ========================================================================= -->
+  <header class="smr-header">
+    <div class="brand-section">
+      <div class="brand-icon-spin">⚛</div>
+      <div class="brand-titles">
+        <h1>
+          SMR EXPLORER 3D
+          <span class="brand-tag">ESE · UVa</span>
+        </h1>
+        <p id="brand-sub-title" class="brand-sub">iPWR Modular Integral (Diseño Pasivo UHS · Configuración Piscina NuScale) · ESE · UVa</p>
+      </div>
+    </div>
+
+    <!-- Pestañas de Modos Principales de Escena -->
+    <div class="scene-mode-tabs">
+      <button class="mode-tab-btn" data-scene="smr-reactor" title="Inspección detallada del módulo SMR y despiece de componentes (Inspirado en Sketchfab & Energy Encyclopedia)">
+        🔬 Reactor SMR (Componentes)
+      </button>
+      <button class="mode-tab-btn active" data-scene="smr-hall" title="Nave de contención, piscina UHS, blindaje y grúa polar (Inspirado en Energy Encyclopedia SMR Hall)">
+        🏛️ Nave y Piscina (SMR Hall)
+      </button>
+      <button class="mode-tab-btn" data-scene="smr-plant" title="Balance de planta: Edificio de turbinas, ciclo Rankine y subestación 400 kV">
+        🏢 Planta Completa (BOP)
+      </button>
+    </div>
+
+    <!-- Acciones de Cabecera -->
+    <div class="header-actions">
+      <!-- Selector de Modelo de SMR -->
+      <div class="header-selector-group">
+        <span class="selector-label">Modelo:</span>
+        <select id="smr-model-selector" class="smr-model-selector" title="Seleccionar modelo de SMR de referencia">
+          <option value="iPWR-Integral" selected>🌐 iPWR Modular Integral (Diseño Pasivo UHS)</option>
+          <option value="NuScale VOYGR">🇺🇸 NuScale VOYGR (Configuración Piscina UHS)</option>
+          <option value="Rolls-Royce SMR">🇬🇧 Rolls-Royce SMR (470 MWe · Lazos)</option>
+          <option value="GE Hitachi BWRX-300">🇺🇸🇨🇦 GE Hitachi BWRX-300 (300 MWe)</option>
+          <option value="EDF Nuward">🇫🇷 EDF Nuward SMR (340 MWe)</option>
+        </select>
+      </div>
+
+      <!-- Selector de Iluminación -->
+      <div class="header-selector-group">
+        <span class="selector-label">Luz:</span>
+        <select id="smr-time-selector" class="smr-model-selector" title="Alternar iluminación diurna, estudio CAD o noche">
+          <option value="cad-studio" selected>🏛️ Estudio Mecánico (CAD)</option>
+          <option value="day">☀️ Día Soleado</option>
+          <option value="sunset">🌅 Atardecer Dorado</option>
+          <option value="night">🌙 Noche Operativa</option>
+        </select>
+      </div>
+
+      <button id="btn-toggle-ortho" class="btn-header" title="Alternar entre Cámara en Perspectiva y Proyección Ortográfica CAD (Tecla O)">
+        📐 Proyección CAD
+      </button>
+
+      <!-- Botón para ver el modelo oficial de Sketchfab en modal -->
+      <button id="btn-open-sketchfab-modal" class="btn-header highlight" title="Abrir el modelo 3D oficial de Sketchfab referenciado por el usuario">
+        🌐 Modelo Sketchfab 3D
+      </button>
+
+      <button id="btn-open-quiz" class="btn-header" title="Abrir preguntas didácticas para la clase">
+        🎓 Quiz de Clase
+      </button>
+
+      <button id="btn-reset-camera" class="btn-header" title="Centrar cámara en el componente seleccionado (Tecla R)">
+        📷 Encuadrar
+      </button>
+
+      <a href="index.html" class="btn-header primary" style="text-decoration: none;" title="Volver al mapa georreferenciado mundial de SMRs">
+        🗺️ Mapa SMR
+      </a>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       PANEL LATERAL IZQUIERDO: ÁRBOL Y EXPLORADOR DE COMPONENTES SMR
+       ========================================================================= -->
+  <aside id="component-tree-panel" class="component-tree-panel">
+    <div class="panel-header">
+      <div class="panel-title">
+        <span>📋</span> Componentes del SMR
+      </div>
+      <div style="display: flex; gap: 6px; align-items: center;">
+        <span id="comp-count-badge" class="count-badge">12 partes</span>
+        <button id="btn-toggle-comp-panel" class="btn-icon-tiny" title="Minimizar lista de componentes">─</button>
+      </div>
+    </div>
+
+    <!-- Barra de Búsqueda Rápida de Componentes -->
+    <div class="panel-search-box">
+      <input type="text" id="comp-search-input" placeholder="🔍 Filtrar componente (ej. núcleo, vapor...)" autocomplete="off">
+    </div>
+
+    <div class="panel-scroll-content">
+      <!-- Sección: Reactor y Circuito Primario -->
+      <div class="comp-category-group">
+        <div class="comp-category-title">
+          <span>⚛️</span> MÓDULO SMR & CIRCUITO PRIMARIO
+        </div>
+        <div class="comp-list-items" id="comp-list-primary">
+          <!-- Inyectado dinámicamente por JS -->
+        </div>
+      </div>
+
+      <!-- Sección: Núcleo y Reactividad -->
+      <div class="comp-category-group">
+        <div class="comp-category-title">
+          <span>🔥</span> NÚCLEO Y REACTIVIDAD
+        </div>
+        <div class="comp-list-items" id="comp-list-core">
+          <!-- Inyectado dinámicamente por JS -->
+        </div>
+      </div>
+
+      <!-- Sección: Generación de Vapor -->
+      <div class="comp-category-group">
+        <div class="comp-category-title">
+          <span>🔄</span> INTERCAMBIO TÉRMICO Y VAPOR
+        </div>
+        <div class="comp-list-items" id="comp-list-steam">
+          <!-- Inyectado dinámicamente por JS -->
+        </div>
+      </div>
+
+      <!-- Sección: Nave, Piscina y Balance de Planta -->
+      <div class="comp-category-group">
+        <div class="comp-category-title">
+          <span>🏢</span> EDIFICIO, PISCINA & BALANCE DE PLANTA
+        </div>
+        <div class="comp-list-items" id="comp-list-plant">
+          <!-- Inyectado dinámicamente por JS -->
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       PANEL LATERAL DERECHO: FICHA DE INGENIERÍA DEL COMPONENTE (INSPECTOR)
+       ========================================================================= -->
+  <aside id="component-inspector-card" class="component-inspector-card">
+    <div class="inspector-header">
+      <div class="inspector-badge-row">
+        <span id="inspect-category" class="inspect-category-badge">Circuito Primario</span>
+        <span id="inspect-status-badge" class="inspect-status-badge">Operativo</span>
+      </div>
+      <button id="btn-close-inspector" class="btn-icon-tiny" title="Cerrar ficha técnica">✕</button>
+    </div>
+
+    <div class="inspector-title-row">
+      <div id="inspect-icon" class="inspect-icon">⚛️</div>
+      <div>
+        <h2 id="inspect-name" class="inspect-name">Vasija de Presión del Reactor (RPV)</h2>
+        <div id="inspect-name-en" class="inspect-name-en">Reactor Pressure Vessel · iPWR</div>
+      </div>
+    </div>
+
+    <div class="inspector-body">
+      <!-- Descripción y Rol Termodinámico -->
+      <div class="inspect-section">
+        <div class="inspect-section-title">Función Técnica y Principio Físico</div>
+        <p id="inspect-description" class="inspect-description">
+          Cuerpo cilíndrico forjado que contiene el bucle primario a 155 bar de presión...
+        </p>
+      </div>
+
+      <!-- Especificaciones de Ingeniería -->
+      <div class="inspect-section">
+        <div class="inspect-section-title">Parámetros de Diseño y Materiales</div>
+        <div id="inspect-specs-grid" class="inspect-specs-grid">
+          <!-- Inyectado por JS -->
+        </div>
+      </div>
+
+      <!-- Ventaja Competitiva y Economía SMR -->
+      <div class="inspect-section">
+        <div class="inspect-section-title">Impacto Económico y Seguridad SMR</div>
+        <p id="inspect-economic" class="inspect-economic-text">
+          La integración en vasija elimina las grandes tuberías externas de refrigerante...
+        </p>
+      </div>
+
+      <!-- Botones de Acción sobre el Componente -->
+      <div class="inspect-actions-row">
+        <button id="btn-focus-component" class="btn-inspect action-primary" title="Centrar cámara en este componente">
+          🔍 Enfocar
+        </button>
+        <button id="btn-isolate-component" class="btn-inspect" title="Aislar componente ocultando temporalmente el resto">
+          👁️ Aislar
+        </button>
+        <button id="btn-unisolate-all" class="btn-inspect" style="display: none;" title="Mostrar de nuevo todos los componentes">
+          🔄 Mostrar Todo
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       PANEL DE GUÍA VIRTUAL DIDÁCTICO (DRA. ELENA ALARCÓN)
+       ========================================================================= -->
+  <aside id="virtual-guide-panel" class="virtual-guide-panel">
+    <div class="guide-header">
+      <div class="guide-avatar-box">
+        <div class="guide-avatar-img-wrap">
+          👩‍🏫
+          <div id="guide-status-dot" class="guide-status-dot"></div>
+        </div>
+        <div class="guide-meta">
+          <h2>
+            Dra. Elena Alarcón
+            <span style="font-size: 0.65rem; color: var(--accent-cyan); font-weight: 700;">[IA]</span>
+          </h2>
+          <div class="guide-role">Guía Virtual · Economía Energética (UVa)</div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <div id="guide-voice-indicator" class="guide-voice-indicator" title="Indicador de locución activa">
+          <div class="voice-wave-bar"></div>
+          <div class="voice-wave-bar"></div>
+          <div class="voice-wave-bar"></div>
+          <div class="voice-wave-bar"></div>
+          <div class="voice-wave-bar"></div>
+        </div>
+        <button id="btn-collapse-guide" class="btn-icon-tiny" title="Minimizar panel del guía">─</button>
+      </div>
+    </div>
+
+    <!-- Contenido didáctico de la parada -->
+    <div class="guide-body-content">
+      <div class="stop-indicator">
+        <span id="tour-stop-badge" class="stop-badge">Parada 1 de 8</span>
+        <span id="tour-stop-target" class="stop-target-part">Arquitectura del Reactor</span>
+      </div>
+
+      <h3 id="guide-speech-title" class="guide-speech-title">1. El Reactor Modular SMR: Filosofía Integral</h3>
+      <p id="guide-speech-text" class="guide-speech-text">
+        Cargando lección interactiva...
+      </p>
+    </div>
+
+    <!-- Ficha técnica con magnitudes y hechos clave -->
+    <div id="guide-facts-grid" class="guide-tech-details"></div>
+
+    <!-- Controles de Reproducción y Paradas -->
+    <div class="guide-controls-footer">
+      <div class="playback-buttons">
+        <button id="btn-prev-stop" class="btn-playback" title="Parada anterior (Flecha Izquierda)">
+          ⏮ Anterior
+        </button>
+        <button id="btn-play-pause-speech" class="btn-playback play-main" title="Reproducir / Pausar locución (Barra Espaciadora)">
+          ▶ Escuchar
+        </button>
+        <button id="btn-next-stop" class="btn-playback" title="Siguiente parada (Flecha Derecha)">
+          Siguiente ⏭
+        </button>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 6px;">
+        <select id="voice-speed-select" class="voice-speed-select" title="Velocidad de locución de la profesora">
+          <option value="0.9">0.9x Lento</option>
+          <option value="1.0" selected>1.0x Normal</option>
+          <option value="1.25">1.25x Rápido</option>
+        </select>
+        <button id="btn-toggle-mute" class="btn-icon-tiny" title="Silenciar / Activar sonido">🔊</button>
+      </div>
+    </div>
+
+    <!-- Puntos de progreso del tour -->
+    <div id="guide-stops-dots" class="guide-stops-dots"></div>
+  </aside>
+
+  <!-- =========================================================================
+       PANEL DE TELEMETRÍA Y CONTROL DE SIMULACIÓN EN TIEMPO REAL
+       ========================================================================= -->
+  <aside id="telemetry-panel" class="telemetry-panel collapsed">
+    <div class="telemetry-header">
+      <div class="telemetry-title">
+        <span>⚡</span> Telemetría de Planta
+      </div>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span id="reactor-state-badge" class="reactor-state-badge">● Operativo</span>
+        <button id="btn-collapse-telem" class="btn-icon-tiny" title="Minimizar panel de telemetría">─</button>
+      </div>
+    </div>
+
+    <div class="telemetry-body">
+      <!-- Rejilla de Indicadores Numéricos -->
+      <div class="kpi-row-grid">
+        <div class="kpi-tile">
+          <div class="kpi-tile-lbl">Potencia Térmica</div>
+          <div class="kpi-tile-val" style="color: var(--accent-amber);">
+            <span id="kpi-val-thermal">1.276</span><span class="kpi-tile-unit">MWth</span>
+          </div>
+        </div>
+
+        <div class="kpi-tile">
+          <div class="kpi-tile-lbl">Potencia Eléctrica Neta</div>
+          <div class="kpi-tile-val" style="color: var(--accent-cyan);">
+            <span id="kpi-val-electric">470</span><span class="kpi-tile-unit">MWe</span>
+          </div>
+        </div>
+
+        <div class="kpi-tile">
+          <div class="kpi-tile-lbl">Temp. Refrigerante</div>
+          <div class="kpi-tile-val" style="color: var(--accent-cyan);">
+            <span id="kpi-val-temp">320</span><span class="kpi-tile-unit">°C</span>
+          </div>
+        </div>
+
+        <div class="kpi-tile">
+          <div class="kpi-tile-lbl">Presión en Vasija</div>
+          <div class="kpi-tile-val" style="color: var(--accent-green);">
+            <span id="kpi-val-press">155</span><span class="kpi-tile-unit">bar</span>
+          </div>
+        </div>
+
+        <div class="kpi-tile">
+          <div class="kpi-tile-lbl">Caudal de Vapor</div>
+          <div class="kpi-tile-val" style="color: var(--accent-blue);">
+            <span id="kpi-val-steam">680</span><span class="kpi-tile-unit">t/h</span>
+          </div>
+        </div>
+
+        <div class="kpi-tile">
+          <div class="kpi-tile-lbl">Rendimiento Térmico</div>
+          <div class="kpi-tile-val" style="color: var(--accent-green);">
+            <span id="kpi-val-eff">36.8</span><span class="kpi-tile-unit">%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sección de Control del Operador -->
+      <div class="sim-controls-section">
+        <div class="sim-control-item">
+          <div class="sim-ctrl-label-row">
+            <span>Inserción de Barras de Control:</span>
+            <span id="val-disp-rods">15%</span>
+          </div>
+          <input type="range" id="sim-slider-rods" class="sim-slider" min="0" max="100" step="1" value="15" title="Ajustar la inserción de las barras de control para regular la reactividad del núcleo">
+        </div>
+
+        <div class="sim-control-item">
+          <div class="sim-ctrl-label-row">
+            <span>Demanda de Vapor a Turbina:</span>
+            <span id="val-disp-demand">100%</span>
+          </div>
+          <input type="range" id="sim-slider-demand" class="sim-slider" min="20" max="100" step="5" value="100" title="Ajustar la válvula reguladora de vapor a la turbina">
+        </div>
+
+        <!-- Botón SCRAM de Emergencia -->
+        <button id="btn-trigger-scram" class="btn-scram-danger" title="Disparo de emergencia: caída de barras por gravedad y parada de reacción">
+          🛑 SCRAM DE EMERGENCIA
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       BARRA INFERIOR DE HERRAMIENTAS CAD, DESPIECE Y CORTES TRANSVERSALES
+       ========================================================================= -->
+  <nav class="bottom-view-bar">
+    <!-- Control de Vista Explosionada (Despiece) -->
+    <div class="exploded-view-control">
+      <button id="btn-toggle-full-explode" class="btn-explode-main" title="Despiezar completamente todos los componentes del reactor SMR para inspeccionarlos separados (Tecla D)">
+        💥 Despiece Completo
+      </button>
+      <input type="range" id="exploded-view-slider" class="exploded-slider" min="0" max="100" step="1" value="0" title="Ajuste continuo de separación en vista explosionada">
+      <span id="exploded-val-disp" class="exploded-val">0%</span>
+    </div>
+
+    <div class="view-bar-separator"></div>
+
+    <!-- Modos de Apertura y Corte Seccional -->
+    <div class="cutaway-modes-group">
+      <button class="cut-mode-btn" data-cut="closed" id="btn-cut-closed" title="Reactor hermético cerrado (360° vista exterior completa en acero forjado con corona CRDM)">
+        🛡️ Reactor Cerrado (360°)
+      </button>
+      <button class="cut-mode-btn active" data-cut="120" id="btn-cut-open" title="Ver componentes interiores en corte seccional de ingeniería de 120° con paredes macizas">
+        ✂️ Sección Transversal (Corte)
+      </button>
+      <button class="cut-mode-btn" data-cut="xray" id="btn-cut-xray" title="Modo Rayos X: Carcasas exteriores translúcidas para inspección radiográfica completa">
+        ✨ Rayos X
+      </button>
+    </div>
+
+    <div class="view-bar-separator"></div>
+
+    <!-- Botones auxiliares -->
+    <button id="btn-toggle-telemetry-hud" class="btn-tool-mini" title="Alternar panel de telemetría y física">
+      ⚡ Telemetría
+    </button>
+    <button id="btn-toggle-guide-hud" class="btn-tool-mini active" title="Alternar panel de guía virtual docente">
+      👩‍🏫 Guía Docente
+    </button>
+  </nav>
+
+  <!-- Indicador sutil de atajos de teclado y giro libre 360° -->
+  <div class="shortcuts-help-overlay">
+    <span>🔄 <strong>Órbita 360°:</strong> Arrastra con el ratón para girar alrededor · Rueda para zoom</span>
+    <span style="opacity: 0.6; margin: 0 4px;">|</span>
+    <kbd>Clic</kbd> Seleccionar
+    <kbd>D</kbd> Despiece
+    <kbd>C</kbd> Corte/Cerrado
+    <kbd>R</kbd> Centrar
+  </div>
+
+  <!-- =========================================================================
+       MODAL: VISOR OFICIAL SKETCHFAB 3D (IFRAME EMBED)
+       ========================================================================= -->
+  <div id="sketchfab-modal" class="sketchfab-modal">
+    <div class="sketchfab-modal-card">
+      <div class="sketchfab-modal-header">
+        <div class="modal-title-box">
+          <span class="sf-icon">🌐</span>
+          <div>
+            <h3>Modelo 3D Oficial de Sketchfab: SMR Small Modular Reactor</h3>
+            <p>Modelo de referencia por Txy2u · Integral Pressurized Water Reactor (iPWR)</p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <a href="https://sketchfab.com/3d-models/smr-small-modular-reactor-80a4c3f4e0cd42698d872c81d045b54c" target="_blank" rel="noopener noreferrer" class="btn-header" style="text-decoration: none; font-size: 0.75rem;">
+            ↗ Abrir en Sketchfab
+          </a>
+          <a href="https://www.energyencyclopedia.com/en/online-3d-models/smr-npp-6" target="_blank" rel="noopener noreferrer" class="btn-header" style="text-decoration: none; font-size: 0.75rem;">
+            ↗ Energy Encyclopedia 3D
+          </a>
+          <button id="btn-close-sketchfab" class="btn-icon-tiny" title="Cerrar modal de Sketchfab">✕</button>
+        </div>
+      </div>
+      <div class="sketchfab-modal-body">
+        <iframe
+          id="sketchfab-iframe"
+          title="SMR Small Modular Reactor 3D model - Sketchfab"
+          class="sketchfab-iframe"
+          src=""
+          allow="autoplay; fullscreen; xr-spatial-tracking"
+          xr-spatial-tracking="true"
+          execution-while-out-of-viewport="true"
+          execution-while-not-rendered="true"
+          web-share="true"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="sketchfab-modal-footer">
+        <span>💡 Este modelo 3D representa la misma arquitectura nuclear integral (iPWR) modelada en nuestro simulador WebGL nativo de Three.js. Puedes rotarlo, hacer zoom y compararlo directamente.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL DE EVALUACIÓN / QUIZ DOCENTE EN CLASE
+       ========================================================================= -->
+  <div id="quiz-backdrop" class="quiz-backdrop">
+    <div class="quiz-dialog">
+      <div class="quiz-header">
+        <div class="quiz-title">
+          <span>🎓</span> Evaluación Didáctica en Clase: Tecnología y Mercado SMR
+        </div>
+        <button id="btn-close-quiz" class="btn-icon-tiny" title="Cerrar preguntas de clase">✕</button>
+      </div>
+
+      <div class="quiz-body">
+        <div class="quiz-question-box">
+          <div id="quiz-q-num" class="quiz-q-num">Pregunta 1 de 5</div>
+          <div id="quiz-q-text" class="quiz-q-text">Cargando pregunta...</div>
+          <div id="quiz-options-list" class="quiz-options-list"></div>
+          <div id="quiz-explanation-box" class="quiz-explanation-box"></div>
+        </div>
+      </div>
+
+      <div class="quiz-footer">
+        <span style="font-size: 0.72rem; color: var(--text-muted);">Asignatura: Economía de los Sistemas Energéticos · UVa</span>
+        <button id="btn-quiz-next" class="btn-header primary" style="display: none;">
+          Siguiente Pregunta ⏭
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SCRIPTS JAVASCRIPT
+       ========================================================================= -->
+  <!-- Three.js (Local offline con CDN fallback) -->
+  <script src="lib/three.min.js"></script>
+  <script>
+    if (typeof THREE === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- OrbitControls (Local offline con CDN fallback) -->
+  <script src="lib/OrbitControls.js"></script>
+  <script>
+    if (typeof THREE !== 'undefined' && typeof THREE.OrbitControls === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"><\/script>');
+    }
+  </script>
+
+  <!-- Motor 3D del Simulador -->
+  <script src="js/smr-3d-scene.js?v=2.0"></script>
+</body>
+</html>

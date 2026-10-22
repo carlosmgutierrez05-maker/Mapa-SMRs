@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMR-ENERGY ECONOMICS | Mapa Mundial y Hoja de Ruta Europea 2030-2040</title>
+  
+  <!-- Tipografía moderna Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet Map CSS (Local offline con CDN fallback) -->
+  <link rel="stylesheet" href="lib/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+
+  <!-- MarkerCluster CSS (Local offline con CDN fallback) -->
+  <link rel="stylesheet" href="lib/MarkerCluster.css">
+  <link rel="stylesheet" href="lib/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+
+  <!-- Estilos de la aplicación -->
+  <link rel="stylesheet" href="css/styles.css?v=3.9">
+</head>
+<body>
+
+  <!-- =========================================================================
+       HEADER SUPERIOR
+       ========================================================================= -->
+  <header class="app-header">
+    <div class="brand-wrapper">
+      <div class="brand-icon-box">⚛</div>
+      <div>
+        <h1 class="brand-title">
+          SMR-ENERGY ECONOMICS
+          <span class="tag">ESE · UVa</span>
+        </h1>
+        <p class="brand-subtitle">
+          Observatorio Georreferenciado de SMRs y Análisis de Integración en el Mercado Energético Europeo
+        </p>
+      </div>
+    </div>
+
+    <!-- Botones de Acción Global (Diseño Corporativo Institucional) -->
+    <div class="header-actions">
+      <button id="btn-open-smr-3d" class="btn btn-secondary" title="Abrir el Explorador 3D interactivo de componentes y balance de planta">
+        ⚛️ Explorador 3D
+      </button>
+      <button id="btn-open-eu-strategy" class="btn btn-secondary" title="Consultar la Estrategia de la Comisión Europea y los 9 Grupos de Trabajo">
+        🇪🇺 Estrategia UE
+      </button>
+      <button id="btn-open-calc" class="btn btn-primary" title="Simulador económico de LCOE y viabilidad en mercado mayorista">
+        🧮 Simulador LCOE
+      </button>
+      <button id="btn-open-charts" class="btn btn-secondary" title="Ver gráficos comparativos de mercado y curvas de aprendizaje">
+        📊 Gráficos
+      </button>
+      <button id="btn-open-report" class="btn btn-secondary" title="Abrir la Memoria Técnico-Económica Completa (Formato Oficial de Ingeniería A4)">
+        📑 Memoria Técnica
+      </button>
+      <button id="btn-toggle-presentation" class="btn btn-secondary" title="Modo Presentación: Maximizar mapa al 100% de la pantalla">
+        📺 Presentación
+      </button>
+      <button id="btn-toggle-theme" class="btn-icon" title="Alternar tema oscuro / claro">
+        ☀️
+      </button>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       CONTENEDOR PRINCIPAL: SIDEBAR + MAPA
+       ========================================================================= -->
+  <main class="app-main">
+
+    <!-- Panel Lateral: Controles, Filtros y KPIs -->
+    <aside id="sidebar-panel" class="sidebar-panel">
+      
+      <div class="sidebar-header">
+        <h2 class="sidebar-title">
+          <span>⚙️</span> Filtros y Línea Temporal
+        </h2>
+      </div>
+
+      <div class="sidebar-content">
+        
+        <!-- Tarjeta 1: Línea Temporal Post-2030 (Requerimiento Clave) -->
+        <div class="control-card">
+          <div class="control-card-title">
+            <span>📅 Evolución Temporal</span>
+            <span id="timeline-status-badge" class="timeline-status-badge">Todos (2024-2040+)</span>
+          </div>
+          
+          <div class="timeline-slider-wrapper">
+            <div class="timeline-labels">
+              <span class="active">Todos</span>
+              <span>≤ 2024</span>
+              <span>≤ 2028</span>
+              <span>≤ 2030</span>
+              <span>≤ 2035</span>
+              <span>≤ 2040+</span>
+            </div>
+            <input type="range" id="timeline-slider" class="custom-slider" min="0" max="5" step="1" value="0">
+          </div>
+
+          <div class="timeline-play-row">
+            <button id="btn-play-timeline" class="btn btn-secondary" style="font-size: 0.72rem; padding: 0.3rem 0.65rem;">
+              ▶ Reproducir Evolución
+            </button>
+            <span style="font-size: 0.68rem; color: var(--text-muted);">Paso a paso hasta 2040</span>
+          </div>
+        </div>
+
+        <!-- Tarjeta 2: Filtros Geográficos y Tecnológicos -->
+        <div class="control-card">
+          <div class="control-card-title">
+            <span>🔍 Filtrado Inteligente</span>
+            <button id="btn-reset-filters" style="background: none; border: none; color: var(--accent-cyan); font-size: 0.7rem; cursor: pointer;">
+              Restablecer
+            </button>
+          </div>
+
+          <!-- Buscador de Texto -->
+          <div class="search-box-wrapper">
+            <span class="search-icon-inside">🔎</span>
+            <input type="text" id="input-search-smr" class="search-input-field" placeholder="Buscar por país, reactor o ciudad (ej. Polonia, BWRX, Nuward)...">
+          </div>
+
+          <!-- Filtro de Región -->
+          <div class="filter-group">
+            <label class="filter-label" for="filter-region">Área Geográfica:</label>
+            <select id="filter-region" class="filter-select">
+              <option value="all">🌍 Todo el Mundo</option>
+              <option value="Europa" selected>🇪🇺 Foco Europa (UE y Reino Unido)</option>
+              <option value="Norteamérica">🇺🇸🇨🇦 Norteamérica (EE.UU. y Canadá)</option>
+              <option value="Asia">🇨🇳🇯🇵🇰🇷🇷🇺 Asia (China, Rusia, Corea, Japón)</option>
+              <option value="Resto">🌐 Resto del Mundo</option>
+            </select>
+          </div>
+
+          <!-- Filtro de Estado -->
+          <div class="filter-group">
+            <label class="filter-label" for="filter-status">Estado del Proyecto:</label>
+            <select id="filter-status" class="filter-select">
+              <option value="all">Todos los estados</option>
+              <option value="Operativo">✅ En Operación Comercial</option>
+              <option value="En Construcción">🚧 En Construcción Activa</option>
+              <option value="Horizonte 2030">⚡ Horizonte 2029 - 2032 (1ª Ola)</option>
+              <option value="Horizonte 2035+">🔮 Horizonte 2033 - 2040+ (Madurez)</option>
+            </select>
+          </div>
+
+          <!-- Filtro de Tecnología de Reactor -->
+          <div class="filter-group">
+            <label class="filter-label" for="filter-tech">Tecnología de Reactor:</label>
+            <select id="filter-tech" class="filter-select">
+              <option value="all">Todas las tecnologías</option>
+              <optgroup label="Agua Ligera (LWR / Gen III+)">
+                <option value="PWR">iPWR · Agua a Presión (Nuward, Rolls-Royce, NuScale)</option>
+                <option value="BWR">iBWR · Agua en Ebullición (BWRX-300)</option>
+              </optgroup>
+              <optgroup label="Reactores Avanzados (Gen IV)">
+                <option value="HTGR">HTGR · Gas Alta Temperatura (HTR-PM, Xe-100)</option>
+                <option value="LFR">LFR · Neutrones Rápidos de Plomo (SEALER, newcleo, BREST)</option>
+                <option value="SFR">SFR · Neutrones Rápidos de Sodio (Natrium / TerraPower)</option>
+                <option value="MSR">MSR · Sales Fundidas (NAAREA, ThorCon)</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <!-- Filtro de Uso Final / Vector Energético -->
+          <div class="filter-group">
+            <label class="filter-label" for="filter-app">Uso Final & Mercado (End-Use):</label>
+            <select id="filter-app" class="filter-select">
+              <option value="all">Todos los usos de mercado</option>
+              <option value="Red Eléctrica (Carga Base)">⚡ Generación Eléctrica Firme (Baseload)</option>
+              <option value="Red Eléctrica (Seguimiento de Carga)">🔄 Seguimiento de Carga (Load-Following)</option>
+              <option value="Cogeneración & Calor Industrial">🏭 Vapor Industrial & Cogeneración (Industrial Heat)</option>
+              <option value="Calefacción Urbana Distrital">🏙️ Calefacción Urbana Distrital (District Heating)</option>
+              <option value="Producción de Hidrógeno Limpio">💧 Producción de Hidrógeno Limpio (SOEC)</option>
+              <option value="coalRepurposing">⛏️ Sustitución de Centrales de Carbón (Coal-to-Nuclear)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Tarjeta 3: Métricas Agregadas en Tiempo Real (KPIs) -->
+        <div class="control-card">
+          <div class="control-card-title">
+            <span>📈 Métricas Agregadas en Pantalla</span>
+          </div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <span id="kpi-projects-count" class="kpi-num cyan">0</span>
+              <span class="kpi-desc">Emplazamientos Visibles</span>
+            </div>
+            <div class="kpi-card">
+              <span id="kpi-total-capacity" class="kpi-num amber">0 MWe</span>
+              <span class="kpi-desc">Potencia Eléctrica Neta</span>
+            </div>
+            <div class="kpi-card">
+              <span id="kpi-total-gen" class="kpi-num purple">0 TWh/a</span>
+              <span class="kpi-desc">Generación Anual Firme</span>
+            </div>
+            <div class="kpi-card">
+              <span id="kpi-total-co2" class="kpi-num green">0 Mt/a</span>
+              <span class="kpi-desc">CO₂ Evitado vs Carbón</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Botón Toggle Sidebar -->
+    <button id="btn-toggle-sidebar" class="btn-toggle-sidebar" title="Ocultar/Mostrar panel lateral">
+      ◀
+    </button>
+
+    <!-- Área del Mapa 3D Geospatial (MapLibre GL + Deck.gl) -->
+    <section class="map-viewport-wrapper">
+      <div id="leaflet-map"></div>
+
+
+
+      <!-- Banner Flotante de Resumen de País Seleccionado -->
+      <div id="country-summary-banner" class="country-summary-banner">
+        <div class="country-summary-header">
+          <div id="cs-title" class="country-summary-title">🇵🇱 Polonia - Hub SMR de Europa Central</div>
+          <button id="btn-close-cs-banner" class="country-summary-close" title="Cerrar resumen de país">✕</button>
+        </div>
+        <div class="country-summary-stats">
+          <div class="cs-stat-box">
+            <div id="cs-stat-projects" class="cs-stat-val cyan">5 Proyectos</div>
+            <div class="cs-stat-lbl">Emplazamientos</div>
+          </div>
+          <div class="cs-stat-box">
+            <div id="cs-stat-power" class="cs-stat-val amber">2.170 MWe</div>
+            <div class="cs-stat-lbl">Potencia Prevista</div>
+          </div>
+          <div class="cs-stat-box">
+            <div id="cs-stat-co2" class="cs-stat-val green">13,9 Mt/a</div>
+            <div class="cs-stat-lbl">CO₂ Evitado vs Carbón</div>
+          </div>
+        </div>
+        <div id="cs-details" class="country-summary-details">
+          Sustitución masiva de carbón y suministro de vapor a la industria petroquímica con reactores BWRX-300 de GE Hitachi.
+        </div>
+      </div>
+
+      <!-- Cinta Inferior de Exploración Rápida por Países / Zonas con Scroll Suave y Chevrons -->
+      <div class="map-countries-ribbon-wrapper">
+        <button id="btn-ribbon-prev" class="ribbon-scroll-btn prev" title="Desplazar a la izquierda" aria-label="Desplazar a la izquierda">‹</button>
+        <div class="map-countries-ribbon" id="map-countries-ribbon">
+          <span class="map-ribbon-label">
+            📍 Zonas:
+          </span>
+          <button class="country-ribbon-btn" data-country="Polonia">
+            🇵🇱 Polonia <span class="country-ribbon-badge">5 SMRs</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="Reino Unido">
+            🇬🇧 Reino Unido <span class="country-ribbon-badge">Rolls-Royce</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="Francia">
+            🇫🇷 Francia <span class="country-ribbon-badge">4 SMRs</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="Canadá">
+            🇨🇦 Canadá <span class="country-ribbon-badge">Darlington (Obras)</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="Estados Unidos">
+            🇺🇸 EE.UU. <span class="country-ribbon-badge">5 SMRs</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="China">
+            🇨🇳 China <span class="country-ribbon-badge">HTR-PM Operativo</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="Rusia">
+            🇷🇺 Rusia <span class="country-ribbon-badge">Flotante Operativo</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="República Checa">
+            🇨🇿 Chequia <span class="country-ribbon-badge">2 SMRs</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="Suecia">
+            🇸🇪 Suecia <span class="country-ribbon-badge">2 SMRs</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="Rumanía">
+            🇷🇴 Rumanía <span class="country-ribbon-badge">Doicești</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="Finlandia">
+            🇫🇮 Finlandia <span class="country-ribbon-badge">Calor Urbano</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="Estonia">
+            🇪🇪 Estonia <span class="country-ribbon-badge">BWRX-300</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="Argentina">
+            🇦🇷 Argentina <span class="country-ribbon-badge">CAREM-25</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="Corea del Sur">
+            🇰🇷 Corea del Sur <span class="country-ribbon-badge">i-SMR</span>
+          </button>
+          <button class="country-ribbon-btn" data-country="Japón">
+            🇯🇵 Japón <span class="country-ribbon-badge">HTTR (I+D)</span>
+          </button>
+        </div>
+        <button id="btn-ribbon-next" class="ribbon-scroll-btn next" title="Desplazar a la derecha" aria-label="Desplazar a la derecha">›</button>
+      </div>
+
+      <!-- Barra de Navegación Rápida de Cámara sobre el Mapa -->
+      <div class="map-quick-nav">
+        <button id="btn-toggle-choropleth" class="map-nav-btn btn-choropleth-toggle" title="Alternar Mapa Coroplético de Capacidad SMR Prevista por País">
+          🗺️ Capacidad País (MWe)
+        </button>
+        <button class="map-nav-btn active" data-nav="europe">🇪🇺 Europa 2030-2040</button>
+        <button class="map-nav-btn" data-nav="world">🌍 Global</button>
+        <button class="map-nav-btn" data-nav="north-america">🇺🇸 Norteamérica</button>
+        <button class="map-nav-btn" data-nav="asia">🇨🇳 Asia</button>
+      </div>
+
+      <!-- Leyenda Interactiva en Esquina Inferior -->
+      <div id="map-legend-card" class="map-legend-card">
+        <div class="legend-header">
+          <div class="legend-title">Estado de Proyecto</div>
+          <button id="btn-toggle-legend" class="legend-toggle-btn" title="Minimizar / Expandir leyenda">—</button>
+        </div>
+        <div id="legend-items-container" class="legend-items">
+          <div class="interactive-legend-item" data-status-filter="Operativo" title="Filtrar reactores en operación comercial (con barrido de radar)">
+            <div class="legend-item-left">
+              <span class="legend-circle-icon op"></span>
+              <span class="legend-item-name">Operativo (Radar Activo)</span>
+            </div>
+            <span class="legend-item-count" id="leg-count-op">0</span>
+          </div>
+          <div class="interactive-legend-item" data-status-filter="En Construcción" title="Filtrar reactores en construcción activa (con barrido de radar)">
+            <div class="legend-item-left">
+              <span class="legend-circle-icon const"></span>
+              <span class="legend-item-name">En Construcción (Radar Activo)</span>
+            </div>
+            <span class="legend-item-count" id="leg-count-const">0</span>
+          </div>
+          <div class="interactive-legend-item" data-status-filter="Horizonte 2030" title="Filtrar proyectos 1ª Ola Alianza UE (2029-2032)">
+            <div class="legend-item-left">
+              <span class="legend-circle-icon plan"></span>
+              <span class="legend-item-name">Planificado (Ola 2030)</span>
+            </div>
+            <span class="legend-item-count" id="leg-count-2030">0</span>
+          </div>
+          <div class="interactive-legend-item" data-status-filter="Horizonte 2035+" title="Filtrar proyectos avanzados y Gen IV (2033-2040+)">
+            <div class="legend-item-left">
+              <span class="legend-circle-icon plan-late"></span>
+              <span class="legend-item-name">Planificado (2035+)</span>
+            </div>
+            <span class="legend-item-count" id="leg-count-2035">0</span>
+          </div>
+
+          <!-- Escala de Color Coroplética (Se muestra al activar la capa) -->
+          <div id="choropleth-scale-box" class="choropleth-legend-box" style="display: none;">
+            <div class="choropleth-legend-title">Capacidad SMR Prevista por País</div>
+            <div class="choropleth-scale-bar"></div>
+            <div class="choropleth-scale-labels">
+              <span>0 MWe</span>
+              <span>250</span>
+              <span>500</span>
+              <span>1.000</span>
+              <span>1.800+ MWe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         DRAWER / OFF-CANVAS SLIDING PANEL (PANEL LATERAL DERECHO ENTERPRISE)
+         ========================================================================= -->
+    <aside id="smr-detail-drawer" class="smr-detail-drawer" aria-label="Auditoría Financiera y Técnica del Reactor">
+      
+      <!-- Cabecera del Drawer con Botón de Cierre en la Esquina Superior Izquierda -->
+      <div class="drawer-header">
+        <button id="btn-close-drawer" class="drawer-close-btn-left" title="Cerrar panel (Esc)">✕</button>
+        <div class="drawer-header-center">
+          <div class="drawer-country-row">
+            <span id="drawer-flag" class="drawer-flag">🌐</span>
+            <span id="drawer-country-name" class="drawer-country-name">País</span>
+            <span class="drawer-saas-badge">SMR INTELLIGENCE &bull; AUDIT</span>
+          </div>
+          <h2 id="drawer-project-title" class="drawer-project-title">Nombre del Proyecto</h2>
+          <div id="drawer-power-badge" class="drawer-power-badge">
+            <span id="drawer-power-badge-content">⚡ Potencia Neta: 300 MWe (1 módulo) &bull; Factor de Capacidad: 93%</span>
+          </div>
+          <p id="drawer-dev-tag" class="drawer-dev-tag">Promotor / Emplazamiento</p>
+        </div>
+      </div>
+
+      <div class="drawer-body">
+        
+        <!-- Banner de Estado de Madurez Comercial -->
+        <div id="drawer-status-banner" class="status-banner h2030">
+          Horizonte Comercial: 2030
+        </div>
+
+        <!-- Badges Especiales de Ingeniería: Buque Flotante, Hidrógeno Verde y Categoría SMR -->
+        <div id="drawer-special-badges" class="drawer-special-badges" style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.75rem;"></div>
+
+        <!-- Dashboard Financiero: KPIs en Español Claro (100% Consistencia Matemática en M€) -->
+        <div class="drawer-financial-summary">
+          <div class="fin-kpi-card highlight-tci">
+            <div class="fin-kpi-header">
+              <span class="fin-kpi-lbl">Inversión Total (TCI)</span>
+              <button type="button" class="kpi-info-btn" title="Presupuesto total 'llave en mano' (Total Capital Investment): suma del coste físico de planta, ingeniería EPC, contingencias para imprevistos y los intereses devengados durante las obras." aria-label="Más información sobre TCI">ⓘ</button>
+            </div>
+            <div id="drawer-fin-tci" class="fin-kpi-val amber">1.440 M€</div>
+            <div id="drawer-fin-tci-sub" class="fin-kpi-sub">Presupuesto total llave en mano (Obra + Intereses)</div>
+          </div>
+          <div class="fin-kpi-card">
+            <div class="fin-kpi-header">
+              <span class="fin-kpi-lbl">Coste Base de Planta (Sin Intereses)</span>
+              <button type="button" class="kpi-info-btn" title="Overnight Capital Cost (OCC): coste directo de construcción física de la central como si se construyese de la noche a la mañana, sin devengar intereses financieros." aria-label="Más información sobre OCC">ⓘ</button>
+            </div>
+            <div id="drawer-fin-occ-total" class="fin-kpi-val cyan">1.100 M€</div>
+            <div id="drawer-fin-occ-rate" class="fin-kpi-sub">4.800 €/kWe neto instalado</div>
+          </div>
+          <div class="fin-kpi-card">
+            <div class="fin-kpi-header">
+              <span class="fin-kpi-lbl">Precio Mínimo de Venta (LCOE)</span>
+              <button type="button" class="kpi-info-btn" title="Coste Nivelado de la Electricidad (Levelized Cost of Energy): precio de venta mínimo por MWh necesario a largo plazo para recuperar toda la inversión de capital, amortización y costes operativos a 60 años." aria-label="Más información sobre LCOE">ⓘ</button>
+            </div>
+            <div id="drawer-fin-lcoe" class="fin-kpi-val green">62 €/MWh</div>
+            <div id="drawer-fin-lcoe-sub" class="fin-kpi-sub">Precio necesario para rentabilizar la planta</div>
+          </div>
+          <div class="fin-kpi-card">
+            <div class="fin-kpi-header">
+              <span class="fin-kpi-lbl">Intereses durante la Obra (IDC)</span>
+              <button type="button" class="kpi-info-btn" title="Interest During Construction (IDC): sobrecoste de intereses financieros bancarios devengados por la deuda acumulada durante los meses de obras civiles antes de verter energía a la red." aria-label="Más información sobre IDC">ⓘ</button>
+            </div>
+            <div id="drawer-fin-idc" class="fin-kpi-val purple">159 M€</div>
+            <div id="drawer-fin-idc-sub" class="fin-kpi-sub">Intereses devengados durante la obra (36 meses)</div>
+          </div>
+        </div>
+
+        <!-- Sección 1: Estructura de Capital y Donut Chart (CAPEX Breakdown) -->
+        <div class="drawer-section fin-card-box">
+          <div class="drawer-section-title">
+            <span>📊</span> Estructura de Capital (Desglose de Costes)
+          </div>
+          <div class="capex-donut-layout">
+            <div class="capex-donut-chart-wrap">
+              <canvas id="drawer-capex-donut" width="125" height="125"></canvas>
+            </div>
+            <div class="capex-donut-legend">
+              <div class="capex-legend-row">
+                <span class="capex-dot" style="background:#00e5ff;"></span>
+                <span class="capex-lbl">Coste Físico de Planta (OCC):</span>
+                <strong id="drawer-capex-occ-val" class="capex-num">705 M€ (49%)</strong>
+              </div>
+              <div class="capex-legend-row">
+                <span class="capex-dot" style="background:#38bdf8;"></span>
+                <span class="capex-lbl">Ingeniería y Permisos (EPC):</span>
+                <strong id="drawer-capex-ind-val" class="capex-num">259 M€ (18%)</strong>
+              </div>
+              <div class="capex-legend-row">
+                <span class="capex-dot" style="background:#f59e0b;"></span>
+                <span id="drawer-capex-cont-lbl" class="capex-lbl">Fondo para Imprevistos (FOAK):</span>
+                <strong id="drawer-capex-cont-val" class="capex-num">317 M€ (22%)</strong>
+              </div>
+              <div class="capex-legend-row">
+                <span class="capex-dot" style="background:#a855f7;"></span>
+                <span class="capex-lbl">Intereses Bancarios en Obra (IDC):</span>
+                <strong id="drawer-capex-idc-val" class="capex-num">159 M€ (11%)</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 2: Selector Interactivo de Escenario Financiero / WACC Toggle -->
+        <div class="drawer-section fin-card-box wacc-scenario-box">
+          <div class="drawer-section-title">
+            <span>🎛️</span> Escenario Financiero & WACC (Cost of Capital)
+            <span class="wacc-active-tag" id="drawer-wacc-active-tag">7.0% WACC</span>
+          </div>
+          <p class="wacc-helper-text">
+            Sensibilidad de coste de capital. Al alternar el WACC se recalculan el IDC, el TCI y el LCOE en tiempo real:
+          </p>
+          <div class="wacc-selector-grid">
+            <button type="button" class="btn-wacc" data-wacc="0.04" title="Financiación con garantía estatal o modelo de base de activos regulados (RAB)">
+              <span class="wacc-rate">4.0%</span>
+              <span class="wacc-label">Público / RAB</span>
+              <span class="wacc-sub">Bajo coste soberano</span>
+            </button>
+            <button type="button" class="btn-wacc active" data-wacc="0.07" title="PPA industrial a largo plazo y capital privado corporativo (Caso Base)">
+              <span class="wacc-rate">7.0%</span>
+              <span class="wacc-label">Corporate PPA</span>
+              <span class="wacc-sub">Benchmark industrial</span>
+            </button>
+            <button type="button" class="btn-wacc" data-wacc="0.10" title="Inversión expuesta al mercado mayorista sin cobertura de precios (Merchant Risk)">
+              <span class="wacc-rate">10.0%</span>
+              <span class="wacc-label">Merchant Risk</span>
+              <span class="wacc-sub">Riesgo pool mayorista</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Sección 3: Estrategia Comercial de Off-take y Bancabilidad (Revenue Model) -->
+        <div class="drawer-section fin-card-box offtake-card-box">
+          <div class="drawer-section-title">
+            <span>💼</span> Modelo de Ingresos y Bancabilidad (Off-take & Bankability)
+          </div>
+          <div class="offtake-grid-three">
+            <div class="offtake-item">
+              <span class="offtake-label">Off-taker Principal:</span>
+              <div id="drawer-offtake-buyer" class="offtake-value cyan">Polos Químicos & Vapor Industrial</div>
+              <span class="offtake-hint">Cliente o demandante ancla</span>
+            </div>
+            <div class="offtake-item">
+              <span class="offtake-label">Mecanismo de Financiación:</span>
+              <div id="drawer-offtake-mechanism" class="offtake-value amber">PPA Corporativo a Largo Plazo</div>
+              <span class="offtake-hint">Estructura contractual / soporte</span>
+            </div>
+            <div class="offtake-item">
+              <span class="offtake-label">Riesgo de Canibalización:</span>
+              <div id="drawer-offtake-risk" class="offtake-badge-wrap">
+                <span class="cannibalization-badge green">Bajo (Behind-the-Meter)</span>
+              </div>
+              <span class="offtake-hint">Sensibilidad al precio del pool</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 3: Matriz de Riesgo y Madurez del Proyecto (Risk Matrix) -->
+        <div class="drawer-section fin-card-box">
+          <div class="drawer-section-title">
+            <span>🛡️</span> Matriz de Riesgo y Madurez (Risk & Supply Chain)
+          </div>
+          
+          <!-- Barra 1: Licensing Status -->
+          <div class="risk-bar-group">
+            <div class="risk-bar-header">
+              <span class="risk-bar-lbl">Progreso de Licenciamiento Regulatorio</span>
+              <span id="drawer-licensing-pct" class="risk-bar-val">75%</span>
+            </div>
+            <div class="risk-progress-track">
+              <div id="drawer-licensing-bar" class="risk-progress-fill cyan" style="width: 75%;"></div>
+            </div>
+            <div id="drawer-licensing-stage" class="risk-bar-desc">Fase 3: Evaluación de Seguridad de Emplazamiento (WENRA / PAA)</div>
+          </div>
+
+          <!-- Barra 2: Completion Risk -->
+          <div class="risk-bar-group">
+            <div class="risk-bar-header">
+              <span class="risk-bar-lbl">Índice de Riesgo de Ejecución (Completion Risk)</span>
+              <span id="drawer-risk-score-pct" class="risk-bar-val">28%</span>
+            </div>
+            <div class="risk-progress-track">
+              <div id="drawer-risk-score-bar" class="risk-progress-fill amber" style="width: 28%;"></div>
+            </div>
+            <div id="drawer-risk-score-desc" class="risk-bar-desc">Riesgo Moderado-Bajo (Tecnología LWR con cadena madura)</div>
+          </div>
+
+          <!-- Risk Tags: Delay Buffer & Supply Chain -->
+          <div class="risk-tags-grid">
+            <div class="risk-tag-box">
+              <span class="risk-tag-lbl">Margen de Retraso de Obra:</span>
+              <span id="drawer-delay-badge" class="risk-tag-val amber">+14 meses (FOAK)</span>
+            </div>
+            <div class="risk-tag-box">
+              <span class="risk-tag-lbl">Cadena de Suministro:</span>
+              <span id="drawer-supply-chain-tag" class="risk-tag-val">Medio (Forjas pesadas & HALEU)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 4: Parámetros Técnicos y Generación Firme -->
+        <div class="drawer-section">
+          <div class="drawer-section-title">
+            <span>⚡</span> Parámetros Técnicos y Generación Neta
+          </div>
+          <div class="drawer-metrics-grid">
+            <div class="metric-box">
+              <div class="metric-box-label">Potencia Eléctrica Neta</div>
+              <div id="drawer-val-electric" class="metric-box-val cyan">300 MWe</div>
+              <div class="metric-box-sub">Despacho firme a red</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-box-label">Potencia Térmica Total</div>
+              <div id="drawer-val-thermal" class="metric-box-val amber">870 MWt</div>
+              <div class="metric-box-sub">Calor primario del reactor</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-box-label">Generación Anual Firme</div>
+              <div id="drawer-val-gen" class="metric-box-val purple">2.418 GWh/año</div>
+              <div class="metric-box-sub">Factor disponibilidad >92%</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-box-label">Plazo de Construcción</div>
+              <div id="drawer-val-leadtime" class="metric-box-val">36 meses</div>
+              <div class="metric-box-sub">Ensamblaje modular en taller</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sección 5: Mitigación Climática y Emisiones Evitadas -->
+        <div class="env-impact-card">
+          <div class="env-impact-header">
+            <span>🌱</span> Mitigación Climática y Ahorro de CO₂
+          </div>
+          <div class="co2-comparison-row">
+            <span>Ahorro frente a Central Térmica de Carbón:</span>
+            <span id="drawer-co2-coal" class="co2-val-pill">2,30 Mt CO₂/año</span>
+          </div>
+          <div class="co2-comparison-row">
+            <span>Ahorro frente a Ciclo Combinado de Gas Natural:</span>
+            <span id="drawer-co2-gas" class="co2-val-pill">0,97 Mt CO₂/año</span>
+          </div>
+          <div class="co2-comparison-row">
+            <span>Mitigación acumulada (60 años de vida útil):</span>
+            <span id="drawer-co2-lifetime" class="co2-val-pill">138 Mt CO₂</span>
+          </div>
+        </div>
+
+        <!-- Sección 6: Integración en Red y Mercado -->
+        <div class="drawer-section">
+          <div class="drawer-section-title">
+            <span>🔌</span> Integración en Red y Servicios Complementarios
+          </div>
+          <p class="drawer-desc-text"><strong>Rol de Mercado:</strong> <span id="drawer-market-role">Carga base flexible y cogeneración</span></p>
+          <p class="drawer-desc-text"><strong>Seguimiento de Carga (Load-Following):</strong> <span id="drawer-load-following">Rampa rápida del 5%/minuto para hibridación con renovables.</span></p>
+          <p class="drawer-desc-text"><strong>Servicios de Red:</strong> <span id="drawer-grid-services">Inercia síncrona alta (~5s), control de frecuencia y tensión.</span></p>
+          <p class="drawer-desc-text"><strong>Acoplamiento de Sectores (Sector Coupling):</strong> <span id="drawer-sector-coupling">Vapor de proceso a alta temperatura e hidrógeno verde.</span></p>
+        </div>
+
+        <!-- Reutilización de Centrales de Carbón (Coal-to-Nuclear) -->
+        <div id="drawer-coal-box" class="drawer-section">
+          <div class="drawer-section-title" style="color: var(--accent-rose);">
+            <span>🏭</span> Reconversión de Carbón a Nuclear (Coal-to-Nuclear)
+          </div>
+          <p id="drawer-coal-details" class="drawer-desc-text">Reemplazo directo de central de carbón aprovechando la subestación y permisos de evacuación.</p>
+        </div>
+
+        <!-- Encaje en la Estrategia de la Unión Europea -->
+        <div id="drawer-eu-box" class="drawer-section">
+          <div class="drawer-section-title" style="color: #c084fc;">
+            <span>🇪🇺</span> Estrategia y Alianza Industrial de SMRs de la UE
+          </div>
+          <p id="drawer-eu-details" class="drawer-desc-text">Proyecto seleccionado en los tracks prioritarios de la Comisión Europea.</p>
+        </div>
+
+        <!-- Central Nuclear Flotante sobre Barco / Buque (Rusia / Rosatom) -->
+        <div id="drawer-floating-box" class="drawer-section" style="display: none; background: rgba(14, 165, 233, 0.08); border-left: 3px solid #0ea5e9; padding: 0.85rem; border-radius: 6px; margin-bottom: 0.85rem;">
+          <div class="drawer-section-title" style="color: #38bdf8;">
+            <span>🚢</span> Central Nuclear Flotante (Instalada sobre Buque / Barcaza)
+          </div>
+          <p id="drawer-floating-details" class="drawer-desc-text">Instalada íntegramente a bordo de un buque flotante naval para operaciones en aguas costeras y árticas sin cimentación terrestre.</p>
+        </div>
+
+        <!-- Producción de Hidrógeno Verde / Limpio a Alta Temperatura (Japón Tokio/Oarai) -->
+        <div id="drawer-hydrogen-box" class="drawer-section" style="display: none; background: rgba(34, 197, 94, 0.08); border-left: 3px solid #22c55e; padding: 0.85rem; border-radius: 6px; margin-bottom: 0.85rem;">
+          <div class="drawer-section-title" style="color: #4ade80;">
+            <span>🟢</span> Producción de Hidrógeno Verde y Limpio (950°C)
+          </div>
+          <p id="drawer-hydrogen-details" class="drawer-desc-text">Reactor SMR de muy alta temperatura optimizado para generar hidrógeno verde masivo mediante ciclo termoquímico I-S sin emisiones.</p>
+        </div>
+
+        <!-- Glosario Rápido de Términos Económicos (Mini-Acordeón Desplegable) -->
+        <details class="drawer-glossary-accordion">
+          <summary class="drawer-glossary-summary">
+            <span>📖 Glosario Rápido de Términos Económicos</span>
+            <span class="glossary-arrow">▼</span>
+          </summary>
+          <div class="drawer-glossary-content">
+            <div class="glossary-item">
+              <span class="glossary-term">CAPEX (Gasto de Capital):</span>
+              <span class="glossary-def">Inversión total inicial requerida para diseñar, licenciar y construir la central nuclear llave en mano.</span>
+            </div>
+            <div class="glossary-item">
+              <span class="glossary-term">OCC (Coste Base "Overnight"):</span>
+              <span class="glossary-def">Presupuesto de obra física sin incluir los intereses de la deuda (como si se construyese "de la noche a la mañana").</span>
+            </div>
+            <div class="glossary-item">
+              <span class="glossary-term">EPC (Ingeniería y Permisos):</span>
+              <span class="glossary-def">Costes indirectos de diseño técnico especializado, gestión de suministros y trámites de licenciamiento nuclear.</span>
+            </div>
+            <div class="glossary-item">
+              <span class="glossary-term">IDC (Intereses durante la Obra):</span>
+              <span class="glossary-def">Coste financiero por los intereses bancarios devengados por la deuda acumulada durante los meses de construcción física.</span>
+            </div>
+            <div class="glossary-item">
+              <span class="glossary-term">FOAK vs NOAK:</span>
+              <span class="glossary-def"><strong>FOAK</strong> (Primer reactor) asume un 20% de contingencias por curva de aprendizaje; <strong>NOAK</strong> (Serie comercial) optimiza los imprevistos al 8%.</span>
+            </div>
+            <div class="glossary-item">
+              <span class="glossary-term">LCOE (Precio Mínimo de Venta):</span>
+              <span class="glossary-def">Precio por MWh (€/MWh) al que debe venderse la electricidad durante los 60 años de vida útil para cubrir la inversión y costes operativos.</span>
+            </div>
+            <div class="glossary-item">
+              <span class="glossary-term">WACC (Coste Ponderado del Capital):</span>
+              <span class="glossary-def">Tasa de interés o rentabilidad mínima exigida por bancos e inversores según el riesgo del modelo financiero (4% público a 10% mercado).</span>
+            </div>
+          </div>
+        </details>
+
+        <!-- Sección 7: Commercial Hooks (Monetización UI Enterprise) -->
+        <div class="drawer-commercial-monetization">
+          <button id="btn-premium-audit" class="btn-premium-locked" disabled title="Función restringida a suscriptores institucionales y analistas de mercado">
+            <div class="btn-premium-content">
+              <span class="premium-lock-icon">🔒</span>
+              <div class="premium-btn-labels">
+                <span class="premium-title">Export Full Financial Audit (PDF/CSV) - Premium Feature</span>
+                <span class="premium-sub">Desglose WACC, curvas de aprendizaje NOAK y cash-flow 60a</span>
+              </div>
+            </div>
+            <span class="premium-tier-pill">PRO ENTERPRISE</span>
+          </button>
+          <div class="premium-disclaimer">
+            <span>💎 Función comercial bloqueada en la versión pública para demostraciones</span>
+          </div>
+        </div>
+
+        <!-- Acciones Operativas en Drawer -->
+        <div class="drawer-actions-bar">
+          <button id="drawer-btn-view-report" class="btn btn-secondary" style="width: 100%; justify-content: center; background: rgba(0, 229, 255, 0.15); border-color: rgba(0, 229, 255, 0.5); color: #00e5ff; font-weight: 700; gap: 0.5rem;" title="Abrir la Memoria Técnico-Económica completa de este SMR">
+            📑 Ver Memoria Técnica (Informe Oficial A4)
+          </button>
+          <button id="btn-load-calc-from-drawer" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            🧮 Simular Parámetros en Calculadora LCOE
+          </button>
+          <a href="explorador-smr-3d.html" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center; text-decoration: none; background: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.35); color: var(--accent-cyan); font-weight: 700;" title="Abrir el simulador 3D para ver este SMR por dentro y su entorno">
+            🔬 Inspeccionar este Reactor en 3D
+          </a>
+        </div>
+
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- =========================================================================
+       MODAL 1: ESTRATEGIA DE LA UNIÓN EUROPEA Y ALIANZA INDUSTRIAL SMRs
+       ========================================================================= -->
+  <div id="modal-eu-strategy" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2 class="modal-title">
+          <span>🇪🇺</span> Alianza Industrial Europea de SMRs y Estrategia Energética 2030-2040
+        </h2>
+        <button class="btn-icon btn-close-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="control-card" style="background: rgba(139, 92, 246, 0.08); border-color: rgba(139, 92, 246, 0.3);">
+          <h3 style="color: #c084fc; font-size: 0.95rem; margin-bottom: 0.4rem;">
+            📌 Lanzamiento Oficial de la Comisión Europea (Febrero 2024 - DG ENER)
+          </h3>
+          <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6;">
+            La Comisión Europea puso en marcha la <strong>Alianza Industrial Europea sobre Reactores Modulares Pequeños (SMRs)</strong> con el objetivo expreso de acelerar el desarrollo, la demostración y el despliegue de los primeros reactores comerciales en la Unión Europea para <strong>2030-2035</strong>. Esta iniciativa se enmarca en la recomendación de reducir las emisiones netas de gases de efecto invernadero en un <strong>90% para 2040</strong> y alcanzar la neutralidad climática en 2050.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="control-card">
+            <h4 style="font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 0.5rem;">
+              🛠️ Los 9 Grupos de Trabajo Técnicos (TWGs)
+            </h4>
+            <ul style="font-size: 0.76rem; color: var(--text-secondary); line-height: 1.6; padding-left: 1.2rem;">
+              <li><strong>TWG 1:</strong> Aplicaciones industriales y de calefacción distrital.</li>
+              <li><strong>TWG 2:</strong> Financiación, taxonomía e inversión privada.</li>
+              <li><strong>TWG 3:</strong> Cadena de suministro europea y estandarización.</li>
+              <li><strong>TWG 4:</strong> Armonización de licencias (WENRA y ENSREG).</li>
+              <li><strong>TWG 5:</strong> I+D, competencias e ingeniería especializada.</li>
+              <li><strong>TWG 6:</strong> Residuos radiactivos y ciclo de combustible.</li>
+              <li><strong>TWG 7:</strong> Compromiso social y aceptación pública.</li>
+              <li><strong>TWG 8:</strong> Ciberseguridad y protección física de infraestructuras.</li>
+              <li><strong>TWG 9:</strong> Reactores modulares avanzados (AMR de Generación IV).</li>
+            </ul>
+          </div>
+
+          <div class="control-card">
+            <h4 style="font-size: 0.85rem; color: var(--accent-green); margin-bottom: 0.5rem;">
+              🏭 Reconversión Carbón a Nuclear (Coal-to-Nuclear)
+            </h4>
+            <p style="font-size: 0.76rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.5rem;">
+              La directriz europea de sustitución de carbón reconoce un ahorro de hasta el <strong>30% en el CAPEX</strong> total al instalar SMRs en las cuencas mineras en transición (Silesia en Polonia, Doicești en Rumanía, Moravia en Chequia, cuencas térmicas en Bulgaria y Eslovaquia).
+            </p>
+            <p style="font-size: 0.76rem; color: var(--text-secondary); line-height: 1.6;">
+              Se reutilizan directamente:
+              <br>• Subestaciones de evacuación de 220/400 kV existentes.
+              <br>• Conexiones a redes ferroviarias y carreteras pesadas.
+              <br>• Derechos de concesión de agua para refrigeración.
+              <br>• Personal técnico cualificado procedente del sector térmico.
+            </p>
+          </div>
+        </div>
+
+        <div class="control-card">
+          <h4 style="font-size: 0.85rem; color: var(--text-primary); margin-bottom: 0.5rem;">
+            🚀 Cartera de Proyectos Prioritarios Seleccionados por la Alianza (Octubre 2024)
+          </h4>
+          <p style="font-size: 0.78rem; color: var(--text-secondary); line-height: 1.6;">
+            1. <strong>Track Water-Cooled SMRs (2030):</strong> Nuward (Francia/Bélgica), GE Hitachi BWRX-300 (Polonia-OSGE / Estonia-Fermi), Rolls-Royce SMR (República Checa-ČEZ / Suecia), NuScale VOYGR (Rumanía-RoPower).
+            <br>2. <strong>Track Advanced Modular Reactors (AMR Gen IV - 2035):</strong> newcleo LFR (Francia/Italia), Thorizon One (Países Bajos/Francia), Steady Energy LDR-50 (Finlandia - Calefacción Urbana), NAAREA (Francia - Sales Fundidas).
+          </p>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-close-modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: SIMULADOR TÉCNICO-ECONÓMICO LCOE, VAN Y RENTABILIDAD DE MERCADO
+       ========================================================================= -->
+  <div id="modal-calculator" class="modal-backdrop">
+    <div class="modal-dialog" style="max-width: 1040px;">
+      <div class="modal-header">
+        <h2 class="modal-title">
+          <span>🧮</span> Simulador Técnico-Económico LCOE, Financiación y Rentabilidad
+        </h2>
+        <button class="btn-icon btn-close-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Barra de Escenarios Predefinidos de la Industria -->
+        <div class="calc-scenarios-bar">
+          <span class="calc-scenarios-lbl">Escenarios Predefinidos:</span>
+          <div class="calc-scenarios-btns">
+            <button class="btn-scenario active" data-scenario="noak" title="Planta comercial de serie madura (N-th of a Kind)">
+              🏢 Comercial de Serie (NOAK)
+            </button>
+            <button class="btn-scenario" data-scenario="coal" title="Reconversión de central térmica de carbón (-25% CAPEX)">
+              🏭 Coal-to-Nuclear (-25% CAPEX)
+            </button>
+            <button class="btn-scenario" data-scenario="foak" title="Primer prototipo comercial de nueva tecnología (First of a Kind)">
+              🧪 Primera Unidad (FOAK)
+            </button>
+            <button class="btn-scenario" data-scenario="rab" title="Financiación con base de activos regulados (RAB Model) y menor coste de capital">
+              🏛️ Modelo Regulado / RAB (Bajo WACC)
+            </button>
+          </div>
+        </div>
+
+        <div class="calc-grid">
+          
+          <!-- Columna Izquierda: Parámetros del SMR y Mercado -->
+          <div class="calc-params-panel">
+            <h4 class="calc-section-title">
+              1. Parámetros Técnicos y Financiación
+            </h4>
+
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <span>Potencia Eléctrica Neta:</span>
+                <span id="val-disp-capacity" class="calc-val-display">300 MWe</span>
+              </div>
+              <input type="range" id="calc-in-capacity" class="custom-slider" min="50" max="600" step="25" value="300">
+            </div>
+
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <span>Inversión Específica de Capital (CAPEX):</span>
+                <span id="val-disp-capex" class="calc-val-display">4.500 €/kWe</span>
+              </div>
+              <input type="range" id="calc-in-capex" class="custom-slider" min="2500" max="8000" step="100" value="4500">
+            </div>
+
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <span>Factor de Capacidad / Disponibilidad:</span>
+                <span id="val-disp-cf" class="calc-val-display">92 %</span>
+              </div>
+              <input type="range" id="calc-in-cf" class="custom-slider" min="70" max="98" step="1" value="92">
+            </div>
+
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <span>Coste Medio Ponderado del Capital (WACC):</span>
+                <span id="val-disp-wacc" class="calc-val-display">6.5 %</span>
+              </div>
+              <input type="range" id="calc-in-wacc" class="custom-slider" min="3.5" max="11.0" step="0.5" value="6.5">
+            </div>
+
+            <h4 class="calc-section-title" style="margin-top: 1.1rem;">
+              2. Parámetros de Mercado Eléctrico y CO₂
+            </h4>
+
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <span>Precio Medio Mayorista Pool / PPA:</span>
+                <span id="val-disp-pool" class="calc-val-display">75 €/MWh</span>
+              </div>
+              <input type="range" id="calc-in-pool" class="custom-slider" min="40" max="140" step="5" value="75">
+            </div>
+
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <span>Derechos de Emisión CO₂ (EU ETS):</span>
+                <span id="val-disp-co2" class="calc-val-display">80 €/t CO₂</span>
+              </div>
+              <input type="range" id="calc-in-co2" class="custom-slider" min="30" max="160" step="5" value="80">
+            </div>
+          </div>
+
+          <!-- Columna Derecha: Resultados Financieros y Desglose Riguroso -->
+          <div class="calc-results-card">
+            
+            <!-- Tarjeta Central de LCOE -->
+            <div class="calc-main-kpi">
+              <div class="calc-kpi-sub">Coste Nivelado de la Electricidad (LCOE)</div>
+              <div id="calc-res-lcoe-smr" class="calc-lcoe-num">59.7 €/MWh</div>
+              <div class="calc-lcoe-caption">Generación en carga base continua normalizada a 60 años de vida útil</div>
+            </div>
+
+            <!-- Tabla 1: Desglose por Componentes del LCOE (€/MWh) -->
+            <div class="calc-breakdown-box">
+              <div class="calc-table-title">Desglose Analítico del LCOE (€/MWh)</div>
+              <table class="calc-table">
+                <tbody>
+                  <tr>
+                    <td>Amortización y Retorno de Capital (CRF · CAPEX)</td>
+                    <td id="calc-breakdown-capex" class="calc-num-cell">37.1 €/MWh</td>
+                  </tr>
+                  <tr>
+                    <td>Operación y Mantenimiento (O&M Fijo + Variable)</td>
+                    <td id="calc-breakdown-opex" class="calc-num-cell">12.6 €/MWh</td>
+                  </tr>
+                  <tr>
+                    <td>Combustible Nuclear (Uranio, Conversión, SWU)</td>
+                    <td id="calc-breakdown-fuel" class="calc-num-cell">7.5 €/MWh</td>
+                  </tr>
+                  <tr>
+                    <td>Provisión Desmantelamiento y Residuos (Fondo Enresa/UE)</td>
+                    <td id="calc-breakdown-decom" class="calc-num-cell">2.5 €/MWh</td>
+                  </tr>
+                  <tr class="calc-table-total">
+                    <td>Coste Nivelado Total (LCOE SMR)</td>
+                    <td id="calc-breakdown-total" class="calc-num-cell">59.7 €/MWh</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Tabla 2: Indicadores de Evaluación de Inversiones (VAN, Payback, Margen) -->
+            <div class="calc-breakdown-box">
+              <div class="calc-table-title">Evaluación de Rentabilidad del Proyecto (60 años)</div>
+              <table class="calc-table">
+                <tbody>
+                  <tr>
+                    <td>Inversión Total Inicial (I₀):</td>
+                    <td id="calc-res-total-capex" class="calc-num-cell">1.350 M€</td>
+                  </tr>
+                  <tr>
+                    <td>Ingresos Anuales Estimados (Pool/PPA):</td>
+                    <td id="calc-res-annual-rev" class="calc-num-cell">181.3 M€/año</td>
+                  </tr>
+                  <tr>
+                    <td>Margen Operativo Anual (EBITDA):</td>
+                    <td id="calc-res-ebitda" class="calc-num-cell">126.8 M€/año</td>
+                  </tr>
+                  <tr>
+                    <td>Valor Actual Neto (VAN a 60 años):</td>
+                    <td id="calc-res-van" class="calc-num-cell calc-positive">+556 M€</td>
+                  </tr>
+                  <tr>
+                    <td>Período de Retorno Descontado (Payback):</td>
+                    <td id="calc-res-payback" class="calc-num-cell">18.7 años</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Comparativa con Tecnologías Competidoras en el Mercado -->
+            <div class="calc-breakdown-box">
+              <div class="calc-table-title">Comparativa de Competitividad en el Mercado</div>
+              <div class="calc-comp-rows">
+                <div class="calc-comp-item">
+                  <span class="calc-comp-name">Ciclo Combinado de Gas (CCGT + CO₂):</span>
+                  <span id="calc-res-lcoe-ccgt" class="calc-comp-val">104.4 €/MWh</span>
+                </div>
+                <div class="calc-comp-item">
+                  <span class="calc-comp-name">Fotovoltaica + Almacenamiento BESS (4h):</span>
+                  <span id="calc-res-lcoe-pv-bess" class="calc-comp-val">77.0 €/MWh</span>
+                </div>
+                <div class="calc-comp-item">
+                  <span class="calc-comp-name">Ahorro Económico en Derechos EU ETS:</span>
+                  <span id="calc-res-co2-savings" class="calc-comp-val">77.4 M€/año</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Veredicto de Mercado Sobrio -->
+            <div id="calc-res-spread-gas" class="calc-verdict-box">
+              Calculando diagnóstico económico...
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-close-modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 3: DASHBOARD DE GRÁFICOS COMPARATIVOS
+       ========================================================================= -->
+  <div id="modal-charts" class="modal-backdrop">
+    <div class="modal-dialog" style="max-width: 1000px;">
+      <div class="modal-header">
+        <h2 class="modal-title">
+          <span>📊</span> Dashboard Analítico: Mercado, Tecnologías y Curvas de Aprendizaje
+        </h2>
+        <button class="btn-icon btn-close-modal">✕</button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="charts-grid-container">
+          <!-- Gráfico 1 -->
+          <div class="chart-card-box">
+            <div class="chart-title">🇪🇺 Capacidad SMR Prevista en Europa por País (MWe)</div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="chart-europe-capacity"></canvas>
+            </div>
+          </div>
+
+          <!-- Gráfico 2 -->
+          <div class="chart-card-box">
+            <div class="chart-title">⚛️ Reparto de Potencia por Tecnología SMR (MWe)</div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="chart-tech-distrib"></canvas>
+            </div>
+          </div>
+
+          <!-- Gráfico 3 -->
+          <div class="chart-card-box">
+            <div class="chart-title">📊 Competitividad LCOE en el Mercado Eléctrico Europeo (€/MWh)</div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="chart-learning-curve"></canvas>
+            </div>
+          </div>
+
+          <!-- Gráfico 4 -->
+          <div class="chart-card-box">
+            <div class="chart-title">🌱 Mitigación de CO₂ Acumulada Horizonte 2025-2050 (Mt/a)</div>
+            <div class="chart-canvas-wrapper">
+              <canvas id="chart-co2-mitigation"></canvas>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-close-modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: MEMORIA TÉCNICO-ECONÓMICA DE INGENIERÍA (INFORME OFICIAL A4)
+       ========================================================================= -->
+  <div id="modal-engineering-report" class="report-modal-backdrop" style="display: none;">
+    <div class="report-modal-container">
+      
+      <!-- Report Modal Action Bar (Fixed Top) -->
+      <div class="report-modal-header no-print">
+        <div class="report-modal-title" style="min-width: 310px; flex-shrink: 0;">
+          <span style="font-size: 1.4rem;">📑</span>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem; color: #ffffff; white-space: nowrap;">Memoria Técnico-Económica SMR</div>
+            <div style="font-size: 0.70rem; color: #94a3b8; white-space: nowrap;">Dictamen Oficial · Escuela de Ingenierías Industriales (UVa)</div>
+          </div>
+        </div>
+        <div class="report-modal-actions">
+          <label style="font-size: 0.74rem; color: #94a3b8; font-weight: 600; display: flex; align-items: center; gap: 0.35rem;">
+            Reactor:
+            <select id="report-smr-selector" class="custom-select" style="max-width: 250px; font-size: 0.76rem; background: #0f172a; color: #38bdf8; border: 1px solid #334155; padding: 0.35rem 0.6rem; border-radius: 4px; cursor: pointer;">
+              <!-- Rellenado dinámicamente con los 36 SMRs -->
+            </select>
+          </label>
+          <a href="Memoria_Investigacion_SMR.docx" download="Memoria_Investigacion_SMR_UVa.docx" id="btn-download-docx-report" class="btn btn-success btn-sm" style="display: flex; align-items: center; gap: 0.35rem; font-weight: 700; background: #16a34a; border-color: #15803d; color: #ffffff; text-decoration: none; padding: 0.35rem 0.75rem; border-radius: 4px;" title="Descargar Memoria Completa Oficial de Investigación en formato editable Word (.docx)">
+            📥 Descargar Memoria (.docx)
+          </a>
+          <button type="button" id="btn-export-csv-report" class="btn btn-secondary btn-sm" style="display: flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.65rem;" title="Exportar ficha técnica y económica del reactor actual en formato CSV">
+            📊 Ficha CSV
+          </button>
+          <button type="button" id="btn-print-report-modal" class="btn btn-primary btn-sm" style="display: flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.65rem;" title="Imprimir o guardar en PDF (Formato oficial A4)">
+            🖨️ Imprimir PDF (A4)
+          </button>
+          <button type="button" id="btn-close-report-modal" class="btn btn-secondary btn-sm" style="padding: 0.35rem 0.65rem;" title="Cerrar vista de memoria">
+            ✖️ Cerrar
+          </button>
+        </div>
+      </div>
+
+      <!-- Report Sheet (A4 document styled) -->
+      <div class="report-modal-body">
+        <div id="smr-engineering-report-doc" class="report-sheet">
+          <!-- Populated dynamically by generateSMRReportHtml(project, wacc) -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       SCRIPTS JAVASCRIPT
+       ========================================================================= -->
+  <!-- Leaflet JS (Local con CDN Fallback) -->
+  <script src="lib/leaflet.js"></script>
+  <script>
+    if (typeof L === 'undefined') {
+      document.write('<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""><\/script>');
+    }
+  </script>
+
+  <!-- Leaflet MarkerCluster JS (Local con CDN Fallback) -->
+  <script src="lib/leaflet.markercluster.js"></script>
+  <script>
+    if (typeof L !== 'undefined' && typeof L.markerClusterGroup === 'undefined') {
+      document.write('<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"><\/script>');
+    }
+  </script>
+
+  <!-- Chart.js (Local con CDN Fallback) -->
+  <script src="lib/chart.umd.min.js"></script>
+  <script>
+    if (typeof Chart === 'undefined') {
+      document.write('<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- Datos Cartográficos y Lógica de la Aplicación -->
+  <script src="js/world-countries-geojson.js?v=4.0"></script>
+  <script src="js/smr-data.js?v=4.1"></script>
+  <script src="js/app.js?v=4.2"></script>
+</body>
+</html>
