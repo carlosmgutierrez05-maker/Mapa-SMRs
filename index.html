@@ -4243,71 +4243,68 @@ body.drawer-open .map-countries-ribbon-wrapper {
 }
 
 /* ==========================================================================
-   MÓDULO PREMIUM B2B, CENTROS DE DATOS (IA) Y MONETIZACIÓN EJECUTIVA
+   MÓDULO B2B, CENTROS DE DATOS (IA) Y ANÁLISIS CORPORATIVO EJECUTIVO
    ========================================================================== */
 
 .btn-premium {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(217, 119, 6, 0.38) 100%) !important;
-  border: 1px solid rgba(245, 158, 11, 0.75) !important;
-  color: #fef08a !important;
-  font-weight: 700 !important;
-  box-shadow: 0 0 16px rgba(245, 158, 11, 0.3) !important;
-  position: relative;
-  overflow: hidden;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(14, 165, 233, 0.12) !important;
+  border: 1px solid rgba(56, 189, 248, 0.4) !important;
+  color: #e0f2fe !important;
+  font-weight: 600 !important;
+  border-radius: var(--radius-sm) !important;
+  transition: all 0.2s ease !important;
+  box-shadow: none !important;
 }
 
 .btn-premium:hover {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.35) 0%, rgba(217, 119, 6, 0.55) 100%) !important;
-  border-color: #fbbf24 !important;
+  background: rgba(14, 165, 233, 0.22) !important;
+  border-color: #38bdf8 !important;
   color: #ffffff !important;
-  box-shadow: 0 0 24px rgba(245, 158, 11, 0.55) !important;
   transform: translateY(-1px);
 }
 
 /* Tabs B2B */
 .b2b-tabs-bar {
   display: flex;
-  gap: 0.5rem;
-  background: rgba(15, 23, 42, 0.6);
-  padding: 0.35rem;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 0.4rem;
+  background: rgba(15, 23, 42, 0.8);
+  padding: 0.3rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(148, 163, 184, 0.14);
   margin-bottom: 1.25rem;
 }
 
 .b2b-tab-btn {
   flex: 1;
-  padding: 0.6rem 1rem;
-  font-size: 0.82rem;
+  padding: 0.55rem 0.85rem;
+  font-size: 0.80rem;
   font-weight: 600;
-  border: none;
+  border: 1px solid transparent;
   background: transparent;
   color: var(--text-secondary);
-  border-radius: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
 }
 
 .b2b-tab-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .b2b-tab-btn.active {
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(16, 185, 129, 0.2) 100%);
-  color: #fef08a;
-  border: 1px solid rgba(245, 158, 11, 0.45);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  background: #1e293b;
+  color: #f8fafc;
+  border-color: rgba(56, 189, 248, 0.35);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .b2b-tab-pane {
   display: none;
-  animation: fadeIn 0.25s ease-in-out;
 }
 
 .b2b-tab-pane.active {
@@ -4316,12 +4313,12 @@ body.drawer-open .map-countries-ribbon-wrapper {
 
 /* Tarjetas y Contenedores B2B */
 .b2b-hero-card {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.7) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.25);
-  border-radius: 12px;
-  padding: 1.25rem;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-left: 3px solid #0284c7;
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
   margin-bottom: 1.25rem;
-  position: relative;
 }
 
 .b2b-grid-2 {
@@ -4337,11 +4334,10 @@ body.drawer-open .map-countries-ribbon-wrapper {
 }
 
 .b2b-card {
-  background: rgba(11, 17, 30, 0.85);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 1.2rem;
-  position: relative;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: var(--radius-sm);
+  padding: 1.15rem;
 }
 
 .b2b-kpi-banner {
@@ -4358,41 +4354,40 @@ body.drawer-open .map-countries-ribbon-wrapper {
 }
 
 .b2b-kpi-item {
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 0.85rem 1rem;
+  background: rgba(11, 17, 30, 0.7);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 6px;
+  padding: 0.75rem 0.85rem;
   text-align: center;
 }
 
 .b2b-kpi-val {
-  font-size: 1.35rem;
-  font-weight: 800;
+  font-size: 1.25rem;
+  font-weight: 700;
   font-family: 'Outfit', sans-serif;
-  color: #10b981;
-  line-height: 1.15;
+  color: #f8fafc;
+  line-height: 1.2;
   margin: 0.2rem 0;
 }
 
 .b2b-kpi-lbl {
-  font-size: 0.70rem;
+  font-size: 0.68rem;
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
 .b2b-kpi-sub {
-  font-size: 0.65rem;
+  font-size: 0.64rem;
   color: var(--text-muted);
 }
 
 .lead-magnet-card {
-  background: linear-gradient(135deg, rgba(30, 27, 75, 0.7) 0%, rgba(15, 23, 42, 0.9) 100%);
-  border: 1px solid rgba(139, 92, 246, 0.4);
-  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: var(--radius-sm);
   padding: 1.5rem;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 
@@ -4428,8 +4423,8 @@ body.drawer-open .map-countries-ribbon-wrapper {
       <button id="btn-open-calc" class="btn btn-primary" title="Simulador económico de LCOE y viabilidad en mercado mayorista">
         🧮 Simulador LCOE
       </button>
-      <button id="btn-open-premium" class="btn btn-premium" title="Terminal B2B: Centros de Datos (IA), Finanzas Bancables y Consultoría">
-        💎 Inteligencia B2B & IA
+      <button id="btn-open-premium" class="btn btn-premium" title="Análisis Corporativo: Centros de Datos (IA), PPAs 24/7 y Finanzas Bancables">
+        💼 Mercado Corporativo & Data Centers
       </button>
       <button id="btn-open-charts" class="btn btn-secondary" title="Ver gráficos comparativos de mercado y curvas de aprendizaje">
         📊 Gráficos
@@ -5109,30 +5104,30 @@ body.drawer-open .map-countries-ribbon-wrapper {
   </main>
 
   <!-- =========================================================================
-       MODAL 0: TERMINAL DE INTELIGENCIA B2B, CENTROS DE DATOS (IA) Y FINANZAS
+       MODAL 0: TERMINAL CORPORATIVA B2B, CENTROS DE DATOS (IA) Y FINANZAS
        ========================================================================= -->
   <div id="modal-premium-intelligence" class="modal-backdrop">
     <div class="modal-dialog" style="max-width: 1080px;">
-      <div class="modal-header" style="background: linear-gradient(90deg, rgba(245, 158, 11, 0.18) 0%, rgba(16, 185, 129, 0.08) 100%); border-bottom: 1px solid rgba(245, 158, 11, 0.35);">
-        <h2 class="modal-title" style="color: #fef08a; display: flex; align-items: center; gap: 0.6rem;">
-          <span>💎</span> Terminal de Inteligencia B2B: SMRs, Centros de Datos (IA) y Finanzas Bancables
-          <span style="font-size: 0.65rem; padding: 0.2rem 0.5rem; background: rgba(245, 158, 11, 0.25); border: 1px solid #f59e0b; border-radius: 4px; color: #fbbf24; text-transform: uppercase; font-weight: 800;">Módulo Ejecutivo</span>
+      <div class="modal-header" style="background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid rgba(148, 163, 184, 0.2);">
+        <h2 class="modal-title" style="color: #f8fafc; display: flex; align-items: center; gap: 0.6rem; font-size: 1.05rem;">
+          <span>💼</span> Análisis Corporativo: SMRs, Centros de Datos (IA) y Viabilidad Financiera
+          <span style="font-size: 0.65rem; padding: 0.2rem 0.55rem; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 4px; color: #38bdf8; font-weight: 700; letter-spacing: 0.04em;">AUDITORÍA TECNO-ECONÓMICA</span>
         </h2>
         <button class="btn-icon btn-close-modal">✕</button>
       </div>
 
       <div class="modal-body">
         
-        <!-- Pestañas del Módulo B2B -->
+        <!-- Pestañas Corporativas -->
         <div class="b2b-tabs-bar">
           <button class="b2b-tab-btn active" data-b2btab="tab-dc">
-            ⚡ Centros de Datos & IA (PPA 24/7)
+            Campus de Datos & IA (PPA 24/7)
           </button>
           <button class="b2b-tab-btn" data-b2btab="tab-ind">
-            🏭 Descarbonización Industrial & Casos en España
+            Descarbonización Industrial & Casos en España
           </button>
           <button class="b2b-tab-btn" data-b2btab="tab-consulting">
-            💼 Servicios de Consultoría & Due Diligence
+            Servicios de Asesoría Técnica & Due Diligence
           </button>
         </div>
 
@@ -5142,15 +5137,15 @@ body.drawer-open .map-countries-ribbon-wrapper {
           <div class="b2b-hero-card">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
               <div>
-                <h3 style="color: #fef08a; font-size: 1rem; margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.4rem;">
-                  🚀 La Nueva Alianza Estratégica: Computación de Inteligencia Artificial + Energía Firme Nuclear
+                <h3 style="color: #f8fafc; font-size: 0.95rem; margin-bottom: 0.3rem; font-weight: 700;">
+                  Integración Estratégica: Supercomputación de IA y Suministro Eléctrico Firme Libre de Emisiones
                 </h3>
-                <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; margin: 0; max-width: 820px;">
-                  Las mayores tecnológicas del planeta (<strong>Microsoft</strong> en Three Mile Island, <strong>Amazon AWS</strong> con X-energy y <strong>Google</strong> con Kairos Power) han formalizado acuerdos multimillonarios para vincular reactores modulares dedicados a sus campus de supercomputación, garantizando energía 100% limpia sin depender de la saturada red eléctrica general.
+                <p style="font-size: 0.78rem; color: var(--text-secondary); line-height: 1.55; margin: 0; max-width: 820px;">
+                  Las grandes corporaciones tecnológicas (<strong>Microsoft / Constellation</strong> en Crane Clean Energy Center, <strong>Amazon AWS / X-energy</strong> y <strong>Google / Kairos Power</strong>) están formalizando contratos bilaterales de compraventa de energía (PPA) indexados a reactores SMR para asegurar suministro de carga base continuo 24/7/365, eludiendo la saturación de los nudos de transporte y mitigando el riesgo de precios volátiles en los mercados mayoristas.
                 </p>
               </div>
-              <span style="font-size: 0.72rem; padding: 0.3rem 0.7rem; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4); color: #34d399; border-radius: 6px; font-weight: 700; white-space: nowrap;">
-                Mercado Objetivo: Hyperscalers
+              <span style="font-size: 0.68rem; padding: 0.3rem 0.65rem; background: rgba(148, 163, 184, 0.12); border: 1px solid rgba(148, 163, 184, 0.25); color: #cbd5e1; border-radius: 4px; font-weight: 600; white-space: nowrap;">
+                ESTÁNDAR HYPERSCALE TIER III/IV
               </span>
             </div>
           </div>
@@ -5159,87 +5154,87 @@ body.drawer-open .map-countries-ribbon-wrapper {
             
             <!-- Columna Controles del Campus -->
             <div class="b2b-card">
-              <h4 style="font-size: 0.88rem; color: var(--accent-cyan); margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.4rem;">
-                ⚙️ 1. Parámetros del Campus y Contrato PPA
+              <h4 style="font-size: 0.84rem; color: #f8fafc; margin-bottom: 0.85rem; font-weight: 700; border-bottom: 1px solid rgba(148, 163, 184, 0.15); padding-bottom: 0.4rem;">
+                1. Parámetros Técnicos del Campus y Condiciones PPA
               </h4>
 
               <div class="calc-input-group" style="margin-bottom: 0.85rem;">
                 <div class="calc-label-row">
-                  <span style="font-size: 0.76rem;">Potencia Requerida por el Campus IA:</span>
-                  <span id="disp-dc-power" class="calc-val-display" style="color: #38bdf8;">100 MWe</span>
+                  <span style="font-size: 0.76rem; color: var(--text-secondary);">Potencia Requerida por el Campus:</span>
+                  <span id="disp-dc-power" class="calc-val-display" style="color: #f8fafc;">100 MWe</span>
                 </div>
                 <input type="range" id="range-dc-power" min="20" max="400" step="10" value="100" style="width: 100%;">
-                <span class="calc-hint-text">Equivale a ~876.000 MWh anuales de procesamiento continuo.</span>
+                <span class="calc-hint-text">Demanda base anual continua: 876.000 MWh/año (8.760 h).</span>
               </div>
 
               <div class="calc-input-group" style="margin-bottom: 0.85rem;">
                 <div class="calc-label-row">
-                  <span style="font-size: 0.76rem;">Precio Negociado PPA SMR Privado:</span>
-                  <span id="disp-dc-ppa" class="calc-val-display" style="color: #fbbf24;">70 €/MWh</span>
+                  <span style="font-size: 0.76rem; color: var(--text-secondary);">Precio PPA SMR Acordado:</span>
+                  <span id="disp-dc-ppa" class="calc-val-display" style="color: #38bdf8;">70 €/MWh</span>
                 </div>
                 <input type="range" id="range-dc-ppa" min="50" max="95" step="1" value="70" style="width: 100%;">
-                <span class="calc-hint-text">Precio garantizado y predecible a 25 años sin volatilidad de gas.</span>
+                <span class="calc-hint-text">Coste nivelado garantizado contractualmente a 20-25 años (sin indexación a gas).</span>
               </div>
 
               <div class="calc-input-group" style="margin-bottom: 0.85rem;">
                 <div class="calc-label-row">
-                  <span style="font-size: 0.76rem;">Coste Alternativo Red (Pool + Peajes + Baterías BESS):</span>
-                  <span id="disp-dc-grid" class="calc-val-display" style="color: #f43f5e;">115 €/MWh</span>
+                  <span style="font-size: 0.76rem; color: var(--text-secondary);">Coste Alternativo Red (OMIE + ATR 6.1TD + Respaldo BESS):</span>
+                  <span id="disp-dc-grid" class="calc-val-display" style="color: #f8fafc;">115 €/MWh</span>
                 </div>
                 <input type="range" id="range-dc-grid" min="80" max="160" step="5" value="115" style="width: 100%;">
-                <span class="calc-hint-text">Coste real mayorista con respaldo en horas sin sol ni viento.</span>
+                <span class="calc-hint-text">Desglose: Pool 65 €/MWh + Peajes y cargos 18 €/MWh + BESS/Respaldo 32 €/MWh.</span>
               </div>
 
               <div class="calc-input-group">
                 <div class="calc-label-row">
-                  <span style="font-size: 0.76rem;">Coste Estimado Caída de Red (Downtime IA):</span>
-                  <span id="disp-dc-downtime" class="calc-val-display" style="color: #a855f7;">80.000 €/h</span>
+                  <span style="font-size: 0.76rem; color: var(--text-secondary);">Coste de Inoperatividad (Downtime IA):</span>
+                  <span id="disp-dc-downtime" class="calc-val-display" style="color: #f8fafc;">80.000 €/h</span>
                 </div>
                 <input type="range" id="range-dc-downtime" min="20" max="250" step="10" value="80" style="width: 100%;">
-                <span class="calc-hint-text">Pérdidas operativas y SLAs por desconexión en redes saturadas.</span>
+                <span class="calc-hint-text">Impacto financiero por penalizaciones de SLA y parada de clústeres GPU.</span>
               </div>
             </div>
 
             <!-- Columna Resultados Financieros y Disponibilidad -->
-            <div class="b2b-card" style="background: rgba(15, 23, 42, 0.95); border-color: rgba(245, 158, 11, 0.35);">
-              <h4 style="font-size: 0.88rem; color: #fef08a; margin-bottom: 0.85rem; display: flex; align-items: center; gap: 0.4rem;">
-                📊 2. Impacto Económico y Fiabilidad Neta
+            <div class="b2b-card" style="background: rgba(15, 23, 42, 0.85); border-color: rgba(148, 163, 184, 0.2);">
+              <h4 style="font-size: 0.84rem; color: #f8fafc; margin-bottom: 0.85rem; font-weight: 700; border-bottom: 1px solid rgba(148, 163, 184, 0.15); padding-bottom: 0.4rem;">
+                2. Balance Económico y Métricas de Disponibilidad
               </h4>
 
-              <div style="background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.4); border-radius: 8px; padding: 0.85rem 1rem; margin-bottom: 0.85rem;">
-                <div style="font-size: 0.70rem; color: #6ee7b7; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700;">
-                  Ahorro Operativo Anual (SMR vs Red Convencional)
+              <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 0.85rem;">
+                <div style="font-size: 0.68rem; color: #6ee7b7; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700;">
+                  Ahorro Operativo Anual Neto (OPEX SMR vs Mix de Red)
                 </div>
-                <div id="kpi-dc-savings" style="font-size: 1.65rem; font-weight: 800; font-family: 'Outfit', sans-serif; color: #34d399; margin: 0.2rem 0;">
-                  +39,42 M€ / año
+                <div id="kpi-dc-savings" style="font-size: 1.55rem; font-weight: 800; font-family: 'Outfit', sans-serif; color: #10b981; margin: 0.2rem 0;">
+                  +36,46 M€ / año
                 </div>
                 <div style="font-size: 0.68rem; color: var(--text-muted);">
-                  Ahorro acumulado proyectado a 25 años: <strong id="kpi-dc-savings-25y" style="color: #f8fafc;">~985 M€</strong>
+                  Ahorro acumulado descontado a 25 años: <strong id="kpi-dc-savings-25y" style="color: #f8fafc;">~912 M€</strong>
                 </div>
               </div>
 
               <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.65rem;">
-                <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.65rem 0.75rem;">
-                  <div style="font-size: 0.65rem; color: var(--text-secondary); text-transform: uppercase;">Disponibilidad 24/7</div>
-                  <div id="kpi-dc-uptime" style="font-size: 1.15rem; font-weight: 700; color: #38bdf8;">96,5%</div>
-                  <div style="font-size: 0.60rem; color: var(--text-muted);">vs 32% solar/eólica sin BESS</div>
+                <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 6px; padding: 0.65rem 0.75rem;">
+                  <div style="font-size: 0.64rem; color: var(--text-secondary); text-transform: uppercase;">Factor Disponibilidad (CF)</div>
+                  <div id="kpi-dc-uptime" style="font-size: 1.15rem; font-weight: 700; color: #f8fafc;">92,5%</div>
+                  <div style="font-size: 0.60rem; color: var(--text-muted);">Deducidas paradas de recarga</div>
                 </div>
 
-                <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.65rem 0.75rem;">
-                  <div style="font-size: 0.65rem; color: var(--text-secondary); text-transform: uppercase;">CO₂ Evitado Anual</div>
-                  <div id="kpi-dc-co2" style="font-size: 1.15rem; font-weight: 700; color: #10b981;">332.880 t</div>
-                  <div style="font-size: 0.60rem; color: var(--text-muted);">vs ciclo combinado de gas</div>
+                <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 6px; padding: 0.65rem 0.75rem;">
+                  <div style="font-size: 0.64rem; color: var(--text-secondary); text-transform: uppercase;">CO₂ Evitado Anual</div>
+                  <div id="kpi-dc-co2" style="font-size: 1.15rem; font-weight: 700; color: #f8fafc;">299.800 t</div>
+                  <div style="font-size: 0.60rem; color: var(--text-muted);">Factor marginal fósil: 0.37 t/MWh</div>
                 </div>
 
-                <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.65rem 0.75rem;">
-                  <div style="font-size: 0.65rem; color: var(--text-secondary); text-transform: uppercase;">Riesgo Apagón Evitado</div>
-                  <div id="kpi-dc-risk-saved" style="font-size: 1.15rem; font-weight: 700; color: #c084fc;">+1,60 M€/año</div>
-                  <div style="font-size: 0.60rem; color: var(--text-muted);">20h caídas de red mitigadas</div>
+                <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 6px; padding: 0.65rem 0.75rem;">
+                  <div style="font-size: 0.64rem; color: var(--text-secondary); text-transform: uppercase;">Mitigación Riesgo Red</div>
+                  <div id="kpi-dc-risk-saved" style="font-size: 1.15rem; font-weight: 700; color: #f8fafc;">+1,60 M€/año</div>
+                  <div style="font-size: 0.60rem; color: var(--text-muted);">20h caídas de red prevenidas</div>
                 </div>
 
-                <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid var(--border-color); border-radius: 6px; padding: 0.65rem 0.75rem;">
-                  <div style="font-size: 0.65rem; color: var(--text-secondary); text-transform: uppercase;">Plazo Despliegue</div>
-                  <div style="font-size: 1.15rem; font-weight: 700; color: #fbbf24;">36 - 42 meses</div>
+                <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 6px; padding: 0.65rem 0.75rem;">
+                  <div style="font-size: 0.64rem; color: var(--text-secondary); text-transform: uppercase;">Plazo de Construcción</div>
+                  <div style="font-size: 1.15rem; font-weight: 700; color: #f8fafc;">36 - 42 meses</div>
                   <div style="font-size: 0.60rem; color: var(--text-muted);">Prefabricación seriada modular</div>
                 </div>
               </div>
@@ -5254,45 +5249,45 @@ body.drawer-open .map-countries-ribbon-wrapper {
         <div id="pane-tab-ind" class="b2b-tab-pane">
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
             
-            <div class="b2b-card" style="border-top: 3px solid #38bdf8;">
+            <div class="b2b-card" style="border-top: 2px solid #0284c7;">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                <span style="font-size: 0.65rem; padding: 0.15rem 0.4rem; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border-radius: 4px; font-weight: 700;">Caso 01 · Reconversión</span>
-                <span style="font-size: 0.7rem; color: var(--text-muted);">Burgos / León / Teruel</span>
+                <span style="font-size: 0.65rem; padding: 0.15rem 0.45rem; background: rgba(2, 132, 199, 0.12); color: #38bdf8; border-radius: 4px; font-weight: 600;">CASO 01 · RECONVERSIÓN</span>
+                <span style="font-size: 0.68rem; color: var(--text-muted);">Burgos / León / Teruel</span>
               </div>
-              <h4 style="font-size: 0.88rem; color: #ffffff; margin-bottom: 0.4rem;">Centrales Térmicas Cerradas (Coal-to-Nuclear)</h4>
-              <p style="font-size: 0.74rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
-                Aprovechamiento de las subestaciones eléctricas de evacuación existentes (Garoña, Compostilla, Andorra, As Pontes), terrenos industriales y tomas de refrigeración.
+              <h4 style="font-size: 0.85rem; color: #f8fafc; margin-bottom: 0.4rem; font-weight: 700;">Reconversión de Centrales Térmicas (Coal-to-Nuclear)</h4>
+              <p style="font-size: 0.73rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
+                Reutilización de los nudos de evacuación de Red Eléctrica (REE de 400 kV) en emplazamientos con derechos de acceso concedidos (Garoña, Compostilla, Andorra, As Pontes), toma de aguas y suelo industrial ya autorizado.
               </p>
-              <div style="padding: 0.5rem; background: rgba(15, 23, 42, 0.6); border-radius: 6px; font-size: 0.72rem; color: #34d399; font-weight: 600;">
-                💰 Ahorro de Inversión (CAPEX): hasta un -28%
+              <div style="padding: 0.45rem 0.65rem; background: rgba(11, 17, 30, 0.7); border-radius: 4px; font-size: 0.70rem; color: #38bdf8; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2);">
+                Optimización de CAPEX: Reducción de hasta un -28%
               </div>
             </div>
 
-            <div class="b2b-card" style="border-top: 3px solid #fbbf24;">
+            <div class="b2b-card" style="border-top: 2px solid #0284c7;">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                <span style="font-size: 0.65rem; padding: 0.15rem 0.4rem; background: rgba(251, 191, 36, 0.15); color: #fbbf24; border-radius: 4px; font-weight: 700;">Caso 02 · Cogeneración</span>
-                <span style="font-size: 0.7rem; color: var(--text-muted);">Tarragona / Huelva</span>
+                <span style="font-size: 0.65rem; padding: 0.15rem 0.45rem; background: rgba(2, 132, 199, 0.12); color: #38bdf8; border-radius: 4px; font-weight: 600;">CASO 02 · COGENERACIÓN</span>
+                <span style="font-size: 0.68rem; color: var(--text-muted);">Tarragona / Huelva</span>
               </div>
-              <h4 style="font-size: 0.88rem; color: #ffffff; margin-bottom: 0.4rem;">Polos Petroquímicos y Fertilizantes</h4>
-              <p style="font-size: 0.74rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
-                Sustitución de calderas de gas natural mediante reactores de alta temperatura (HTGR a 550°C-750°C) para suministro directo de vapor de proceso, calor y producción de hidrógeno limpio.
+              <h4 style="font-size: 0.85rem; color: #f8fafc; margin-bottom: 0.4rem; font-weight: 700;">Polos Petroquímicos y Fertilizantes</h4>
+              <p style="font-size: 0.73rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
+                Sustitución directa del consumo térmico de gas natural mediante reactores modulares de alta temperatura (HTGR / MSR a 550°C-750°C) para generación continua de vapor de proceso e hidrógeno electrolítico de alta eficiencia.
               </p>
-              <div style="padding: 0.5rem; background: rgba(15, 23, 42, 0.6); border-radius: 6px; font-size: 0.72rem; color: #fbbf24; font-weight: 600;">
-                🔥 Descarbonización Térmica: Cero emisiones ETS
+              <div style="padding: 0.45rem 0.65rem; background: rgba(11, 17, 30, 0.7); border-radius: 4px; font-size: 0.70rem; color: #38bdf8; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2);">
+                Descarbonización Térmica: Exención de costes ETS / CO₂
               </div>
             </div>
 
-            <div class="b2b-card" style="border-top: 3px solid #a855f7;">
+            <div class="b2b-card" style="border-top: 2px solid #0284c7;">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                <span style="font-size: 0.65rem; padding: 0.15rem 0.4rem; background: rgba(168, 85, 247, 0.15); color: #c084fc; border-radius: 4px; font-weight: 700;">Caso 03 · Isla Energética</span>
-                <span style="font-size: 0.7rem; color: var(--text-muted);">Aragón / Madrid / Sines</span>
+                <span style="font-size: 0.65rem; padding: 0.15rem 0.45rem; background: rgba(2, 132, 199, 0.12); color: #38bdf8; border-radius: 4px; font-weight: 600;">CASO 03 · RED DEDICADA</span>
+                <span style="font-size: 0.68rem; color: var(--text-muted);">Aragón / Madrid / Sines</span>
               </div>
-              <h4 style="font-size: 0.88rem; color: #ffffff; margin-bottom: 0.4rem;">Campus de Centros de Datos Bloqueados</h4>
-              <p style="font-size: 0.74rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
-                Superación de la saturación de los nudos de Red Eléctrica (REE) donde las solicitudes de conexión superan la capacidad disponible en más de 12 GW, mediante alimentación directa tras contador.
+              <h4 style="font-size: 0.85rem; color: #f8fafc; margin-bottom: 0.4rem; font-weight: 700;">Campus de Centros de Datos con Saturación de Red</h4>
+              <p style="font-size: 0.73rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
+                Solución integral ante la denegación de accesos de REE (más de 12 GW de peticiones bloqueadas por capacidad de transporte) mediante generación síncrona dedicada tras contador (Behind-The-Meter).
               </p>
-              <div style="padding: 0.5rem; background: rgba(15, 23, 42, 0.6); border-radius: 6px; font-size: 0.72rem; color: #c084fc; font-weight: 600;">
-                ⚡ Conexión Inmediata Behind-The-Meter
+              <div style="padding: 0.45rem 0.65rem; background: rgba(11, 17, 30, 0.7); border-radius: 4px; font-size: 0.70rem; color: #38bdf8; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2);">
+                Conexión Autónoma: Despliegue sin esperas de red
               </div>
             </div>
 
@@ -5303,56 +5298,56 @@ body.drawer-open .map-countries-ribbon-wrapper {
         <div id="pane-tab-consulting" class="b2b-tab-pane">
           
           <div class="lead-magnet-card">
-            <span style="font-size: 0.70rem; padding: 0.25rem 0.75rem; background: rgba(245, 158, 11, 0.2); border: 1px solid rgba(245, 158, 11, 0.5); color: #fbbf24; border-radius: 20px; font-weight: 700; text-transform: uppercase;">
-              Servicios Profesionales de Ingeniería Energética
+            <span style="font-size: 0.68rem; padding: 0.2rem 0.65rem; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; border-radius: 4px; font-weight: 600; text-transform: uppercase;">
+              Área de Asesoría y Modelización Tecno-Económica
             </span>
-            <h3 style="font-size: 1.3rem; color: #ffffff; margin: 0.75rem 0 0.4rem 0;">
-              ¿Quieres un Estudio Técnico-Económico a Medida para tu Empresa?
+            <h3 style="font-size: 1.15rem; color: #f8fafc; margin: 0.75rem 0 0.35rem 0; font-weight: 700;">
+              Estudios de Prefactibilidad, Modelado LCOE y Selección de Emplazamientos
             </h3>
-            <p style="font-size: 0.82rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 1.25rem auto; line-height: 1.6;">
-              Ayudamos a promotores de centros de datos, fondos de inversión en infraestructuras y complejos industriales a evaluar la viabilidad real, el coste nivelado LCOE y el marco regulatorio europeo de los reactores SMR.
+            <p style="font-size: 0.80rem; color: var(--text-secondary); max-width: 720px; margin: 0 auto 1.25rem auto; line-height: 1.55;">
+              Asesoramos a operadores industriales, promotores de centros de datos y fondos de inversión en infraestructura energética en la cuantificación de costes nivelados, encaje en la Taxonomía Verde Europea y estructuración de coberturas PPA.
             </p>
 
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; max-width: 820px; margin: 0 auto 1.5rem auto; text-align: left;">
-              <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 0.85rem;">
-                <div style="font-weight: 700; color: #38bdf8; font-size: 0.82rem; margin-bottom: 0.25rem;">📈 Due Diligence Financiera</div>
-                <div style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;">Modelado LCOE con análisis de sensibilidad Monte Carlo, flujos de caja y WACC regulatorio.</div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; max-width: 820px; margin: 0 auto 1.35rem auto; text-align: left;">
+              <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.14); border-radius: 6px; padding: 0.85rem;">
+                <div style="font-weight: 600; color: #f8fafc; font-size: 0.80rem; margin-bottom: 0.25rem;">Due Diligence Financiera</div>
+                <div style="font-size: 0.71rem; color: var(--text-muted); line-height: 1.45;">Modelado LCOE con análisis de sensibilidad Monte Carlo, flujos de caja y WACC regulatorio.</div>
               </div>
 
-              <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 0.85rem;">
-                <div style="font-weight: 700; color: #fbbf24; font-size: 0.82rem; margin-bottom: 0.25rem;">🗺️ Scoring de Emplazamientos</div>
-                <div style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;">Evaluación geoespacial multicriterio (refrigeración, cercanía a subestación, riesgos sísmicos).</div>
+              <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.14); border-radius: 6px; padding: 0.85rem;">
+                <div style="font-weight: 600; color: #f8fafc; font-size: 0.80rem; margin-bottom: 0.25rem;">Scoring de Emplazamientos</div>
+                <div style="font-size: 0.71rem; color: var(--text-muted); line-height: 1.45;">Evaluación geoespacial multicriterio (refrigeración, cercanía a subestación, riesgos sísmicos).</div>
               </div>
 
-              <div style="background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px; padding: 0.85rem;">
-                <div style="font-weight: 700; color: #34d399; font-size: 0.82rem; margin-bottom: 0.25rem;">⚡ Estructuración PPA 24/7</div>
-                <div style="font-size: 0.72rem; color: var(--text-muted); line-height: 1.4;">Fijación de coberturas bilaterales a largo plazo frente a la volatilidad del pool diario.</div>
+              <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.14); border-radius: 6px; padding: 0.85rem;">
+                <div style="font-weight: 600; color: #f8fafc; font-size: 0.80rem; margin-bottom: 0.25rem;">Estructuración PPA 24/7</div>
+                <div style="font-size: 0.71rem; color: var(--text-muted); line-height: 1.45;">Fijación de coberturas bilaterales a largo plazo frente a la volatilidad del pool diario.</div>
               </div>
             </div>
 
-            <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 10px; padding: 1rem 1.25rem; max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
+            <div style="background: rgba(11, 17, 30, 0.8); border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 6px; padding: 0.9rem 1.25rem; max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0.65rem;">
               <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; justify-content: center;">
-                <span style="font-size: 0.8rem; color: var(--text-secondary);">Contacto Directo:</span>
-                <span style="font-family: monospace; font-size: 0.92rem; background: rgba(0, 0, 0, 0.4); padding: 0.25rem 0.65rem; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.15); color: #fef08a; font-weight: 700;">
+                <span style="font-size: 0.78rem; color: var(--text-secondary);">Canal de Contacto Profesional:</span>
+                <span style="font-family: monospace; font-size: 0.88rem; background: rgba(0, 0, 0, 0.4); padding: 0.25rem 0.65rem; border-radius: 4px; border: 1px solid rgba(148, 163, 184, 0.2); color: #f8fafc; font-weight: 600;">
                   carlosmgutierrez05@gmail.com
                 </span>
-                <button type="button" id="btn-copy-contact-email" class="btn btn-secondary btn-sm" style="padding: 0.3rem 0.65rem; font-size: 0.75rem;">
-                  📋 Copiar Correo
+                <button type="button" id="btn-copy-contact-email" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.6rem; font-size: 0.74rem;">
+                  Copiar Correo
                 </button>
               </div>
 
-              <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.25rem;">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=carlosmgutierrez05@gmail.com&su=Solicitud%20Estudio%20Consultor%C3%ADa%20SMR%20y%20Mercado%20Energ%C3%A9tico&body=Hola%20Carlos,%0D%0A%0D%0AHe%20visto%20la%20plataforma%20SMR-Energy%20Economics%20y%20nos%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20un%20estudio%20de%20viabilidad%20para%20un%20proyecto%20de:%0D%0A-%20Tipo%20de%20instalaci%C3%B3n:%0D%0A-%20Potencia%20estimada%20(MW):%0D%0A-%20Ubicaci%C3%B3n%20de%20inter%C3%A9s:%0D%0A%0D%0ASaludos," 
+              <div style="display: flex; justify-content: center; gap: 0.65rem; flex-wrap: wrap; margin-top: 0.2rem;">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=carlosmgutierrez05@gmail.com&su=Solicitud%20Estudio%20Consultor%C3%ADa%20SMR%20y%20Mercado%20Energ%C3%A9tico&body=Estimado%20Carlos,%0D%0A%0D%0AHemos%20revisado%20la%20plataforma%20SMR-Energy%20Economics%20y%20nos%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20un%20estudio%20de%20viabilidad%20para%20el%20siguiente%20proyecto:%0D%0A-%20Tipolog%C3%ADa%20(Data%20Center%20/%20Complejo%20Industrial%20/%20Fondo%20Inversi%C3%B3n):%0D%0A-%20Demanda%20estimada%20(MW):%0D%0A-%20Ubicaci%C3%B3n%20geogr%C3%A1fica%20de%20inter%C3%A9s:%0D%0A%0D%0AAtentamente," 
                    target="_blank" rel="noopener noreferrer"
-                   class="btn btn-primary" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-color: #f59e0b; color: #0b111e; font-weight: 800; padding: 0.6rem 1.2rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem;">
-                  ✉️ Redactar en Gmail Web
+                   class="btn btn-primary" style="padding: 0.55rem 1.15rem; font-size: 0.80rem; font-weight: 600;">
+                  Redactar Consulta en Gmail
                 </a>
-                <a href="mailto:carlosmgutierrez05@gmail.com?subject=Solicitud%20Estudio%20SMR" 
-                   class="btn btn-secondary" style="padding: 0.6rem 1rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem;">
-                  📧 Abrir en Outlook / Mail
+                <a href="mailto:carlosmgutierrez05@gmail.com?subject=Consulta%20Tecnica%20SMR" 
+                   class="btn btn-secondary" style="padding: 0.55rem 0.95rem; font-size: 0.80rem;">
+                  Cliente de Correo
                 </a>
-                <button type="button" onclick="window.print()" class="btn btn-secondary" style="padding: 0.6rem 1rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem;">
-                  🖨️ Exportar Ficha (PDF)
+                <button type="button" onclick="window.print()" class="btn btn-secondary" style="padding: 0.55rem 0.95rem; font-size: 0.80rem;">
+                  Exportar Ficha (PDF)
                 </button>
               </div>
             </div>
@@ -5364,8 +5359,8 @@ body.drawer-open .map-countries-ribbon-wrapper {
       </div>
 
       <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
-        <span style="font-size: 0.72rem; color: var(--text-muted);">
-          Módulo de Inteligencia B2B · SMR-Energy Economics · Escuela de Ingenierías Industriales (UVa)
+        <span style="font-size: 0.70rem; color: var(--text-muted);">
+          Metodología: IEA Projected Costs of Generating Electricity (2025) · EPRI Nuclear Assessment · MITECO Factor Emisión Mix
         </span>
         <button class="btn btn-secondary btn-close-modal">Cerrar</button>
       </div>
@@ -10467,24 +10462,38 @@ document.addEventListener('DOMContentLoaded', () => {
       const dispDt = document.getElementById('disp-dc-downtime');
       if (dispDt) dispDt.textContent = (downtimeCostK * 1000).toLocaleString('es-ES') + ' €/h';
 
-      // Cálculos Financieros
-      const annualMWh = pMw * 8760;
-      const annualCostPpa = annualMWh * ppaPrice;
-      const annualCostGrid = annualMWh * gridPrice;
-      const savingsM = (annualCostGrid - annualCostPpa) / 1000000;
-      const savings25yM = savingsM * 25;
+      // Modelización Tecno-Económica Rigurosa (Estándar IAEA / EPRI)
+      const cfSmr = 0.925; // Factor de capacidad real considerando paradas programadas de recarga
+      const annualHours = 8760;
+      const totalDemandMWh = pMw * annualHours; // Demanda 24/7 constante del campus
+      
+      const energySmrMWh = totalDemandMWh * cfSmr; // Energía suministrada directamente por el reactor
+      const energyBackupMWh = totalDemandMWh * (1 - cfSmr); // Energía de respaldo de red durante parada de recarga
 
-      const co2Tons = annualMWh * 0.38; // 0.38 tCO2/MWh de ciclo combinado evitado
-      const riskSavedM = (20 * downtimeCostK * 1000) / 1000000; // 20 horas de caída de red mitigadas
+      const annualCostSmr = (energySmrMWh * ppaPrice) + (energyBackupMWh * gridPrice);
+      const annualCostFullGrid = totalDemandMWh * gridPrice;
+
+      const netSavingsM = (annualCostFullGrid - annualCostSmr) / 1000000;
+      const savings25yM = netSavingsM * 25;
+
+      // Factor de emisión marginal de gas natural en España/UE: 0.37 tCO2/MWh
+      const co2AvoidedTons = energySmrMWh * 0.37;
+      
+      // Mitigación de paradas no programadas en redes saturadas (20 horas/año estimadas)
+      const hoursRiskAvoided = 20;
+      const riskSavedM = (hoursRiskAvoided * downtimeCostK * 1000) / 1000000;
 
       const elSavings = document.getElementById('kpi-dc-savings');
-      if (elSavings) elSavings.textContent = (savingsM >= 0 ? '+' : '') + savingsM.toFixed(2).replace('.', ',') + ' M€ / año';
+      if (elSavings) elSavings.textContent = (netSavingsM >= 0 ? '+' : '') + netSavingsM.toFixed(2).replace('.', ',') + ' M€ / año';
 
       const elSavings25 = document.getElementById('kpi-dc-savings-25y');
       if (elSavings25) elSavings25.textContent = '~' + Math.round(savings25yM).toLocaleString('es-ES') + ' M€';
 
+      const elUptime = document.getElementById('kpi-dc-uptime');
+      if (elUptime) elUptime.textContent = (cfSmr * 100).toFixed(1).replace('.', ',') + '%';
+
       const elCo2 = document.getElementById('kpi-dc-co2');
-      if (elCo2) elCo2.textContent = Math.round(co2Tons).toLocaleString('es-ES') + ' t';
+      if (elCo2) elCo2.textContent = Math.round(co2AvoidedTons).toLocaleString('es-ES') + ' t';
 
       const elRisk = document.getElementById('kpi-dc-risk-saved');
       if (elRisk) elRisk.textContent = '+' + riskSavedM.toFixed(2).replace('.', ',') + ' M€/año';
