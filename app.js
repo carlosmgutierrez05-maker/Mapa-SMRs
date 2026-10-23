@@ -2978,6 +2978,74 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnCharts = document.getElementById('btn-open-charts');
     if (btnCharts) btnCharts.addEventListener('click', () => openModal('modal-charts'));
 
+    // Terminal de Inteligencia B2B y Centros de Datos
+    const btnPremium = document.getElementById('btn-open-premium');
+    if (btnPremium) {
+      btnPremium.addEventListener('click', () => {
+        openModal('modal-premium-intelligence');
+        updateDataCenterKpis();
+      });
+    }
+
+    // Pestañas del Módulo B2B
+    document.querySelectorAll('.b2b-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.b2b-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.b2b-tab-pane').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const targetId = 'pane-' + btn.getAttribute('data-b2btab');
+        const targetPane = document.getElementById(targetId);
+        if (targetPane) targetPane.classList.add('active');
+      });
+    });
+
+    // Simulador PPA Centros de Datos (IA) & Energía Firme 24/7
+    function updateDataCenterKpis() {
+      const pMw = parseFloat(document.getElementById('range-dc-power')?.value || 100);
+      const ppaPrice = parseFloat(document.getElementById('range-dc-ppa')?.value || 70);
+      const gridPrice = parseFloat(document.getElementById('range-dc-grid')?.value || 115);
+      const downtimeCostK = parseFloat(document.getElementById('range-dc-downtime')?.value || 80);
+
+      const dispPower = document.getElementById('disp-dc-power');
+      if (dispPower) dispPower.textContent = pMw + ' MWe';
+
+      const dispPpa = document.getElementById('disp-dc-ppa');
+      if (dispPpa) dispPpa.textContent = ppaPrice + ' €/MWh';
+
+      const dispGrid = document.getElementById('disp-dc-grid');
+      if (dispGrid) dispGrid.textContent = gridPrice + ' €/MWh';
+
+      const dispDt = document.getElementById('disp-dc-downtime');
+      if (dispDt) dispDt.textContent = (downtimeCostK * 1000).toLocaleString('es-ES') + ' €/h';
+
+      // Cálculos Financieros
+      const annualMWh = pMw * 8760;
+      const annualCostPpa = annualMWh * ppaPrice;
+      const annualCostGrid = annualMWh * gridPrice;
+      const savingsM = (annualCostGrid - annualCostPpa) / 1000000;
+      const savings25yM = savingsM * 25;
+
+      const co2Tons = annualMWh * 0.38; // 0.38 tCO2/MWh de ciclo combinado evitado
+      const riskSavedM = (20 * downtimeCostK * 1000) / 1000000; // 20 horas de caída de red mitigadas
+
+      const elSavings = document.getElementById('kpi-dc-savings');
+      if (elSavings) elSavings.textContent = (savingsM >= 0 ? '+' : '') + savingsM.toFixed(2).replace('.', ',') + ' M€ / año';
+
+      const elSavings25 = document.getElementById('kpi-dc-savings-25y');
+      if (elSavings25) elSavings25.textContent = '~' + Math.round(savings25yM).toLocaleString('es-ES') + ' M€';
+
+      const elCo2 = document.getElementById('kpi-dc-co2');
+      if (elCo2) elCo2.textContent = Math.round(co2Tons).toLocaleString('es-ES') + ' t';
+
+      const elRisk = document.getElementById('kpi-dc-risk-saved');
+      if (elRisk) elRisk.textContent = '+' + riskSavedM.toFixed(2).replace('.', ',') + ' M€/año';
+    }
+
+    ['range-dc-power', 'range-dc-ppa', 'range-dc-grid', 'range-dc-downtime'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('input', updateDataCenterKpis);
+    });
+
     // Memoria Técnico-Económica (Informe Oficial A4)
     const btnOpenReport = document.getElementById('btn-open-report');
     if (btnOpenReport) {
