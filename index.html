@@ -5330,14 +5330,31 @@ body.drawer-open .map-countries-ribbon-wrapper {
               </div>
             </div>
 
-            <div style="display: flex; justify-content: center; gap: 0.85rem; flex-wrap: wrap;">
-              <a href="mailto:carlosmgutierrez05@gmail.com?subject=Solicitud%20Estudio%20Consultor%C3%ADa%20SMR%20y%20Mercado%20Energ%C3%A9tico&body=Hola%20Carlos,%0D%0A%0D%0AHe%20visto%20la%20plataforma%20SMR-Energy%20Economics%20y%20nos%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20un%20estudio%20de%20viabilidad%20para%20un%20proyecto%20de:%0D%0A-%20Tipo%20de%20instalaci%C3%B3n%20(Data%20Center%20/%20Industria%20qu%C3%ADmica%20/%20Otro):%0D%0A-%20Potencia%20estimada%20(MW):%0D%0A-%20Ubicaci%C3%B3n%20de%20inter%C3%A9s:%0D%0A%0D%0ASaludos," 
-                 class="btn btn-primary" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-color: #f59e0b; color: #0b111e; font-weight: 800; padding: 0.65rem 1.4rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;">
-                📧 Solicitar Estudio de Prefactibilidad o Demo Corporativa
-              </a>
-              <button type="button" onclick="window.print()" class="btn btn-secondary" style="padding: 0.65rem 1.2rem; display: inline-flex; align-items: center; gap: 0.4rem;">
-                🖨️ Exportar Ficha Resumen (PDF A4)
-              </button>
+            <div style="background: rgba(15, 23, 42, 0.9); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 10px; padding: 1rem 1.25rem; max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0.75rem;">
+              <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; justify-content: center;">
+                <span style="font-size: 0.8rem; color: var(--text-secondary);">Contacto Directo:</span>
+                <span style="font-family: monospace; font-size: 0.92rem; background: rgba(0, 0, 0, 0.4); padding: 0.25rem 0.65rem; border-radius: 6px; border: 1px solid rgba(255, 255, 255, 0.15); color: #fef08a; font-weight: 700;">
+                  carlosmgutierrez05@gmail.com
+                </span>
+                <button type="button" id="btn-copy-contact-email" class="btn btn-secondary btn-sm" style="padding: 0.3rem 0.65rem; font-size: 0.75rem;">
+                  📋 Copiar Correo
+                </button>
+              </div>
+
+              <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.25rem;">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=carlosmgutierrez05@gmail.com&su=Solicitud%20Estudio%20Consultor%C3%ADa%20SMR%20y%20Mercado%20Energ%C3%A9tico&body=Hola%20Carlos,%0D%0A%0D%0AHe%20visto%20la%20plataforma%20SMR-Energy%20Economics%20y%20nos%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20un%20estudio%20de%20viabilidad%20para%20un%20proyecto%20de:%0D%0A-%20Tipo%20de%20instalaci%C3%B3n:%0D%0A-%20Potencia%20estimada%20(MW):%0D%0A-%20Ubicaci%C3%B3n%20de%20inter%C3%A9s:%0D%0A%0D%0ASaludos," 
+                   target="_blank" rel="noopener noreferrer"
+                   class="btn btn-primary" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-color: #f59e0b; color: #0b111e; font-weight: 800; padding: 0.6rem 1.2rem; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.82rem;">
+                  ✉️ Redactar en Gmail Web
+                </a>
+                <a href="mailto:carlosmgutierrez05@gmail.com?subject=Solicitud%20Estudio%20SMR" 
+                   class="btn btn-secondary" style="padding: 0.6rem 1rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                  📧 Abrir en Outlook / Mail
+                </a>
+                <button type="button" onclick="window.print()" class="btn btn-secondary" style="padding: 0.6rem 1rem; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+                  🖨️ Exportar Ficha (PDF)
+                </button>
+              </div>
             </div>
 
           </div>
@@ -10477,6 +10494,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const el = document.getElementById(id);
       if (el) el.addEventListener('input', updateDataCenterKpis);
     });
+
+    // Copiar Correo de Contacto
+    const btnCopyEmail = document.getElementById('btn-copy-contact-email');
+    if (btnCopyEmail) {
+      btnCopyEmail.addEventListener('click', () => {
+        navigator.clipboard.writeText('carlosmgutierrez05@gmail.com').then(() => {
+          const orig = btnCopyEmail.textContent;
+          btnCopyEmail.textContent = '✅ ¡Copiado!';
+          btnCopyEmail.style.borderColor = '#10b981';
+          btnCopyEmail.style.color = '#34d399';
+          setTimeout(() => {
+            btnCopyEmail.textContent = orig;
+            btnCopyEmail.style.borderColor = '';
+            btnCopyEmail.style.color = '';
+          }, 2000);
+        }).catch(err => {
+          console.warn('Clipboard copy error:', err);
+        });
+      });
+    }
 
     // Memoria Técnico-Económica (Informe Oficial A4)
     const btnOpenReport = document.getElementById('btn-open-report');
