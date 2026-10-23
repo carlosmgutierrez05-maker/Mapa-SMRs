@@ -24,63 +24,111 @@
    ========================================================================== */
 
 :root {
-  /* Paleta Nuclear / Energía Limpia (Palantir / Bloomberg Terminal HUD) */
-  --bg-primary: #060a14;
-  --bg-secondary: #0c1220;
-  --bg-card: rgba(11, 17, 30, 0.82);
-  --bg-card-hover: rgba(20, 28, 48, 0.92);
-  --bg-glass: rgba(11, 17, 30, 0.78);
-  --border-color: rgba(255, 255, 255, 0.12);
-  --border-glow: rgba(0, 229, 255, 0.35);
+  /* =========================================================================
+     PALETA CORPORATIVA SMR ENERGY UVa (Terminal Financiero & Energético)
+     Modo Oscuro (Por defecto): Deep Navy & Slate
+     ========================================================================= */
+  --bg-primary: #070c16;
+  --bg-secondary: #0d1527;
+  --bg-card: rgba(15, 23, 42, 0.72);
+  --bg-card-hover: rgba(30, 41, 59, 0.85);
+  --bg-glass: rgba(13, 21, 39, 0.85);
+  --bg-input: rgba(15, 23, 42, 0.65);
+  
+  --border-color: rgba(148, 163, 184, 0.16);
+  --border-subtle: rgba(148, 163, 184, 0.08);
+  --border-hover: rgba(56, 189, 248, 0.45);
 
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --text-accent: #38bdf8;
 
-  --accent-cyan: #00e5ff;
+  --accent-cyan: #38bdf8;
   --accent-blue: #3b82f6;
-  --accent-green: #10b981;
-  --accent-amber: #f59e0b;
-  --accent-purple: #8b5cf6;
+  --accent-green: #34d399;
+  --accent-amber: #fbbf24;
+  --accent-purple: #a78bfa;
   --accent-rose: #f43f5e;
-  --accent-gold: #fbbf24;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.7);
-  --shadow-glow: 0 0 20px rgba(0, 229, 255, 0.35);
+  /* Botones en Modo Oscuro */
+  --btn-primary-bg: #1e3a8a;
+  --btn-primary-text: #ffffff;
+  --btn-primary-border: #2563eb;
+  --btn-primary-hover: #1e40af;
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-  --radius-xl: 24px;
+  --btn-secondary-bg: #1e293b;
+  --btn-secondary-text: #e2e8f0;
+  --btn-secondary-border: rgba(148, 163, 184, 0.22);
+  --btn-secondary-hover: #334155;
 
-  --header-height: 70px;
+  --btn-b2b-bg: #0c4a6e;
+  --btn-b2b-text: #f0f9ff;
+  --btn-b2b-border: #0284c7;
+  --btn-b2b-hover: #0369a1;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 12px 30px rgba(0, 0, 0, 0.65);
+
+  --radius-xs: 3px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  --header-height: 52px;
   --sidebar-width: 380px;
   --drawer-width: 420px;
-  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
 }
 
 [data-theme="light"] {
-  --bg-primary: #f1f5f9;
+  /* =========================================================================
+     Modo Claro Corporativo: Limpio, Minimalista y de Alto Contraste
+     ========================================================================= */
+  --bg-primary: #f8fafc;
   --bg-secondary: #ffffff;
-  --bg-card: rgba(255, 255, 255, 0.92);
-  --bg-card-hover: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.85);
-  --border-color: rgba(0, 0, 0, 0.08);
-  --border-glow: rgba(14, 165, 233, 0.4);
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --bg-glass: rgba(255, 255, 255, 0.94);
+  --bg-input: #ffffff;
+
+  --border-color: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  --border-hover: #0284c7;
 
   --text-primary: #0f172a;
   --text-secondary: #475569;
   --text-muted: #64748b;
   --text-accent: #0284c7;
 
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 16px 36px rgba(0, 0, 0, 0.12);
-  --shadow-glow: 0 0 16px rgba(14, 165, 233, 0.25);
+  --accent-cyan: #0284c7;
+  --accent-blue: #2563eb;
+  --accent-green: #059669;
+  --accent-amber: #d97706;
+  --accent-purple: #7c3aed;
+  --accent-rose: #e11d48;
+
+  /* Botones en Modo Claro */
+  --btn-primary-bg: #1e3a8a;
+  --btn-primary-text: #ffffff;
+  --btn-primary-border: #1e3a8a;
+  --btn-primary-hover: #1e40af;
+
+  --btn-secondary-bg: #f1f5f9;
+  --btn-secondary-text: #0f172a;
+  --btn-secondary-border: #cbd5e1;
+  --btn-secondary-hover: #e2e8f0;
+
+  --btn-b2b-bg: #e0f2fe;
+  --btn-b2b-text: #0369a1;
+  --btn-b2b-border: #0284c7;
+  --btn-b2b-hover: #bae6fd;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.08);
 }
 
 /* Reset y Base */
@@ -268,37 +316,68 @@ h1, h2, h3, h4, .brand-title {
 }
 
 .btn-primary {
-  background: #1E3A8A;
-  color: #ffffff;
-  border-color: #1E3A8A;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border-color: var(--btn-primary-border);
   box-shadow: none;
 }
 .btn-primary:hover {
-  background: #1e40af;
-  border-color: #1e40af;
+  background: var(--btn-primary-hover);
+  border-color: var(--btn-primary-hover);
   box-shadow: none;
 }
 
 .btn-secondary {
-  background: #334155;
-  color: #ffffff;
-  border-color: #475569;
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border-color: var(--btn-secondary-border);
   box-shadow: none;
 }
 .btn-secondary:hover {
-  background: #475569;
-  border-color: #64748b;
+  background: var(--btn-secondary-hover);
+  border-color: var(--border-hover);
   box-shadow: none;
 }
 
+/* Botón B2B & Data Centers (Con maletín) */
+.btn-premium {
+  background: var(--btn-b2b-bg) !important;
+  color: var(--btn-b2b-text) !important;
+  border: 1px solid var(--btn-b2b-border) !important;
+  box-shadow: none !important;
+  font-weight: 600 !important;
+  height: 32px !important;
+  padding: 0.38rem 0.68rem !important;
+  line-height: 1 !important;
+  border-radius: var(--radius-sm) !important;
+  transform: none !important;
+}
+.btn-premium:hover {
+  background: var(--btn-b2b-hover) !important;
+  border-color: var(--accent-cyan) !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
 [data-theme="light"] .btn-secondary {
-  background: #f1f5f9;
-  color: #1e293b;
-  border-color: #cbd5e1;
+  background: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+  border-color: var(--btn-secondary-border);
 }
 [data-theme="light"] .btn-secondary:hover {
-  background: #e2e8f0;
-  border-color: #94a3b8;
+  background: var(--btn-secondary-hover);
+  border-color: var(--border-hover);
+}
+
+[data-theme="light"] .btn-premium {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+  border-color: #0284c7 !important;
+}
+[data-theme="light"] .btn-premium:hover {
+  background: #bae6fd !important;
+  color: #075985 !important;
+  border-color: #0284c7 !important;
 }
 
 /* Botón Próximamente (Módulos en fase de I+D) */
@@ -394,12 +473,10 @@ h1, h2, h3, h4, .brand-title {
   overflow: hidden;
 }
 
-/* Sidebar de Controles y Filtros */
+/* Sidebar de Controles y Filtros (Terminal Financiero Minimalista) */
 .sidebar-panel {
   width: var(--sidebar-width);
-  background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: var(--bg-secondary);
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
@@ -415,45 +492,48 @@ h1, h2, h3, h4, .brand-title {
 }
 
 .sidebar-header {
-  padding: 0.75rem 1rem 0.6rem;
+  padding: 0.85rem 1.15rem 0.75rem;
   border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
 }
 
 .sidebar-title {
-  font-size: 0.88rem;
-  font-weight: 600;
+  font-size: 0.86rem;
+  font-weight: 700;
   color: var(--text-primary);
   display: flex;
   align-items: center;
   gap: 0.45rem;
+  letter-spacing: -0.01em;
 }
 
 .sidebar-content {
-  padding: 0.75rem 1rem;
+  padding: 1rem 1.15rem;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.85rem;
 }
 
-/* Cards en Sidebar */
+/* Cards en Sidebar: Sutiles, Minimalistas y Jerárquicas */
 .control-card {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
-  padding: 0.65rem 0.75rem;
-  transition: border-color var(--transition-fast);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 0.95rem;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 .control-card:hover {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--border-hover);
 }
 
 .control-card-title {
-  font-size: 0.72rem;
-  font-weight: 600;
+  font-size: 0.70rem;
+  font-weight: 700;
   color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.03em;
-  margin-bottom: 0.45rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -461,20 +541,20 @@ h1, h2, h3, h4, .brand-title {
 
 /* Timeline Slider Card */
 .timeline-slider-wrapper {
-  margin-top: 0.25rem;
+  margin-top: 0.35rem;
 }
 
 .timeline-labels {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.35rem;
   font-size: 0.68rem;
   font-weight: 600;
   color: var(--text-muted);
 }
 
 .timeline-labels span.active {
-  color: #38bdf8;
+  color: var(--accent-cyan);
   font-weight: 700;
 }
 
@@ -482,80 +562,83 @@ h1, h2, h3, h4, .brand-title {
   width: 100%;
   -webkit-appearance: none;
   appearance: none;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 3px;
+  height: 4px;
+  background: var(--border-color);
+  border-radius: 2px;
   outline: none;
   cursor: pointer;
 }
 .custom-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
-  background: #38bdf8;
+  background: var(--accent-cyan);
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
   transition: transform var(--transition-fast);
 }
 .custom-slider::-webkit-slider-thumb:hover {
-  transform: scale(1.15);
+  transform: scale(1.2);
 }
 
 .timeline-play-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
 }
 
 .timeline-status-badge {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
-  color: #38bdf8;
+  color: var(--accent-cyan);
   background: rgba(56, 189, 248, 0.1);
   padding: 0.15rem 0.45rem;
-  border-radius: 3px;
+  border-radius: var(--radius-xs);
   border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+[data-theme="light"] .timeline-status-badge {
+  background: #e0f2fe;
+  color: #0369a1;
+  border-color: #bae6fd;
 }
 
 /* Filtros */
 .filter-group {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  margin-bottom: 0.45rem;
+  gap: 0.25rem;
+  margin-bottom: 0.55rem;
 }
 .filter-group:last-child {
   margin-bottom: 0;
 }
 
 .filter-label {
-  font-size: 0.7rem;
+  font-size: 0.70rem;
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .filter-select {
   width: 100%;
-  background: rgba(0, 0, 0, 0.25);
+  background: var(--bg-input);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   color: var(--text-primary);
-  padding: 0.35rem 0.55rem;
+  padding: 0.42rem 0.65rem;
   font-size: 0.76rem;
   font-family: inherit;
   outline: none;
   cursor: pointer;
-  transition: border-color var(--transition-fast);
-}
-[data-theme="light"] .filter-select {
-  background: #ffffff;
-  border-color: #cbd5e1;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 .filter-select:focus {
-  border-color: #38bdf8;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
 }
 
 /* Buscador */
@@ -574,55 +657,61 @@ h1, h2, h3, h4, .brand-title {
 }
 .search-input-field {
   width: 100%;
-  padding: 0.35rem 0.55rem 0.35rem 1.85rem;
-  background: rgba(0, 0, 0, 0.25);
+  padding: 0.42rem 0.65rem 0.42rem 1.95rem;
+  background: var(--bg-input);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   color: var(--text-primary);
   font-size: 0.76rem;
   outline: none;
-  transition: border-color var(--transition-fast);
-}
-[data-theme="light"] .search-input-field {
-  background: #ffffff;
-  border-color: #cbd5e1;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 .search-input-field:focus {
-  border-color: #38bdf8;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15);
 }
 
-/* Métricas en Sidebar (KPIs en vivo) */
+/* Métricas en Sidebar (KPIs en vivo): Estilo Terminal Financiero */
 .kpi-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.45rem;
+  gap: 0.55rem;
 }
 
 .kpi-card {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
-  padding: 0.45rem 0.55rem;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.75rem;
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), transform var(--transition-fast);
+}
+.kpi-card:hover {
+  border-color: var(--border-hover);
 }
 
 .kpi-num {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Outfit', -apple-system, sans-serif;
   color: var(--text-primary);
-  line-height: 1.2;
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
 }
-.kpi-num.cyan { color: #38bdf8; }
-.kpi-num.green { color: #10B981; }
-.kpi-num.amber { color: #F59E0B; }
-.kpi-num.purple { color: #818cf8; }
+.kpi-num.cyan { color: var(--accent-cyan); }
+.kpi-num.green { color: var(--accent-green); }
+.kpi-num.amber { color: var(--accent-amber); }
+.kpi-num.purple { color: var(--accent-purple); }
 
 .kpi-desc {
-  font-size: 0.64rem;
+  font-size: 0.65rem;
+  font-weight: 600;
   color: var(--text-muted);
-  margin-top: 0.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-top: 0.25rem;
 }
 
 /* Botón flotante para alternar sidebar */
@@ -4293,31 +4382,22 @@ body.drawer-open .map-countries-ribbon-wrapper {
    MÓDULO B2B, CENTROS DE DATOS (IA) Y ANÁLISIS CORPORATIVO EJECUTIVO
    ========================================================================== */
 
-.btn-premium {
-  background: rgba(14, 165, 233, 0.12) !important;
-  border: 1px solid rgba(56, 189, 248, 0.4) !important;
-  color: #e0f2fe !important;
-  font-weight: 600 !important;
-  border-radius: var(--radius-sm) !important;
-  transition: all 0.2s ease !important;
-  box-shadow: none !important;
-}
 
-.btn-premium:hover {
-  background: rgba(14, 165, 233, 0.22) !important;
-  border-color: #38bdf8 !important;
-  color: #ffffff !important;
-  transform: translateY(-1px);
-}
+/* Tabs B2B */
+.b2b-tabs-bar {
+  display: flex;
+/* ==========================================================================
+   MÓDULO B2B, CENTROS DE DATOS (IA) Y ANÁLISIS CORPORATIVO EJECUTIVO
+   ========================================================================== */
 
 /* Tabs B2B */
 .b2b-tabs-bar {
   display: flex;
   gap: 0.4rem;
-  background: rgba(15, 23, 42, 0.8);
+  background: var(--bg-card);
   padding: 0.3rem;
   border-radius: var(--radius-sm);
-  border: 1px solid rgba(148, 163, 184, 0.14);
+  border: 1px solid var(--border-color);
   margin-bottom: 1.25rem;
 }
 
@@ -4329,9 +4409,9 @@ body.drawer-open .map-countries-ribbon-wrapper {
   border: 1px solid transparent;
   background: transparent;
   color: var(--text-secondary);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all var(--transition-fast);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4340,14 +4420,20 @@ body.drawer-open .map-countries-ribbon-wrapper {
 
 .b2b-tab-btn:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--bg-card-hover);
 }
 
 .b2b-tab-btn.active {
-  background: #1e293b;
-  color: #f8fafc;
-  border-color: rgba(56, 189, 248, 0.35);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--accent-cyan);
+  box-shadow: var(--shadow-sm);
+}
+
+[data-theme="light"] .b2b-tab-btn.active {
+  background: #ffffff;
+  color: #0f172a;
+  border-color: #0284c7;
 }
 
 .b2b-tab-pane {
@@ -4360,12 +4446,13 @@ body.drawer-open .map-countries-ribbon-wrapper {
 
 /* Tarjetas y Contenedores B2B */
 .b2b-hero-card {
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.16);
-  border-left: 3px solid #0284c7;
-  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-left: 3px solid var(--accent-cyan);
+  border-radius: var(--radius-md);
   padding: 1rem 1.25rem;
   margin-bottom: 1.25rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .b2b-grid-2 {
@@ -4381,71 +4468,21 @@ body.drawer-open .map-countries-ribbon-wrapper {
 }
 
 .b2b-card {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(148, 163, 184, 0.14);
-  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   padding: 1.15rem;
+  box-shadow: var(--shadow-sm);
 }
 
-.b2b-kpi-banner {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem;
-  margin-top: 1rem;
-}
-
-@media (max-width: 768px) {
-  .b2b-kpi-banner {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.b2b-kpi-item {
-  background: rgba(11, 17, 30, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.12);
-  border-radius: 6px;
-  padding: 0.75rem 0.85rem;
-  text-align: center;
-}
-
-.b2b-kpi-val {
-  font-size: 1.25rem;
-  font-weight: 700;
-  font-family: 'Outfit', sans-serif;
-  color: #f8fafc;
-  line-height: 1.2;
-  margin: 0.2rem 0;
-}
-
-.b2b-kpi-lbl {
-  font-size: 0.68rem;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.b2b-kpi-sub {
-  font-size: 0.64rem;
-  color: var(--text-muted);
-}
-
-.lead-magnet-card {
-  background: rgba(15, 23, 42, 0.75);
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  border-radius: var(--radius-sm);
-  padding: 1.5rem;
-  text-align: center;
-}
-
-/* Arquetipos Comerciales B2B Rápidos */
 .b2b-archetypes-row {
   display: flex;
   align-items: center;
   gap: 0.65rem;
   flex-wrap: wrap;
   margin-bottom: 0.95rem;
-  background: rgba(15, 23, 42, 0.7);
-  border: 1px solid rgba(148, 163, 184, 0.16);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   padding: 0.45rem 0.85rem;
   border-radius: var(--radius-sm);
 }
@@ -4453,7 +4490,7 @@ body.drawer-open .map-countries-ribbon-wrapper {
 .archetype-label {
   font-size: 0.72rem;
   color: var(--text-secondary);
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
@@ -4469,28 +4506,416 @@ body.drawer-open .map-countries-ribbon-wrapper {
   font-size: 0.74rem;
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  background: rgba(30, 41, 59, 0.8);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  color: #cbd5e1;
-  border-radius: 4px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all var(--transition-fast);
   white-space: nowrap;
 }
 
 .btn-dc-preset:hover {
-  background: #334155;
-  color: #f8fafc;
-  border-color: #38bdf8;
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: var(--accent-cyan);
 }
 
 .btn-dc-preset.active {
-  background: #0284c7;
-  color: #ffffff;
-  border-color: #38bdf8;
+  background: var(--btn-b2b-bg);
+  color: var(--btn-b2b-text);
+  border-color: var(--btn-b2b-border);
   font-weight: 700;
-  box-shadow: 0 1px 4px rgba(2, 132, 199, 0.35);
+  box-shadow: var(--shadow-sm);
 }
+
+[data-theme="light"] .btn-dc-preset.active {
+  background: #e0f2fe;
+  color: #0369a1;
+  border-color: #0284c7;
+}
+
+.b2b-metric-box {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.75rem;
+}
+
+.lead-magnet-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   REGLAS GLOBALES DE ALTO CONTRASTE PARA MODO CLARO [data-theme="light"]
+   ========================================================================== */
+[data-theme="light"] .modal-dialog {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+}
+
+[data-theme="light"] .modal-header,
+[data-theme="light"] .modal-footer {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .modal-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .b2b-hero-card {
+  background: #f0f9ff !important;
+  border-color: #bae6fd !important;
+  border-left-color: #0284c7 !important;
+}
+
+[data-theme="light"] .b2b-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .b2b-archetypes-row {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .b2b-metric-box {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .lead-magnet-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="light"] .smr-detail-drawer {
+  background: #ffffff !important;
+  border-left-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  box-shadow: -8px 0 28px rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .drawer-header {
+  background: #f8fafc !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .drawer-project-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .fin-kpi-card {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .fin-kpi-card.highlight-tci {
+  background: #fffbeb !important;
+  border-color: #fde68a !important;
+}
+
+[data-theme="light"] .metric-box {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .metric-box-val {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .calc-scenarios-bar {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .calc-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .calc-res-hero-box {
+  background: #f0fdf4 !important;
+  border-color: #bbf7d0 !important;
+}
+
+[data-theme="light"] .calc-comp-card {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .chart-card-box {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .chart-title {
+  color: #0f172a !important;
+}
+
+/* ==========================================================================
+   COMPONENTES CORPORATIVOS B2B Y MODELO DE COMERCIALIZACIÓN
+   ========================================================================== */
+.b2b-card-title {
+  font-size: 0.84rem;
+  color: var(--text-primary);
+  margin-bottom: 0.85rem;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.b2b-badge-cyan {
+  font-size: 0.65rem;
+  padding: 0.2rem 0.55rem;
+  background: rgba(56, 189, 248, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: var(--radius-sm);
+  color: var(--accent-cyan);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.b2b-badge-neutral {
+  font-size: 0.68rem;
+  padding: 0.3rem 0.65rem;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.b2b-val-highlight {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.b2b-hero-title {
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.b2b-kpi-subcard {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.75rem;
+}
+
+.b2b-kpi-subcard-title {
+  font-size: 0.64rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.b2b-kpi-subcard-val {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+}
+
+.b2b-kpi-subcard-sub {
+  font-size: 0.60rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.b2b-savings-box {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.85rem;
+}
+
+.b2b-savings-label {
+  font-size: 0.68rem;
+  color: #10b981;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+
+.b2b-savings-val {
+  font-size: 1.55rem;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: #10b981;
+  margin: 0.2rem 0;
+}
+
+.b2b-case-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-top: 2px solid var(--accent-cyan);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.b2b-case-callout {
+  padding: 0.45rem 0.65rem;
+  background: var(--bg-input);
+  border-radius: var(--radius-sm);
+  font-size: 0.70rem;
+  color: var(--accent-cyan);
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+}
+
+.b2b-contact-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.25rem;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.b2b-contact-email-badge {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  background: var(--bg-input);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Métricas de Comercialización Corporativa en Drawer */
+.drawer-market-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+}
+
+.drawer-market-card {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.75rem;
+  transition: border-color var(--transition-fast);
+}
+
+.drawer-market-card:hover {
+  border-color: var(--border-hover);
+}
+
+.drawer-market-lbl {
+  font-size: 0.64rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.drawer-market-val {
+  font-size: 1.15rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+  margin: 0.2rem 0 0.1rem 0;
+}
+
+.drawer-market-sub {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  line-height: 1.35;
+}
+
+/* Modos Claros: Contraste Riguroso */
+[data-theme="light"] .b2b-badge-cyan {
+  background: #e0f2fe;
+  border-color: #7dd3fc;
+  color: #0369a1;
+}
+
+[data-theme="light"] .b2b-badge-neutral {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #475569;
+}
+
+[data-theme="light"] .b2b-kpi-subcard {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+[data-theme="light"] .b2b-savings-box {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+
+[data-theme="light"] .b2b-savings-label {
+  color: #047857;
+}
+
+[data-theme="light"] .b2b-savings-val {
+  color: #047857;
+}
+
+[data-theme="light"] .b2b-case-card {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  border-top-color: #0284c7;
+}
+
+[data-theme="light"] .b2b-case-callout {
+  background: #f0f9ff;
+  color: #0369a1;
+  border-color: #bae6fd;
+}
+
+[data-theme="light"] .b2b-contact-box {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+[data-theme="light"] .b2b-contact-email-badge {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+[data-theme="light"] .drawer-market-card {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+[data-theme="light"] .drawer-market-val {
+  color: #0369a1;
+}
+
+
 
 
 
@@ -5009,6 +5434,30 @@ body.drawer-open .map-countries-ribbon-wrapper {
               <span class="offtake-hint">Sensibilidad al precio del pool</span>
             </div>
           </div>
+
+          <!-- Métricas de Mercado Marginalista y Comercialización Corporativa -->
+          <div class="drawer-market-grid">
+            <div class="drawer-market-card">
+              <div class="drawer-market-lbl">Coste Marginal SRMC</div>
+              <div id="drawer-market-srmc" class="drawer-market-val">11,5 €/MWh</div>
+              <div class="drawer-market-sub">O&M var. + combustible (prioridad en pool)</div>
+            </div>
+            <div class="drawer-market-card">
+              <div class="drawer-market-lbl">Renta Inframarginal</div>
+              <div id="drawer-market-rent" class="drawer-market-val">+63,5 €/MWh</div>
+              <div class="drawer-market-sub">Margen capturado vs gas CCGT a 75 €/MWh</div>
+            </div>
+            <div class="drawer-market-card">
+              <div class="drawer-market-lbl">Precio PPA 24/7 (Target)</div>
+              <div id="drawer-market-ppa" class="drawer-market-val">74 €/MWh</div>
+              <div class="drawer-market-sub">Sin penalización de almacenamiento BESS</div>
+            </div>
+            <div class="drawer-market-card">
+              <div class="drawer-market-lbl">Strike CfD Simétrico</div>
+              <div id="drawer-market-cfd" class="drawer-market-val">68 €/MWh</div>
+              <div class="drawer-market-sub">Precio regulado que deriesga WACC hacia 4,5%</div>
+            </div>
+          </div>
         </div>
 
         <!-- Sección 3: Matriz de Riesgo y Madurez del Proyecto (Risk Matrix) -->
@@ -5223,10 +5672,10 @@ body.drawer-open .map-countries-ribbon-wrapper {
        ========================================================================= -->
   <div id="modal-premium-intelligence" class="modal-backdrop">
     <div class="modal-dialog" style="max-width: 1080px;">
-      <div class="modal-header" style="background: rgba(15, 23, 42, 0.95); border-bottom: 1px solid rgba(148, 163, 184, 0.2);">
-        <h2 class="modal-title" style="color: #f8fafc; display: flex; align-items: center; gap: 0.6rem; font-size: 1.05rem;">
+      <div class="modal-header">
+        <h2 class="modal-title" style="display: flex; align-items: center; gap: 0.6rem; font-size: 1.05rem;">
           <span>💼</span> Análisis Corporativo: SMRs, Centros de Datos (IA) y Viabilidad Financiera
-          <span style="font-size: 0.65rem; padding: 0.2rem 0.55rem; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 4px; color: #38bdf8; font-weight: 700; letter-spacing: 0.04em;">AUDITORÍA TECNO-ECONÓMICA</span>
+          <span class="b2b-badge-cyan">AUDITORÍA TECNO-ECONÓMICA</span>
         </h2>
         <button class="btn-icon btn-close-modal">✕</button>
       </div>
@@ -5252,14 +5701,14 @@ body.drawer-open .map-countries-ribbon-wrapper {
           <div class="b2b-hero-card">
             <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
               <div>
-                <h3 style="color: #f8fafc; font-size: 0.95rem; margin-bottom: 0.3rem; font-weight: 700;">
+                <h3 class="b2b-hero-title">
                   Integración Estratégica: Supercomputación de IA y Suministro Eléctrico Firme Libre de Emisiones
                 </h3>
                 <p style="font-size: 0.78rem; color: var(--text-secondary); line-height: 1.55; margin: 0; max-width: 820px;">
                   Las grandes corporaciones tecnológicas (<strong>Microsoft / Constellation</strong> en Crane Clean Energy Center, <strong>Amazon AWS / X-energy</strong> y <strong>Google / Kairos Power</strong>) están formalizando contratos bilaterales de compraventa de energía (PPA) indexados a reactores SMR para asegurar suministro de carga base continuo 24/7/365, eludiendo la saturación de los nudos de transporte y mitigando el riesgo de precios volátiles en los mercados mayoristas.
                 </p>
               </div>
-              <span style="font-size: 0.68rem; padding: 0.3rem 0.65rem; background: rgba(148, 163, 184, 0.12); border: 1px solid rgba(148, 163, 184, 0.25); color: #cbd5e1; border-radius: 4px; font-weight: 600; white-space: nowrap;">
+              <span class="b2b-badge-neutral">
                 ESTÁNDAR HYPERSCALE TIER III/IV
               </span>
             </div>
@@ -5285,15 +5734,15 @@ body.drawer-open .map-countries-ribbon-wrapper {
             
             <!-- Columna Controles del Campus -->
             <div class="b2b-card">
-              <h4 style="font-size: 0.84rem; color: #f8fafc; margin-bottom: 0.85rem; font-weight: 700; border-bottom: 1px solid rgba(148, 163, 184, 0.15); padding-bottom: 0.4rem; display: flex; justify-content: space-between; align-items: center;">
+              <h4 class="b2b-card-title">
                 <span>1. Parámetros Técnicos y Condiciones PPA</span>
-                <span style="font-size: 0.65rem; color: #38bdf8; font-weight: 600;">ENERGÍA 24/7 TRAS CONTADOR</span>
+                <span class="b2b-badge-cyan">ENERGÍA 24/7 TRAS CONTADOR</span>
               </h4>
 
               <div class="calc-input-group" style="margin-bottom: 0.85rem;">
                 <div class="calc-label-row">
                   <span style="font-size: 0.76rem; color: var(--text-secondary);">Potencia Requerida por el Campus:</span>
-                  <span id="disp-dc-power" class="calc-val-display" style="color: #f8fafc;">120 MWe</span>
+                  <span id="disp-dc-power" class="calc-val-display b2b-val-highlight">120 MWe</span>
                 </div>
                 <input type="range" id="range-dc-power" min="20" max="400" step="5" value="120" style="width: 100%;">
                 <span class="calc-hint-text">Demanda base anual continua: 1.051.200 MWh/año (8.760 h/año continuas).</span>
@@ -5302,7 +5751,7 @@ body.drawer-open .map-countries-ribbon-wrapper {
               <div class="calc-input-group" style="margin-bottom: 0.85rem;">
                 <div class="calc-label-row">
                   <span style="font-size: 0.76rem; color: var(--text-secondary);">Precio PPA SMR Acordado:</span>
-                  <span id="disp-dc-ppa" class="calc-val-display" style="color: #38bdf8;">68 €/MWh</span>
+                  <span id="disp-dc-ppa" class="calc-val-display" style="color: var(--accent-cyan); font-weight: 700;">68 €/MWh</span>
                 </div>
                 <input type="range" id="range-dc-ppa" min="50" max="95" step="1" value="68" style="width: 100%;">
                 <span class="calc-hint-text">Coste nivelado garantizado contractualmente a 20-25 años (sin indexación a gas).</span>
@@ -5311,7 +5760,7 @@ body.drawer-open .map-countries-ribbon-wrapper {
               <div class="calc-input-group" style="margin-bottom: 0.85rem;">
                 <div class="calc-label-row">
                   <span style="font-size: 0.76rem; color: var(--text-secondary);">Coste Alternativo Red (OMIE + ATR 6.1TD + Respaldo BESS):</span>
-                  <span id="disp-dc-grid" class="calc-val-display" style="color: #f8fafc;">125 €/MWh</span>
+                  <span id="disp-dc-grid" class="calc-val-display b2b-val-highlight">125 €/MWh</span>
                 </div>
                 <input type="range" id="range-dc-grid" min="80" max="160" step="5" value="125" style="width: 100%;">
                 <span class="calc-hint-text">Desglose: Pool OMIE 68 €/MWh + Peajes y cargos 19 €/MWh + BESS/Respaldo 38 €/MWh.</span>
@@ -5320,7 +5769,7 @@ body.drawer-open .map-countries-ribbon-wrapper {
               <div class="calc-input-group">
                 <div class="calc-label-row">
                   <span style="font-size: 0.76rem; color: var(--text-secondary);">Coste de Inoperatividad (Downtime IA):</span>
-                  <span id="disp-dc-downtime" class="calc-val-display" style="color: #f8fafc;">120.000 €/h</span>
+                  <span id="disp-dc-downtime" class="calc-val-display b2b-val-highlight">120.000 €/h</span>
                 </div>
                 <input type="range" id="range-dc-downtime" min="20" max="250" step="10" value="120" style="width: 100%;">
                 <span class="calc-hint-text">Penalizaciones SLA por parada imprevista de clústeres GPU / aceleradores de IA.</span>
@@ -5328,53 +5777,53 @@ body.drawer-open .map-countries-ribbon-wrapper {
             </div>
 
             <!-- Columna Resultados Financieros y Disponibilidad -->
-            <div class="b2b-card" style="background: rgba(15, 23, 42, 0.85); border-color: rgba(148, 163, 184, 0.2);">
-              <h4 style="font-size: 0.84rem; color: #f8fafc; margin-bottom: 0.85rem; font-weight: 700; border-bottom: 1px solid rgba(148, 163, 184, 0.15); padding-bottom: 0.4rem; display: flex; justify-content: space-between; align-items: center;">
+            <div class="b2b-card">
+              <h4 class="b2b-card-title">
                 <span>2. Métricas de Rentabilidad y Viabilidad</span>
-                <span style="font-size: 0.65rem; color: #10b981; font-weight: 600;">DUE DILIGENCE BANCABLE</span>
+                <span style="font-size: 0.65rem; color: #10b981; font-weight: 700;">DUE DILIGENCE BANCABLE</span>
               </h4>
 
-              <div style="background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 0.85rem;">
-                <div style="font-size: 0.68rem; color: #6ee7b7; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700;">
+              <div class="b2b-savings-box">
+                <div class="b2b-savings-label">
                   Ahorro Operativo Anual Neto (OPEX SMR vs Mix de Red)
                 </div>
-                <div id="kpi-dc-savings" style="font-size: 1.55rem; font-weight: 800; font-family: 'Outfit', sans-serif; color: #10b981; margin: 0.2rem 0;">
+                <div id="kpi-dc-savings" class="b2b-savings-val">
                   +55,43 M€ / año
                 </div>
                 <div style="font-size: 0.68rem; color: var(--text-muted); display: flex; justify-content: space-between;">
-                  <span>Flujo acumulado a 25 años: <strong id="kpi-dc-savings-25y" style="color: #f8fafc;">~1.386 M€</strong></span>
-                  <span>TIR Proyecto: <strong id="kpi-dc-tir" style="color: #38bdf8;">11,4%</strong></span>
+                  <span>Flujo acumulado a 25 años: <strong id="kpi-dc-savings-25y" class="b2b-val-highlight">~1.386 M€</strong></span>
+                  <span>TIR Proyecto: <strong id="kpi-dc-tir" style="color: var(--accent-cyan);">11,4%</strong></span>
                 </div>
               </div>
 
               <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.65rem;">
-                <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 6px; padding: 0.65rem 0.75rem;">
-                  <div style="font-size: 0.64rem; color: var(--text-secondary); text-transform: uppercase;">Factor Disponibilidad (CF)</div>
-                  <div id="kpi-dc-uptime" style="font-size: 1.15rem; font-weight: 700; color: #f8fafc;">92,5%</div>
-                  <div style="font-size: 0.60rem; color: var(--text-muted);">Carga base firme 24/7/365</div>
+                <div class="b2b-kpi-subcard">
+                  <div class="b2b-kpi-subcard-title">Factor Disponibilidad (CF)</div>
+                  <div id="kpi-dc-uptime" class="b2b-kpi-subcard-val">92,5%</div>
+                  <div class="b2b-kpi-subcard-sub">Carga base firme 24/7/365</div>
                 </div>
 
-                <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 6px; padding: 0.65rem 0.75rem;">
-                  <div style="font-size: 0.64rem; color: var(--text-secondary); text-transform: uppercase;">Retorno Inversión (Payback)</div>
-                  <div id="kpi-dc-payback" style="font-size: 1.15rem; font-weight: 700; color: #38bdf8;">6,8 años</div>
-                  <div style="font-size: 0.60rem; color: var(--text-muted);">vs. coste alternativo red</div>
+                <div class="b2b-kpi-subcard">
+                  <div class="b2b-kpi-subcard-title">Retorno Inversión (Payback)</div>
+                  <div id="kpi-dc-payback" class="b2b-kpi-subcard-val" style="color: var(--accent-cyan);">6,8 años</div>
+                  <div class="b2b-kpi-subcard-sub">vs. coste alternativo red</div>
                 </div>
 
-                <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 6px; padding: 0.65rem 0.75rem;">
-                  <div style="font-size: 0.64rem; color: var(--text-secondary); text-transform: uppercase;">CO₂ Evitado Anual</div>
-                  <div id="kpi-dc-co2" style="font-size: 1.15rem; font-weight: 700; color: #f8fafc;">359.800 t</div>
-                  <div style="font-size: 0.60rem; color: var(--text-muted);">Factor marginal fósil: 0.37 t/MWh</div>
+                <div class="b2b-kpi-subcard">
+                  <div class="b2b-kpi-subcard-title">CO₂ Evitado Anual</div>
+                  <div id="kpi-dc-co2" class="b2b-kpi-subcard-val">359.800 t</div>
+                  <div class="b2b-kpi-subcard-sub">Factor marginal fósil: 0.37 t/MWh</div>
                 </div>
 
-                <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.12); border-radius: 6px; padding: 0.65rem 0.75rem;">
-                  <div style="font-size: 0.64rem; color: var(--text-secondary); text-transform: uppercase;">Valor Derechos EU ETS</div>
-                  <div id="kpi-dc-ets-val" style="font-size: 1.15rem; font-weight: 700; color: #10b981;">+25,19 M€/año</div>
-                  <div style="font-size: 0.60rem; color: var(--text-muted);">Ahorro a 70 €/tCO₂ EUA</div>
+                <div class="b2b-kpi-subcard">
+                  <div class="b2b-kpi-subcard-title">Valor Derechos EU ETS</div>
+                  <div id="kpi-dc-ets-val" class="b2b-kpi-subcard-val" style="color: #10b981;">+25,19 M€/año</div>
+                  <div class="b2b-kpi-subcard-sub">Ahorro a 70 €/tCO₂ EUA</div>
                 </div>
               </div>
 
               <!-- Botón Descargar Propuesta Comercial -->
-              <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px solid rgba(148, 163, 184, 0.15); display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;">
+              <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;">
                 <span style="font-size: 0.68rem; color: var(--text-secondary);">
                   ¿Requiere dossier para Comité de Inversión?
                 </span>
@@ -5393,44 +5842,44 @@ body.drawer-open .map-countries-ribbon-wrapper {
         <div id="pane-tab-ind" class="b2b-tab-pane">
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
             
-            <div class="b2b-card" style="border-top: 2px solid #0284c7;">
+            <div class="b2b-case-card">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                <span style="font-size: 0.65rem; padding: 0.15rem 0.45rem; background: rgba(2, 132, 199, 0.12); color: #38bdf8; border-radius: 4px; font-weight: 600;">CASO 01 · RECONVERSIÓN</span>
+                <span class="b2b-badge-cyan">CASO 01 · RECONVERSIÓN</span>
                 <span style="font-size: 0.68rem; color: var(--text-muted);">Burgos / León / Teruel</span>
               </div>
-              <h4 style="font-size: 0.85rem; color: #f8fafc; margin-bottom: 0.4rem; font-weight: 700;">Reconversión de Centrales Térmicas (Coal-to-Nuclear)</h4>
+              <h4 class="b2b-card-title" style="margin-bottom: 0.4rem; border: none; padding: 0;">Reconversión de Centrales Térmicas (Coal-to-Nuclear)</h4>
               <p style="font-size: 0.73rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
                 Reutilización de los nudos de evacuación de Red Eléctrica (REE de 400 kV) en emplazamientos con derechos de acceso concedidos (Garoña, Compostilla, Andorra, As Pontes), toma de aguas y suelo industrial ya autorizado.
               </p>
-              <div style="padding: 0.45rem 0.65rem; background: rgba(11, 17, 30, 0.7); border-radius: 4px; font-size: 0.70rem; color: #38bdf8; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2);">
+              <div class="b2b-case-callout">
                 Optimización de CAPEX: Reducción de hasta un -28%
               </div>
             </div>
 
-            <div class="b2b-card" style="border-top: 2px solid #0284c7;">
+            <div class="b2b-case-card">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                <span style="font-size: 0.65rem; padding: 0.15rem 0.45rem; background: rgba(2, 132, 199, 0.12); color: #38bdf8; border-radius: 4px; font-weight: 600;">CASO 02 · COGENERACIÓN</span>
+                <span class="b2b-badge-cyan">CASO 02 · COGENERACIÓN</span>
                 <span style="font-size: 0.68rem; color: var(--text-muted);">Tarragona / Huelva</span>
               </div>
-              <h4 style="font-size: 0.85rem; color: #f8fafc; margin-bottom: 0.4rem; font-weight: 700;">Polos Petroquímicos y Fertilizantes</h4>
+              <h4 class="b2b-card-title" style="margin-bottom: 0.4rem; border: none; padding: 0;">Polos Petroquímicos y Fertilizantes</h4>
               <p style="font-size: 0.73rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
                 Sustitución directa del consumo térmico de gas natural mediante reactores modulares de alta temperatura (HTGR / MSR a 550°C-750°C) para generación continua de vapor de proceso e hidrógeno electrolítico de alta eficiencia.
               </p>
-              <div style="padding: 0.45rem 0.65rem; background: rgba(11, 17, 30, 0.7); border-radius: 4px; font-size: 0.70rem; color: #38bdf8; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2);">
+              <div class="b2b-case-callout">
                 Descarbonización Térmica: Exención de costes ETS / CO₂
               </div>
             </div>
 
-            <div class="b2b-card" style="border-top: 2px solid #0284c7;">
+            <div class="b2b-case-card">
               <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                <span style="font-size: 0.65rem; padding: 0.15rem 0.45rem; background: rgba(2, 132, 199, 0.12); color: #38bdf8; border-radius: 4px; font-weight: 600;">CASO 03 · RED DEDICADA</span>
+                <span class="b2b-badge-cyan">CASO 03 · RED DEDICADA</span>
                 <span style="font-size: 0.68rem; color: var(--text-muted);">Aragón / Madrid / Sines</span>
               </div>
-              <h4 style="font-size: 0.85rem; color: #f8fafc; margin-bottom: 0.4rem; font-weight: 700;">Campus de Centros de Datos con Saturación de Red</h4>
+              <h4 class="b2b-card-title" style="margin-bottom: 0.4rem; border: none; padding: 0;">Campus de Centros de Datos con Saturación de Red</h4>
               <p style="font-size: 0.73rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
                 Solución integral ante la denegación de accesos de REE (más de 12 GW de peticiones bloqueadas por capacidad de transporte) mediante generación síncrona dedicada tras contador (Behind-The-Meter).
               </p>
-              <div style="padding: 0.45rem 0.65rem; background: rgba(11, 17, 30, 0.7); border-radius: 4px; font-size: 0.70rem; color: #38bdf8; font-weight: 600; border: 1px solid rgba(56, 189, 248, 0.2);">
+              <div class="b2b-case-callout">
                 Conexión Autónoma: Despliegue sin esperas de red
               </div>
             </div>
@@ -5442,10 +5891,10 @@ body.drawer-open .map-countries-ribbon-wrapper {
         <div id="pane-tab-consulting" class="b2b-tab-pane">
           
           <div class="lead-magnet-card">
-            <span style="font-size: 0.68rem; padding: 0.2rem 0.65rem; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); color: #38bdf8; border-radius: 4px; font-weight: 600; text-transform: uppercase;">
+            <span class="b2b-badge-cyan">
               Área de Asesoría y Modelización Tecno-Económica
             </span>
-            <h3 style="font-size: 1.15rem; color: #f8fafc; margin: 0.75rem 0 0.35rem 0; font-weight: 700;">
+            <h3 class="b2b-hero-title" style="font-size: 1.15rem; margin: 0.75rem 0 0.35rem 0;">
               Estudios de Prefactibilidad, Modelado LCOE y Selección de Emplazamientos
             </h3>
             <p style="font-size: 0.80rem; color: var(--text-secondary); max-width: 720px; margin: 0 auto 1.25rem auto; line-height: 1.55;">
@@ -5453,26 +5902,26 @@ body.drawer-open .map-countries-ribbon-wrapper {
             </p>
 
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; max-width: 820px; margin: 0 auto 1.35rem auto; text-align: left;">
-              <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.14); border-radius: 6px; padding: 0.85rem;">
-                <div style="font-weight: 600; color: #f8fafc; font-size: 0.80rem; margin-bottom: 0.25rem;">Due Diligence Financiera</div>
+              <div class="b2b-kpi-subcard">
+                <div style="font-weight: 700; color: var(--text-primary); font-size: 0.80rem; margin-bottom: 0.25rem;">Due Diligence Financiera</div>
                 <div style="font-size: 0.71rem; color: var(--text-muted); line-height: 1.45;">Modelado LCOE con análisis de sensibilidad Monte Carlo, flujos de caja y WACC regulatorio.</div>
               </div>
 
-              <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.14); border-radius: 6px; padding: 0.85rem;">
-                <div style="font-weight: 600; color: #f8fafc; font-size: 0.80rem; margin-bottom: 0.25rem;">Scoring de Emplazamientos</div>
+              <div class="b2b-kpi-subcard">
+                <div style="font-weight: 700; color: var(--text-primary); font-size: 0.80rem; margin-bottom: 0.25rem;">Scoring de Emplazamientos</div>
                 <div style="font-size: 0.71rem; color: var(--text-muted); line-height: 1.45;">Evaluación geoespacial multicriterio (refrigeración, cercanía a subestación, riesgos sísmicos).</div>
               </div>
 
-              <div style="background: rgba(11, 17, 30, 0.7); border: 1px solid rgba(148, 163, 184, 0.14); border-radius: 6px; padding: 0.85rem;">
-                <div style="font-weight: 600; color: #f8fafc; font-size: 0.80rem; margin-bottom: 0.25rem;">Estructuración PPA 24/7</div>
+              <div class="b2b-kpi-subcard">
+                <div style="font-weight: 700; color: var(--text-primary); font-size: 0.80rem; margin-bottom: 0.25rem;">Estructuración PPA 24/7</div>
                 <div style="font-size: 0.71rem; color: var(--text-muted); line-height: 1.45;">Fijación de coberturas bilaterales a largo plazo frente a la volatilidad del pool diario.</div>
               </div>
             </div>
 
-            <div style="background: rgba(11, 17, 30, 0.8); border: 1px solid rgba(148, 163, 184, 0.18); border-radius: 6px; padding: 0.9rem 1.25rem; max-width: 820px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 0.65rem;">
+            <div class="b2b-contact-box">
               <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; justify-content: center;">
                 <span style="font-size: 0.78rem; color: var(--text-secondary);">Canal de Contacto Profesional:</span>
-                <span style="font-family: monospace; font-size: 0.88rem; background: rgba(0, 0, 0, 0.4); padding: 0.25rem 0.65rem; border-radius: 4px; border: 1px solid rgba(148, 163, 184, 0.2); color: #f8fafc; font-weight: 600;">
+                <span class="b2b-contact-email-badge">
                   carlosmgutierrez05@gmail.com
                 </span>
                 <button type="button" id="btn-copy-contact-email" class="btn btn-secondary btn-sm" style="padding: 0.25rem 0.6rem; font-size: 0.74rem;">
@@ -8406,15 +8855,45 @@ document.addEventListener('DOMContentLoaded', () => {
     return filtered;
   }
 
+  /**
+   * Actualiza el cuadro de mandos superior y las métricas globales agregadas en pantalla.
+   * Criterios de Rigor Ingenieril y Modelización Energética:
+   * 1. Capacidad Eléctrica Neta (MWe): Si el reactor es de aplicación térmica exclusiva
+   *    (calor distrital o vapor industrial con netElectricCapacityMWe = 0), se calcula
+   *    su potencia eléctrica equivalente aplicando la eficiencia termodinámica de ciclo Rankine (eta ≈ 33%).
+   * 2. Generación Firme (TWh/año): Calculada sobre factor de planta estándar IAEA (CF = 92.5%)
+   *    y 8.760 h/año, reflejando la disponibilidad continua de carga base 24/7/365.
+   * 3. Mitigación de CO2 (Mt CO2/año): Basado en factores oficiales de desplazamiento del MITECO
+   *    y OIEA frente al parque de generación fósil (Carbón: 0.950 tCO2/MWh, Ciclos Combinados Gas: 0.370 tCO2/MWh).
+   */
   function updateKpisDisplay(projects) {
     const countEl = document.getElementById('kpi-projects-count');
     const capEl = document.getElementById('kpi-total-capacity');
     const genEl = document.getElementById('kpi-total-gen');
     const co2El = document.getElementById('kpi-total-co2');
 
-    const totalCap = projects.reduce((sum, p) => sum + p.netElectricCapacityMWe, 0);
-    const totalGenTWh = projects.reduce((sum, p) => sum + p.annualGenerationGWh, 0) / 1000;
-    const totalCo2CoalMt = projects.reduce((sum, p) => sum + p.co2AvoidedCoalTonYear, 0) / 1e6;
+    // Capacidad eléctrica consolidada (MWe) con equivalencia térmica Rankine (33%) si es térmico puro
+    const totalCap = projects.reduce((sum, p) => {
+      if (p.netElectricCapacityMWe > 0) return sum + p.netElectricCapacityMWe;
+      return sum + (p.thermalCapacityMWt ? Math.round(p.thermalCapacityMWt * 0.33) : 0);
+    }, 0);
+
+    // Generación anual firme en TWh/año
+    const totalGenTWh = projects.reduce((sum, p) => {
+      if (p.annualGenerationGWh) return sum + (p.annualGenerationGWh / 1000);
+      const cap = p.netElectricCapacityMWe > 0 ? p.netElectricCapacityMWe : (p.thermalCapacityMWt ? p.thermalCapacityMWt * 0.33 : 0);
+      const cf = p.availabilityFactor || 0.925;
+      return sum + ((cap * 8760 * cf) / 1e6);
+    }, 0);
+
+    // Mitigación de emisiones de CO2 frente a sustitución de carbón (0.950 Mt / TWh)
+    const totalCo2CoalMt = projects.reduce((sum, p) => {
+      if (p.co2AvoidedCoalTonYear) return sum + (p.co2AvoidedCoalTonYear / 1e6);
+      const cap = p.netElectricCapacityMWe > 0 ? p.netElectricCapacityMWe : (p.thermalCapacityMWt ? p.thermalCapacityMWt * 0.33 : 0);
+      const cf = p.availabilityFactor || 0.925;
+      const genTWh = (cap * 8760 * cf) / 1e6;
+      return sum + (genTWh * 0.950);
+    }, 0);
 
     animateCounter(countEl, projects.length, '');
     animateCounter(capEl, totalCap, ' MWe');
@@ -8672,6 +9151,26 @@ document.addEventListener('DOMContentLoaded', () => {
    * IDC_Financing (€M) = (Direct_OCC_Total + Indirect_EPC) * ((1 + WACC)^(constructionYears / 2) - 1)
    * Total_Capital_Investment_TCI (€M) = Direct_OCC_Total + Indirect_EPC + FOAK_Contingency + IDC_Financing
    */
+  /**
+   * Motor de Cálculo Financiero y Comercialización Corporativa Determinista (Single Formula Engine).
+   * Criterios y Justificación Económica de Variables:
+   * 
+   * 1. Overnight Capital Cost (OCC Directo): Coste de suministro de equipos mayores (vasija NSSS, turbogenerador,
+   *    generador de vapor, contención modular subterránea) evaluado en €/kWe neto o térmico equivalente.
+   * 2. EPC Indirecto y Tasas Regulatorias (+18% sobre OCC): Ingeniería de detalle EPCM, licenciamiento regulatorio
+   *    ante autoridades de seguridad nuclear (WENRA, CSN, NRC) y supervisión en fábrica (estándar EPRI).
+   * 3. Contingencias e Imprevistos: 20% para prototipos FOAK (First-of-a-Kind) y reactores de IV Generación
+   *    ante riesgo de curva de aprendizaje; 8% para reactores NOAK modulares fabricados en serie seriada.
+   * 4. Intereses Durante la Construcción (IDC): Modelo financiero en perfil de gasto S-Curve con capitalización
+   *    a tasa WACC durante el período de obra: (OCC + EPC) * ((1 + WACC)^(t_obra/2) - 1).
+   * 5. Factor de Recuperación de Capital (CRF) a 60 años: Amortización financiera linealizada de activos de larga vida.
+   * 6. Coste Marginal a Corto Plazo (SRMC): 11,5 - 13,0 €/MWh (OPEX variable + ciclo de combustible nuclear UO2/HALEU).
+   *    En mercados mayoristas marginalistas (OMIE/EEX), el SMR actúa como inframarginal en la base de la curva de mérito.
+   * 7. Comercialización Corporativa (Corporate PPA 24/7): Benchmark bilateral indexado a LCOE + 10% (TIR promotora),
+   *    sin sobrecostes por almacenamiento en baterías BESS o gas peaker (firmeza 92,5% inherente).
+   * 8. Contrato por Diferencias Simétrico (Two-way CfD): Precio de ejercicio que elimina volatilidad mayorista y
+   *    deriesga el WACC regulatorio hacia el 4,0% - 5,0%.
+   */
   function calculateSMRFinancials(p, wacc = 0.07) {
     const netCapacityMWe = p.netElectricCapacityMWe > 0 
       ? p.netElectricCapacityMWe 
@@ -8687,36 +9186,70 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Direct Overnight Capital Cost (€M)
     const directOccTotal = (netCapacityMWe * 1000 * occPerKwEUR) / 1e6;
 
-    // 2. Indirect EPC & Licensing (€M) (18% of Direct OCC)
+    // 2. Indirect EPC & Licensing (€M) (18% of Direct OCC según estándar EPRI SMR)
     const indirectEpc = directOccTotal * 0.18;
 
-    // 3. FOAK Construction Contingencies (€M) (20% para FOAK, 8% para NOAK, 5% operativo)
+    // 3. FOAK Construction Contingencies (€M) (20% para FOAK/Gen IV, 8% para NOAK, 5% operativo)
     const contingencyRate = isOperational ? 0.05 : (isFOAK ? 0.20 : 0.08);
     const foakContingency = directOccTotal * contingencyRate;
 
-    // 4. IDC Financing (€M)
-    // Formula: (Direct_OCC_Total + Indirect_EPC) * ((1 + WACC)^(constructionYears / 2) - 1)
+    // 4. IDC Financing (€M): Intereses devengados durante la construcción bajo perfil de desembolso acumulativo
     const idcRate = Math.pow(1 + wacc, constructionYears / 2) - 1;
     const idcFinancing = (directOccTotal + indirectEpc) * idcRate;
 
-    // 5. Total Capital Investment (TCI) (€M)
+    // 5. Total Capital Investment (TCI Llave en Mano) (€M)
     const totalCapitalInvestmentTci = directOccTotal + indirectEpc + foakContingency + idcFinancing;
 
-    // 6. LCOE Calculation (€/MWh) dinámico y sensible al WACC
+    // 6. LCOE Calculation (€/MWh) determinista y sensible a WACC y disponibilidad (CRF a 60 años)
     const lifeYears = 60;
     const crf = (wacc * Math.pow(1 + wacc, lifeYears)) / (Math.pow(1 + wacc, lifeYears) - 1);
     const annualCapexCostEur = (totalCapitalInvestmentTci * 1e6) * crf;
-    const availabilityFactor = p.availabilityFactor || 0.92;
+    const availabilityFactor = p.availabilityFactor || 0.925;
     const annualGenMWh = netCapacityMWe * 8760 * availabilityFactor;
     const lcoeCapex = annualCapexCostEur / annualGenMWh;
 
-    const fixedOmEurYear = netCapacityMWe * 65000; // 65 €/kWe-año
+    const fixedOmEurYear = netCapacityMWe * 65000; // 65 k€/MW-año: personal de operación, licencias y seguros
     const lcoeFixedOm = fixedOmEurYear / annualGenMWh;
-    const varOmEurMWh = 4.5;
-    const fuelCostEurMWh = p.generation === 'Gen IV' ? 8.5 : 7.0;
-    const wasteDecomEurMWh = 2.5;
+    const varOmEurMWh = 4.5; // Consumibles químicos, tratamiento de agua y filtros
+    const fuelCostEurMWh = p.generation === 'Gen IV' ? 8.5 : 7.0; // Enriquecimiento, fabricación de combustible UO2/HALEU
+    const wasteDecomEurMWh = 2.5; // Dotación a fondo estatal de desmantelamiento y repositorio geológico profundo
 
     const lcoeTotalEurMWh = Math.round(lcoeCapex + lcoeFixedOm + varOmEurMWh + fuelCostEurMWh + wasteDecomEurMWh);
+
+    // 7. Métricas de Comercialización Corporativa y Competitividad en Mercado Mayorista Marginalista
+    // Coste Marginal a Corto Plazo (SRMC = Short-Run Marginal Cost):
+    // Incluye exclusivamente OPEX variable y ciclo de combustible:
+    // Al ser un coste de solo 11,5 - 13,0 €/MWh, el SMR se sitúa en la base de la curva de mérito
+    // (merit order) del pool (OMIE / EEX), asegurando casación ininterrumpida frente a ciclos de gas.
+    const srmcEurMWh = parseFloat((varOmEurMWh + fuelCostEurMWh).toFixed(1));
+
+    // Renta Inframarginal Capturada en Mercado Mayorista (€/MWh):
+    // Margen operativo unitario capturado cuando el precio de casación es fijado por el gas natural CCGT.
+    // Con precio medio de referencia del pool de 75 €/MWh (gas TTF + derechos CO2 EUA),
+    // la renta inframarginal del SMR alcanza 62-64 €/MWh para amortizar el capital.
+    const poolClearingBenchmark = 75.0; // €/MWh referencia marginal fósil
+    const inframarginalRentEurMWh = parseFloat((Math.max(0, poolClearingBenchmark - srmcEurMWh)).toFixed(1));
+
+    // Precio Strike de PPA Corporativo a Largo Plazo 24/7 (Corporate PPA Strike Price):
+    // Precio de venta garantizado a gran consumidor industrial / Hyperscaler de IA (+10% margen promotor).
+    // Ventaja decisiva frente a PPA renovable: no requiere añadir sobrecostes de almacenamiento BESS (35-45 €/MWh).
+    const corporatePpaStrikePrice = Math.round(lcoeTotalEurMWh * 1.10);
+
+    // Contrato por Diferencias Simétrico (Two-way CfD Strike Price):
+    // Precio de ejercicio regulado que elimina el merchant risk y permite un WACC deriesgado (4,0% - 5,0%).
+    const cfdStrikePrice = lcoeTotalEurMWh;
+
+    // Ratio de Cobertura del Servicio de la Deuda (DSCR) bajo financiación Project Finance (70% deuda a 20 años):
+    const debtRatio = 0.70;
+    const debtAmountMeur = totalCapitalInvestmentTci * debtRatio;
+    const debtKd = Math.max(0.035, wacc * 0.80); // Coste de la deuda tras escudo fiscal
+    const loanTenorYears = 20; // Período de amortización estándar de deuda bancaria
+    const debtCrf = (debtKd * Math.pow(1 + debtKd, loanTenorYears)) / (Math.pow(1 + debtKd, loanTenorYears) - 1);
+    const annualDebtServiceMeur = debtAmountMeur * debtCrf;
+    const annualPpaRevenueMeur = (annualGenMWh * corporatePpaStrikePrice) / 1e6;
+    const annualTotalOpexMeur = (fixedOmEurYear + (annualGenMWh * (varOmEurMWh + fuelCostEurMWh + wasteDecomEurMWh))) / 1e6;
+    const cfadsMeur = annualPpaRevenueMeur - annualTotalOpexMeur; // Flujo de caja disponible para servicio de deuda (CFADS)
+    const dscrEstimated = annualDebtServiceMeur > 0 ? parseFloat((cfadsMeur / annualDebtServiceMeur).toFixed(2)) : 1.50;
 
     // Formateador estándar comercial español en M€ (ej. 3.810 M€, 1.440 M€, 159 M€)
     function fmtEur(m) {
@@ -8771,6 +9304,11 @@ document.addEventListener('DOMContentLoaded', () => {
       idcFinancing,
       totalCapitalInvestmentTci,
       lcoeTotalEurMWh,
+      srmcEurMWh,
+      inframarginalRentEurMWh,
+      corporatePpaStrikePrice,
+      cfdStrikePrice,
+      dscrEstimated,
       directOccFmt: fmtEur(directOccTotal),
       indirectEpcFmt: fmtEur(indirectEpc),
       foakContingencyFmt: fmtEur(foakContingency),
@@ -8892,6 +9430,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // 4. Actualizar Tag WACC Activo
     const waccTag = document.getElementById('drawer-wacc-active-tag');
     if (waccTag) waccTag.textContent = `${(wacc * 100).toFixed(1)}% WACC`;
+
+    // 5. Actualizar Métricas de Comercialización Corporativa y Mercado Marginalista
+    const elSrmc = document.getElementById('drawer-market-srmc');
+    if (elSrmc) elSrmc.textContent = `${fin.srmcEurMWh.toFixed(1)} €/MWh`;
+    const elRent = document.getElementById('drawer-market-rent');
+    if (elRent) elRent.textContent = `+${fin.inframarginalRentEurMWh.toFixed(1)} €/MWh`;
+    const elPpa = document.getElementById('drawer-market-ppa');
+    if (elPpa) elPpa.textContent = `${fin.corporatePpaStrikePrice} €/MWh`;
+    const elCfd = document.getElementById('drawer-market-cfd');
+    if (elCfd) elCfd.textContent = `${fin.cfdStrikePrice} €/MWh`;
 
     return fin;
   }
@@ -9561,16 +10109,37 @@ document.addEventListener('DOMContentLoaded', () => {
     return Math.round(lcoe);
   }
 
+  /**
+   * Modelo Avanzado de Rentabilidad y Comercialización Corporativa (Corporate PPA / CfD / DSCR).
+   * Justificación Económica e Ingenieril:
+   * 1. PPA Corporativo 24/7 (Corporate Power Purchase Agreement):
+   *    Calcula la viabilidad financiera bajo contrato privado bilateral indexado al LCOE nivelado
+   *    más un margen comercial industrial (+8% a +12%) para garantizar la rentabilidad del promotor.
+   *    Al ser energía firme no intermitente (CF > 92%), no requiere penalización por almacenamiento en baterías BESS.
+   * 2. Casación Marginalista e Inframarginalidad:
+   *    Con un coste marginal a corto plazo (SRMC) de ~11.5 - 13.0 €/MWh (combustible nuclear + O&M variable),
+   *    el reactor entra en base de despacho continuo en el mercado diario (OMIE / EEX), capturando
+   *    la renta inframarginal cuando los ciclos combinados de gas natural fijan el precio de casación (65 - 85 €/MWh).
+   * 3. Contratos por Diferencias (CfD Simétrico a 2 caras):
+   *    Precio de ejercicio garantizado (Strike Price) que estabiliza ingresos y permite reducir el WACC al 4.0% - 5.0%.
+   * 4. Ratio de Cobertura de la Deuda (DSCR):
+   *    Ratio CFADS / Servicio Anual de Deuda para estructura Project Finance (70% apalancamiento a 20 años).
+   */
   function calculateProjectFinancialMetrics(p, fin, wacc) {
-    const ppaPrice = 80; // €/MWh precio de referencia PPA baseload industrial
+    const ppaPrice = fin.corporatePpaStrikePrice || Math.round(fin.lcoeTotalEurMWh * 1.10);
+    const cfdStrike = fin.cfdStrikePrice || fin.lcoeTotalEurMWh;
+    const srmc = fin.srmcEurMWh || (p.generation === 'Gen IV' ? 13.0 : 11.5);
+    const gasBenchmarkPool = 75.0; // €/MWh referencia marginal fósil
+    const inframarginalRent = Math.max(0, gasBenchmarkPool - srmc);
+
     const annualGenMWh = p.netElectricCapacityMWe > 0 
-      ? (p.netElectricCapacityMWe * 8760 * (p.availabilityFactor || 0.90))
-      : (p.annualGenerationGWh * 1000);
-    const capacity = p.netElectricCapacityMWe > 0 ? p.netElectricCapacityMWe : (p.thermalCapacityMWt || 300);
+      ? (p.netElectricCapacityMWe * 8760 * (p.availabilityFactor || 0.925))
+      : (p.annualGenerationGWh ? p.annualGenerationGWh * 1000 : ((p.thermalCapacityMWt || 300) * 0.33 * 8760 * 0.925));
+    const capacity = p.netElectricCapacityMWe > 0 ? p.netElectricCapacityMWe : (p.thermalCapacityMWt ? Math.round(p.thermalCapacityMWt * 0.33) : 300);
     
     const annualRevenueMeur = (annualGenMWh * ppaPrice) / 1e6;
-    const annualFixedOpexMeur = (35 * 1000 * capacity) / 1e6;
-    const annualVarOpexMeur = (annualGenMWh * (3.0 + 7.0 + 2.0)) / 1e6;
+    const annualFixedOpexMeur = (65 * 1000 * capacity) / 1e6; // 65 k€/MW-año
+    const annualVarOpexMeur = (annualGenMWh * (4.5 + (p.generation === 'Gen IV' ? 8.5 : 7.0) + 2.5)) / 1e6;
     const annualTotalOpexMeur = annualFixedOpexMeur + annualVarOpexMeur;
     const annualCashFlowMeur = annualRevenueMeur - annualTotalOpexMeur;
     const tciMeur = fin.totalCapitalInvestmentTci;
@@ -9593,8 +10162,20 @@ document.addEventListener('DOMContentLoaded', () => {
       irrPct = ((low + high) / 2 * 100).toFixed(1);
     }
 
+    // Ratio de Cobertura del Servicio de la Deuda (DSCR)
+    const debtRatio = 0.70;
+    const debtKd = Math.max(0.035, wacc * 0.80);
+    const loanTenorYears = 20;
+    const debtCrf = (debtKd * Math.pow(1 + debtKd, loanTenorYears)) / (Math.pow(1 + debtKd, loanTenorYears) - 1);
+    const annualDebtServiceMeur = (tciMeur * debtRatio) * debtCrf;
+    const dscr = annualDebtServiceMeur > 0 ? (annualCashFlowMeur / annualDebtServiceMeur).toFixed(2) : '1.50';
+
     return {
       ppaPrice,
+      cfdStrike,
+      srmc: srmc.toFixed(1),
+      inframarginalRent: inframarginalRent.toFixed(1),
+      dscr,
       annualRevenueMeur: annualRevenueMeur.toFixed(1),
       annualCashFlowMeur: annualCashFlowMeur.toFixed(1),
       npvMeur: npvMeur.toLocaleString('es-ES'),
@@ -9647,7 +10228,12 @@ document.addEventListener('DOMContentLoaded', () => {
       ["Mitigacion CO2 frente a Carbon", (p.co2AvoidedCoalTonYear / 1e6).toFixed(3), "Mt CO2/año", "Emisiones evitadas 950 g/kWh"],
       ["Mitigacion CO2 frente a Gas CCGT", (p.co2AvoidedGasTonYear / 1e6).toFixed(3), "Mt CO2/año", "Emisiones evitadas 400 g/kWh"],
       ["Mitigacion CO2 Ciclo de Vida 60a", ((p.co2AvoidedCoalTonYear * 60) / 1e6).toFixed(2), "Mt CO2", "Mitigacion acumulada total"],
-      ["VAN Estimado (PPA 80 €/MWh)", metrics.npvMeur, "M€", "Valor Actual Neto a 60 años"],
+      ["Coste Marginal a Corto Plazo (SRMC)", `${metrics.srmc} €/MWh`, "€/MWh", "Prioridad de despacho en pool mayorista"],
+      ["Renta Inframarginal vs Gas CCGT", `+${metrics.inframarginalRent} €/MWh`, "€/MWh", "Margen operativo s/gas a 75 €/MWh"],
+      ["Precio Strike PPA Corporativo 24/7", `${metrics.ppaPrice} €/MWh`, "€/MWh", "Contrato bilateral sin sobrecoste BESS"],
+      ["Precio Ejercicio CfD Simetrico", `${metrics.cfdStrike} €/MWh`, "€/MWh", "Cobertura de ingresos a WACC regulado"],
+      ["Ratio Cobertura de Deuda (DSCR)", `${metrics.dscr}x`, "Ratio", "Bancabilidad Project Finance"],
+      ["VAN Estimado Proyecto", metrics.npvMeur, "M€", `Valor Actual Neto a 60 años (${(wacc * 100).toFixed(1)}% WACC)`],
       ["TIR Estimada de Proyecto", metrics.irrPct, "%", "Tasa Interna de Retorno"],
       ["Rol en el Mercado Electrico", `"${p.marketRole}"`, "—", "Casacion marginalista / gestionabilidad"],
       ["Servicios de Red & Inercia", `"${p.gridServices}"`, "—", "RoCoF, FCR, aFRR, inercia fisica"],
@@ -10085,15 +10671,22 @@ document.addEventListener('DOMContentLoaded', () => {
           </table>
         </div>
 
-        <!-- Indicadores Financieros VAN y TIR -->
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 5px; padding: 0.65rem 0.95rem; margin-top: 0.65rem; font-size: 0.74rem; color: #334155; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+        <!-- Indicadores Financieros y Comercialización Corporativa -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 5px; padding: 0.75rem 1rem; margin-top: 0.65rem; font-size: 0.74rem; color: #334155; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem;">
           <div>
-            <strong>Indicadores Económicos de Proyecto (a PPA base de ${metrics.ppaPrice} €/MWh):</strong><br>
-            Flujo de Caja Operativo Anual (EBITDA): <strong>${metrics.annualCashFlowMeur} M€/año</strong>
+            <div style="font-size: 0.68rem; color: #64748b; text-transform: uppercase; font-weight: 700;">Comercialización PPA & CfD</div>
+            <div style="margin-top: 0.2rem;">PPA Corporativo 24/7: <strong style="color: #0284c7; font-size: 0.85rem;">${metrics.ppaPrice} €/MWh</strong></div>
+            <div style="color: #64748b; font-size: 0.70rem;">Strike CfD Simétrico: <strong>${metrics.cfdStrike} €/MWh</strong></div>
           </div>
-          <div style="display: flex; gap: 1rem;">
-            <div>VAN (NPV a 60a): <strong style="color: ${metrics.npvMeur.startsWith('-') ? '#b91c1c' : '#15803d'}; font-size: 0.85rem;">${metrics.npvMeur} M€</strong></div>
-            <div>TIR (IRR de Proyecto): <strong style="color: #0284c7; font-size: 0.85rem;">${metrics.irrPct}</strong></div>
+          <div>
+            <div style="font-size: 0.68rem; color: #64748b; text-transform: uppercase; font-weight: 700;">Mercado Marginalista (Pool)</div>
+            <div style="margin-top: 0.2rem;">Coste Marginal SRMC: <strong style="color: #16a34a; font-size: 0.85rem;">${metrics.srmc} €/MWh</strong></div>
+            <div style="color: #64748b; font-size: 0.70rem;">Renta Inframarginal vs Gas: <strong style="color: #16a34a;">+${metrics.inframarginalRent} €/MWh</strong></div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.68rem; color: #64748b; text-transform: uppercase; font-weight: 700;">Rentabilidad & Bancabilidad</div>
+            <div style="margin-top: 0.2rem;">VAN (60a): <strong style="color: ${metrics.npvMeur.startsWith('-') ? '#b91c1c' : '#15803d'}; font-size: 0.85rem;">${metrics.npvMeur} M€</strong> · TIR: <strong style="color: #0284c7;">${metrics.irrPct}</strong></div>
+            <div style="color: #64748b; font-size: 0.70rem;">Cobertura de Deuda: <strong>${metrics.dscr}x DSCR</strong></div>
           </div>
         </div>
       </div>
