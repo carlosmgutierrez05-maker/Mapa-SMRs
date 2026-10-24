@@ -4466,11 +4466,11 @@ body.drawer-open .map-countries-ribbon-wrapper {
 }
 
 .b2b-tab-pane {
-  display: none;
+  display: none !important;
 }
 
 .b2b-tab-pane.active {
-  display: block;
+  display: block !important;
 }
 
 /* Tarjetas y Contenedores B2B */
@@ -4993,16 +4993,21 @@ body.drawer-open .map-countries-ribbon-wrapper {
   margin-bottom: 1rem;
 }
 
-.b2b-case-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 1.15rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
+.b2b-case-features,
+ul.b2b-case-features {
+  list-style: none !important;
+  list-style-type: none !important;
+  padding: 0 !important;
+  margin: 0 0 1.15rem 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.45rem !important;
 }
 
-.b2b-case-feature-item {
+.b2b-case-feature-item,
+li.b2b-case-feature-item {
+  list-style: none !important;
+  list-style-type: none !important;
   font-size: 0.73rem;
   color: #94a3b8;
   line-height: 1.5;
@@ -6444,8 +6449,6 @@ body.drawer-open .map-countries-ribbon-wrapper {
             </div>
 
           </div>
-        </div>
-
         </div>
 
       </div>
