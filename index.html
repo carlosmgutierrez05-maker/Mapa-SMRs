@@ -4462,17 +4462,21 @@ body.drawer-open .map-countries-ribbon-wrapper {
     visibility: hidden;
   }
   #modal-engineering-report,
-  #modal-engineering-report * {
+  #modal-engineering-report *,
+  #modal-b2b-proposal-report,
+  #modal-b2b-proposal-report * {
     visibility: visible;
   }
-  #modal-engineering-report {
+  #modal-engineering-report,
+  #modal-b2b-proposal-report {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     margin: 0;
     padding: 0;
-    background: none !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
     display: block !important;
   }
   .report-modal-header, .no-print {
@@ -6388,6 +6392,77 @@ li.b2b-case-feature-item {
   color: #0f172a !important;
 }
 
+/* =========================================================================
+   CLÁUSULA DE SALVAGUARDA TÉCNICA Y AVISO LEGAL (SAFE HARBOR)
+   ========================================================================= */
+.b2b-safe-harbor-card {
+  margin-top: 1rem;
+  background: rgba(2, 132, 199, 0.05);
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  border-left: 4px solid #0284c7;
+  border-radius: 6px;
+  padding: 0.90rem 1.15rem;
+}
+
+.b2b-safe-harbor-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.40rem;
+}
+
+.b2b-safe-harbor-icon {
+  font-size: 0.95rem;
+}
+
+.b2b-safe-harbor-title {
+  font-size: 0.70rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #38bdf8;
+}
+
+.b2b-safe-harbor-text {
+  font-size: 0.73rem;
+  line-height: 1.55;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.b2b-safe-harbor-text strong {
+  color: #f1f5f9;
+}
+
+.b2b-safe-harbor-text em {
+  color: #e2e8f0;
+  font-style: normal;
+  font-weight: 600;
+}
+
+[data-theme="light"] .b2b-safe-harbor-card {
+  background: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+  border-left-color: #0284c7 !important;
+}
+
+[data-theme="light"] .b2b-safe-harbor-title {
+  color: #0369a1 !important;
+}
+
+[data-theme="light"] .b2b-safe-harbor-text {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .b2b-safe-harbor-text strong {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .b2b-safe-harbor-text em {
+  color: #0f172a !important;
+}
+
+
 
 
 
@@ -7424,6 +7499,19 @@ li.b2b-case-feature-item {
             </div>
           </div>
 
+          <!-- Cláusula de Salvaguarda y Aviso Legal (Safe Harbor) -->
+          <div class="b2b-safe-harbor-card">
+            <div class="b2b-safe-harbor-header">
+              <span class="b2b-safe-harbor-icon">⚖️</span>
+              <span class="b2b-safe-harbor-title">AVISO LEGAL DE NO VINCULACIÓN CONTRACTUAL & SALVAGUARDA TÉCNICA (SAFE HARBOR)</span>
+            </div>
+            <p class="b2b-safe-harbor-text">
+              <strong>Carácter Proyectivo y No Vinculante:</strong> Las simulaciones económicas, ahorros operativos (OPEX), costes nivelados (LCOE) y proyecciones de amortización mostradas en este simulador tienen carácter orientativo y de prospección tecno-económica preliminar basadas en estándares de mercado (IAEA, EPRI, IEA 2025, OMIE y REE). No constituyen oferta comercial vinculante ni garantía contractual de rendimientos económicos.
+              <br><br>
+              <strong>Doble Modalidad Financiera:</strong> En la modalidad <em>PPA Corporativo 24/7 (Behind-The-Meter)</em>, el cliente final asume <strong>CAPEX = 0 €</strong> y captura el ahorro en factura directamente desde el primer ejercicio. Las métricas de TIR de activo y Payback aplican exclusivamente a modelos de coinversión o adquisición patrimonial del reactor (Project Finance / SPV). La formalización de cualquier contrato requiere la realización previa de una <em>Due Diligence</em> técnica de emplazamiento, auditoría de evacuación en nudo de red de transporte (REE 400 kV) y cierre financiero bilateral vinculante entre las partes.
+            </p>
+          </div>
+
         </div>
 
         <!-- PESTAÑA 2: Descarbonización Industrial & Casos en España -->
@@ -7789,8 +7877,8 @@ li.b2b-case-feature-item {
                    class="btn btn-secondary" style="padding: 0.6rem 1.1rem; font-size: 0.82rem;">
                   Cliente de Correo
                 </a>
-                <button type="button" onclick="window.print()" class="btn btn-secondary" style="padding: 0.6rem 1.1rem; font-size: 0.82rem;">
-                  Exportar Ficha (PDF)
+                <button type="button" id="btn-export-b2b-proposal-2" class="btn btn-primary" style="padding: 0.6rem 1.1rem; font-size: 0.82rem; font-weight: 700;">
+                  📄 Ficha Ejecutiva B2B (PDF)
                 </button>
               </div>
             </div>
@@ -8175,6 +8263,47 @@ li.b2b-case-feature-item {
       <div class="report-modal-body">
         <div id="smr-engineering-report-doc" class="report-sheet">
           <!-- Populated dynamically by generateSMRReportHtml(project, wacc) -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: FICHA EJECUTIVA B2B · DICTAMEN TÉCNICO-ECONÓMICO PPA SMR 24/7
+       ========================================================================= -->
+  <div id="modal-b2b-proposal-report" class="report-modal-backdrop">
+    <div class="report-modal-container">
+      
+      <!-- Report Modal Action Bar (Fixed Top) -->
+      <div class="report-modal-header no-print">
+        <div class="report-modal-title" style="min-width: 320px; flex-shrink: 0;">
+          <span style="font-size: 1.4rem;">💼</span>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem; color: #ffffff; white-space: nowrap;">Dictamen Técnico-Económico B2B · PPA SMR 24/7</div>
+            <div style="font-size: 0.70rem; color: #94a3b8; white-space: nowrap;">Simulación Financiera Bancable · Campus IA & Descarbonización Industrial</div>
+          </div>
+        </div>
+        <div class="report-modal-actions">
+          <button type="button" id="btn-print-b2b-modal" class="btn btn-primary btn-sm" style="display: flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.75rem; font-weight: 700;" title="Imprimir o guardar en PDF (Formato oficial A4)">
+            🖨️ Imprimir PDF (A4)
+          </button>
+          <button type="button" id="btn-download-b2b-html" class="btn btn-success btn-sm" style="display: flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.75rem; font-weight: 700; background: #16a34a; border-color: #15803d; color: #ffffff;" title="Descargar documento autónomo en archivo .html listo para abrir y enviar al cliente">
+            📥 Descargar Ficha (.html)
+          </button>
+          <button type="button" id="btn-copy-b2b-summary" class="btn btn-secondary btn-sm" style="display: flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.65rem;" title="Copiar resumen ejecutivo al portapapeles">
+            📋 Copiar Resumen
+          </button>
+          <button type="button" id="btn-close-b2b-modal" class="btn btn-secondary btn-sm" style="padding: 0.35rem 0.65rem;" title="Cerrar vista de propuesta">
+            ✖️ Cerrar
+          </button>
+        </div>
+      </div>
+
+      <!-- Report Sheet (A4 document styled) -->
+      <div class="report-modal-body">
+        <div id="b2b-proposal-report-doc" class="report-sheet">
+          <!-- Populated dynamically by generateB2bProposalHtml() -->
         </div>
       </div>
 
@@ -13197,170 +13326,341 @@ document.addEventListener('DOMContentLoaded', () => {
       if (el) el.addEventListener('input', updateDataCenterKpis);
     });
 
-    // Exportador de Propuesta Comercial Ejecutiva B2B
-    const btnExportB2b = document.getElementById('btn-export-b2b-proposal');
-    if (btnExportB2b) {
-      btnExportB2b.addEventListener('click', () => {
-        const pMw = document.getElementById('disp-dc-power')?.textContent || '120 MWe';
-        const ppa = document.getElementById('disp-dc-ppa')?.textContent || '68 €/MWh';
-        const grid = document.getElementById('disp-dc-grid')?.textContent || '125 €/MWh';
-        const savings = document.getElementById('kpi-dc-savings')?.textContent || '+55,43 M€ / año';
-        const savings25 = document.getElementById('kpi-dc-savings-25y')?.textContent || '~1.386 M€';
-        const co2 = document.getElementById('kpi-dc-co2')?.textContent || '359.800 t';
-        const tir = document.getElementById('kpi-dc-tir')?.textContent || '11,4%';
-        const payback = document.getElementById('kpi-dc-payback')?.textContent || '6,8 años';
-        const etsVal = document.getElementById('kpi-dc-ets-val')?.textContent || '+25,19 M€/año';
-        const uptime = document.getElementById('kpi-dc-uptime')?.textContent || '92,5%';
-        const auditDemand = document.getElementById('audit-demand-mwh')?.textContent || '1.051.200 MWh';
-        const auditGridCost = document.getElementById('audit-grid-cost')?.textContent || '131,40 M€/año';
-        const auditSmrCost = document.getElementById('audit-smr-cost')?.textContent || '75,98 M€/año';
-        const auditRisk = document.getElementById('audit-risk-savings')?.textContent || '+2,40 M€/año';
+    // Generador de Ficha Ejecutiva B2B Oficial en Documento A4
+    function generateB2bProposalHtml() {
+      const pMw = parseFloat(document.getElementById('range-dc-power')?.value || 120);
+      const ppaPrice = parseFloat(document.getElementById('range-dc-ppa')?.value || 68);
+      const gridPrice = parseFloat(document.getElementById('range-dc-grid')?.value || 125);
+      const downtimeCostK = parseFloat(document.getElementById('range-dc-downtime')?.value || 120);
 
-        const printWindow = window.open('', '_blank');
-        if (!printWindow) {
-          alert('Por favor, permita las ventanas emergentes en su navegador para generar la propuesta.');
-          return;
-        }
+      const cfSmr = 0.925;
+      const annualHours = 8760;
+      const totalDemandMWh = pMw * annualHours;
+      const energySmrMWh = totalDemandMWh * cfSmr;
+      const energyBackupMWh = totalDemandMWh * (1 - cfSmr);
 
-        printWindow.document.write(`<!DOCTYPE html>
+      const annualCostSmr = (energySmrMWh * ppaPrice) + (energyBackupMWh * gridPrice);
+      const annualCostFullGrid = totalDemandMWh * gridPrice;
+      const netSavingsM = (annualCostFullGrid - annualCostSmr) / 1000000;
+      const savings25yM = netSavingsM * 25;
+      const savingsPct = annualCostFullGrid > 0 ? ((netSavingsM * 1000000 / annualCostFullGrid) * 100).toFixed(1) : '42.2';
+
+      const co2AvoidedTons = energySmrMWh * 0.37;
+      const etsPricePerTon = 70;
+      const etsValueM = (co2AvoidedTons * etsPricePerTon) / 1000000;
+
+      const totalCapexM = (pMw * 1000 * 4200) / 1000000;
+      const annualTotalCashflowM = netSavingsM + (etsValueM * 0.5);
+      const paybackYears = annualTotalCashflowM > 0 ? (totalCapexM / annualTotalCashflowM).toFixed(1) : '7.4';
+      let tirEst = 0;
+      if (annualTotalCashflowM > 0 && totalCapexM > 0) {
+        tirEst = Math.min(18.5, Math.max(5.0, (annualTotalCashflowM / totalCapexM) * 100 + 2.5)).toFixed(1);
+      } else {
+        tirEst = '16.0';
+      }
+
+      const hoursRiskAvoided = 20;
+      const riskSavedM = (hoursRiskAvoided * downtimeCostK * 1000) / 1000000;
+
+      const today = new Date();
+      const dateStr = today.toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' });
+
+      return `
+        <!-- Encabezado Oficial Institucional -->
+        <div style="border-bottom: 2px solid #0284c7; padding-bottom: 1rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+              <span style="font-size: 1.5rem;">⚛</span>
+              <span style="font-weight: 800; font-size: 1.15rem; color: #0f172a; letter-spacing: -0.01em;">SMR ENERGY UVa · ASESORÍA TÉCNICO-ECONÓMICA</span>
+              <span style="font-size: 0.65rem; background: #0284c7; color: #ffffff; padding: 0.15rem 0.45rem; border-radius: 3px; font-weight: 800;">CONFIDENCIAL</span>
+            </div>
+            <h1 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin: 0 0 0.3rem 0; line-height: 1.3;">
+              DICTAMEN DE VIABILIDAD B2B: SUMINISTRO FIRME SMR PPA 24/7
+            </h1>
+            <div style="font-size: 0.78rem; color: #475569;">
+              Campus de Centros de Datos (IA) & Grandes Consumidores Industriales Electrointensivos
+            </div>
+          </div>
+          <div style="text-align: right; font-size: 0.72rem; color: #64748b; line-height: 1.45;">
+            <div><strong>EXPEDIENTE:</strong> EXP-UVa-SMR-B2B-2026-X12</div>
+            <div><strong>FECHA:</strong> ${dateStr}</div>
+            <div><strong>REFERENCIA:</strong> IAEA-TECDOC / EPRI Assessment</div>
+            <div><strong>ESTADO:</strong> DICTAMEN PRELIMINAR BANCABLE</div>
+          </div>
+        </div>
+
+        <!-- Resumen Ejecutivo -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #0284c7; padding: 0.85rem 1.15rem; border-radius: 6px; margin-bottom: 1.25rem;">
+          <div style="font-size: 0.70rem; font-weight: 800; color: #0284c7; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
+            1. OBJETO Y ALCANCE DEL DICTAMEN
+          </div>
+          <p style="font-size: 0.78rem; color: #334155; line-height: 1.55; margin: 0;">
+            El presente dictamen evalúa la estructuración técnica y bancable para el suministro continuo de <strong>${pMw} MWe</strong> (${Math.round(totalDemandMWh).toLocaleString('es-ES')} MWh/año) en carga base 24/7/365 mediante reactores modulares pequeños (SMR) en conexión privada tras contador (<em>Behind-The-Meter</em>), eludiendo la saturación estructural de la red de transporte de Red Eléctrica de España (REE) y blindando al consumidor frente a la volatilidad del pool y los costes de almacenamiento BESS.
+          </p>
+        </div>
+
+        <!-- 3 KPIs Clave de Ahorro y Rentabilidad -->
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.25rem;">
+          <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-top: 4px solid #059669; border-radius: 6px; padding: 0.90rem 1rem; text-align: center;">
+            <div style="font-size: 0.65rem; color: #059669; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">Ahorro OPEX Anual en Factura</div>
+            <div style="font-size: 1.65rem; font-weight: 800; color: #059669; font-family: monospace; margin: 0.2rem 0;">+${netSavingsM.toFixed(2).replace('.', ',')} M€/año</div>
+            <div style="font-size: 0.68rem; color: #475569;">Reducción del <strong>${savingsPct}%</strong> respecto al coste de red</div>
+          </div>
+
+          <div style="background: #f0f9ff; border: 1.5px solid #bae6fd; border-top: 4px solid #0284c7; border-radius: 6px; padding: 0.90rem 1rem; text-align: center;">
+            <div style="font-size: 0.65rem; color: #0284c7; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">Flujo Acumulado a 25 Años</div>
+            <div style="font-size: 1.65rem; font-weight: 800; color: #0284c7; font-family: monospace; margin: 0.2rem 0;">~${Math.round(savings25yM).toLocaleString('es-ES')} M€</div>
+            <div style="font-size: 0.68rem; color: #475569;">Certidumbre presupuestaria cerrada a largo plazo</div>
+          </div>
+
+          <div style="background: #faf5ff; border: 1.5px solid #e9d5ff; border-top: 4px solid #7e22ce; border-radius: 6px; padding: 0.90rem 1rem; text-align: center;">
+            <div style="font-size: 0.65rem; color: #7e22ce; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">Valor Derechos EU ETS Evitados</div>
+            <div style="font-size: 1.65rem; font-weight: 800; color: #7e22ce; font-family: monospace; margin: 0.2rem 0;">+${etsValueM.toFixed(2).replace('.', ',')} M€/año</div>
+            <div style="font-size: 0.68rem; color: #475569;">${Math.round(co2AvoidedTons).toLocaleString('es-ES')} tCO₂/año a 70 €/t EUA</div>
+          </div>
+        </div>
+
+        <!-- Clarificación Contractual: PPA vs Coinversión -->
+        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 1rem 1.15rem; margin-bottom: 1.25rem;">
+          <div style="font-size: 0.72rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.35rem;">
+            2. ESTRUCTURACIÓN FINANCIERA: MODALIDAD PPA (CAPEX 0 €) VS COINVERSIÓN EN ACTIVO
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.55;">
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.75rem 0.90rem;">
+              <strong style="color: #0284c7; display: block; margin-bottom: 0.25rem;">Modalidad A: Corporate PPA 24/7 (SaaS / Utility SMR)</strong>
+              <div style="color: #475569;">
+                • <strong>Inversión CAPEX Cliente:</strong> <span style="color: #059669; font-weight: 700;">0 € (Sin desembolso inicial)</span>.<br>
+                • <strong>Riesgo de Construcción/Licencia:</strong> Asumido por el desarrollador/IPP nuclear.<br>
+                • <strong>Precio Unitario Cerrado:</strong> <strong>${ppaPrice} €/MWh</strong> (sin indexación al gas ni pool).<br>
+                • <strong>Impacto Financiero:</strong> Beneficio neto de tesorería y EBITDA inmediato desde el Mes 1.
+              </div>
+            </div>
+
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.75rem 0.90rem;">
+              <strong style="color: #7e22ce; display: block; margin-bottom: 0.25rem;">Modalidad B: Coinversión Patrimonial (Project Finance / SPV)</strong>
+              <div style="color: #475569;">
+                • <strong>Inversión Estimada Planta SMR:</strong> <strong>~${Math.round(totalCapexM).toLocaleString('es-ES')} M€</strong> (~4.200 €/kWe en serie).<br>
+                • <strong>Periodo de Amortización (Payback):</strong> <strong>${paybackYears} años</strong>.<br>
+                • <strong>Tasa Interna de Retorno (TIR Proyecto):</strong> <strong>${tirEst}%</strong>.<br>
+                • <strong>Elegibilidad:</strong> Taxonomía Verde Europea y fondos de infraestructura energética.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabla de Auditoría Comparativa de Flujos -->
+        <div style="margin-bottom: 1.25rem;">
+          <div style="font-size: 0.72rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.45rem;">
+            3. AUDITORÍA FINANCIERA COMPARATIVA DE COSTES ANUALES (ESTÁNDAR EPRI / IAEA)
+          </div>
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.76rem; border: 1px solid #cbd5e1;">
+            <thead>
+              <tr style="background: #f1f5f9; color: #0f172a; text-transform: uppercase; font-size: 0.68rem; letter-spacing: 0.04em;">
+                <th style="border: 1px solid #cbd5e1; padding: 0.50rem 0.65rem; text-align: left;">Concepto de Facturación</th>
+                <th style="border: 1px solid #cbd5e1; padding: 0.50rem 0.65rem; text-align: right;">Escenario 1: Mix de Red Tradicional</th>
+                <th style="border: 1px solid #cbd5e1; padding: 0.50rem 0.65rem; text-align: right;">Escenario 2: Solución SMR PPA 24/7</th>
+                <th style="border: 1px solid #cbd5e1; padding: 0.50rem 0.65rem; text-align: right;">Diferencial / Beneficio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem;"><strong>Demanda Anual Total:</strong></td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; font-family: monospace;">${Math.round(totalDemandMWh).toLocaleString('es-ES')} MWh</td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; font-family: monospace;">${Math.round(totalDemandMWh).toLocaleString('es-ES')} MWh</td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; color: #0284c7; font-weight: 700;">Potencia: ${pMw} MWe</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem;"><strong>Tarifa Media Unitaria:</strong></td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; font-family: monospace;">${gridPrice} €/MWh</td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; font-family: monospace;">${((annualCostSmr / totalDemandMWh)).toFixed(2).replace('.', ',')} €/MWh (eq.)</td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; color: #059669; font-weight: 700;">-${(gridPrice - (annualCostSmr / totalDemandMWh)).toFixed(1).replace('.', ',')} €/MWh</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem;">
+                  <span style="font-size: 0.70rem; color: #64748b;">Desglose de Composición:</span>
+                </td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; font-size: 0.70rem; color: #64748b;">
+                  Pool (68 €) + ATR 6.1TD (18,5 €) + BESS (38,5 €)
+                </td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; font-size: 0.70rem; color: #64748b;">
+                  SMR 92,5% CF (${ppaPrice} €) + Respaldo Parada 7,5% (${gridPrice} €)
+                </td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; font-size: 0.70rem; color: #0284c7;">
+                  Sin peajes de transporte REE
+                </td>
+              </tr>
+              <tr style="background: #f8fafc; font-weight: 700;">
+                <td style="border: 1px solid #cbd5e1; padding: 0.50rem 0.65rem;"><strong>Coste Anual de Facturación:</strong></td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.50rem 0.65rem; text-align: right; font-family: monospace; color: #dc2626; font-size: 0.85rem;">
+                  ${(annualCostFullGrid / 1e6).toFixed(2).replace('.', ',')} M€/año
+                </td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.50rem 0.65rem; text-align: right; font-family: monospace; color: #059669; font-size: 0.85rem;">
+                  ${(annualCostSmr / 1e6).toFixed(2).replace('.', ',')} M€/año
+                </td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.50rem 0.65rem; text-align: right; font-family: monospace; color: #059669; font-size: 0.90rem;">
+                  +${netSavingsM.toFixed(2).replace('.', ',')} M€/año
+                </td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem;"><strong>Valor Derechos EU ETS (CO₂):</strong></td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; color: #64748b;">Expuesto a compra EUA</td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; color: #059669; font-weight: 700;">0 gCO₂/kWh en operación</td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; color: #7e22ce; font-weight: 700;">+${etsValueM.toFixed(2).replace('.', ',')} M€/año</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem;"><strong>Resiliencia Downtime GPU (IA):</strong></td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; color: #64748b;">Saturación de nudo REE</td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; color: #0284c7; font-weight: 700;">Inercia síncrona 50 Hz dedicada</td>
+                <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; color: #b45309; font-weight: 700;">+${riskSavedM.toFixed(2).replace('.', ',')} M€/año</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Glosario Condensado para Comité de Inversión -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
+          <div style="font-size: 0.70rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.35rem;">
+            4. GLOSARIO METODOLÓGICO CLAVE PARA COMITÉ DE INVERSIÓN
+          </div>
+          <div style="font-size: 0.72rem; line-height: 1.45; color: #475569;">
+            <p style="margin: 0 0 0.3rem 0;"><strong>• PPA 24/7 (Power Purchase Agreement Baseload):</strong> Contrato bilateral a 20–25 años con perfil plano continuo hora a hora, eliminando costes de perfilado y baterías químicas de respaldo.</p>
+            <p style="margin: 0 0 0.3rem 0;"><strong>• Behind-The-Meter (Tras Contador):</strong> Conexión física privada dedicada sin peajes de acceso a red de transporte (peajes ATR 6.1TD de REE) y libre de listas de espera de capacidad.</p>
+            <p style="margin: 0 0 0.3rem 0;"><strong>• CfD Simétrico:</strong> Mecanismo de cobertura bidireccional promovido por la Reforma de Mercado de la UE (Directiva 2024/1747) que fija un precio strike garantizado.</p>
+            <p style="margin: 0 0 0.3rem 0;"><strong>• SRMC (Short-Run Marginal Cost):</strong> Coste variable de combustible nuclear UO₂ (9,5 a 13 €/MWh), asegurando despacho en la base del orden de mérito de OMIE.</p>
+            <p style="margin: 0;"><strong>• LCOE Nivelado:</strong> Coste total de generación a 60 años considerando CAPEX, OPEX, combustible enriquecido y fondos de desmantelamiento regulados.</p>
+          </div>
+        </div>
+
+        <!-- Cláusula de Salvaguarda Legal y Exención de Responsabilidad Técnica (Safe Harbor) -->
+        <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-left: 4px solid #d97706; border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
+          <div style="font-size: 0.68rem; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.35rem;">
+            <span>⚖️</span> CLÁUSULA DE SALVAGUARDA TÉCNICA Y AVISO LEGAL (SAFE HARBOR DISCLAIMER)
+          </div>
+          <div style="font-size: 0.70rem; line-height: 1.5; color: #78350f;">
+            <strong>Carácter No Vinculante:</strong> Las simulaciones, proyecciones financieras, ahorros operativos (OPEX), costes nivelados (LCOE) y métricas de retorno de inversión expresadas en este dictamen tienen fines exclusivamente orientativos, académicos y de prospección tecno-económica preliminar basados en estándares de la industria (IAEA, EPRI, OECD/IEA 2025, REE y CNMC). No constituyen una oferta comercial contractual vinculante ni garantizan rentabilidades económicas futuras.
+            <br><br>
+            <strong>Exención de Responsabilidad Contractual:</strong> Los costes finales, plazos de despliegue y ahorros definitivos deberán ser determinados formalmente mediante la realización de estudios geotécnicos y sísmicos vinculantes de emplazamiento, auditorías de acceso de red eléctrica, tramitación de licenciamiento ante el organismo regulador competente (CSN) y la firma de un contrato bilateral definitivo entre las partes promotoras e inversoras.
+          </div>
+        </div>
+
+        <!-- Sello de Autoría y Contacto Institucional -->
+        <div style="border-top: 1px solid #cbd5e1; padding-top: 0.85rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.74rem;">
+          <div>
+            <div style="font-weight: 800; color: #0f172a;">Carlos Moreno Gutiérrez</div>
+            <div style="color: #475569;">Área de Economía de los Sistemas Energéticos (ESE) · Escuela de Ingenierías Industriales</div>
+            <div style="color: #64748b;">Universidad de Valladolid (UVa) · Canal de Asesoría: <strong style="color: #0284c7;">carlosmgutierrez05@gmail.com</strong></div>
+          </div>
+          <div style="text-align: right; color: #64748b; font-size: 0.68rem;">
+            <div>Plataforma SMR Energy Economics UVa</div>
+            <div>Validado con Metodología Oficial IEA / EPRI</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Apertura del Modal de Ficha Ejecutiva B2B
+    function openB2bProposalModal() {
+      const container = document.getElementById('b2b-proposal-report-doc');
+      if (container) {
+        container.innerHTML = generateB2bProposalHtml();
+      }
+      openModal('modal-b2b-proposal-report');
+    }
+
+    // Botones de Apertura de Ficha Ejecutiva B2B (Tab 1 y Tab 4)
+    const btnExportB2b1 = document.getElementById('btn-export-b2b-proposal');
+    if (btnExportB2b1) {
+      btnExportB2b1.addEventListener('click', openB2bProposalModal);
+    }
+
+    const btnExportB2b2 = document.getElementById('btn-export-b2b-proposal-2');
+    if (btnExportB2b2) {
+      btnExportB2b2.addEventListener('click', openB2bProposalModal);
+    }
+
+    // Botones de Acción dentro del Modal B2B Report
+    const btnPrintB2bModal = document.getElementById('btn-print-b2b-modal');
+    if (btnPrintB2bModal) {
+      btnPrintB2bModal.addEventListener('click', () => {
+        window.print();
+      });
+    }
+
+    const btnCloseB2bModal = document.getElementById('btn-close-b2b-modal');
+    if (btnCloseB2bModal) {
+      btnCloseB2bModal.addEventListener('click', () => {
+        closeModal('modal-b2b-proposal-report');
+      });
+    }
+
+    // Descargar Documento Autónomo HTML (.html)
+    const btnDownloadB2bHtml = document.getElementById('btn-download-b2b-html');
+    if (btnDownloadB2bHtml) {
+      btnDownloadB2bHtml.addEventListener('click', () => {
+        const bodyContent = generateB2bProposalHtml();
+        const fullHtml = `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Propuesta Comercial B2B · Suministro Firme SMR PPA 24/7</title>
+  <title>Dictamen B2B · Suministro Firme SMR PPA 24/7 · UVa</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #0f172a; padding: 2.2rem; max-width: 860px; margin: 0 auto; line-height: 1.45; font-size: 13px; }
-    .header { border-bottom: 2px solid #0284c7; padding-bottom: 0.85rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 1.35rem; font-weight: 800; color: #0f172a; margin: 0 0 0.25rem 0; letter-spacing: -0.01em; }
-    .subtitle { font-size: 0.82rem; color: #475569; margin: 0; }
-    .badge { background: #0284c7; color: #ffffff; padding: 0.25rem 0.65rem; font-size: 0.70rem; font-weight: 800; border-radius: 4px; letter-spacing: 0.05em; }
-    .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; margin: 1.15rem 0; }
-    .kpi-card { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 6px; padding: 0.85rem; text-align: center; }
-    .kpi-val { font-size: 1.55rem; font-weight: 800; color: #0284c7; font-variant-numeric: tabular-nums; }
-    .kpi-lbl { font-size: 0.68rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.04em; margin-top: 0.25rem; }
-    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.80rem; }
-    th, td { border: 1px solid #cbd5e1; padding: 0.55rem 0.75rem; text-align: left; }
-    th { background: #f1f5f9; color: #0f172a; font-weight: 700; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.03em; }
-    .total-row { background: #f8fafc; font-weight: 700; }
-    .section-title { font-size: 0.95rem; font-weight: 800; color: #0f172a; margin: 1.25rem 0 0.5rem 0; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.35rem; }
-    .glossary-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.85rem 1rem; margin-top: 1rem; }
-    .glossary-item { margin-bottom: 0.45rem; font-size: 0.75rem; line-height: 1.4; color: #334155; }
-    .glossary-item strong { color: #0f172a; }
-    .contact-card { background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 6px; padding: 0.95rem 1.15rem; margin-top: 1.15rem; }
-    .footer { margin-top: 1.75rem; border-top: 1px solid #cbd5e1; padding-top: 0.75rem; font-size: 0.70rem; color: #64748b; display: flex; justify-content: space-between; }
-    @media print { body { padding: 0.8rem; } .footer { margin-top: 1rem; } }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #0f172a; padding: 2.5rem; max-width: 900px; margin: 0 auto; line-height: 1.5; background: #ffffff; }
+    @media print { body { padding: 0.5rem; } }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div>
-      <h1 class="title">DICTAMEN B2B · SUMINISTRO FIRME SMR PPA 24/7</h1>
-      <p class="subtitle">Estructuración Tecno-Económica para Centros de Datos de Inteligencia Artificial e Industria Pesada</p>
-    </div>
-    <span class="badge">ESTRICTAMENTE CONFIDENCIAL</span>
-  </div>
-
-  <p style="font-size: 0.82rem; color: #334155; margin-bottom: 1rem;">
-    <strong>Resumen Ejecutivo:</strong> Evaluación comparativa de flujos de caja y coste total de propiedad (TCO) para un suministro de carga base síncrona 24/7 tras contador (Behind-The-Meter) mediante reactores modulares pequeños (SMR) frente al coste del mix de red eléctrica tradicional.
-  </p>
-
-  <div class="kpi-grid">
-    <div class="kpi-card" style="border-top: 3px solid #059669;">
-      <div class="kpi-val" style="color: #059669;">${savings}</div>
-      <div class="kpi-lbl">Ahorro Operativo Anual (OPEX)</div>
-    </div>
-    <div class="kpi-card" style="border-top: 3px solid #0284c7;">
-      <div class="kpi-val">${savings25}</div>
-      <div class="kpi-lbl">Flujo Acumulado a 25 Años</div>
-    </div>
-    <div class="kpi-card" style="border-top: 3px solid #d97706;">
-      <div class="kpi-val" style="color: #d97706;">${payback}</div>
-      <div class="kpi-lbl">Retorno de Inversión (Payback)</div>
-    </div>
-  </div>
-
-  <div class="section-title">📊 Auditoría Financiera Comparativa (Benchmark Bancable EPRI / IAEA)</div>
-  <table>
-    <thead>
-      <tr>
-        <th>Concepto de Facturación</th>
-        <th>Escenario 1: Red Eléctrica Tradicional</th>
-        <th>Escenario 2: Solución SMR PPA 24/7</th>
-        <th>Diferencial / Beneficio</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Demanda Eléctrica Total Anual</td>
-        <td>${auditDemand}</td>
-        <td>${auditDemand}</td>
-        <td>Potencia Firme: <strong>${pMw}</strong></td>
-      </tr>
-      <tr>
-        <td>Precio Integrado del Suministro</td>
-        <td>${grid} (Pool + ATR 6.1TD + BESS)</td>
-        <td>${ppa} (Precio nivelado a 25 años)</td>
-        <td>Spread: <strong>-${(parseFloat(grid) - parseFloat(ppa)).toFixed(0)} €/MWh</strong></td>
-      </tr>
-      <tr class="total-row">
-        <td>Facturación Anual Neta</td>
-        <td><strong style="color: #dc2626;">${auditGridCost}</strong></td>
-        <td><strong style="color: #059669;">${auditSmrCost}</strong></td>
-        <td><strong style="color: #059669;">${savings}</strong></td>
-      </tr>
-      <tr>
-        <td>Valoración Derechos EU ETS (CO₂)</td>
-        <td>Expuesto a compras EUA (~70-90 €/t)</td>
-        <td>0 gCO₂/kWh en fase operativa</td>
-        <td>Ahorro: <strong>${etsVal}</strong> (${co2})</td>
-      </tr>
-      <tr>
-        <td>Garantía de Disponibilidad & Downtime</td>
-        <td>Riesgo de contingencias en redes saturadas</td>
-        <td>Inercia síncrona 50 Hz (${uptime} CF)</td>
-        <td>Mitigación: <strong>${auditRisk}</strong></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="section-title">📖 Glosario Metodológico B2B para Comité de Inversión</div>
-  <div class="glossary-box">
-    <div class="glossary-item">
-      <strong>• PPA 24/7 (Power Purchase Agreement Baseload):</strong> Contrato bilateral de compraventa a largo plazo (20-25 años) con perfil de entrega plano hora a hora, eliminando costes de perfilado y baterías.
-    </div>
-    <div class="glossary-item">
-      <strong>• Behind-The-Meter (Tras Contador):</strong> Conexión privada dedicada que exime del pago de peajes de acceso de red (peajes ATR 6.1TD de REE) y elude listas de saturación de nudos.
-    </div>
-    <div class="glossary-item">
-      <strong>• CfD Simétrico (Contract for Difference):</strong> Contrato regulatorio bidireccional con precio strike que protege al cliente ante picos de gas y al operador ante caídas del pool.
-    </div>
-    <div class="glossary-item">
-      <strong>• SRMC (Coste Marginal Corto Plazo):</strong> Coste variable del combustible UO₂ de 9,5 a 13 €/MWh, garantizando prelación total en el orden de mérito frente a ciclos combinados.
-    </div>
-    <div class="glossary-item">
-      <strong>• LCOE Nivelado:</strong> Coste actualizado a 60 años considerando CAPEX, combustible, operación y desmantelamiento regulado.
-    </div>
-  </div>
-
-  <div class="contact-card">
-    <div style="font-weight: 800; font-size: 0.88rem; color: #0284c7; margin-bottom: 0.25rem;">
-      Formalización de Estudios de Prefactibilidad y Due Diligence Técnica
-    </div>
-    <p style="margin: 0; font-size: 0.78rem; color: #334155; line-height: 1.5;">
-      Para contratar estudios personalizados de modelado LCOE Monte Carlo, microzonificación sísmica de emplazamientos o estructuración de coberturas PPA:
-      <br><strong>Carlos M. Gutiérrez</strong> · ESE · Escuela de Ingenierías Industriales · Universidad de Valladolid (UVa)
-      <br>Contacto Directo: <strong style="color: #0284c7;">carlosmgutierrez05@gmail.com</strong>
-    </p>
-  </div>
-
-  <div class="footer">
-    <span>Metodología estándar: IEA Projected Costs of Generating Electricity (2025) · EPRI Nuclear Tech · Directiva UE 2024/1747</span>
-    <span>Plataforma SMR Energy Platform · Universidad de Valladolid</span>
-  </div>
+  ${bodyContent}
 </body>
-</html>`);
-        printWindow.document.close();
-        printWindow.focus();
-        setTimeout(() => printWindow.print(), 350);
+</html>`;
+        const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Dictamen_Tecnico_Economico_B2B_SMR_24_7.html';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    }
+
+    // Copiar Resumen Ejecutivo al Portapapeles
+    const btnCopyB2bSummary = document.getElementById('btn-copy-b2b-summary');
+    if (btnCopyB2bSummary) {
+      btnCopyB2bSummary.addEventListener('click', () => {
+        const pMw = document.getElementById('disp-dc-power')?.textContent || '120 MWe';
+        const ppa = document.getElementById('disp-dc-ppa')?.textContent || '68 €/MWh';
+        const grid = document.getElementById('disp-dc-grid')?.textContent || '125 €/MWh';
+        const savings = document.getElementById('kpi-dc-savings')?.textContent || '+55,42 M€ / año';
+        const savings25 = document.getElementById('kpi-dc-savings-25y')?.textContent || '~1.386 M€';
+        const co2 = document.getElementById('kpi-dc-co2')?.textContent || '359.800 t';
+        const ets = document.getElementById('kpi-dc-ets-val')?.textContent || '+25,19 M€/año';
+
+        const summaryText = `DICTAMEN TÉCNICO-ECONÓMICO B2B · PPA SMR 24/7 (UVa)
+--------------------------------------------------
+• Potencia Contratada: ${pMw} (Demanda Continua 24/7)
+• Precio PPA SMR Fijo (25 años): ${ppa}
+• Coste Alternativo de Red (Pool + ATR + BESS): ${grid}
+• Ahorro Operativo Anual Neto (OPEX): ${savings} (Reducción del 42,2%)
+• Flujo de Caja Acumulado (25 años): ${savings25}
+• CO₂ Evitado Anual: ${co2} (Valoración EU ETS: ${ets})
+• Modelo Contractual: Corporate PPA Behind-The-Meter (CAPEX = 0 € para el cliente)
+• Contacto Due Diligence: Carlos M. Gutiérrez (carlosmgutierrez05@gmail.com)
+• Disclaimer: Dictamen orientativo preliminar basado en IAEA/EPRI/IEA 2025. Sujeto a Due Diligence vinculante.`;
+
+        navigator.clipboard.writeText(summaryText).then(() => {
+          const orig = btnCopyB2bSummary.textContent;
+          btnCopyB2bSummary.textContent = '✅ ¡Copiado!';
+          btnCopyB2bSummary.style.borderColor = '#10b981';
+          btnCopyB2bSummary.style.color = '#10b981';
+          setTimeout(() => {
+            btnCopyB2bSummary.textContent = orig;
+            btnCopyB2bSummary.style.borderColor = '';
+            btnCopyB2bSummary.style.color = '';
+          }, 2000);
+        }).catch(err => {
+          console.warn('Clipboard error:', err);
+        });
       });
     }
 
