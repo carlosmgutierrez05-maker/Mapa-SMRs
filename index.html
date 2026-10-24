@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SMR-ENERGY ECONOMICS | Mapa Mundial y Hoja de Ruta Europea 2030-2040</title>
   
-  <!-- Tipografía moderna Google Fonts -->
+  <!-- Tipografía moderna Google Fonts (Inter, Outfit, JetBrains Mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
   
   <!-- Leaflet & MarkerCluster CSS desde CDN oficial -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
@@ -17,6 +17,8 @@
 
   <!-- Estilos de la aplicacion integrados (Autonomo sin carpetas) -->
   <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@500;600;700;800;900&display=swap');
+
 /* ==========================================================================
    SMR-ENERGY ECONOMICS | Visualizador Georreferenciado y Mercado Energético
    Estilos CSS Modernos, Dinámicos y de Alto Impacto Visual (Dark/Light Mode)
@@ -28,6 +30,10 @@
      PALETA CORPORATIVA SMR ENERGY UVa (Terminal Financiero & Energético)
      Modo Oscuro (Por defecto): Deep Navy & Slate
      ========================================================================= */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-display: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Menlo, Monaco, Consolas, monospace;
+
   --bg-primary: #070c16;
   --bg-secondary: #0d1527;
   --bg-card: rgba(15, 23, 42, 0.72);
@@ -139,7 +145,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-sans);
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.5;
@@ -149,8 +155,12 @@ body {
   flex-direction: column;
 }
 
-h1, h2, h3, h4, .brand-title {
-  font-family: 'Outfit', sans-serif;
+input, button, select, textarea {
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6, .brand-title {
+  font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.02em;
 }
@@ -4848,56 +4858,68 @@ body.drawer-open .map-countries-ribbon-wrapper {
 /* Hero de Ahorro Operativo y Rentabilidad B2B */
 .b2b-savings-hero-card,
 .b2b-savings-box {
-  background: rgba(5, 150, 105, 0.08);
-  border: 1px solid rgba(5, 150, 105, 0.35);
-  border-left: 4px solid #059669;
+  background: rgba(5, 150, 105, 0.10);
+  border: 1.5px solid rgba(5, 150, 105, 0.45);
+  border-left: 5px solid #059669;
   border-radius: var(--radius-md);
-  padding: 1.15rem 1.35rem;
+  padding: 1.25rem 1.45rem;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 12px -2px rgba(5, 150, 105, 0.15);
 }
 
 .b2b-savings-label {
   font-size: 0.68rem;
-  color: #059669;
+  color: #34d399;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-weight: 800;
   display: flex;
   align-items: center;
   gap: 0.45rem;
 }
 
 .b2b-savings-val {
-  font-size: 1.85rem;
+  font-size: 2.1rem;
   font-weight: 800;
-  font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+  font-family: var(--font-display);
   font-variant-numeric: tabular-nums;
-  color: #059669;
+  color: #34d399;
   line-height: 1.15;
-  margin: 0.3rem 0;
+  margin: 0.35rem 0 0.55rem 0;
   letter-spacing: -0.02em;
 }
 
 .b2b-savings-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(5, 150, 105, 0.25);
+}
+
+.b2b-savings-chip {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(5, 150, 105, 0.3);
+  border-radius: 6px;
+  padding: 0.45rem 0.65rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding-top: 0.55rem;
-  border-top: 1px solid rgba(5, 150, 105, 0.2);
-  font-size: 0.72rem;
-  color: var(--text-secondary);
+  flex-direction: column;
+}
+
+.b2b-chip-lbl {
+  font-size: 0.64rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
 }
 
 .b2b-savings-pill {
-  font-weight: 700;
+  font-weight: 800;
   font-family: var(--font-mono);
-  color: #059669;
-  background: rgba(5, 150, 105, 0.12);
-  padding: 0.15rem 0.5rem;
-  border-radius: 4px;
+  font-size: 0.95rem;
+  color: #34d399;
 }
 
 /* Tarjetas de Métricas Operativas (KPIs) */
@@ -4908,52 +4930,61 @@ body.drawer-open .map-countries-ribbon-wrapper {
 }
 
 .b2b-kpi-subcard {
-  background: rgba(0, 0, 0, 0.22);
-  border: 1px solid var(--border-color);
+  background: #1e293b;
+  border: 1px solid #334155;
   border-radius: var(--radius-md);
-  padding: 0.85rem 1rem;
+  padding: 0.90rem 1rem;
   display: flex;
   flex-direction: column;
-  transition: all var(--transition-fast);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
 }
 
 .b2b-kpi-subcard:hover {
-  border-color: rgba(2, 132, 199, 0.4);
+  border-color: #475569;
   transform: translateY(-1px);
 }
 
 .b2b-kpi-subcard-title {
-  font-size: 0.68rem;
-  color: #6b7280;
+  font-size: 0.66rem;
+  color: #94a3b8;
   text-transform: uppercase;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.30rem;
 }
 
 .b2b-kpi-subcard-val {
-  font-size: 1.30rem;
-  font-weight: 700;
-  color: #f1f5f9;
-  font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #f8fafc;
+  font-family: var(--font-display);
   font-variant-numeric: tabular-nums;
-  line-height: 1.2;
+  line-height: 1.15;
+  margin-bottom: 0.35rem;
 }
 
 .b2b-kpi-subcard-val.positive,
 .b2b-kpi-subcard-val.emerald {
-  color: #059669 !important;
+  color: #10b981 !important;
 }
 
 .b2b-kpi-subcard-val.cobalt {
-  color: #0284c7 !important;
+  color: #38bdf8 !important;
 }
 
 .b2b-kpi-subcard-sub {
-  font-size: 0.68rem;
-  color: #64748b;
-  margin-top: 0.25rem;
+  font-size: 0.70rem;
+  color: #94a3b8;
   line-height: 1.35;
+  padding-top: 0.35rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  margin-top: auto;
+}
+
+.b2b-kpi-subcard-sub strong {
+  color: #f1f5f9;
+  font-weight: 700;
 }
 
 /* =========================================================================
@@ -4962,55 +4993,357 @@ body.drawer-open .map-countries-ribbon-wrapper {
 .drawer-market-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.65rem;
-  margin-top: 0.75rem;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+@media (max-width: 480px) {
+  .drawer-market-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .drawer-market-card {
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-top: 3px solid #64748b;
   border-radius: var(--radius-md);
-  padding: 0.80rem 0.90rem;
+  padding: 0.85rem 1rem;
   display: flex;
   flex-direction: column;
-  transition: border-color var(--transition-fast);
+  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+}
+
+.drawer-market-card.srmc {
+  border-top-color: #64748b;
+}
+
+.drawer-market-card.rent {
+  border-top-color: #059669;
+}
+
+.drawer-market-card.ppa {
+  border-top-color: #0284c7;
+}
+
+.drawer-market-card.cfd {
+  border-top-color: #d97706;
 }
 
 .drawer-market-card:hover {
-  border-color: rgba(2, 132, 199, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.25);
+}
+
+.drawer-market-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
 }
 
 .drawer-market-lbl {
   font-size: 0.68rem;
-  color: #6b7280;
+  color: #94a3b8;
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.drawer-market-pill {
+  font-size: 0.58rem;
+  font-weight: 800;
+  padding: 0.12rem 0.45rem;
+  border-radius: 4px;
   letter-spacing: 0.04em;
-  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+}
+
+.drawer-market-pill.gray {
+  background: rgba(148, 163, 184, 0.15);
+  color: #cbd5e1;
+}
+
+.drawer-market-pill.emerald {
+  background: rgba(5, 150, 105, 0.20);
+  color: #34d399;
+}
+
+.drawer-market-pill.cobalt {
+  background: rgba(2, 132, 199, 0.20);
+  color: #38bdf8;
+}
+
+.drawer-market-pill.amber {
+  background: rgba(217, 119, 6, 0.20);
+  color: #fbbf24;
 }
 
 .drawer-market-val {
-  font-size: 1.25rem;
-  font-weight: 700;
-  font-family: 'Outfit', 'Inter', system-ui, sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  font-family: var(--font-display);
   font-variant-numeric: tabular-nums;
-  color: #f1f5f9;
-  line-height: 1.2;
-  margin: 0.15rem 0 0.1rem 0;
+  color: #f8fafc;
+  line-height: 1.15;
+  margin: 0.2rem 0 0.45rem 0;
+  letter-spacing: -0.01em;
 }
 
 .drawer-market-val.positive {
-  color: #059669 !important;
+  color: #10b981 !important;
 }
 
 .drawer-market-val.cobalt {
-  color: #0284c7 !important;
+  color: #38bdf8 !important;
 }
 
 .drawer-market-sub {
-  font-size: 0.65rem;
-  color: #64748b;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: #94a3b8;
+  padding-top: 0.45rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+  margin-top: auto;
+}
+
+.drawer-market-sub strong {
+  color: #f1f5f9;
+  font-weight: 700;
+}
+
+/* =========================================================================
+   PESTAÑA 1 B2B (DATA CENTERS & PPA 24/7) - ENTERPRISE FINTECH
+   ========================================================================= */
+.b2b-hero-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-left: 4px solid #0284c7;
+  border-radius: 8px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.15);
+}
+
+.b2b-hero-tag-row {
+  margin-bottom: 0.45rem;
+}
+
+.b2b-hero-title {
+  color: #f8fafc;
+  font-size: 1.12rem;
+  font-weight: 800;
+  font-family: var(--font-display);
+  margin: 0.2rem 0 0.5rem 0;
   line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.b2b-hero-lead {
+  font-size: 0.85rem;
+  line-height: 1.65;
+  color: #94a3b8;
+  margin: 0;
+  max-width: 950px;
+}
+
+.b2b-hero-lead strong {
+  color: #f1f5f9;
+  font-weight: 700;
+}
+
+/* Bandeja de Arquetipos Comerciales Rápidos */
+.b2b-archetypes-tray {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 0.65rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+}
+
+.archetype-label {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.archetype-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-dc-preset {
+  padding: 0.48rem 0.95rem;
+  font-size: 0.78rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  background: #1e293b;
+  border: 1px solid #475569;
+  color: #cbd5e1;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+}
+
+.btn-dc-preset:hover {
+  background: #334155;
+  color: #ffffff;
+  border-color: #0284c7;
+  transform: translateY(-1px);
+}
+
+.btn-dc-preset.active {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0284c7 !important;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+}
+
+/* Tarjetas de Parámetros Técnicos (Sliders) */
+.b2b-param-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 0.90rem 1.10rem;
+  margin-bottom: 0.90rem;
+  transition: border-color 0.2s ease;
+}
+
+.b2b-param-card:hover {
+  border-color: #475569;
+}
+
+.b2b-param-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.45rem;
+}
+
+.b2b-param-label {
+  font-size: 0.80rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: -0.01em;
+}
+
+.b2b-val-pill {
+  font-size: 0.88rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  padding: 0.20rem 0.60rem;
+  border-radius: 5px;
+  border: 1px solid transparent;
+}
+
+.b2b-val-pill.cobalt {
+  background: rgba(2, 132, 199, 0.2);
+  color: #38bdf8;
+  border-color: rgba(2, 132, 199, 0.4);
+}
+
+.b2b-val-pill.cyan {
+  background: rgba(6, 182, 212, 0.2);
+  color: #22d3ee;
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+.b2b-val-pill.slate {
+  background: rgba(148, 163, 184, 0.15);
+  color: #e2e8f0;
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.b2b-val-pill.amber {
+  background: rgba(217, 119, 6, 0.2);
+  color: #fbbf24;
+  border-color: rgba(217, 119, 6, 0.4);
+}
+
+.b2b-range-slider {
+  width: 100%;
+  height: 6px;
+  accent-color: #0284c7;
+  cursor: pointer;
+  margin: 0.35rem 0;
+}
+
+.b2b-insight-box {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 0.50rem 0.75rem;
+  margin-top: 0.50rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.50rem;
+  font-size: 0.74rem;
+  line-height: 1.45;
+  color: #94a3b8;
+}
+
+.b2b-insight-icon {
+  font-size: 0.85rem;
+  line-height: 1;
+  margin-top: 0.1rem;
+}
+
+.b2b-insight-text {
+  flex: 1;
+}
+
+.b2b-insight-text strong {
+  color: #f1f5f9;
+  font-weight: 700;
+}
+
+/* Due diligence badge */
+.b2b-badge-bancable {
+  font-size: 0.66rem;
+  color: #10b981;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 0.20rem 0.55rem;
+  border-radius: 4px;
+}
+
+.b2b-dossier-footer {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid #334155;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.b2b-dossier-hint {
+  font-size: 0.72rem;
+  color: #94a3b8;
+}
+
+.b2b-dossier-btn {
+  font-weight: 700;
+  padding: 0.45rem 1rem;
+  font-size: 0.78rem;
+  border-radius: 6px;
 }
 
 /* =========================================================================
@@ -5327,41 +5660,235 @@ li.b2b-case-feature-item {
 /* =========================================================================
    MODO CLARO (LIGHT THEME): RIGUROSO CONTRASTE WCAG AAA
    ========================================================================= */
+[data-theme="light"] .drawer-market-card {
+  background: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important;
+  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .drawer-market-card.srmc {
+  border-top: 3px solid #64748b !important;
+}
+
+[data-theme="light"] .drawer-market-card.rent {
+  border-top: 3px solid #059669 !important;
+}
+
+[data-theme="light"] .drawer-market-card.ppa {
+  border-top: 3px solid #0284c7 !important;
+}
+
+[data-theme="light"] .drawer-market-card.cfd {
+  border-top: 3px solid #d97706 !important;
+}
+
+[data-theme="light"] .drawer-market-lbl {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .drawer-market-pill.gray {
+  background: #f1f5f9 !important;
+  color: #475569 !important;
+}
+
+[data-theme="light"] .drawer-market-pill.emerald {
+  background: #ecfdf5 !important;
+  color: #059669 !important;
+}
+
+[data-theme="light"] .drawer-market-pill.cobalt {
+  background: #eff6ff !important;
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .drawer-market-pill.amber {
+  background: #fffbeb !important;
+  color: #d97706 !important;
+}
+
+[data-theme="light"] .drawer-market-val {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .drawer-market-val.positive {
+  color: #059669 !important;
+}
+
+[data-theme="light"] .drawer-market-val.cobalt {
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .drawer-market-sub {
+  color: #475569 !important;
+  border-top: 1px dashed #e2e8f0 !important;
+}
+
+[data-theme="light"] .drawer-market-sub strong {
+  color: #0f172a !important;
+}
+
+/* Light Mode Overrides for B2B Data Centers Tab */
+[data-theme="light"] .b2b-hero-card {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+  border-left: 4px solid #0284c7 !important;
+  box-shadow: 0 2px 6px -1px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .b2b-badge-neutral {
+  background: #eff6ff !important;
+  border: 1px solid #bfdbfe !important;
+  color: #1d4ed8 !important;
+}
+
+[data-theme="light"] .b2b-hero-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .b2b-hero-lead {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .b2b-hero-lead strong {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .b2b-archetypes-tray {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+[data-theme="light"] .archetype-label {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .btn-dc-preset {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+[data-theme="light"] .btn-dc-preset:hover {
+  background: #f1f5f9 !important;
+  border-color: #0284c7 !important;
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .btn-dc-preset.active {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25) !important;
+}
+
+[data-theme="light"] .b2b-card {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: 0 2px 8px -1px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .b2b-card-title {
+  color: #0f172a !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .b2b-badge-bancable {
+  background: #ecfdf5 !important;
+  border: 1px solid #a7f3d0 !important;
+  color: #059669 !important;
+}
+
+[data-theme="light"] .b2b-param-card {
+  background: #f8fafc !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+[data-theme="light"] .b2b-param-card:hover {
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] .b2b-param-label {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .b2b-val-pill.cobalt {
+  background: #eff6ff !important;
+  color: #1d4ed8 !important;
+  border-color: #bfdbfe !important;
+}
+
+[data-theme="light"] .b2b-val-pill.cyan {
+  background: #ecfeff !important;
+  color: #0e7490 !important;
+  border-color: #a5f3fc !important;
+}
+
+[data-theme="light"] .b2b-val-pill.slate {
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] .b2b-val-pill.amber {
+  background: #fffbeb !important;
+  color: #b45309 !important;
+  border-color: #fde68a !important;
+}
+
+[data-theme="light"] .b2b-insight-box {
+  background: #ffffff !important;
+  border: 1px solid #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+[data-theme="light"] .b2b-insight-text strong {
+  color: #0f172a !important;
+}
+
 [data-theme="light"] .b2b-savings-hero-card,
 [data-theme="light"] .b2b-savings-box {
-  background: #ecfdf5;
-  border-color: #a7f3d0;
-  border-left-color: #059669;
+  background: #f0fdf4 !important;
+  border: 1.5px solid #bbf7d0 !important;
+  border-left: 5px solid #059669 !important;
 }
 
 [data-theme="light"] .b2b-savings-label {
-  color: #047857;
+  color: #059669 !important;
 }
 
 [data-theme="light"] .b2b-savings-val {
-  color: #047857;
+  color: #059669 !important;
+}
+
+[data-theme="light"] .b2b-savings-meta {
+  border-top-color: #dcfce7 !important;
+}
+
+[data-theme="light"] .b2b-savings-chip {
+  background: #ffffff !important;
+  border-color: #bbf7d0 !important;
+}
+
+[data-theme="light"] .b2b-chip-lbl {
+  color: #64748b !important;
 }
 
 [data-theme="light"] .b2b-savings-pill {
-  background: #d1fae5;
-  color: #047857;
+  color: #059669 !important;
 }
 
 [data-theme="light"] .b2b-kpi-subcard {
-  background: #f8fafc;
-  border-color: #e2e8f0;
-}
-
-[data-theme="light"] .b2b-kpi-subcard:hover {
-  border-color: #0284c7;
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03) !important;
 }
 
 [data-theme="light"] .b2b-kpi-subcard-title {
-  color: #6b7280;
+  color: #64748b !important;
 }
 
 [data-theme="light"] .b2b-kpi-subcard-val {
-  color: #0f172a;
+  color: #0f172a !important;
 }
 
 [data-theme="light"] .b2b-kpi-subcard-val.positive,
@@ -5373,26 +5900,21 @@ li.b2b-case-feature-item {
   color: #0284c7 !important;
 }
 
-[data-theme="light"] .drawer-market-card {
-  background: #f8fafc;
-  border-color: #e2e8f0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+[data-theme="light"] .b2b-kpi-subcard-sub {
+  color: #64748b !important;
+  border-top: 1px dashed #f1f5f9 !important;
 }
 
-[data-theme="light"] .drawer-market-lbl {
-  color: #6b7280;
+[data-theme="light"] .b2b-kpi-subcard-sub strong {
+  color: #0f172a !important;
 }
 
-[data-theme="light"] .drawer-market-val {
-  color: #0f172a;
+[data-theme="light"] .b2b-dossier-footer {
+  border-top: 1px solid #e2e8f0 !important;
 }
 
-[data-theme="light"] .drawer-market-val.positive {
-  color: #059669 !important;
-}
-
-[data-theme="light"] .drawer-market-val.cobalt {
-  color: #0284c7 !important;
+[data-theme="light"] .b2b-dossier-hint {
+  color: #64748b !important;
 }
 
 [data-theme="light"] .b2b-case-card {
@@ -5978,27 +6500,50 @@ li.b2b-case-feature-item {
             </div>
           </div>
 
-          <!-- Métricas de Mercado Marginalista y Comercialización Corporativa -->
+          <!-- Métricas de Mercado Marginalista y Comercialización Corporativa (Bloomberg Terminal Grid) -->
           <div class="drawer-market-grid">
-            <div class="drawer-market-card">
-              <div class="drawer-market-lbl">Coste Marginal SRMC</div>
+            <div class="drawer-market-card srmc">
+              <div class="drawer-market-top">
+                <span class="drawer-market-lbl">Coste Marginal SRMC</span>
+                <span class="drawer-market-pill gray">DESPACHO</span>
+              </div>
               <div id="drawer-market-srmc" class="drawer-market-val">11,5 €/MWh</div>
-              <div class="drawer-market-sub">O&M var. + combustible (prioridad en pool)</div>
+              <div class="drawer-market-sub">
+                O&M var. + combustible (<strong>prioridad en pool</strong>)
+              </div>
             </div>
-            <div class="drawer-market-card">
-              <div class="drawer-market-lbl">Renta Inframarginal</div>
+
+            <div class="drawer-market-card rent">
+              <div class="drawer-market-top">
+                <span class="drawer-market-lbl emerald">Renta Inframarginal</span>
+                <span class="drawer-market-pill emerald">MARGEN</span>
+              </div>
               <div id="drawer-market-rent" class="drawer-market-val positive">+63,5 €/MWh</div>
-              <div class="drawer-market-sub">Margen capturado vs gas CCGT a 75 €/MWh</div>
+              <div class="drawer-market-sub">
+                Margen capturado vs <strong>gas CCGT a 75 €/MWh</strong>
+              </div>
             </div>
-            <div class="drawer-market-card">
-              <div class="drawer-market-lbl">Precio PPA 24/7 (Target)</div>
-              <div id="drawer-market-ppa" class="drawer-market-val">74 €/MWh</div>
-              <div class="drawer-market-sub">Sin penalización de almacenamiento BESS</div>
+
+            <div class="drawer-market-card ppa">
+              <div class="drawer-market-top">
+                <span class="drawer-market-lbl cobalt">Precio PPA 24/7 (Target)</span>
+                <span class="drawer-market-pill cobalt">FIRME</span>
+              </div>
+              <div id="drawer-market-ppa" class="drawer-market-val cobalt">74 €/MWh</div>
+              <div class="drawer-market-sub">
+                Suministro directo <strong>sin penalización BESS</strong>
+              </div>
             </div>
-            <div class="drawer-market-card">
-              <div class="drawer-market-lbl">Strike CfD Simétrico</div>
+
+            <div class="drawer-market-card cfd">
+              <div class="drawer-market-top">
+                <span class="drawer-market-lbl amber">Strike CfD Simétrico</span>
+                <span class="drawer-market-pill amber">REGULADO</span>
+              </div>
               <div id="drawer-market-cfd" class="drawer-market-val">68 €/MWh</div>
-              <div class="drawer-market-sub">Precio regulado que deriesga WACC hacia 4,5%</div>
+              <div class="drawer-market-sub">
+                Precio garantizado: <strong>WACC mitigado a 4,5%</strong>
+              </div>
             </div>
           </div>
         </div>
@@ -6242,24 +6787,26 @@ li.b2b-case-feature-item {
         <div id="pane-tab-dc" class="b2b-tab-pane active">
           
           <div class="b2b-hero-card">
-            <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
-              <div>
+            <div class="b2b-hero-header">
+              <div class="b2b-hero-text-wrap">
+                <div class="b2b-hero-tag-row">
+                  <span class="b2b-badge-neutral">
+                    🏢 ESTÁNDAR HYPERSCALE TIER III/IV
+                  </span>
+                </div>
                 <h3 class="b2b-hero-title">
                   Integración Estratégica: Supercomputación de IA y Suministro Eléctrico Firme Libre de Emisiones
                 </h3>
-                <p style="font-size: 0.78rem; color: var(--text-secondary); line-height: 1.55; margin: 0; max-width: 820px;">
-                  Las grandes corporaciones tecnológicas (<strong>Microsoft / Constellation</strong> en Crane Clean Energy Center, <strong>Amazon AWS / X-energy</strong> y <strong>Google / Kairos Power</strong>) están formalizando contratos bilaterales de compraventa de energía (PPA) indexados a reactores SMR para asegurar suministro de carga base continuo 24/7/365, eludiendo la saturación de los nudos de transporte y mitigando el riesgo de precios volátiles en los mercados mayoristas.
+                <p class="b2b-hero-lead">
+                  Las grandes corporaciones tecnológicas (<strong>Microsoft / Constellation</strong> en Crane Clean Energy Center, <strong>Amazon AWS / X-energy</strong> y <strong>Google / Kairos Power</strong>) están formalizando contratos bilaterales de compraventa de energía (<strong>Corporate PPA 24/7/365 tras contador</strong>) indexados a reactores SMR dedicados, eludiendo la <strong>saturación de los nudos de transporte</strong> de Red Eléctrica y mitigando el riesgo de precios volátiles en los mercados mayoristas.
                 </p>
               </div>
-              <span class="b2b-badge-neutral">
-                ESTÁNDAR HYPERSCALE TIER III/IV
-              </span>
             </div>
           </div>
 
           <!-- Selector de Arquetipos Comerciales Rápidos -->
-          <div class="b2b-archetypes-row">
-            <span class="archetype-label">Arquetipos Comerciales Rápidos:</span>
+          <div class="b2b-archetypes-tray">
+            <span class="archetype-label">⚡ Arquetipos Comerciales Rápidos:</span>
             <div class="archetype-buttons">
               <button type="button" class="btn-dc-preset active" data-power="120" data-ppa="68" data-grid="125" data-downtime="120">
                 🏢 Campus IA Hyperscale (120 MWe)
@@ -6282,40 +6829,56 @@ li.b2b-case-feature-item {
                 <span class="b2b-badge-cyan">ENERGÍA 24/7 TRAS CONTADOR</span>
               </h4>
 
-              <div class="calc-input-group" style="margin-bottom: 0.85rem;">
-                <div class="calc-label-row">
-                  <span style="font-size: 0.76rem; color: var(--text-secondary);">Potencia Requerida por el Campus:</span>
-                  <span id="disp-dc-power" class="calc-val-display b2b-val-highlight">120 MWe</span>
+              <!-- Parámetro 1: Potencia -->
+              <div class="b2b-param-card">
+                <div class="b2b-param-header">
+                  <label class="b2b-param-label" for="range-dc-power">Potencia Requerida por el Campus:</label>
+                  <span id="disp-dc-power" class="b2b-val-pill cobalt">120 MWe</span>
                 </div>
-                <input type="range" id="range-dc-power" min="20" max="400" step="5" value="120" style="width: 100%;">
-                <span class="calc-hint-text">Demanda base anual continua: 1.051.200 MWh/año (8.760 h/año continuas).</span>
+                <input type="range" id="range-dc-power" class="b2b-range-slider" min="20" max="400" step="5" value="120">
+                <div class="b2b-insight-box">
+                  <span class="b2b-insight-icon">⚡</span>
+                  <span class="b2b-insight-text">Demanda base continua: <strong id="disp-dc-demand-mwh">1.051.200 MWh/año</strong> (garantía de <strong>8.760 h/año</strong> ininterrumpidas a plena carga).</span>
+                </div>
               </div>
 
-              <div class="calc-input-group" style="margin-bottom: 0.85rem;">
-                <div class="calc-label-row">
-                  <span style="font-size: 0.76rem; color: var(--text-secondary);">Precio PPA SMR Acordado:</span>
-                  <span id="disp-dc-ppa" class="calc-val-display" style="color: var(--accent-cyan); font-weight: 700;">68 €/MWh</span>
+              <!-- Parámetro 2: PPA SMR -->
+              <div class="b2b-param-card">
+                <div class="b2b-param-header">
+                  <label class="b2b-param-label" for="range-dc-ppa">Precio PPA SMR Acordado (Strike Tras Contador):</label>
+                  <span id="disp-dc-ppa" class="b2b-val-pill cyan">68 €/MWh</span>
                 </div>
-                <input type="range" id="range-dc-ppa" min="50" max="95" step="1" value="68" style="width: 100%;">
-                <span class="calc-hint-text">Coste nivelado garantizado contractualmente a 20-25 años (sin indexación a gas).</span>
+                <input type="range" id="range-dc-ppa" class="b2b-range-slider" min="50" max="95" step="1" value="68">
+                <div class="b2b-insight-box">
+                  <span class="b2b-insight-icon">📜</span>
+                  <span class="b2b-insight-text">Coste nivelado garantizado contractualmente a <strong>20–25 años</strong> (<strong>sin indexación</strong> al gas natural ni volatilidad del pool).</span>
+                </div>
               </div>
 
-              <div class="calc-input-group" style="margin-bottom: 0.85rem;">
-                <div class="calc-label-row">
-                  <span style="font-size: 0.76rem; color: var(--text-secondary);">Coste Alternativo Red (OMIE + ATR 6.1TD + Respaldo BESS):</span>
-                  <span id="disp-dc-grid" class="calc-val-display b2b-val-highlight">125 €/MWh</span>
+              <!-- Parámetro 3: Red Alternativa -->
+              <div class="b2b-param-card">
+                <div class="b2b-param-header">
+                  <label class="b2b-param-label" for="range-dc-grid">Coste Alternativo Red (OMIE + ATR 6.1TD + BESS):</label>
+                  <span id="disp-dc-grid" class="b2b-val-pill slate">125 €/MWh</span>
                 </div>
-                <input type="range" id="range-dc-grid" min="80" max="160" step="5" value="125" style="width: 100%;">
-                <span class="calc-hint-text">Desglose: Pool OMIE 68 €/MWh + Peajes y cargos 19 €/MWh + BESS/Respaldo 38 €/MWh.</span>
+                <input type="range" id="range-dc-grid" class="b2b-range-slider" min="80" max="160" step="5" value="125">
+                <div class="b2b-insight-box">
+                  <span class="b2b-insight-icon">📊</span>
+                  <span class="b2b-insight-text">Desglose de Red: <strong>Pool OMIE 68 €/MWh</strong> + <strong>Peajes ATR 19 €/MWh</strong> + <strong>Baterías BESS 38 €/MWh</strong>.</span>
+                </div>
               </div>
 
-              <div class="calc-input-group">
-                <div class="calc-label-row">
-                  <span style="font-size: 0.76rem; color: var(--text-secondary);">Coste de Inoperatividad (Downtime IA):</span>
-                  <span id="disp-dc-downtime" class="calc-val-display b2b-val-highlight">120.000 €/h</span>
+              <!-- Parámetro 4: Downtime -->
+              <div class="b2b-param-card">
+                <div class="b2b-param-header">
+                  <label class="b2b-param-label" for="range-dc-downtime">Coste de Inoperatividad (Downtime GPU):</label>
+                  <span id="disp-dc-downtime" class="b2b-val-pill amber">120.000 €/h</span>
                 </div>
-                <input type="range" id="range-dc-downtime" min="20" max="250" step="10" value="120" style="width: 100%;">
-                <span class="calc-hint-text">Penalizaciones SLA por parada imprevista de clústeres GPU / aceleradores de IA.</span>
+                <input type="range" id="range-dc-downtime" class="b2b-range-slider" min="20" max="250" step="10" value="120">
+                <div class="b2b-insight-box">
+                  <span class="b2b-insight-icon">🛡️</span>
+                  <span class="b2b-insight-text">Penalizaciones SLA contractuales por <strong>inoperatividad de clústeres GPU / aceleradores de IA</strong> de misión crítica.</span>
+                </div>
               </div>
             </div>
 
@@ -6323,54 +6886,62 @@ li.b2b-case-feature-item {
             <div class="b2b-card">
               <h4 class="b2b-card-title">
                 <span>2. Métricas de Rentabilidad y Viabilidad</span>
-                <span style="font-size: 0.65rem; color: #10b981; font-weight: 700;">DUE DILIGENCE BANCABLE</span>
+                <span class="b2b-badge-bancable">DUE DILIGENCE BANCABLE</span>
               </h4>
 
+              <!-- Hero Box Ahorro Operativo -->
               <div class="b2b-savings-hero-card">
                 <div class="b2b-savings-label">
-                  <span>💼</span> Ahorro Operativo Anual Neto (OPEX SMR vs Mix de Red)
+                  <span>💼</span> AHORRO OPERATIVO ANUAL NETO (OPEX SMR VS MIX DE RED)
                 </div>
                 <div id="kpi-dc-savings" class="b2b-savings-val">
                   +55,43 M€ / año
                 </div>
                 <div class="b2b-savings-meta">
-                  <span>Flujo acumulado a 25 años: <strong id="kpi-dc-savings-25y" class="b2b-savings-pill">~1.386 M€</strong></span>
-                  <span>TIR Estimada Proyecto: <strong id="kpi-dc-tir" class="b2b-savings-pill">11,4%</strong></span>
+                  <div class="b2b-savings-chip">
+                    <span class="b2b-chip-lbl">Flujo acumulado a 25 años:</span>
+                    <strong id="kpi-dc-savings-25y" class="b2b-savings-pill">~1.386 M€</strong>
+                  </div>
+                  <div class="b2b-savings-chip">
+                    <span class="b2b-chip-lbl">TIR Estimada Proyecto:</span>
+                    <strong id="kpi-dc-tir" class="b2b-savings-pill">11,4%</strong>
+                  </div>
                 </div>
               </div>
 
+              <!-- Grid de KPIs 2x2 -->
               <div class="b2b-kpis-grid-2x2">
                 <div class="b2b-kpi-subcard">
                   <div class="b2b-kpi-subcard-title">Factor Disponibilidad (CF)</div>
                   <div id="kpi-dc-uptime" class="b2b-kpi-subcard-val">92,5%</div>
-                  <div class="b2b-kpi-subcard-sub">Carga base síncrona 24/7/365</div>
+                  <div class="b2b-kpi-subcard-sub">Carga base síncrona <strong>24/7/365</strong></div>
                 </div>
 
                 <div class="b2b-kpi-subcard">
                   <div class="b2b-kpi-subcard-title">Retorno Inversión (Payback)</div>
                   <div id="kpi-dc-payback" class="b2b-kpi-subcard-val cobalt">6,8 años</div>
-                  <div class="b2b-kpi-subcard-sub">vs. coste alternativo de red</div>
+                  <div class="b2b-kpi-subcard-sub">Amortización vs. <strong>coste de red</strong></div>
                 </div>
 
                 <div class="b2b-kpi-subcard">
                   <div class="b2b-kpi-subcard-title">CO₂ Evitado Anual</div>
                   <div id="kpi-dc-co2" class="b2b-kpi-subcard-val positive">359.800 t</div>
-                  <div class="b2b-kpi-subcard-sub">Factor marginal fósil: 0.37 t/MWh</div>
+                  <div class="b2b-kpi-subcard-sub">Factor marginal fósil: <strong>0.37 t/MWh</strong></div>
                 </div>
 
                 <div class="b2b-kpi-subcard">
                   <div class="b2b-kpi-subcard-title">Valor Derechos EU ETS</div>
                   <div id="kpi-dc-ets-val" class="b2b-kpi-subcard-val positive">+25,19 M€/año</div>
-                  <div class="b2b-kpi-subcard-sub">Ahorro a 70 €/tCO₂ EUA</div>
+                  <div class="b2b-kpi-subcard-sub">Ahorro valorado a <strong>70 €/tCO₂ EUA</strong></div>
                 </div>
               </div>
 
               <!-- Botón Descargar Propuesta Comercial -->
-              <div style="margin-top: 0.85rem; padding-top: 0.75rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;">
-                <span style="font-size: 0.68rem; color: var(--text-secondary);">
-                  ¿Requiere dossier para Comité de Inversión?
+              <div class="b2b-dossier-footer">
+                <span class="b2b-dossier-hint">
+                  ¿Requiere dossier técnico para Comité de Inversión?
                 </span>
-                <button type="button" id="btn-export-b2b-proposal" class="btn btn-primary" style="font-weight: 700; padding: 0.35rem 0.8rem; font-size: 0.75rem;">
+                <button type="button" id="btn-export-b2b-proposal" class="btn btn-primary b2b-dossier-btn">
                   📄 Ficha Ejecutiva B2B (PDF)
                 </button>
               </div>
@@ -11854,6 +12425,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const cfSmr = 0.925; // Factor de capacidad real considerando paradas programadas de recarga
       const annualHours = 8760;
       const totalDemandMWh = pMw * annualHours; // Demanda 24/7 constante del campus
+      
+      const elDemand = document.getElementById('disp-dc-demand-mwh');
+      if (elDemand) elDemand.textContent = Math.round(totalDemandMWh).toLocaleString('es-ES') + ' MWh/año';
       
       const energySmrMWh = totalDemandMWh * cfSmr; // Energía suministrada directamente por el reactor
       const energyBackupMWh = totalDemandMWh * (1 - cfSmr); // Energía de respaldo de red durante parada de recarga
