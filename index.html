@@ -12837,6 +12837,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
+    modal.classList.remove('open');
+  }
+
   function initEventListeners() {
     // 1. Leyenda Interactiva (Filtro por Clic y Minimizar)
     const legendItems = document.querySelectorAll('.interactive-legend-item');
@@ -13748,7 +13754,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+    document.querySelectorAll('.modal-backdrop, .report-modal-backdrop').forEach(backdrop => {
       backdrop.addEventListener('click', (e) => {
         if (e.target === backdrop) backdrop.classList.remove('open');
       });
@@ -13808,7 +13814,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeProjectDrawer();
-        document.querySelectorAll('.modal-backdrop.open').forEach(m => m.classList.remove('open'));
+        document.querySelectorAll('.modal-backdrop.open, .report-modal-backdrop.open').forEach(m => m.classList.remove('open'));
       }
     });
   }
