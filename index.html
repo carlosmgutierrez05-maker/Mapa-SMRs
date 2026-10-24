@@ -6575,11 +6575,8 @@ li.b2b-case-feature-item {
 
       <div class="header-divider"></div>
 
-      <!-- Grupo 2: Ingeniería & Análisis Europeo -->
+      <!-- Grupo 2: Análisis Estratégico Europeo & Mercado -->
       <div class="header-btn-group">
-        <button id="btn-open-smr-3d" class="btn btn-secondary" title="Explorador 3D interactivo de componentes nucleares y balance de planta">
-          <span class="btn-icon-glyph">🔬</span> 3D SMR
-        </button>
         <button id="btn-open-eu-strategy" class="btn btn-secondary" title="Estrategia de la Comisión Europea y Alianza Industrial SMR">
           <span class="btn-icon-glyph">🇪🇺</span> Alianza UE
         </button>
@@ -7304,9 +7301,6 @@ li.b2b-case-feature-item {
           <button id="btn-load-calc-from-drawer" class="btn btn-primary" style="width: 100%; justify-content: center;">
             🧮 Simular Parámetros en Calculadora LCOE
           </button>
-          <a href="explorador-smr-3d.html" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center; text-decoration: none; background: rgba(56, 189, 248, 0.12); border-color: rgba(56, 189, 248, 0.35); color: var(--accent-cyan); font-weight: 700;" title="Abrir el simulador 3D para ver este SMR por dentro y su entorno">
-            🔬 Inspeccionar este Reactor en 3D
-          </a>
         </div>
 
       </div>
@@ -13324,13 +13318,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // 9. Botones de Cabecera (Modales y Explorador 3D)
-    const btnSmr3d = document.getElementById('btn-open-smr-3d');
-    if (btnSmr3d) {
-      btnSmr3d.addEventListener('click', () => {
-        window.open('explorador-smr-3d.html', '_blank');
-      });
-    }
+    // 9. Botones de Cabecera (Modales)
 
     const btnEuStrategy = document.getElementById('btn-open-eu-strategy');
     if (btnEuStrategy) btnEuStrategy.addEventListener('click', () => openModal('modal-eu-strategy'));
