@@ -3800,10 +3800,14 @@ body.drawer-open .map-countries-ribbon-wrapper {
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
   z-index: 99999 !important;
-  display: flex;
+  display: none !important;
   align-items: center;
   justify-content: center;
   padding: 1.25rem;
+}
+
+.report-modal-backdrop.open {
+  display: flex !important;
 }
 
 .report-modal-container {
@@ -8272,7 +8276,7 @@ li.b2b-case-feature-item {
   <!-- =========================================================================
        MODAL: FICHA EJECUTIVA B2B · DICTAMEN TÉCNICO-ECONÓMICO PPA SMR 24/7
        ========================================================================= -->
-  <div id="modal-b2b-proposal-report" class="report-modal-backdrop">
+  <div id="modal-b2b-proposal-report" class="report-modal-backdrop" style="display: none;">
     <div class="report-modal-container">
       
       <!-- Report Modal Action Bar (Fixed Top) -->
@@ -12830,6 +12834,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function openModal(modalId) {
     const modal = document.getElementById(modalId);
     if (!modal) return;
+    modal.style.display = 'flex';
     modal.classList.add('open');
 
     if (modalId === 'modal-charts') {
@@ -12840,6 +12845,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     if (!modal) return;
+    modal.style.display = 'none';
     modal.classList.remove('open');
   }
 
@@ -13566,6 +13572,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Apertura del Modal de Ficha Ejecutiva B2B
     function openB2bProposalModal() {
+      updateDataCenterKpis();
       const container = document.getElementById('b2b-proposal-report-doc');
       if (container) {
         container.innerHTML = generateB2bProposalHtml();
@@ -13749,14 +13756,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cerrar Modales
     document.querySelectorAll('.btn-close-modal').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        const modal = e.target.closest('.modal-backdrop');
-        if (modal) modal.classList.remove('open');
+        const modal = e.target.closest('.modal-backdrop, .report-modal-backdrop');
+        if (modal) {
+          modal.classList.remove('open');
+          modal.style.display = 'none';
+        }
       });
     });
 
     document.querySelectorAll('.modal-backdrop, .report-modal-backdrop').forEach(backdrop => {
       backdrop.addEventListener('click', (e) => {
-        if (e.target === backdrop) backdrop.classList.remove('open');
+        if (e.target === backdrop) {
+          backdrop.classList.remove('open');
+          backdrop.style.display = 'none';
+        }
       });
     });
 
@@ -13814,7 +13827,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeProjectDrawer();
-        document.querySelectorAll('.modal-backdrop.open, .report-modal-backdrop.open').forEach(m => m.classList.remove('open'));
+        document.querySelectorAll('.modal-backdrop.open, .report-modal-backdrop.open, #modal-b2b-proposal-report, #modal-engineering-report').forEach(m => {
+          m.classList.remove('open');
+          m.style.display = 'none';
+        });
       }
     });
   }
