@@ -5977,6 +5977,418 @@ li.b2b-case-feature-item {
   color: #0f172a;
 }
 
+/* =========================================================================
+   TABLA DE AUDITORÍA FINANCIERA COMPARATIVA (Pestaña 1 B2B)
+   ========================================================================= */
+.b2b-audit-table-card {
+  margin-top: 1.25rem;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+}
+
+.b2b-audit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.65rem;
+}
+
+.b2b-audit-title {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.b2b-audit-pill {
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 0.20rem 0.60rem;
+  border-radius: 4px;
+  background: rgba(2, 132, 199, 0.15);
+  border: 1px solid rgba(2, 132, 199, 0.35);
+  color: #38bdf8;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.b2b-audit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.b2b-audit-col {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.b2b-audit-col.grid-side {
+  border-top: 3px solid #64748b;
+}
+
+.b2b-audit-col.smr-side {
+  border-top: 3px solid #059669;
+}
+
+.b2b-audit-col-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: #f1f5f9;
+}
+
+.b2b-audit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.76rem;
+  padding: 0.38rem 0;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.07);
+  color: #94a3b8;
+}
+
+.b2b-audit-row strong {
+  font-family: var(--font-mono);
+  color: #f8fafc;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.b2b-audit-row.total {
+  margin-top: 0.45rem;
+  padding-top: 0.55rem;
+  border-bottom: none;
+  border-top: 1px solid #334155;
+  font-weight: 700;
+  color: #f8fafc;
+  font-size: 0.82rem;
+}
+
+.b2b-audit-row.total strong {
+  color: #38bdf8;
+  font-size: 0.92rem;
+}
+
+.b2b-audit-col.smr-side .b2b-audit-row.total strong {
+  color: #34d399;
+}
+
+.b2b-audit-subtext {
+  font-size: 0.68rem;
+  color: #64748b;
+  font-style: italic;
+  margin-top: 0.55rem;
+  line-height: 1.35;
+}
+
+.b2b-audit-differential-strip {
+  margin-top: 1rem;
+  padding: 0.85rem 1.15rem;
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.b2b-diff-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.b2b-diff-lbl {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.b2b-diff-val {
+  font-size: 1.18rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.b2b-diff-val.positive {
+  color: #10b981;
+}
+
+.b2b-diff-val.emerald {
+  color: #34d399;
+}
+
+.b2b-diff-val.amber {
+  color: #fbbf24;
+}
+
+/* =========================================================================
+   GLOSARIO Y MARCO METODOLÓGICO B2B (Pestaña 3)
+   ========================================================================= */
+.b2b-glossary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+}
+
+.b2b-glossary-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.06);
+}
+
+.b2b-glossary-card-header {
+  margin-bottom: 1rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid #334155;
+}
+
+.b2b-glossary-tag {
+  font-size: 0.62rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.50rem;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 0.35rem;
+}
+
+.b2b-glossary-tag.fin {
+  background: rgba(2, 132, 199, 0.15);
+  border: 1px solid rgba(2, 132, 199, 0.35);
+  color: #38bdf8;
+}
+
+.b2b-glossary-tag.mkt {
+  background: rgba(5, 150, 105, 0.15);
+  border: 1px solid rgba(5, 150, 105, 0.35);
+  color: #34d399;
+}
+
+.b2b-glossary-tag.tech {
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  color: #c084fc;
+}
+
+.b2b-glossary-card-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.b2b-glossary-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+}
+
+.glossary-item {
+  border-left: 2px solid #334155;
+  padding-left: 0.75rem;
+  transition: border-color 0.2s ease;
+}
+
+.glossary-item:hover {
+  border-left-color: #0284c7;
+}
+
+.glossary-term-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.25rem;
+}
+
+.glossary-term {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.glossary-badge {
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: #0f172a;
+  border: 1px solid #334155;
+  padding: 0.10rem 0.40rem;
+  border-radius: 3px;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.glossary-def {
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.glossary-def em {
+  color: #cbd5e1;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .b2b-audit-grid {
+    grid-template-columns: 1fr;
+  }
+  .b2b-audit-differential-strip {
+    grid-template-columns: 1fr;
+  }
+  .b2b-glossary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================================
+   REGLAS LIGHT MODE PARA AUDITORÍA Y GLOSARIO B2B [data-theme="light"]
+   ========================================================================= */
+[data-theme="light"] .b2b-audit-table-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .b2b-audit-header {
+  border-bottom-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .b2b-audit-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .b2b-audit-pill {
+  background: #f0f9ff !important;
+  border-color: #bae6fd !important;
+  color: #0369a1 !important;
+}
+
+[data-theme="light"] .b2b-audit-col {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .b2b-audit-col-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .b2b-audit-row {
+  border-bottom-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+[data-theme="light"] .b2b-audit-row strong {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .b2b-audit-row.total {
+  border-top-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .b2b-audit-row.total strong {
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .b2b-audit-col.smr-side .b2b-audit-row.total strong {
+  color: #059669 !important;
+}
+
+[data-theme="light"] .b2b-audit-subtext {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .b2b-audit-differential-strip {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .b2b-diff-lbl {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .b2b-glossary-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .b2b-glossary-card-header {
+  border-bottom-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .b2b-glossary-tag.fin {
+  background: #f0f9ff !important;
+  border-color: #bae6fd !important;
+  color: #0369a1 !important;
+}
+
+[data-theme="light"] .b2b-glossary-tag.mkt {
+  background: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+  color: #059669 !important;
+}
+
+[data-theme="light"] .b2b-glossary-tag.tech {
+  background: #faf5ff !important;
+  border-color: #e9d5ff !important;
+  color: #7e22ce !important;
+}
+
+[data-theme="light"] .b2b-glossary-card-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .glossary-item {
+  border-left-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .glossary-item:hover {
+  border-left-color: #0284c7 !important;
+}
+
+[data-theme="light"] .glossary-term {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .glossary-badge {
+  background: #f1f5f9 !important;
+  border-color: #cbd5e1 !important;
+  color: #475569 !important;
+}
+
+[data-theme="light"] .glossary-def {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .glossary-def em {
+  color: #0f172a !important;
+}
+
+
 
 
 
@@ -6770,10 +7182,13 @@ li.b2b-case-feature-item {
         <!-- Pestañas Corporativas -->
         <div class="b2b-tabs-bar">
           <button class="b2b-tab-btn active" data-b2btab="tab-dc">
-            Campus de Datos & IA (PPA 24/7)
+            Campus de Datos & IA (Simulador PPA 24/7)
           </button>
           <button class="b2b-tab-btn" data-b2btab="tab-ind">
             Descarbonización Industrial & Casos en España
+          </button>
+          <button class="b2b-tab-btn" data-b2btab="tab-glossary">
+            📖 Glosario & Marco Metodológico B2B
           </button>
           <button class="b2b-tab-btn" data-b2btab="tab-consulting">
             Servicios de Asesoría Técnica & Due Diligence
@@ -6947,6 +7362,68 @@ li.b2b-case-feature-item {
 
           </div>
 
+          <!-- Tabla de Auditoría Financiera Comparativa (Red vs SMR Behind-The-Meter) -->
+          <div class="b2b-audit-table-card">
+            <div class="b2b-audit-header">
+              <span class="b2b-audit-title">📊 Auditoría de Flujos de Caja y Ahorro Operativo Anual (Estándar EPRI / IAEA)</span>
+              <span class="b2b-audit-pill">BENCHMARK BANCABLE</span>
+            </div>
+            
+            <div class="b2b-audit-grid">
+              <!-- Columna Red -->
+              <div class="b2b-audit-col grid-side">
+                <div class="b2b-audit-col-title">Escenario 1: Mix de Red Eléctrica Tradicional</div>
+                <div class="b2b-audit-row">
+                  <span>Demanda Anual Total:</span>
+                  <strong id="audit-demand-mwh">1.051.200 MWh</strong>
+                </div>
+                <div class="b2b-audit-row">
+                  <span>Tarifa Integrada de Red:</span>
+                  <strong id="audit-grid-rate">125 €/MWh</strong>
+                </div>
+                <div class="b2b-audit-row total">
+                  <span>Facturación Anual de Red:</span>
+                  <strong id="audit-grid-cost">131,40 M€/año</strong>
+                </div>
+                <div class="b2b-audit-subtext">Pool OMIE (68 €) + Peajes ATR 6.1TD (19 €) + Baterías BESS (38 €)</div>
+              </div>
+
+              <!-- Columna SMR -->
+              <div class="b2b-audit-col smr-side">
+                <div class="b2b-audit-col-title">Escenario 2: Solución SMR PPA 24/7 (Behind-The-Meter)</div>
+                <div class="b2b-audit-row">
+                  <span>Suministro SMR Directo (92,5% CF):</span>
+                  <strong id="audit-smr-mwh">972.360 MWh</strong>
+                </div>
+                <div class="b2b-audit-row">
+                  <span>Respaldo en Parada Programada (7,5%):</span>
+                  <strong id="audit-backup-mwh">78.840 MWh</strong>
+                </div>
+                <div class="b2b-audit-row total">
+                  <span>Coste Anual PPA SMR + Red:</span>
+                  <strong id="audit-smr-cost">75,98 M€/año</strong>
+                </div>
+                <div class="b2b-audit-subtext">Precio PPA cerrado a 20-25 años (sin indexación a gas ni mercado mayorista)</div>
+              </div>
+            </div>
+
+            <!-- Franja Diferencial de Ahorro Integral -->
+            <div class="b2b-audit-differential-strip">
+              <div class="b2b-diff-item">
+                <span class="b2b-diff-lbl">Ahorro OPEX Neto en Factura:</span>
+                <span id="audit-net-savings" class="b2b-diff-val positive">+55,42 M€/año</span>
+              </div>
+              <div class="b2b-diff-item">
+                <span class="b2b-diff-lbl">Valoración Derechos EU ETS:</span>
+                <span id="audit-ets-savings" class="b2b-diff-val emerald">+25,18 M€/año</span>
+              </div>
+              <div class="b2b-diff-item">
+                <span class="b2b-diff-lbl">Riesgo Downtime GPU Mitigado:</span>
+                <span id="audit-risk-savings" class="b2b-diff-val amber">+2,40 M€/año</span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <!-- PESTAÑA 2: Descarbonización Industrial & Casos en España -->
@@ -7052,7 +7529,212 @@ li.b2b-case-feature-item {
           </div>
         </div>
 
-        <!-- PESTAÑA 3: Consultoría & Lead Magnet -->
+        <!-- PESTAÑA 3: Glosario & Marco Metodológico B2B -->
+        <div id="pane-tab-glossary" class="b2b-tab-pane">
+          
+          <div class="b2b-hero-card" style="margin-bottom: 1.25rem;">
+            <div class="b2b-hero-header">
+              <div class="b2b-hero-text-wrap">
+                <div class="b2b-hero-tag-row">
+                  <span class="b2b-badge-cyan">ESTÁNDAR METODOLÓGICO BANCABLE · IAEA / EPRI / IEA</span>
+                </div>
+                <h3 class="b2b-hero-title">
+                  Glosario de Términos Económicos, Regulatorios y Tecnológicos B2B
+                </h3>
+                <p class="b2b-hero-lead">
+                  Guía conceptual exhaustiva para comités de inversión, operadores de centros de datos hiperescala y directores de energía industrial. Define con rigor los mecanismos de fijación de precio, estructuración de coberturas a largo plazo, mitigación de riesgos de red y balance tecno-económico de los reactores modulares (SMR).
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="b2b-glossary-grid">
+            
+            <!-- Columna 1: Finanzas & PPA -->
+            <div class="b2b-glossary-card">
+              <div class="b2b-glossary-card-header">
+                <span class="b2b-glossary-tag fin">FINANZAS & CONTRATACIÓN PPA</span>
+                <h4 class="b2b-glossary-card-title">Estructuración Financiera</h4>
+              </div>
+
+              <div class="b2b-glossary-list">
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">PPA 24/7 (Power Purchase Agreement)</span>
+                    <span class="glossary-badge">Contrato</span>
+                  </div>
+                  <p class="glossary-def">
+                    Acuerdo bilateral de compraventa de energía a largo plazo (15–25 años) con perfil de entrega plano hora a hora (<em>hourly matching</em> 24/7/365). A diferencia de los PPAs renovables intermitentes, elimina la necesidad de costosos seguros de perfilado volumétrico o baterías químicas de respaldo.
+                  </p>
+                </div>
+
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">Behind-The-Meter (Tras Contador)</span>
+                    <span class="glossary-badge">Red</span>
+                  </div>
+                  <p class="glossary-def">
+                    Esquema de suministro directo donde la central generadora y el campus de consumo se conectan mediante línea dedicada privada sin transitar por la red pública (REE / i-DE). Exime del pago de peajes de acceso (ATR 6.1TD), recargos del sistema eléctrico y pérdidas de transporte.
+                  </p>
+                </div>
+
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">LCOE (Levelized Cost of Electricity)</span>
+                    <span class="glossary-badge">Métrica</span>
+                  </div>
+                  <p class="glossary-def">
+                    Coste nivelado de generación por MWh calculado como el cociente entre el sumatorio actualizado de flujos de coste (CAPEX, OPEX fijo/variable, combustible nuclear enriquecido y fondo de desmantelamiento) y la producción eléctrica neta a lo largo de 60 años de vida operativa.
+                  </p>
+                </div>
+
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">DSCR (Debt Service Coverage Ratio)</span>
+                    <span class="glossary-badge">Bancabilidad</span>
+                  </div>
+                  <p class="glossary-def">
+                    Ratio de cobertura del servicio de la deuda (Flujo de Caja Operativo / Deuda Anual). Un PPA 24/7 cerrado con un <em>offtaker</em> con calificación crediticia <em>investment grade</em> (A+/AAA) permite optimizar el apalancamiento bancario con DSCRs robustos de 1.25x–1.35x.
+                  </p>
+                </div>
+
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">WACC (Coste Ponderado de Capital)</span>
+                    <span class="glossary-badge">Rendimiento</span>
+                  </div>
+                  <p class="glossary-def">
+                    Tasa de descuento de los flujos de capital. La certidumbre a 25 años del PPA y la inclusión de los SMR en la Taxonomía Verde Europea permiten captar financiación con WACC reducido del 6.0%–7.0%, frente al 9%–11% de proyectos expuestos a la volatilidad del pool.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Columna 2: Mercado & Regulación -->
+            <div class="b2b-glossary-card">
+              <div class="b2b-glossary-card-header">
+                <span class="b2b-glossary-tag mkt">MERCADO MAYORISTA & CARBONO</span>
+                <h4 class="b2b-glossary-card-title">Mecanismos de Mercado & CO₂</h4>
+              </div>
+
+              <div class="b2b-glossary-list">
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">SRMC (Short-Run Marginal Cost)</span>
+                    <span class="glossary-badge">Coste</span>
+                  </div>
+                  <p class="glossary-def">
+                    Coste marginal a corto plazo. En reactores SMR se sitúa entre 9,5 y 13,0 €/MWh (combustible UO₂ + consumibles y O&M variable), lo que posiciona a la tecnología en la base del orden de mérito de despacho del mercado diario (OMIE).
+                  </p>
+                </div>
+
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">Renta Inframarginal</span>
+                    <span class="glossary-badge">Margen</span>
+                  </div>
+                  <p class="glossary-def">
+                    Beneficio bruto obtenido por centrales inframarginales cuando el precio marginal de casación horario lo marca una tecnología fósil de mayor coste (ciclos combinados de gas natural indexados a MibGas/TTF y con derechos de CO₂).
+                  </p>
+                </div>
+
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">CfD Simétrico (Contract for Difference)</span>
+                    <span class="glossary-badge">Regulación</span>
+                  </div>
+                  <p class="glossary-def">
+                    Mecanismo regulatorio bidireccional promovido por la Reforma del Mercado Eléctrico de la UE (Directiva 2024/1747). Si el pool cotiza bajo el <em>strike price</em>, el operador cobra la diferencia; si cotiza por encima, devuelve el exceso, estabilizando tarifas para consumidores electrointensivos.
+                  </p>
+                </div>
+
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">EU ETS (Mercado de Derechos CO₂)</span>
+                    <span class="glossary-badge">Emisiones</span>
+                  </div>
+                  <p class="glossary-def">
+                    Régimen Europeo de Comercio de Derechos de Emisión (EUA). La generación nuclear SMR certifica 0 gCO₂/kWh en operación directa, eximiendo a la industria de comprar derechos de carbono (valorados en ~70–90 €/tCO₂), generando un ahorro multimillonario contrastable.
+                  </p>
+                </div>
+
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">BESS vs. Firmeza SMR (Almacenamiento)</span>
+                    <span class="glossary-badge">Comparativa</span>
+                  </div>
+                  <p class="glossary-def">
+                    Sistemas de almacenamiento en baterías químicas (Li-Ion). Garantizar un suministro 100% firme con renovables intermitentes exige entre 8 y 16 horas de capacidad de almacenamiento BESS, agregando un sobrecoste nivelado de 35–65 €/MWh y degradación cíclica en 10–12 años.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Columna 3: Ingeniería & Red -->
+            <div class="b2b-glossary-card">
+              <div class="b2b-glossary-card-header">
+                <span class="b2b-glossary-tag tech">TECNOLOGÍA SMR & RED</span>
+                <h4 class="b2b-glossary-card-title">Ingeniería & Seguridad Pasiva</h4>
+              </div>
+
+              <div class="b2b-glossary-list">
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">Factor de Capacidad (CF > 92%)</span>
+                    <span class="glossary-badge">Disponibilidad</span>
+                  </div>
+                  <p class="glossary-def">
+                    Porcentaje de energía eléctrica neta suministrada respecto a la potencia instalada nominal en un año. Los SMR modernos superan el 92%–95% de disponibilidad ininterrumpida, con recargas de combustible programadas cada 24–36 meses (frente al 22%–28% solar y 32%–40% eólico).
+                  </p>
+                </div>
+
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">FOAK vs. NOAK (Curva de Aprendizaje)</span>
+                    <span class="glossary-badge">Modularidad</span>
+                  </div>
+                  <p class="glossary-def">
+                    <em>First-of-a-Kind</em> (primer reactor comercial prototipo, con mayor coste por licenciamiento y adaptación de fábricas) vs. <em>Nth-of-a-Kind</em> (unidades fabricadas en serie a partir de la 4ª–8ª réplica modular), logrando reducciones del CAPEX overnight del 35% al 45%.
+                  </p>
+                </div>
+
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">Seguridad Pasiva "Walk-Away Safe"</span>
+                    <span class="glossary-badge">Seguridad</span>
+                  </div>
+                  <p class="glossary-def">
+                    Diseño nuclear donde la evacuación del calor residual tras parada de emergencia se produce por leyes físicas naturales (circulación por convección, gravedad y enfriamiento atmosférico) sin necesidad de energía externa (AC/DC), bombas mecánicas ni acción humana durante más de 7 días.
+                  </p>
+                </div>
+
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">Inercia Síncrona Física (50 Hz)</span>
+                    <span class="glossary-badge">Estabilidad</span>
+                  </div>
+                  <p class="glossary-def">
+                    Energía cinética rotacional almacenada en las grandes masas giratorias de la turbina-alternador de vapor. Aporta resistencia inmediata ante desviaciones bruscas de frecuencia en la red, protegiendo las fuentes de alimentación críticas de clusters de GPUs y procesadores IA.
+                  </p>
+                </div>
+
+                <div class="glossary-item">
+                  <div class="glossary-term-row">
+                    <span class="glossary-term">Cogeneración Térmica (Heat Offtake)</span>
+                    <span class="glossary-badge">Vapor</span>
+                  </div>
+                  <p class="glossary-def">
+                    Extracción de vapor de proceso a alta temperatura (280°C en PWR modulares y hasta 550°C–750°C en reactores HTGR de gas y sales fundidas). Permite descarbonizar hornos, secaderos petroquímicos y electrolizadores SOEC para producción eficiente de hidrógeno verde.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- PESTAÑA 4: Consultoría & Lead Magnet -->
         <div id="pane-tab-consulting" class="b2b-tab-pane">
           
           <div class="lead-magnet-card" style="text-align: center;">
@@ -12480,6 +13162,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const elRisk = document.getElementById('kpi-dc-risk-saved');
       if (elRisk) elRisk.textContent = '+' + riskSavedM.toFixed(2).replace('.', ',') + ' M€/año';
+
+      // Actualizar Tabla de Auditoría Financiera Comparativa (Benchmark Bancable)
+      const elAuditDemand = document.getElementById('audit-demand-mwh');
+      if (elAuditDemand) elAuditDemand.textContent = Math.round(totalDemandMWh).toLocaleString('es-ES') + ' MWh';
+
+      const elAuditGridRate = document.getElementById('audit-grid-rate');
+      if (elAuditGridRate) elAuditGridRate.textContent = gridPrice + ' €/MWh';
+
+      const elAuditGridCost = document.getElementById('audit-grid-cost');
+      if (elAuditGridCost) elAuditGridCost.textContent = (annualCostFullGrid / 1e6).toFixed(2).replace('.', ',') + ' M€/año';
+
+      const elAuditSmrMwh = document.getElementById('audit-smr-mwh');
+      if (elAuditSmrMwh) elAuditSmrMwh.textContent = Math.round(energySmrMWh).toLocaleString('es-ES') + ' MWh';
+
+      const elAuditBackupMwh = document.getElementById('audit-backup-mwh');
+      if (elAuditBackupMwh) elAuditBackupMwh.textContent = Math.round(energyBackupMWh).toLocaleString('es-ES') + ' MWh';
+
+      const elAuditSmrCost = document.getElementById('audit-smr-cost');
+      if (elAuditSmrCost) elAuditSmrCost.textContent = (annualCostSmr / 1e6).toFixed(2).replace('.', ',') + ' M€/año';
+
+      const elAuditNetSavings = document.getElementById('audit-net-savings');
+      if (elAuditNetSavings) elAuditNetSavings.textContent = (netSavingsM >= 0 ? '+' : '') + netSavingsM.toFixed(2).replace('.', ',') + ' M€/año';
+
+      const elAuditEtsSavings = document.getElementById('audit-ets-savings');
+      if (elAuditEtsSavings) elAuditEtsSavings.textContent = '+' + etsValueM.toFixed(2).replace('.', ',') + ' M€/año';
+
+      const elAuditRiskSavings = document.getElementById('audit-risk-savings');
+      if (elAuditRiskSavings) elAuditRiskSavings.textContent = '+' + riskSavedM.toFixed(2).replace('.', ',') + ' M€/año';
     }
 
     ['range-dc-power', 'range-dc-ppa', 'range-dc-grid', 'range-dc-downtime'].forEach(id => {
@@ -12499,6 +13209,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const co2 = document.getElementById('kpi-dc-co2')?.textContent || '359.800 t';
         const tir = document.getElementById('kpi-dc-tir')?.textContent || '11,4%';
         const payback = document.getElementById('kpi-dc-payback')?.textContent || '6,8 años';
+        const etsVal = document.getElementById('kpi-dc-ets-val')?.textContent || '+25,19 M€/año';
+        const uptime = document.getElementById('kpi-dc-uptime')?.textContent || '92,5%';
+        const auditDemand = document.getElementById('audit-demand-mwh')?.textContent || '1.051.200 MWh';
+        const auditGridCost = document.getElementById('audit-grid-cost')?.textContent || '131,40 M€/año';
+        const auditSmrCost = document.getElementById('audit-smr-cost')?.textContent || '75,98 M€/año';
+        const auditRisk = document.getElementById('audit-risk-savings')?.textContent || '+2,40 M€/año';
 
         const printWindow = window.open('', '_blank');
         if (!printWindow) {
@@ -12512,94 +13228,133 @@ document.addEventListener('DOMContentLoaded', () => {
   <meta charset="UTF-8">
   <title>Propuesta Comercial B2B · Suministro Firme SMR PPA 24/7</title>
   <style>
-    body { font-family: 'Segoe UI', Arial, sans-serif; color: #0f172a; padding: 2.5rem; max-width: 820px; margin: 0 auto; line-height: 1.5; }
-    .header { border-bottom: 2px solid #1e3a8a; padding-bottom: 1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-end; }
-    .title { font-size: 1.4rem; font-weight: 800; color: #1e3a8a; margin: 0 0 0.3rem 0; }
-    .subtitle { font-size: 0.85rem; color: #475569; margin: 0; }
-    .badge { background: #1e3a8a; color: #ffffff; padding: 0.25rem 0.6rem; font-size: 0.75rem; font-weight: 700; border-radius: 4px; }
-    .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.5rem 0; }
-    .kpi-card { background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 1rem; text-align: center; }
-    .kpi-val { font-size: 1.5rem; font-weight: 800; color: #1e3a8a; }
-    .kpi-lbl { font-size: 0.72rem; text-transform: uppercase; color: #64748b; font-weight: 600; }
-    table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.88rem; }
-    th, td { border: 1px solid #cbd5e1; padding: 0.65rem 0.85rem; text-align: left; }
-    th { background: #f1f5f9; color: #1e293b; font-weight: 700; }
-    .footer { margin-top: 2.5rem; border-top: 1px solid #cbd5e1; padding-top: 1rem; font-size: 0.78rem; color: #64748b; display: flex; justify-content: space-between; }
-    @media print { body { padding: 1rem; } }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #0f172a; padding: 2.2rem; max-width: 860px; margin: 0 auto; line-height: 1.45; font-size: 13px; }
+    .header { border-bottom: 2px solid #0284c7; padding-bottom: 0.85rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: flex-end; }
+    .title { font-size: 1.35rem; font-weight: 800; color: #0f172a; margin: 0 0 0.25rem 0; letter-spacing: -0.01em; }
+    .subtitle { font-size: 0.82rem; color: #475569; margin: 0; }
+    .badge { background: #0284c7; color: #ffffff; padding: 0.25rem 0.65rem; font-size: 0.70rem; font-weight: 800; border-radius: 4px; letter-spacing: 0.05em; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; margin: 1.15rem 0; }
+    .kpi-card { background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 6px; padding: 0.85rem; text-align: center; }
+    .kpi-val { font-size: 1.55rem; font-weight: 800; color: #0284c7; font-variant-numeric: tabular-nums; }
+    .kpi-lbl { font-size: 0.68rem; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.04em; margin-top: 0.25rem; }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.80rem; }
+    th, td { border: 1px solid #cbd5e1; padding: 0.55rem 0.75rem; text-align: left; }
+    th { background: #f1f5f9; color: #0f172a; font-weight: 700; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.03em; }
+    .total-row { background: #f8fafc; font-weight: 700; }
+    .section-title { font-size: 0.95rem; font-weight: 800; color: #0f172a; margin: 1.25rem 0 0.5rem 0; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.35rem; }
+    .glossary-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.85rem 1rem; margin-top: 1rem; }
+    .glossary-item { margin-bottom: 0.45rem; font-size: 0.75rem; line-height: 1.4; color: #334155; }
+    .glossary-item strong { color: #0f172a; }
+    .contact-card { background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 6px; padding: 0.95rem 1.15rem; margin-top: 1.15rem; }
+    .footer { margin-top: 1.75rem; border-top: 1px solid #cbd5e1; padding-top: 0.75rem; font-size: 0.70rem; color: #64748b; display: flex; justify-content: space-between; }
+    @media print { body { padding: 0.8rem; } .footer { margin-top: 1rem; } }
   </style>
 </head>
 <body>
   <div class="header">
     <div>
-      <h1 class="title">INFORME DE VIABILIDAD B2B · PPA SMR 24/7</h1>
-      <p class="subtitle">Estructuración de Suministro Energético Libre de Carbono para Centros de Datos e Industria</p>
+      <h1 class="title">DICTAMEN B2B · SUMINISTRO FIRME SMR PPA 24/7</h1>
+      <p class="subtitle">Estructuración Tecno-Económica para Centros de Datos de Inteligencia Artificial e Industria Pesada</p>
     </div>
-    <span class="badge">CONFIDENCIAL</span>
+    <span class="badge">ESTRICTAMENTE CONFIDENCIAL</span>
   </div>
 
-  <p><strong>Objeto del Dictamen:</strong> Análisis preliminar de bancabilidad y ahorro operativo para el suministro eléctrico en carga base continua (Behind-The-Meter / PPA indexado) mediante reactores modulares pequeños (SMR).</p>
+  <p style="font-size: 0.82rem; color: #334155; margin-bottom: 1rem;">
+    <strong>Resumen Ejecutivo:</strong> Evaluación comparativa de flujos de caja y coste total de propiedad (TCO) para un suministro de carga base síncrona 24/7 tras contador (Behind-The-Meter) mediante reactores modulares pequeños (SMR) frente al coste del mix de red eléctrica tradicional.
+  </p>
 
   <div class="kpi-grid">
-    <div class="kpi-card">
-      <div class="kpi-val" style="color: #10b981;">${savings}</div>
+    <div class="kpi-card" style="border-top: 3px solid #059669;">
+      <div class="kpi-val" style="color: #059669;">${savings}</div>
       <div class="kpi-lbl">Ahorro Operativo Anual (OPEX)</div>
     </div>
-    <div class="kpi-card">
+    <div class="kpi-card" style="border-top: 3px solid #0284c7;">
       <div class="kpi-val">${savings25}</div>
       <div class="kpi-lbl">Flujo Acumulado a 25 Años</div>
     </div>
-    <div class="kpi-card">
-      <div class="kpi-val" style="color: #0284c7;">${tir}</div>
-      <div class="kpi-lbl">TIR Estimada de Proyecto</div>
+    <div class="kpi-card" style="border-top: 3px solid #d97706;">
+      <div class="kpi-val" style="color: #d97706;">${payback}</div>
+      <div class="kpi-lbl">Retorno de Inversión (Payback)</div>
     </div>
   </div>
 
-  <h3>Parámetros Contractuales y Financieros</h3>
+  <div class="section-title">📊 Auditoría Financiera Comparativa (Benchmark Bancable EPRI / IAEA)</div>
   <table>
-    <tr>
-      <th>Concepto</th>
-      <th>Valor Simulado</th>
-      <th>Impacto Estratégico</th>
-    </tr>
-    <tr>
-      <td>Potencia Requerida por el Campus</td>
-      <td><strong>${pMw}</strong></td>
-      <td>Demanda continua asegurada (Factor de Capacidad > 92%)</td>
-    </tr>
-    <tr>
-      <td>Precio PPA SMR Garantizado</td>
-      <td><strong>${ppa}</strong></td>
-      <td>Precio nivelado cerrado a 20-25 años (sin indexación al gas)</td>
-    </tr>
-    <tr>
-      <td>Coste Alternativo Red + Peajes + Respaldo</td>
-      <td><strong>${grid}</strong></td>
-      <td>Coste evitado en pool OMIE, cargos de acceso y almacenamiento</td>
-    </tr>
-    <tr>
-      <td>Retorno de Inversión (Payback)</td>
-      <td><strong>${payback}</strong></td>
-      <td>Recuperación acelerada frente a la volatilidad de red</td>
-    </tr>
-    <tr>
-      <td>CO₂ Evitado Anual</td>
-      <td><strong>${co2}</strong></td>
-      <td>Mitigación directa computada con factor marginal fósil (0.37 t/MWh)</td>
-    </tr>
+    <thead>
+      <tr>
+        <th>Concepto de Facturación</th>
+        <th>Escenario 1: Red Eléctrica Tradicional</th>
+        <th>Escenario 2: Solución SMR PPA 24/7</th>
+        <th>Diferencial / Beneficio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Demanda Eléctrica Total Anual</td>
+        <td>${auditDemand}</td>
+        <td>${auditDemand}</td>
+        <td>Potencia Firme: <strong>${pMw}</strong></td>
+      </tr>
+      <tr>
+        <td>Precio Integrado del Suministro</td>
+        <td>${grid} (Pool + ATR 6.1TD + BESS)</td>
+        <td>${ppa} (Precio nivelado a 25 años)</td>
+        <td>Spread: <strong>-${(parseFloat(grid) - parseFloat(ppa)).toFixed(0)} €/MWh</strong></td>
+      </tr>
+      <tr class="total-row">
+        <td>Facturación Anual Neta</td>
+        <td><strong style="color: #dc2626;">${auditGridCost}</strong></td>
+        <td><strong style="color: #059669;">${auditSmrCost}</strong></td>
+        <td><strong style="color: #059669;">${savings}</strong></td>
+      </tr>
+      <tr>
+        <td>Valoración Derechos EU ETS (CO₂)</td>
+        <td>Expuesto a compras EUA (~70-90 €/t)</td>
+        <td>0 gCO₂/kWh en fase operativa</td>
+        <td>Ahorro: <strong>${etsVal}</strong> (${co2})</td>
+      </tr>
+      <tr>
+        <td>Garantía de Disponibilidad & Downtime</td>
+        <td>Riesgo de contingencias en redes saturadas</td>
+        <td>Inercia síncrona 50 Hz (${uptime} CF)</td>
+        <td>Mitigación: <strong>${auditRisk}</strong></td>
+      </tr>
+    </tbody>
   </table>
 
-  <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 1rem; margin-top: 1.5rem;">
-    <h4 style="margin: 0 0 0.4rem 0; color: #1e3a8a; font-size: 0.92rem;">Contacto y Formalización de Due Diligence Técnica</h4>
-    <p style="margin: 0; font-size: 0.82rem; color: #1e293b;">
-      Para contratar estudios técnicos de detalle (selección geoespacial de emplazamiento, modelización Monte Carlo de LCOE y auditoría de conexión de red), contacte con el equipo de asesoría técnica:
+  <div class="section-title">📖 Glosario Metodológico B2B para Comité de Inversión</div>
+  <div class="glossary-box">
+    <div class="glossary-item">
+      <strong>• PPA 24/7 (Power Purchase Agreement Baseload):</strong> Contrato bilateral de compraventa a largo plazo (20-25 años) con perfil de entrega plano hora a hora, eliminando costes de perfilado y baterías.
+    </div>
+    <div class="glossary-item">
+      <strong>• Behind-The-Meter (Tras Contador):</strong> Conexión privada dedicada que exime del pago de peajes de acceso de red (peajes ATR 6.1TD de REE) y elude listas de saturación de nudos.
+    </div>
+    <div class="glossary-item">
+      <strong>• CfD Simétrico (Contract for Difference):</strong> Contrato regulatorio bidireccional con precio strike que protege al cliente ante picos de gas y al operador ante caídas del pool.
+    </div>
+    <div class="glossary-item">
+      <strong>• SRMC (Coste Marginal Corto Plazo):</strong> Coste variable del combustible UO₂ de 9,5 a 13 €/MWh, garantizando prelación total en el orden de mérito frente a ciclos combinados.
+    </div>
+    <div class="glossary-item">
+      <strong>• LCOE Nivelado:</strong> Coste actualizado a 60 años considerando CAPEX, combustible, operación y desmantelamiento regulado.
+    </div>
+  </div>
+
+  <div class="contact-card">
+    <div style="font-weight: 800; font-size: 0.88rem; color: #0284c7; margin-bottom: 0.25rem;">
+      Formalización de Estudios de Prefactibilidad y Due Diligence Técnica
+    </div>
+    <p style="margin: 0; font-size: 0.78rem; color: #334155; line-height: 1.5;">
+      Para contratar estudios personalizados de modelado LCOE Monte Carlo, microzonificación sísmica de emplazamientos o estructuración de coberturas PPA:
       <br><strong>Carlos M. Gutiérrez</strong> · ESE · Escuela de Ingenierías Industriales · Universidad de Valladolid (UVa)
-      <br>Correo: <strong>carlosmgutierrez05@gmail.com</strong>
+      <br>Contacto Directo: <strong style="color: #0284c7;">carlosmgutierrez05@gmail.com</strong>
     </p>
   </div>
 
   <div class="footer">
-    <span>Metodología estándar: IEA Projected Costs of Generating Electricity (2025) · EPRI</span>
-    <span>Impreso desde SMR Energy Platform (UVa)</span>
+    <span>Metodología estándar: IEA Projected Costs of Generating Electricity (2025) · EPRI Nuclear Tech · Directiva UE 2024/1747</span>
+    <span>Plataforma SMR Energy Platform · Universidad de Valladolid</span>
   </div>
 </body>
 </html>`);
