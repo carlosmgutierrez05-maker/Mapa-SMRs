@@ -5551,6 +5551,74 @@ li.b2b-case-feature-item {
   font-weight: 600;
 }
 
+/* Botón de Llamada a la Acción: Asesoría B2B en Header */
+.btn-advisory-cta {
+  background: linear-gradient(135deg, #059669 0%, #0d9488 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid #10b981 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.25) !important;
+  transition: all 0.2s ease;
+}
+
+.btn-advisory-cta:hover {
+  background: linear-gradient(135deg, #047857 0%, #0f766e 100%) !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4) !important;
+  transform: translateY(-1px);
+}
+
+/* Embudo y Asistente Interactivo de Solicitud B2B */
+.b2b-funnel-box {
+  background: #1e293b;
+  border: 1.5px solid #334155;
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.75rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.b2b-funnel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.funnel-field {
+  display: flex;
+  flex-direction: column;
+}
+
+[data-theme="light"] .b2b-funnel-box {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .b2b-advisory-card {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .advisory-title {
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .advisory-desc {
+  color: #475569 !important;
+}
+
+[data-theme="light"] .b2b-contact-box {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .b2b-contact-email-badge {
+  background: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0284c7 !important;
+}
+
 /* =========================================================================
    DASHBOARD FINANCIERO EN REPORTE OFICIAL (Bloomberg / McKinsey Style)
    ========================================================================= */
@@ -6499,6 +6567,9 @@ li.b2b-case-feature-item {
         </button>
         <button id="btn-open-premium" class="btn btn-premium" title="Terminal B2B: Centros de Datos (IA), PPAs 24/7 y Finanzas Bancables">
           <span class="btn-icon-glyph">💼</span> Data Centers & PPA
+        </button>
+        <button id="btn-open-advisory" class="btn btn-advisory-cta" title="Servicios Oficiales de Consultoría y Due Diligence SMR · Universidad de Valladolid">
+          <span class="btn-icon-glyph">🤝</span> Asesoría B2B
         </button>
       </div>
 
@@ -7829,40 +7900,146 @@ li.b2b-case-feature-item {
         <!-- PESTAÑA 4: Consultoría & Lead Magnet -->
         <div id="pane-tab-consulting" class="b2b-tab-pane">
           
-          <div class="lead-magnet-card" style="text-align: center;">
-            <span class="b2b-badge-cyan">
-              Área de Asesoría y Modelización Tecno-Económica
-            </span>
-            <h3 class="b2b-hero-title" style="font-size: 1.25rem; margin: 0.85rem 0 0.45rem 0;">
-              Estudios de Prefactibilidad, Modelado LCOE y Selección de Emplazamientos
-            </h3>
-            <p style="font-size: 0.82rem; color: var(--text-secondary); max-width: 740px; margin: 0 auto 1.5rem auto; line-height: 1.6;">
-              Asesoramos a operadores industriales, promotores de centros de datos y fondos de inversión en infraestructura energética en la cuantificación de costes nivelados, encaje en la Taxonomía Verde Europea y estructuración de coberturas PPA.
-            </p>
+          <div class="lead-magnet-card" style="text-align: left;">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+              <span class="b2b-badge-cyan">
+                ASESORÍA TÉCNICO-ECONÓMICA OFICIAL · ÁREA ESE · UNIVERSIDAD DE VALLADOLID
+              </span>
+              <h3 class="b2b-hero-title" style="font-size: 1.35rem; margin: 0.85rem 0 0.45rem 0;">
+                Servicios de Prefactibilidad, Modelado LCOE y Due Diligence B2B
+              </h3>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); max-width: 780px; margin: 0 auto; line-height: 1.6;">
+                Acompañamos a promotores de Data Centers (IA), complejos electrointensivos e inversores de infraestructuras en la cuantificación de costes nivelados, elusión de listas de espera de transporte (REE) y estructuración de PPAs 24/7 Behind-the-Meter.
+              </p>
+            </div>
 
-            <div class="b2b-advisory-grid">
+            <!-- Catálogo de 4 Servicios Principales -->
+            <div class="b2b-advisory-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
               <div class="b2b-advisory-card">
-                <span class="advisory-badge">MERCADO FINANCIERO</span>
-                <h5 class="advisory-title">Due Diligence Financiera</h5>
-                <p class="advisory-desc">Modelado LCOE con análisis de sensibilidad Monte Carlo, proyecciones de flujos de caja a 60 años, ratios DSCR y optimización del WACC regulatorio.</p>
+                <span class="advisory-badge" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border-color: rgba(16, 185, 129, 0.3);">NIVEL 1 · RÁPIDO (24–48h)</span>
+                <h5 class="advisory-title">Dictamen Preliminar de Viabilidad</h5>
+                <p class="advisory-desc">Auditoría comparativa frente a red (Pool + ATR 6.1TD + BESS), simulación de ahorro en factura (-40%), cómputo de derechos EU ETS de CO₂ y dictamen ejecutivo para Comité de Dirección.</p>
               </div>
 
               <div class="b2b-advisory-card">
-                <span class="advisory-badge">ANÁLISIS GIS & SÍSMICO</span>
-                <h5 class="advisory-title">Scoring de Emplazamientos</h5>
-                <p class="advisory-desc">Evaluación geoespacial multicriterio de caudales de refrigeración hídrica, proximidad a nudos 400 kV de REE y microzonificación sísmica.</p>
+                <span class="advisory-badge" style="background: rgba(2, 132, 199, 0.15); color: #38bdf8; border-color: rgba(2, 132, 199, 0.3);">NIVEL 2 · MODELO FINANCIERO</span>
+                <h5 class="advisory-title">Due Diligence LCOE & Monte Carlo</h5>
+                <p class="advisory-desc">Modelado financiero a 60 años con simulación estocástica Monte Carlo de precios de uranio UO₂, análisis de sensibilidad al WACC y ratios de cobertura del servicio de la deuda (DSCR).</p>
               </div>
 
               <div class="b2b-advisory-card">
-                <span class="advisory-badge">CONTRATOS DE ENERGÍA</span>
-                <h5 class="advisory-title">Estructuración PPA 24/7</h5>
-                <p class="advisory-desc">Diseño de contratos bilaterales de compraventa a largo plazo, trazabilidad de garantías de origen nuclear y cobertura frente a precios volátiles del pool.</p>
+                <span class="advisory-badge" style="background: rgba(168, 85, 247, 0.15); color: #c084fc; border-color: rgba(168, 85, 247, 0.3);">NIVEL 3 · GIS & SÍSMICO</span>
+                <h5 class="advisory-title">Scoring y Selección de Emplazamiento</h5>
+                <p class="advisory-desc">Evaluación geoespacial multicriterio de disponibilidad de refrigeración hídrica, proximidad a subestaciones de transporte de 400 kV de REE, mapas de calor y microzonificación sísmica.</p>
+              </div>
+
+              <div class="b2b-advisory-card">
+                <span class="advisory-badge" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border-color: rgba(245, 158, 11, 0.3);">NIVEL 4 · ESTRUCTURACIÓN</span>
+                <h5 class="advisory-title">Estructuración PPA 24/7 Behind-The-Meter</h5>
+                <p class="advisory-desc">Asesoría regulatoria para la firma de contratos bilaterales privados sin desembolso CAPEX para el cliente, salvaguardas frente a indexaciones de gas y tramitación ante el CSN.</p>
               </div>
             </div>
 
+            <!-- Asistente Interactivo de Solicitud de Propuesta / Due Diligence -->
+            <div class="b2b-funnel-box" style="background: var(--bg-card); border: 1.5px solid var(--border-color); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.75rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem;">
+                <div>
+                  <h4 style="margin: 0; font-size: 1rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 0.5rem;">
+                    <span>⚡</span> Asistente Interactivo de Solicitud de Estudio a Medida
+                  </h4>
+                  <div style="font-size: 0.74rem; color: var(--text-muted); margin-top: 0.2rem;">
+                    Configure los parámetros de su instalación para generar una propuesta preliminar adaptada
+                  </div>
+                </div>
+                <span class="b2b-audit-pill" style="background: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid #10b981;">RESPUESTA EN 24 HORAS</span>
+              </div>
+
+              <div class="b2b-funnel-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.25rem;">
+                <div class="funnel-field">
+                  <label style="font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); display: block; margin-bottom: 0.35rem;">
+                    EMPRESA / PROMOTOR:
+                  </label>
+                  <input type="text" id="fn-client-company" class="form-control" placeholder="Ej: Data Center Madrid Sur S.L." value="Data Center Madrid Campus" style="width: 100%; padding: 0.45rem 0.65rem; font-size: 0.80rem; border-radius: 4px; background: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary);">
+                </div>
+
+                <div class="funnel-field">
+                  <label style="font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); display: block; margin-bottom: 0.35rem;">
+                    SECTOR DE ACTIVIDAD:
+                  </label>
+                  <select id="fn-client-sector" class="form-control" style="width: 100%; padding: 0.45rem 0.65rem; font-size: 0.80rem; border-radius: 4px; background: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary);">
+                    <option value="Data Center & Inteligencia Artificial" selected>Campus Data Center & Inteligencia Artificial</option>
+                    <option value="Industria Electrointensiva / Siderurgia">Industria Siderúrgica / Metalurgia</option>
+                    <option value="Química & Fertilizantes (Vapor / Cogeneración)">Química & Fertilizantes (Vapor de Proceso)</option>
+                    <option value="Fondo de Infraestructuras / IPP">Fondo de Infraestructuras / Inversor Energético</option>
+                    <option value="Consultora Estratégica / Ingeniería">Consultora Estratégica / Ingeniería</option>
+                  </select>
+                </div>
+
+                <div class="funnel-field">
+                  <label style="font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); display: block; margin-bottom: 0.35rem;">
+                    POTENCIA REQUERIDA (24/7):
+                  </label>
+                  <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <input type="range" id="fn-client-power-range" min="20" max="360" step="10" value="120" style="flex: 1;">
+                    <span id="fn-client-power-disp" style="font-family: monospace; font-size: 0.85rem; font-weight: 800; color: var(--accent-cyan); min-width: 65px; text-align: right;">120 MWe</span>
+                  </div>
+                </div>
+
+                <div class="funnel-field">
+                  <label style="font-size: 0.72rem; font-weight: 700; color: var(--text-secondary); display: block; margin-bottom: 0.35rem;">
+                    ALCANCE DEL ESTUDIO SOLICITADO:
+                  </label>
+                  <select id="fn-client-service" class="form-control" style="width: 100%; padding: 0.45rem 0.65rem; font-size: 0.80rem; border-radius: 4px; background: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary);">
+                    <option value="Nivel 1: Dictamen Preliminar de Viabilidad (OPEX vs Red)" selected>Nivel 1: Dictamen Preliminar de Viabilidad (OPEX vs Red)</option>
+                    <option value="Nivel 2: Due Diligence Financiera & Modelización LCOE">Nivel 2: Due Diligence Financiera & Modelización LCOE</option>
+                    <option value="Nivel 3: Scoring Geoespacial de Emplazamiento (GIS & REE)">Nivel 3: Scoring Geoespacial de Emplazamiento (GIS & REE)</option>
+                    <option value="Nivel 4: Asesoría Integral en Estructuración PPA 24/7">Nivel 4: Asesoría Integral en Estructuración PPA 24/7</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Tarjeta de Pre-Diagnóstico en Vivo -->
+              <div id="fn-live-preview-box" style="background: rgba(2, 132, 199, 0.08); border: 1px dashed rgba(2, 132, 199, 0.35); border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div>
+                  <div style="font-size: 0.70rem; font-weight: 700; color: #0284c7; text-transform: uppercase;">
+                    Pre-Diagnóstico Preliminar para su Instalación
+                  </div>
+                  <div id="fn-preview-headline" style="font-size: 0.86rem; font-weight: 700; color: var(--text-primary); margin-top: 0.2rem;">
+                    Arquitectura SMR Recomendada: 1 módulo de 120 MWe (Carga Base Firme)
+                  </div>
+                </div>
+                <div style="display: flex; gap: 1.5rem; align-items: center;">
+                  <div>
+                    <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">Ahorro OPEX Proyectado</div>
+                    <div id="fn-preview-savings" style="font-size: 1.15rem; font-weight: 800; color: #10b981; font-family: monospace;">+55,42 M€ / año</div>
+                  </div>
+                  <div>
+                    <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">CO₂ Evitado Anual</div>
+                    <div id="fn-preview-co2" style="font-size: 1.15rem; font-weight: 800; color: #38bdf8; font-family: monospace;">359.800 t / año</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Botones de Acción Comercial -->
+              <div style="display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+                <button type="button" id="btn-download-commercial-dossier" class="btn btn-secondary" style="font-weight: 600; font-size: 0.82rem; padding: 0.55rem 1rem;">
+                  📥 Descargar Dossier Oficial de Servicios UVa (PDF A4)
+                </button>
+                <button type="button" id="btn-copy-custom-proposal" class="btn btn-secondary" style="font-size: 0.82rem; padding: 0.55rem 1rem;">
+                  📋 Copiar Solicitud
+                </button>
+                <a id="btn-send-custom-proposal-gmail" 
+                   href="https://mail.google.com/mail/?view=cm&fs=1&to=carlosmgutierrez05@gmail.com&su=Solicitud%20Estudio%20Due%20Diligence%20SMR&body=Estimado%20Carlos," target="_blank" rel="noopener noreferrer"
+                   class="btn btn-primary" style="font-weight: 700; font-size: 0.82rem; padding: 0.55rem 1.25rem; background: linear-gradient(135deg, #059669 0%, #0d9488 100%); border-color: #10b981;">
+                  📨 Enviar Solicitud de Due Diligence por Email
+                </a>
+              </div>
+            </div>
+
+            <!-- Caja de Contacto Directo Institucional -->
             <div class="b2b-contact-box">
               <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">
-                <span style="font-size: 0.80rem; color: var(--text-secondary); font-weight: 500;">Canal Directo de Contacto Profesional:</span>
+                <span style="font-size: 0.80rem; color: var(--text-secondary); font-weight: 500;">Director Técnico del Proyecto & Asesoría:</span>
                 <span class="b2b-contact-email-badge">
                   carlosmgutierrez05@gmail.com
                 </span>
@@ -7870,20 +8047,8 @@ li.b2b-case-feature-item {
                   Copiar Correo
                 </button>
               </div>
-
-              <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.25rem;">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=carlosmgutierrez05@gmail.com&su=Solicitud%20Estudio%20Consultor%C3%ADa%20SMR%20y%20Mercado%20Energ%C3%A9tico&body=Estimado%20Carlos,%0D%0A%0D%0AHemos%20revisado%20la%20plataforma%20SMR-Energy%20Economics%20y%20nos%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20un%20estudio%20de%20viabilidad%20para%20el%20siguiente%20proyecto:%0D%0A-%20Tipolog%C3%ADa%20(Data%20Center%20/%20Complejo%20Industrial%20/%20Fondo%20Inversi%C3%B3n):%0D%0A-%20Demanda%20estimada%20(MW):%0D%0A-%20Ubicaci%C3%B3n%20geogr%C3%A1fica%20de%20inter%C3%A9s:%0D%0A%0D%0AAtentamente," 
-                   target="_blank" rel="noopener noreferrer"
-                   class="btn btn-primary" style="padding: 0.6rem 1.25rem; font-size: 0.82rem; font-weight: 600;">
-                  Redactar Consulta en Gmail
-                </a>
-                <a href="mailto:carlosmgutierrez05@gmail.com?subject=Consulta%20Tecnica%20SMR" 
-                   class="btn btn-secondary" style="padding: 0.6rem 1.1rem; font-size: 0.82rem;">
-                  Cliente de Correo
-                </a>
-                <button type="button" id="btn-export-b2b-proposal-2" class="btn btn-primary" style="padding: 0.6rem 1.1rem; font-size: 0.82rem; font-weight: 700;">
-                  📄 Ficha Ejecutiva B2B (PDF)
-                </button>
+              <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center;">
+                Área de Economía de los Sistemas Energéticos · Escuela de Ingenierías Industriales · Universidad de Valladolid (UVa)
               </div>
             </div>
 
@@ -13182,6 +13347,19 @@ document.addEventListener('DOMContentLoaded', () => {
       btnPremium.addEventListener('click', () => {
         openModal('modal-premium-intelligence');
         updateDataCenterKpis();
+        updateFunnelLivePreview();
+      });
+    }
+
+    const btnOpenAdvisory = document.getElementById('btn-open-advisory');
+    if (btnOpenAdvisory) {
+      btnOpenAdvisory.addEventListener('click', () => {
+        openModal('modal-premium-intelligence');
+        const advisoryTabBtn = document.querySelector('.b2b-tab-btn[data-b2btab="tab-consulting"]');
+        if (advisoryTabBtn) {
+          advisoryTabBtn.click();
+        }
+        updateFunnelLivePreview();
       });
     }
 
@@ -13693,6 +13871,325 @@ document.addEventListener('DOMContentLoaded', () => {
           }, 2000);
         }).catch(err => {
           console.warn('Clipboard copy error:', err);
+        });
+      });
+    }
+
+    // =========================================================================
+    // 16. DOSSIER OFICIAL DE SERVICIOS DE ASESORÍA B2B (UNIVERSIDAD DE VALLADOLID)
+    // =========================================================================
+    function generateB2bCommercialDossierHtml() {
+      const today = new Date();
+      const dateStr = today.toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' });
+
+      return `
+        <!-- Encabezado Oficial Institucional -->
+        <div style="border-bottom: 2px solid #059669; padding-bottom: 1rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
+              <span style="font-size: 1.5rem;">⚛</span>
+              <span style="font-weight: 800; font-size: 1.15rem; color: #0f172a; letter-spacing: -0.01em;">SMR ENERGY UVa · ÁREA DE ECONOMÍA DE LOS SISTEMAS ENERGÉTICOS</span>
+              <span style="font-size: 0.65rem; background: #059669; color: #ffffff; padding: 0.15rem 0.45rem; border-radius: 3px; font-weight: 800;">DOSSIER CORPORATIVO</span>
+            </div>
+            <h1 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin: 0 0 0.3rem 0; line-height: 1.3;">
+              CATÁLOGO DE SERVICIOS DE ASESORÍA Y DUE DILIGENCE TECNO-ECONÓMICA SMR
+            </h1>
+            <div style="font-size: 0.78rem; color: #475569;">
+              Escuela de Ingenierías Industriales · Universidad de Valladolid (UVa) · Estándares IAEA & EPRI
+            </div>
+          </div>
+          <div style="text-align: right; font-size: 0.72rem; color: #64748b; line-height: 1.45;">
+            <div><strong>DOCUMENTO:</strong> DOSSIER-UVa-SMR-SERVICES-2026</div>
+            <div><strong>FECHA:</strong> ${dateStr}</div>
+            <div><strong>VALIDEZ:</strong> EJERCICIO FISCAL 2026 / 2027</div>
+            <div><strong>CLASIFICACIÓN:</strong> B2B / COMITÉ DE INVERSIÓN</div>
+          </div>
+        </div>
+
+        <!-- 1. El Reto Energético Crítico -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #059669; padding: 0.85rem 1.15rem; border-radius: 6px; margin-bottom: 1.25rem;">
+          <div style="font-size: 0.70rem; font-weight: 800; color: #059669; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
+            1. EL CONTEXTO ESTRATÉGICO: CUELLO DE BOTELLA DE RED Y SOLUCIÓN TRAS CONTADOR (BEHIND-THE-METER)
+          </div>
+          <p style="font-size: 0.78rem; color: #334155; line-height: 1.55; margin: 0;">
+            El auge de la <strong>Inteligencia Artificial, los grandes Data Centers y la industria electrointensiva</strong> se enfrenta en España a un obstáculo crítico: <em>la saturación estructural de la red de transporte de 400 kV de Red Eléctrica de España (REE)</em>, con plazos de acceso y conexión que superan los 6–8 años y costes de respaldo BESS crecientes. El despliegue de <strong>Reactores Modulares Pequeños (SMR) en conexión privada Behind-The-Meter (BTM)</strong> permite a los promotores garantizar energía firme continua 24/7/365 con <strong>CAPEX = 0 € para el consumidor</strong> mediante contratos PPA corporativos indexados a coste fijo predecible.
+          </p>
+        </div>
+
+        <!-- 2. Catálogo Oficial de Servicios de Asesoría UVa -->
+        <div style="margin-bottom: 1.25rem;">
+          <div style="font-size: 0.72rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem;">
+            2. CARTERA DE SERVICIOS ESPECIALIZADOS DE CONSULTORÍA Y DUE DILIGENCE
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.85rem;">
+            <div style="background: #ffffff; border: 1px solid #cbd5e1; border-top: 3px solid #10b981; border-radius: 6px; padding: 0.75rem 0.90rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <strong style="color: #059669; font-size: 0.80rem;">Nivel 1: Dictamen Preliminar de Viabilidad</strong>
+                <span style="font-size: 0.65rem; background: #ecfdf5; color: #059669; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700;">24–48 HORAS</span>
+              </div>
+              <div style="font-size: 0.74rem; color: #475569; line-height: 1.5;">
+                • Auditoría de costes anuales comparados: Mix de Red (Pool + Peajes ATR 6.1TD + BESS) vs SMR PPA.<br>
+                • Cuantificación del ahorro neto en EBITDA y reducción porcentual de factura.<br>
+                • Estimación de derechos de emisión de CO₂ evitados (EU ETS a 70 €/t EUA).<br>
+                • <em>Entregable:</em> Dictamen Ejecutivo A4 firmado para Comité de Dirección.
+              </div>
+            </div>
+
+            <div style="background: #ffffff; border: 1px solid #cbd5e1; border-top: 3px solid #0284c7; border-radius: 6px; padding: 0.75rem 0.90rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <strong style="color: #0284c7; font-size: 0.80rem;">Nivel 2: Due Diligence Financiera LCOE & Monte Carlo</strong>
+                <span style="font-size: 0.65rem; background: #f0f9ff; color: #0284c7; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700;">2–3 SEMANAS</span>
+              </div>
+              <div style="font-size: 0.74rem; color: #475569; line-height: 1.5;">
+                • Modelización financiera a 60 años con estructura Project Finance (deuda senior 70/30).<br>
+                • Simulación estocástica Monte Carlo (10.000 iteraciones) sobre costes de combustible UO₂ y CAPEX.<br>
+                • Análisis de sensibilidad WACC (3% a 10%) y cálculo de ratios de cobertura de deuda (DSCR).<br>
+                • <em>Entregable:</em> Modelo financiero completo en Excel (.xlsx) y memoria analítica.
+              </div>
+            </div>
+
+            <div style="background: #ffffff; border: 1px solid #cbd5e1; border-top: 3px solid #7e22ce; border-radius: 6px; padding: 0.75rem 0.90rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <strong style="color: #7e22ce; font-size: 0.80rem;">Nivel 3: Scoring Geoespacial de Emplazamientos (GIS)</strong>
+                <span style="font-size: 0.65rem; background: #faf5ff; color: #7e22ce; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700;">3–4 SEMANAS</span>
+              </div>
+              <div style="font-size: 0.74rem; color: #475569; line-height: 1.5;">
+                • Evaluación multicriterio geoespacial de caudales hídricos de refrigeración (ríos / cuencas).<br>
+                • Análisis de capacidad disponible en subestaciones y nudos de transporte de 400 kV de REE.<br>
+                • Filtros de microzonificación sísmica, áreas protegidas Red Natura 2000 y logística pesada.<br>
+                • <em>Entregable:</em> Cartografía interactiva GIS y matriz de idoneidad territorial.
+              </div>
+            </div>
+
+            <div style="background: #ffffff; border: 1px solid #cbd5e1; border-top: 3px solid #d97706; border-radius: 6px; padding: 0.75rem 0.90rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+                <strong style="color: #d97706; font-size: 0.80rem;">Nivel 4: Asesoría en Estructuración PPA 24/7</strong>
+                <span style="font-size: 0.65rem; background: #fffbeb; color: #d97706; padding: 0.1rem 0.4rem; border-radius: 4px; font-weight: 700;">A MEDIDA</span>
+              </div>
+              <div style="font-size: 0.74rem; color: #475569; line-height: 1.5;">
+                • Redacción técnica de cláusulas de indexación, disponibilidad de potencia y garantías de origen.<br>
+                • Estructuración contractual sin pasivos de balance para el cliente (SaaS / Utility SMR BTM).<br>
+                • Hoja de ruta regulatoria y acompañamiento técnico en tramitación ante el CSN y MITECO.<br>
+                • <em>Entregable:</em> Pliego de bases técnicas y asistencia en mesa de negociación.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Caso de Estudio Bancable de Referencia -->
+        <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0.85rem 1.15rem; margin-bottom: 1.25rem;">
+          <div style="font-size: 0.72rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;">
+            <span>3. CASO DE ESTUDIO BANCABLE: CAMPUS DATA CENTER IA 120 MWe (ESPAÑA)</span>
+            <span style="font-size: 0.65rem; color: #0284c7; font-weight: 700;">BENCHMARK FINANCIERO UVa</span>
+          </div>
+
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.74rem; background: #ffffff; border: 1px solid #e2e8f0; margin-bottom: 0.65rem;">
+            <thead>
+              <tr style="background: #f1f5f9; color: #0f172a;">
+                <th style="padding: 0.45rem 0.65rem; text-align: left; border: 1px solid #e2e8f0;">Parámetro Financiero</th>
+                <th style="padding: 0.45rem 0.65rem; text-align: right; border: 1px solid #e2e8f0;">Suministro Red (Pool + ATR + BESS)</th>
+                <th style="padding: 0.45rem 0.65rem; text-align: right; border: 1px solid #e2e8f0;">SMR PPA 24/7 Behind-The-Meter</th>
+                <th style="padding: 0.45rem 0.65rem; text-align: right; border: 1px solid #e2e8f0;">Ahorro / Beneficio</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 0.4rem 0.65rem; border: 1px solid #e2e8f0;">Coste Medio Equivalente:</td>
+                <td style="padding: 0.4rem 0.65rem; text-align: right; border: 1px solid #e2e8f0; font-family: monospace;">125,00 €/MWh</td>
+                <td style="padding: 0.4rem 0.65rem; text-align: right; border: 1px solid #e2e8f0; font-family: monospace;">72,28 €/MWh (eq.)</td>
+                <td style="padding: 0.4rem 0.65rem; text-align: right; border: 1px solid #e2e8f0; font-weight: 700; color: #059669;">-52,72 €/MWh (-42,2%)</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.4rem 0.65rem; border: 1px solid #e2e8f0;">Coste Operativo Factura:</td>
+                <td style="padding: 0.4rem 0.65rem; text-align: right; border: 1px solid #e2e8f0; font-family: monospace; color: #dc2626;">131,40 M€/año</td>
+                <td style="padding: 0.4rem 0.65rem; text-align: right; border: 1px solid #e2e8f0; font-family: monospace; color: #059669;">75,98 M€/año</td>
+                <td style="padding: 0.4rem 0.65rem; text-align: right; border: 1px solid #e2e8f0; font-weight: 800; color: #059669; font-size: 0.82rem;">+55,42 M€/año</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.4rem 0.65rem; border: 1px solid #e2e8f0;">Flujo de Caja Acumulado (25 años):</td>
+                <td style="padding: 0.4rem 0.65rem; text-align: right; border: 1px solid #e2e8f0; color: #64748b;">Gasto: 3.285 M€</td>
+                <td style="padding: 0.4rem 0.65rem; text-align: right; border: 1px solid #e2e8f0; color: #0f172a;">Gasto: 1.899 M€</td>
+                <td style="padding: 0.4rem 0.65rem; text-align: right; border: 1px solid #e2e8f0; font-weight: 800; color: #0284c7;">~1.386 M€ de ahorro</td>
+              </tr>
+              <tr>
+                <td style="padding: 0.4rem 0.65rem; border: 1px solid #e2e8f0;">Pasivos Ambientales EU ETS (CO₂):</td>
+                <td style="padding: 0.4rem 0.65rem; text-align: right; border: 1px solid #e2e8f0; color: #64748b;">Expuesto a compra EUA</td>
+                <td style="padding: 0.4rem 0.65rem; text-align: right; border: 1px solid #e2e8f0; color: #059669;">Cero emisiones operativas</td>
+                <td style="padding: 0.4rem 0.65rem; text-align: right; border: 1px solid #e2e8f0; font-weight: 700; color: #7e22ce;">+25,18 M€/año (359.800 t)</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="font-size: 0.70rem; color: #64748b; line-height: 1.45;">
+            *Modelo calculado bajo estándar IAEA-TECDOC / EPRI para una demanda continua de 120 MWe (1.051.200 MWh/año) con un factor de capacidad SMR del 92,5% y respaldo de red en paradas de recarga del 7,5%.
+          </div>
+        </div>
+
+        <!-- 4. Protocolo de Contratación & Contacto Institucional -->
+        <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 6px; padding: 0.85rem 1.15rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <div style="font-size: 0.70rem; font-weight: 800; color: #059669; text-transform: uppercase; letter-spacing: 0.04em;">
+              4. CÓMO SOLICITAR UN ESTUDIO O ASESORÍA OFICIAL
+            </div>
+            <div style="font-size: 0.76rem; color: #1e293b; margin-top: 0.25rem; line-height: 1.5;">
+              Para iniciar un encargo o solicitar una presentación técnica confidencial ante su Comité de Inversión:<br>
+              <strong>1.</strong> Remita la potencia prevista (MWe) y ubicación estimada de sus instalaciones.<br>
+              <strong>2.</strong> Nuestro equipo emite un acuerdo de confidencialidad (NDA) y un Dictamen Preliminar en 48 horas.
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.72rem; color: #64748b;">Canal Oficial de Asesoría:</div>
+            <div style="font-size: 0.90rem; font-weight: 800; color: #059669; font-family: monospace;">carlosmgutierrez05@gmail.com</div>
+            <div style="font-size: 0.68rem; color: #64748b; margin-top: 0.15rem;">Carlos Moreno Gutiérrez · Investigador Principal ESE UVa</div>
+          </div>
+        </div>
+
+        <!-- Cláusula Safe Harbor -->
+        <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 4px; padding: 0.65rem 0.85rem; margin-bottom: 1.25rem; font-size: 0.68rem; line-height: 1.45; color: #92400e;">
+          <strong>Aviso de Salvaguarda y Confidencialidad:</strong> Los análisis y cifras contenidas en este catálogo se fundamentan en estándares internacionales de la industria energética y están protegidos por el marco de propiedad intelectual de la Universidad de Valladolid. Las estimaciones finales para un emplazamiento concreto quedan sujetas a la realización de la Due Diligence técnica vinculante y los estudios geotécnicos y sísmicos pertinentes.
+        </div>
+
+        <!-- Firma Institucional -->
+        <div style="border-top: 1px solid #cbd5e1; padding-top: 0.75rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: #64748b;">
+          <div>
+            <div style="font-weight: 800; color: #0f172a;">Carlos Moreno Gutiérrez</div>
+            <div>Escuela de Ingenierías Industriales · Universidad de Valladolid (UVa)</div>
+          </div>
+          <div style="text-align: right;">
+            <div>Plataforma SMR Energy Economics UVa</div>
+            <div>Certificado con Metodología Oficial IEA / EPRI</div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Apertura del Modal con el Dossier Comercial Oficial
+    function openCommercialDossierModal() {
+      const container = document.getElementById('b2b-proposal-report-doc');
+      if (container) {
+        container.innerHTML = generateB2bCommercialDossierHtml();
+      }
+      openModal('modal-b2b-proposal-report');
+    }
+
+    const btnDownloadCommercialDossier = document.getElementById('btn-download-commercial-dossier');
+    if (btnDownloadCommercialDossier) {
+      btnDownloadCommercialDossier.addEventListener('click', openCommercialDossierModal);
+    }
+
+    // Actualización Interactiva del Embudo de Solicitud B2B (Tab 4)
+    function updateFunnelLivePreview() {
+      const pRange = document.getElementById('fn-client-power-range');
+      const pDisp = document.getElementById('fn-client-power-disp');
+      const companyInput = document.getElementById('fn-client-company');
+      const sectorSelect = document.getElementById('fn-client-sector');
+      const serviceSelect = document.getElementById('fn-client-service');
+      const headline = document.getElementById('fn-preview-headline');
+      const savingsDisp = document.getElementById('fn-preview-savings');
+      const co2Disp = document.getElementById('fn-preview-co2');
+      const gmailBtn = document.getElementById('btn-send-custom-proposal-gmail');
+
+      if (!pRange) return;
+      const power = parseFloat(pRange.value || 120);
+      if (pDisp) pDisp.textContent = power + ' MWe';
+
+      // Recomendación de Arquitectura SMR
+      let smrRec = '';
+      if (power <= 77) {
+        smrRec = `Arquitectura SMR Recomendada: 1 módulo NuScale VOYGR (77 MWe) / Microreactor modular`;
+      } else if (power <= 160) {
+        smrRec = `Arquitectura SMR Recomendada: 1 módulo SMR de ${power} MWe (tipo GE Hitachi BWRX-300 / Rolls-Royce SMR)`;
+      } else if (power <= 320) {
+        smrRec = `Arquitectura SMR Recomendada: Planta multimodular 2x SMR (2x ${Math.round(power/2)} MWe o 1x BWRX-300)`;
+      } else {
+        smrRec = `Arquitectura SMR Recomendada: Campus nuclear multimodular de alta capacidad (${power} MWe)`;
+      }
+      if (headline) headline.textContent = smrRec;
+
+      // Cálculos económicos rápidos
+      const annualMWh = power * 8760;
+      const energySmr = annualMWh * 0.925;
+      const energyGrid = annualMWh * 0.075;
+      const costRed = annualMWh * 125;
+      const costSmr = (energySmr * 68) + (energyGrid * 125);
+      const netSavingsM = (costRed - costSmr) / 1000000;
+      const co2Avoided = energySmr * 0.37;
+
+      if (savingsDisp) savingsDisp.textContent = '+' + netSavingsM.toFixed(2).replace('.', ',') + ' M€ / año';
+      if (co2Disp) co2Disp.textContent = Math.round(co2Avoided).toLocaleString('es-ES') + ' t / año';
+
+      // Actualizar enlace a Gmail
+      if (gmailBtn) {
+        const company = companyInput && companyInput.value.trim() ? companyInput.value.trim() : 'Empresa Interesada';
+        const sector = sectorSelect ? sectorSelect.value : 'Data Center & Inteligencia Artificial';
+        const service = serviceSelect ? serviceSelect.value : 'Nivel 1: Dictamen Preliminar';
+
+        const subject = encodeURIComponent(`Solicitud de Asesoría SMR / Due Diligence · ${company}`);
+        const body = encodeURIComponent(
+`Estimado Carlos Moreno Gutiérrez,
+Área de Economía de los Sistemas Energéticos · Universidad de Valladolid (UVa),
+
+Nos ponemos en contacto a través de la plataforma SMR Energy Economics para solicitar formalmente información y propuesta de servicios de asesoría técnica para el siguiente proyecto:
+
+• Empresa / Organización: ${company}
+• Sector de Actividad: ${sector}
+• Potencia Firme Requerida (24/7): ${power} MWe
+• Alcance del Servicio Solicitado: ${service}
+• Pre-Diagnóstico Estimado:
+  - Ahorro OPEX Proyectado: +${netSavingsM.toFixed(2).replace('.', ',')} M€/año frente a red
+  - CO₂ Evitado Estimado: ${Math.round(co2Avoided).toLocaleString('es-ES')} t/año
+  - Modelo Contractual de Interés: Corporate PPA Behind-The-Meter (CAPEX = 0 €)
+
+Agradeceríamos concertar una sesión técnica preliminar para coordinar la firma del correspondiente acuerdo de confidencialidad (NDA) y recibir el dictamen formal.
+
+Atentamente,
+[Nombre del Responsable / Cargo]
+[Teléfono de Contacto]
+${company}`
+        );
+
+        gmailBtn.href = `https://mail.google.com/mail/?view=cm&fs=1&to=carlosmgutierrez05@gmail.com&su=${subject}&body=${body}`;
+      }
+    }
+
+    ['fn-client-power-range', 'fn-client-company', 'fn-client-sector', 'fn-client-service'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', updateFunnelLivePreview);
+        el.addEventListener('change', updateFunnelLivePreview);
+      }
+    });
+
+    const btnCopyProposal = document.getElementById('btn-copy-custom-proposal');
+    if (btnCopyProposal) {
+      btnCopyProposal.addEventListener('click', () => {
+        const company = document.getElementById('fn-client-company')?.value.trim() || 'Mi Empresa';
+        const sector = document.getElementById('fn-client-sector')?.value || 'Data Center IA';
+        const power = document.getElementById('fn-client-power-range')?.value || '120';
+        const service = document.getElementById('fn-client-service')?.value || 'Dictamen Preliminar';
+        const savings = document.getElementById('fn-preview-savings')?.textContent || '+55,42 M€/año';
+
+        const text = `SOLICITUD DE ASESORÍA Y DUE DILIGENCE TECNO-ECONÓMICA SMR (UVa)
+-----------------------------------------------------------------
+• Empresa / Promotor: ${company}
+• Sector: ${sector}
+• Potencia Firme (24/7): ${power} MWe
+• Alcance Solicitado: ${service}
+• Ahorro Estimado: ${savings}
+• Modalidad: Corporate PPA Behind-The-Meter (CAPEX 0 €)
+• Contacto Director Técnico: Carlos Moreno Gutiérrez (carlosmgutierrez05@gmail.com)
+• Universidad de Valladolid · Escuela de Ingenierías Industriales`;
+
+        navigator.clipboard.writeText(text).then(() => {
+          const orig = btnCopyProposal.textContent;
+          btnCopyProposal.textContent = '✅ ¡Copiada!';
+          btnCopyProposal.style.borderColor = '#10b981';
+          btnCopyProposal.style.color = '#10b981';
+          setTimeout(() => {
+            btnCopyProposal.textContent = orig;
+            btnCopyProposal.style.borderColor = '';
+            btnCopyProposal.style.color = '';
+          }, 2000);
         });
       });
     }
