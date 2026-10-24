@@ -11274,47 +11274,45 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
 
         <!-- Indicadores Financieros y Comercialización Corporativa (Bloomberg / FinTech Grid) -->
-        <div class="rep-fin-dashboard">
-          <div class="rep-fin-grid-4">
-            <div class="rep-fin-card">
-              <div class="rep-fin-card-lbl">Coste Marginal SRMC</div>
-              <div class="rep-fin-card-val val-slate">${metrics.srmc} €/MWh</div>
-              <div class="rep-fin-card-sub">O&M variable + ciclo combustible</div>
-            </div>
-            <div class="rep-fin-card">
-              <div class="rep-fin-card-lbl">Renta Inframarginal vs Gas</div>
-              <div class="rep-fin-card-val val-emerald">+${metrics.inframarginalRent} €/MWh</div>
-              <div class="rep-fin-card-sub">Margen capturado vs CCGT</div>
-            </div>
-            <div class="rep-fin-card">
-              <div class="rep-fin-card-lbl">PPA Corporativo 24/7</div>
-              <div class="rep-fin-card-val val-cobalt">${metrics.ppaPrice} €/MWh</div>
-              <div class="rep-fin-card-sub">Suministro firme tras contador</div>
-            </div>
-            <div class="rep-fin-card">
-              <div class="rep-fin-card-lbl">Strike CfD Simétrico</div>
-              <div class="rep-fin-card-val val-slate">${metrics.cfdStrike} €/MWh</div>
-              <div class="rep-fin-card-sub">Precio regulado que deriesga WACC</div>
-            </div>
+        <div class="rep-kpi-grid" style="display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 0.65rem !important; margin: 0.85rem 0 0.65rem 0 !important;">
+          <div class="rep-kpi-card" style="border-top: 3px solid #0f172a !important; background: #ffffff !important; padding: 0.75rem 0.85rem !important;">
+            <div class="rep-kpi-lbl" style="font-size: 0.64rem !important; color: #6b7280 !important; text-transform: uppercase !important; font-weight: 700 !important; margin-bottom: 0.2rem !important;">Coste Marginal SRMC</div>
+            <div class="rep-kpi-val" style="font-size: 1.25rem !important; font-weight: 800 !important; color: #0f172a !important; font-variant-numeric: tabular-nums !important;">${metrics.srmc} €/MWh</div>
+            <div class="rep-kpi-sub" style="font-size: 0.62rem !important; color: #64748b !important; margin-top: 0.2rem !important;">O&M var. + combustible</div>
           </div>
-          
-          <div class="rep-fin-kpi-summary">
-            <div class="rep-fin-kpi-cell">
-              <span class="rep-fin-kpi-lbl">VAN Proyecto (60 años):</span>
-              <span class="rep-fin-kpi-val" style="color: ${metrics.npvMeur.startsWith('-') ? '#dc2626' : '#059669'}; font-weight: 700;">${metrics.npvMeur} M€</span>
-            </div>
-            <div class="rep-fin-kpi-cell">
-              <span class="rep-fin-kpi-lbl">Tasa Interna Retorno:</span>
-              <span class="rep-fin-kpi-val val-cobalt">${metrics.irrPct}</span>
-            </div>
-            <div class="rep-fin-kpi-cell">
-              <span class="rep-fin-kpi-lbl">Cobertura Deuda:</span>
-              <span class="rep-fin-kpi-val">${metrics.dscr}x DSCR</span>
-            </div>
-            <div class="rep-fin-kpi-cell">
-              <span class="rep-fin-kpi-lbl">Offtaker Principal:</span>
-              <span class="rep-fin-kpi-val" style="font-size: 0.80rem; font-weight: 600;">${fin.offtakeData.offtaker}</span>
-            </div>
+          <div class="rep-kpi-card" style="border-top: 3px solid #059669 !important; background: #f0fdf4 !important; padding: 0.75rem 0.85rem !important;">
+            <div class="rep-kpi-lbl" style="font-size: 0.64rem !important; color: #059669 !important; text-transform: uppercase !important; font-weight: 700 !important; margin-bottom: 0.2rem !important;">Renta Inframarginal</div>
+            <div class="rep-kpi-val" style="font-size: 1.25rem !important; font-weight: 800 !important; color: #059669 !important; font-variant-numeric: tabular-nums !important;">+${metrics.inframarginalRent} €/MWh</div>
+            <div class="rep-kpi-sub" style="font-size: 0.62rem !important; color: #047857 !important; margin-top: 0.2rem !important;">Margen vs gas CCGT</div>
+          </div>
+          <div class="rep-kpi-card" style="border-top: 3px solid #0284c7 !important; background: #f0f9ff !important; padding: 0.75rem 0.85rem !important;">
+            <div class="rep-kpi-lbl" style="font-size: 0.64rem !important; color: #0284c7 !important; text-transform: uppercase !important; font-weight: 700 !important; margin-bottom: 0.2rem !important;">PPA Corporativo 24/7</div>
+            <div class="rep-kpi-val" style="font-size: 1.25rem !important; font-weight: 800 !important; color: #0284c7 !important; font-variant-numeric: tabular-nums !important;">${metrics.ppaPrice} €/MWh</div>
+            <div class="rep-kpi-sub" style="font-size: 0.62rem !important; color: #0369a1 !important; margin-top: 0.2rem !important;">Firme tras contador</div>
+          </div>
+          <div class="rep-kpi-card" style="border-top: 3px solid #475569 !important; background: #ffffff !important; padding: 0.75rem 0.85rem !important;">
+            <div class="rep-kpi-lbl" style="font-size: 0.64rem !important; color: #6b7280 !important; text-transform: uppercase !important; font-weight: 700 !important; margin-bottom: 0.2rem !important;">Strike CfD Simétrico</div>
+            <div class="rep-kpi-val" style="font-size: 1.25rem !important; font-weight: 800 !important; color: #0f172a !important; font-variant-numeric: tabular-nums !important;">${metrics.cfdStrike} €/MWh</div>
+            <div class="rep-kpi-sub" style="font-size: 0.62rem !important; color: #64748b !important; margin-top: 0.2rem !important;">WACC deriesgado 4,5%</div>
+          </div>
+        </div>
+
+        <div style="background: #f8fafc !important; border: 1px solid #e2e8f0 !important; border-radius: 6px !important; padding: 0.65rem 0.95rem !important; display: grid !important; grid-template-columns: repeat(4, 1fr) !important; gap: 0.75rem !important; font-size: 0.74rem !important; margin-bottom: 0.85rem !important;">
+          <div>
+            <div style="font-size: 0.62rem !important; color: #64748b !important; text-transform: uppercase !important; font-weight: 700 !important;">VAN Proyecto (60 años)</div>
+            <div style="font-weight: 800 !important; font-size: 0.92rem !important; color: ${metrics.npvMeur.startsWith('-') ? '#dc2626' : '#059669'} !important; margin-top: 0.15rem !important; font-variant-numeric: tabular-nums !important;">${metrics.npvMeur} M€</div>
+          </div>
+          <div>
+            <div style="font-size: 0.62rem !important; color: #64748b !important; text-transform: uppercase !important; font-weight: 700 !important;">Tasa Interna Retorno</div>
+            <div style="font-weight: 800 !important; font-size: 0.92rem !important; color: #0284c7 !important; margin-top: 0.15rem !important; font-variant-numeric: tabular-nums !important;">${metrics.irrPct}</div>
+          </div>
+          <div>
+            <div style="font-size: 0.62rem !important; color: #64748b !important; text-transform: uppercase !important; font-weight: 700 !important;">Cobertura de Deuda</div>
+            <div style="font-weight: 800 !important; font-size: 0.92rem !important; color: #0f172a !important; margin-top: 0.15rem !important; font-variant-numeric: tabular-nums !important;">${metrics.dscr}x DSCR</div>
+          </div>
+          <div>
+            <div style="font-size: 0.62rem !important; color: #64748b !important; text-transform: uppercase !important; font-weight: 700 !important;">Offtaker Principal</div>
+            <div style="font-weight: 700 !important; font-size: 0.82rem !important; color: #0f172a !important; margin-top: 0.15rem !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important;">${fin.offtakeData.offtaker}</div>
           </div>
         </div>
       </div>
