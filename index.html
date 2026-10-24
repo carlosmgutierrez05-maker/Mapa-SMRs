@@ -5589,6 +5589,20 @@ li.b2b-case-feature-item {
   flex-direction: column;
 }
 
+.b2b-cta-conversion-box {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
+  border: 1.5px solid rgba(16, 185, 129, 0.35);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
+}
+
+[data-theme="light"] .b2b-cta-conversion-box {
+  background: linear-gradient(135deg, #f0f9ff 0%, #ecfdf5 100%) !important;
+  border-color: #a7f3d0 !important;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.08) !important;
+}
+
 [data-theme="light"] .b2b-funnel-box {
   background: #ffffff !important;
   border-color: #cbd5e1 !important;
@@ -6565,11 +6579,8 @@ li.b2b-case-feature-item {
         <button id="btn-open-calc" class="btn btn-primary" title="Simulador económico de LCOE y viabilidad en mercado mayorista">
           <span class="btn-icon-glyph">🧮</span> LCOE
         </button>
-        <button id="btn-open-premium" class="btn btn-premium" title="Terminal B2B: Centros de Datos (IA), PPAs 24/7 y Finanzas Bancables">
-          <span class="btn-icon-glyph">💼</span> Data Centers & PPA
-        </button>
-        <button id="btn-open-advisory" class="btn btn-advisory-cta" title="Servicios Oficiales de Consultoría y Due Diligence SMR · Universidad de Valladolid">
-          <span class="btn-icon-glyph">🤝</span> Asesoría B2B
+        <button id="btn-open-premium" class="btn btn-premium" title="Terminal Corporativo: Centros de Datos (IA), Suministro PPA 24/7 y Asesoría B2B UVa">
+          <span class="btn-icon-glyph">💼</span> Soluciones Corporativas & Asesoría
         </button>
       </div>
 
@@ -7315,8 +7326,8 @@ li.b2b-case-feature-item {
     <div class="modal-dialog" style="max-width: 1080px;">
       <div class="modal-header">
         <h2 class="modal-title" style="display: flex; align-items: center; gap: 0.6rem; font-size: 1.05rem;">
-          <span>💼</span> Análisis Corporativo: SMRs, Centros de Datos (IA) y Viabilidad Financiera
-          <span class="b2b-badge-cyan">AUDITORÍA TECNO-ECONÓMICA</span>
+          <span>💼</span> Soluciones Corporativas & Asesoría B2B · SMR Energy UVa
+          <span class="b2b-badge-cyan">INTELIGENCIA & DUE DILIGENCE</span>
         </h2>
         <button class="btn-icon btn-close-modal">✕</button>
       </div>
@@ -7326,16 +7337,16 @@ li.b2b-case-feature-item {
         <!-- Pestañas Corporativas -->
         <div class="b2b-tabs-bar">
           <button class="b2b-tab-btn active" data-b2btab="tab-dc">
-            Campus de Datos & IA (Simulador PPA 24/7)
+            🏢 Campus de Datos & IA (Simulador PPA 24/7)
           </button>
           <button class="b2b-tab-btn" data-b2btab="tab-ind">
-            Descarbonización Industrial & Casos en España
+            🏭 Descarbonización Industrial & Casos en España
           </button>
           <button class="b2b-tab-btn" data-b2btab="tab-glossary">
-            📖 Glosario & Marco Metodológico B2B
+            📖 Glosario & Marco Metodológico
           </button>
-          <button class="b2b-tab-btn" data-b2btab="tab-consulting">
-            Servicios de Asesoría Técnica & Due Diligence
+          <button class="b2b-tab-btn" data-b2btab="tab-consulting" style="background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-weight: 700;">
+            🤝 Asesoría Oficial & Due Diligence UVa
           </button>
         </div>
 
@@ -7566,6 +7577,22 @@ li.b2b-case-feature-item {
                 <span id="audit-risk-savings" class="b2b-diff-val amber">+2,40 M€/año</span>
               </div>
             </div>
+          <!-- Banner de Llamada a la Acción hacia Asesoría y Due Diligence -->
+          <div class="b2b-cta-conversion-box" style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%); border: 1.5px solid rgba(16, 185, 129, 0.35); border-radius: 8px; padding: 1.15rem 1.35rem; margin-top: 1.25rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="flex: 1; min-width: 280px;">
+              <div style="font-size: 0.70rem; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.4rem;">
+                <span>🤝</span> ÁREA OFICIAL DE ASESORÍA Y DUE DILIGENCE · UNIVERSIDAD DE VALLADOLID
+              </div>
+              <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-primary); margin-top: 0.25rem;">
+                ¿Desea formalizar este estudio para su campus o instalación industrial?
+              </div>
+              <div style="font-size: 0.74rem; color: var(--text-secondary); margin-top: 0.2rem; line-height: 1.45;">
+                Configure los parámetros a medida en nuestro Asistente de Solicitud y descargue el <strong>Dossier Oficial de Servicios UVa</strong> en formato PDF A4.
+              </div>
+            </div>
+            <button type="button" class="btn-jump-to-advisory btn btn-primary" style="background: linear-gradient(135deg, #059669 0%, #0d9488 100%); border-color: #10b981; font-weight: 700; font-size: 0.82rem; padding: 0.6rem 1.25rem; white-space: nowrap;">
+              Solicitar Due Diligence a Medida →
+            </button>
           </div>
 
           <!-- Cláusula de Salvaguarda y Aviso Legal (Safe Harbor) -->
@@ -7683,6 +7710,24 @@ li.b2b-case-feature-item {
               </div>
             </div>
 
+          </div>
+
+          <!-- Banner de Llamada a la Acción hacia Asesoría y Due Diligence -->
+          <div class="b2b-cta-conversion-box" style="background: linear-gradient(135deg, rgba(2, 132, 199, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%); border: 1.5px solid rgba(16, 185, 129, 0.35); border-radius: 8px; padding: 1.15rem 1.35rem; margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div style="flex: 1; min-width: 280px;">
+              <div style="font-size: 0.70rem; font-weight: 800; color: #10b981; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.4rem;">
+                <span>🤝</span> ÁREA OFICIAL DE ASESORÍA Y DUE DILIGENCE · UNIVERSIDAD DE VALLADOLID
+              </div>
+              <div style="font-size: 0.88rem; font-weight: 700; color: var(--text-primary); margin-top: 0.25rem;">
+                ¿Desea evaluar la descarbonización térmica o eléctrica de su complejo industrial?
+              </div>
+              <div style="font-size: 0.74rem; color: var(--text-secondary); margin-top: 0.2rem; line-height: 1.45;">
+                Analizamos emplazamientos, cogeneración de vapor y estructuración PPA 24/7 sin CAPEX para su planta.
+              </div>
+            </div>
+            <button type="button" class="btn-jump-to-advisory btn btn-primary" style="background: linear-gradient(135deg, #059669 0%, #0d9488 100%); border-color: #10b981; font-weight: 700; font-size: 0.82rem; padding: 0.6rem 1.25rem; white-space: nowrap;">
+              Solicitar Due Diligence a Medida →
+            </button>
           </div>
         </div>
 
@@ -13339,17 +13384,19 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    const btnOpenAdvisory = document.getElementById('btn-open-advisory');
-    if (btnOpenAdvisory) {
-      btnOpenAdvisory.addEventListener('click', () => {
-        openModal('modal-premium-intelligence');
+    // Botones de salto directo a Asesoría desde Pestañas Técnicas
+    document.querySelectorAll('.btn-jump-to-advisory').forEach(btn => {
+      btn.addEventListener('click', () => {
         const advisoryTabBtn = document.querySelector('.b2b-tab-btn[data-b2btab="tab-consulting"]');
         if (advisoryTabBtn) {
           advisoryTabBtn.click();
+          const modalBody = document.querySelector('#modal-premium-intelligence .modal-body');
+          if (modalBody) {
+            modalBody.scrollTop = 0;
+          }
         }
-        updateFunnelLivePreview();
       });
-    }
+    });
 
     // Pestañas del Módulo B2B
     document.querySelectorAll('.b2b-tab-btn').forEach(btn => {
