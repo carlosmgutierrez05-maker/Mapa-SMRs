@@ -3380,6 +3380,156 @@ body.drawer-open .map-countries-ribbon-wrapper {
   gap: 0.65rem;
 }
 
+/* ==========================================================================
+   SELECTOR DE MODALIDAD FINANCIERA (PROJECT FINANCE vs CORPORATE PPA)
+   ========================================================================== */
+.calc-fin-mode-bar {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.95rem;
+  margin-bottom: 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.calc-fin-mode-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calc-fin-mode-lbl {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.calc-fin-mode-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+}
+
+.btn-fin-mode {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.95rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: left;
+  transition: all var(--transition-fast);
+  color: var(--text-secondary);
+}
+
+.btn-fin-mode:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--text-primary);
+}
+
+.btn-fin-mode.active[data-finmode="project-finance"] {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.15) 0%, rgba(14, 165, 233, 0.05) 100%);
+  border-color: #0284c7;
+  color: #f0f9ff;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.25);
+}
+
+.btn-fin-mode.active[data-finmode="ppa-btm"] {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.05) 100%);
+  border-color: #10b981;
+  color: #ecfdf5;
+  box-shadow: 0 2px 10px rgba(16, 185, 129, 0.25);
+}
+
+.fin-mode-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.fin-mode-texts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.fin-mode-texts strong {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.btn-fin-mode.active[data-finmode="project-finance"] .fin-mode-texts strong {
+  color: #38bdf8;
+}
+
+.btn-fin-mode.active[data-finmode="ppa-btm"] .fin-mode-texts strong {
+  color: #34d399;
+}
+
+.fin-mode-texts span {
+  font-size: 0.69rem;
+  color: var(--text-muted);
+  line-height: 1.25;
+}
+
+/* Toggle en Gráficos */
+.chart-sub-toggle {
+  display: inline-flex;
+  gap: 0.3rem;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.2rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.btn-chart-sub {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.70rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-chart-sub:hover {
+  color: var(--text-primary);
+}
+
+.btn-chart-sub.active {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+[data-theme="light"] .btn-fin-mode {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+[data-theme="light"] .btn-fin-mode.active[data-finmode="project-finance"] {
+  background: #e0f2fe;
+  border-color: #0284c7;
+}
+
+[data-theme="light"] .btn-fin-mode.active[data-finmode="ppa-btm"] {
+  background: #dcfce7;
+  border-color: #10b981;
+}
+
+[data-theme="light"] .chart-sub-toggle {
+  background: #f1f5f9;
+}
+
 /* Calculadora Económica Styles - Diseño Sobrio y Académico */
 .calc-scenarios-bar {
   display: flex;
@@ -3389,7 +3539,7 @@ body.drawer-open .map-countries-ribbon-wrapper {
   padding: 0.65rem 0.95rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.75rem;
   flex-wrap: wrap;
 }
 
@@ -3686,6 +3836,403 @@ body.drawer-open .map-countries-ribbon-wrapper {
   position: relative;
   height: 230px;
   width: 100%;
+}
+
+.chart-explanation-box {
+  margin-top: 0.65rem;
+  padding: 0.55rem 0.85rem;
+  background: rgba(15, 23, 42, 0.55);
+  border-left: 3px solid #0284c7;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.chart-explanation-box strong {
+  color: #38bdf8;
+}
+
+[data-theme="light"] .chart-explanation-box {
+  background: #f8fafc;
+  border-left-color: #0284c7;
+  color: #475569;
+}
+
+[data-theme="light"] .chart-explanation-box strong {
+  color: #0369a1;
+}
+
+/* ==========================================================================
+   DASHBOARD DE GRÁFICOS: NAVEGACIÓN Y VISTA DE VOLATILIDAD OMIE vs SMR
+   ========================================================================== */
+.charts-view-nav {
+  display: flex;
+  gap: 0.65rem;
+  background: var(--bg-card);
+  padding: 0.45rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  margin-bottom: 1rem;
+}
+
+.btn-chart-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.95rem;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-chart-tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.btn-chart-tab.active {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
+}
+
+[data-theme="light"] .charts-view-nav {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+[data-theme="light"] .btn-chart-tab {
+  color: #475569;
+}
+
+[data-theme="light"] .btn-chart-tab.active {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+/* Vista de Volatilidad */
+.volatility-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.volatility-controls-bar {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+}
+
+.vol-scenarios-group {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.btn-vol-scenario {
+  padding: 0.35rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.btn-vol-scenario:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-vol-scenario.active {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35);
+}
+
+.vol-slider-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Barra de Leyenda Estilizada Prémium */
+.vol-legend-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  padding: 0.45rem 0.75rem;
+  background: rgba(15, 23, 42, 0.45);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  margin-bottom: 0.65rem;
+  font-size: 0.73rem;
+}
+
+[data-theme="light"] .vol-legend-bar {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.vol-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.vol-legend-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+}
+
+.vol-legend-item.dimmed {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+
+.vol-legend-swatch {
+  width: 14px;
+  height: 4px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.vol-legend-swatch.dashed {
+  background: transparent;
+  border-top: 2px dashed #94a3b8;
+  height: 0;
+}
+
+.vol-legend-swatch.dashed-cyan {
+  background: transparent;
+  border-top: 2px dashed #0284c7;
+  height: 0;
+}
+
+.vol-legend-badge-saving {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.70rem;
+  font-weight: 700;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.14);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+}
+
+.badge-saving-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+  animation: pulseSaving 2s infinite ease-in-out;
+}
+
+@keyframes pulseSaving {
+  0%, 100% { opacity: 0.7; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+.vol-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+.vol-metric-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vol-metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.vol-metric-card.accent-amber { border-top: 3px solid #f59e0b; }
+.vol-metric-card.accent-emerald { border-top: 3px solid #10b981; }
+.vol-metric-card.accent-cyan { border-top: 3px solid #38bdf8; }
+
+.vol-metric-title {
+  font-size: 0.70rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.04em;
+}
+
+.vol-metric-value {
+  font-size: 1.35rem;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-primary);
+}
+
+.vol-metric-value.emerald { color: #10b981; }
+.vol-metric-value.cyan { color: #38bdf8; }
+.vol-metric-value.amber { color: #f59e0b; }
+
+.vol-metric-desc {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  line-height: 1.3;
+}
+
+.vol-callout {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.15rem;
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+}
+
+[data-theme="light"] .vol-callout {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+[data-theme="light"] .vol-metric-card,
+[data-theme="light"] .volatility-controls-bar {
+  background: #ffffff;
+  border-color: #cbd5e1;
+}
+
+@media (max-width: 768px) {
+  .vol-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Guía de Interpretación de la Curva de Mercado */
+.vol-explanation-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.85rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.vol-exp-header {
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.vol-exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.vol-exp-item {
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.vol-exp-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  width: fit-content;
+}
+
+.vol-exp-badge.valley {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.vol-exp-badge.peak {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.vol-exp-badge.saving {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.vol-exp-item p {
+  margin: 0;
+  font-size: 0.70rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.vol-exp-item p strong {
+  color: var(--text-primary);
+}
+
+[data-theme="light"] .vol-explanation-card {
+  background: #ffffff;
+}
+
+[data-theme="light"] .vol-exp-item {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+@media (max-width: 900px) {
+  .vol-exp-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ==========================================================================
@@ -4462,70 +5009,444 @@ body.drawer-open .map-countries-ribbon-wrapper {
 
 /* Estilos de Impresión Oficial (PDF A4) */
 @media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 12mm 12mm 12mm;
+  }
+  
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
   body * {
     visibility: hidden;
   }
+  
   #modal-engineering-report,
   #modal-engineering-report *,
   #modal-b2b-proposal-report,
   #modal-b2b-proposal-report * {
     visibility: visible;
   }
+  
   #modal-engineering-report,
   #modal-b2b-proposal-report {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
     background: #ffffff !important;
     color: #0f172a !important;
     display: block !important;
+    z-index: 999999 !important;
   }
-  .report-modal-header, .no-print {
+  
+  .report-modal-header, .no-print, .btn, button {
     display: none !important;
   }
+  
   .report-modal-body {
     padding: 0 !important;
+    margin: 0 !important;
     background: none !important;
+    overflow: visible !important;
   }
+  
   .report-modal-container {
     width: 100% !important;
+    max-width: 100% !important;
     height: auto !important;
     border: none !important;
     box-shadow: none !important;
     background: none !important;
     border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
   }
+  
   .report-sheet {
+    width: 100% !important;
     max-width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
     box-shadow: none !important;
+    border: none !important;
     border-radius: 0 !important;
-    font-size: 8.8pt !important;
-    line-height: 1.45 !important;
+    font-size: 8.5pt !important;
+    line-height: 1.4 !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
   }
-  .rep-section {
+  
+  .rep-section, .b2b-print-section, .b2b-print-avoid, table, tr, .b2b-kpis-box {
     page-break-inside: avoid !important;
+    break-inside: avoid !important;
   }
+  
   .rep-page-break {
     page-break-before: always !important;
+    break-before: page !important;
   }
+  
   .rep-table th, .rep-table td {
     padding: 4px 6px !important;
-    font-size: 8pt !important;
+    font-size: 7.8pt !important;
   }
+  
   .rep-kpi-grid {
     grid-template-columns: repeat(4, 1fr) !important;
   }
 }
 
 /* ==========================================================================
-   MÓDULO B2B, CENTROS DE DATOS (IA) Y ANÁLISIS CORPORATIVO EJECUTIVO
+   MODO PITCH EJECUTIVO B2B (PRESENTACIÓN GUIADA DE 5 PASOS)
    ========================================================================== */
+.btn-pitch {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+  color: #ffffff !important;
+  border: 1px solid #818cf8 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35) !important;
+  transition: all var(--transition-fast) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
 
+.btn-pitch:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%) !important;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.55) !important;
+  transform: translateY(-1px);
+  color: #ffffff !important;
+}
+
+.pitch-modal-backdrop {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: rgba(11, 17, 30, 0.92) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  z-index: 100000 !important;
+  display: none !important;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.pitch-modal-backdrop.open {
+  display: flex !important;
+}
+
+.pitch-modal-container {
+  background: #0f172a;
+  border: 1.5px solid rgba(99, 102, 241, 0.4);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(99, 102, 241, 0.25);
+  border-radius: 14px;
+  width: 95vw;
+  max-width: 1080px;
+  height: 90vh;
+  max-height: 820px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: pitchZoomIn 0.25s ease-out;
+  color: #f8fafc;
+}
+
+@keyframes pitchZoomIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.pitch-header {
+  padding: 0.85rem 1.4rem;
+  background: #090d16;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pitch-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.pitch-badge-live {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.pitch-title-text {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.pitch-step-counter {
+  font-size: 0.78rem;
+  color: #cbd5e1;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pitch-close-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.80rem;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.pitch-close-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border-color: #ef4444;
+}
+
+.pitch-progress-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.pitch-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1 0%, #38bdf8 50%, #10b981 100%);
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pitch-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.75rem 2.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.pitch-slide-content {
+  animation: pitchSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+@keyframes pitchSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.pitch-slide-hero {
+  margin-bottom: 0.5rem;
+}
+
+.pitch-pill {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 0.55rem;
+}
+
+.pitch-pill.pill-problem {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+.pitch-pill.pill-tech {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+}
+
+.pitch-pill.pill-finance {
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
+  border: 1px solid rgba(99, 102, 241, 0.35);
+}
+
+.pitch-pill.pill-roi {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.pitch-pill.pill-advisory {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.pitch-slide-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 0.4rem 0;
+  line-height: 1.25;
+}
+
+.pitch-slide-lead {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 920px;
+}
+
+.pitch-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.pitch-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.pitch-card {
+  background: rgba(30, 41, 59, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+.pitch-card:hover {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(99, 102, 241, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.pitch-card-metric {
+  font-size: 1.6rem;
+  font-weight: 800;
+  font-family: monospace;
+  margin: 0.3rem 0;
+  display: block;
+}
+
+.pitch-card-metric.red { color: #f87171; }
+.pitch-card-metric.cyan { color: #38bdf8; }
+.pitch-card-metric.emerald { color: #34d399; }
+.pitch-card-metric.amber { color: #fbbf24; }
+.pitch-card-metric.purple { color: #c084fc; }
+
+.pitch-card-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 0.25rem;
+}
+
+.pitch-card-desc {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.pitch-callout-box {
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.3);
+  border-left: 3px solid #0284c7;
+  border-radius: 6px;
+  padding: 0.85rem 1.15rem;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.pitch-footer {
+  padding: 0.85rem 1.5rem;
+  background: #090d16;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.pitch-dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pitch-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pitch-dot.active {
+  background: #6366f1;
+  width: 26px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+}
+
+.pitch-dot:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.btn-pitch-nav {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .pitch-grid-3 {
+    grid-template-columns: 1fr;
+  }
+  .pitch-grid-2 {
+    grid-template-columns: 1fr;
+  }
+  .pitch-body {
+    padding: 1.25rem;
+  }
+}
 
 /* ==========================================================================
    MÓDULO B2B, CENTROS DE DATOS (IA) Y ANÁLISIS CORPORATIVO EJECUTIVO
@@ -4575,6 +5496,32 @@ body.drawer-open .map-countries-ribbon-wrapper {
   background: #ffffff;
   color: #0f172a;
   border-color: #0284c7;
+}
+
+.b2b-tab-btn.b2b-tab-btn-advisory {
+  background: rgba(16, 185, 129, 0.10);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  font-weight: 700;
+}
+
+.b2b-tab-btn.b2b-tab-btn-advisory:hover {
+  background: rgba(16, 185, 129, 0.20);
+  border-color: #10b981;
+  color: #10b981;
+}
+
+.b2b-tab-btn.b2b-tab-btn-advisory.active {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+  color: #ffffff !important;
+  border-color: #059669 !important;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35) !important;
+}
+
+[data-theme="light"] .b2b-tab-btn.b2b-tab-btn-advisory.active {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+  color: #ffffff !important;
+  border-color: #047857 !important;
 }
 
 .b2b-tab-pane {
@@ -6582,6 +7529,9 @@ li.b2b-case-feature-item {
         <button id="btn-open-premium" class="btn btn-premium" title="Terminal Corporativo: Centros de Datos (IA), Suministro PPA 24/7 y Asesoría B2B UVa">
           <span class="btn-icon-glyph">💼</span> Soluciones Corporativas & Asesoría
         </button>
+        <button id="btn-open-pitch" class="btn btn-pitch" title="Presentación ejecutiva guiada paso a paso para comités de inversión y clientes (15 min)">
+          <span class="btn-icon-glyph">🎯</span> Modo Pitch B2B
+        </button>
       </div>
 
       <div class="header-divider"></div>
@@ -7345,7 +8295,7 @@ li.b2b-case-feature-item {
           <button class="b2b-tab-btn" data-b2btab="tab-glossary">
             📖 Glosario & Marco Metodológico
           </button>
-          <button class="b2b-tab-btn" data-b2btab="tab-consulting" style="background: rgba(16, 185, 129, 0.12); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); font-weight: 700;">
+          <button class="b2b-tab-btn b2b-tab-btn-advisory" data-b2btab="tab-consulting">
             🤝 Asesoría Oficial & Due Diligence UVa
           </button>
         </div>
@@ -7609,6 +8559,7 @@ li.b2b-case-feature-item {
           </div>
 
         </div>
+        </div> <!-- Cierre de #pane-tab-dc -->
 
         <!-- PESTAÑA 2: Descarbonización Industrial & Casos en España -->
         <div id="pane-tab-ind" class="b2b-tab-pane">
@@ -8061,16 +9012,19 @@ li.b2b-case-feature-item {
 
               <!-- Botones de Acción Comercial -->
               <div style="display: flex; justify-content: flex-end; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
-                <button type="button" id="btn-download-commercial-dossier" class="btn btn-secondary" style="font-weight: 600; font-size: 0.82rem; padding: 0.55rem 1rem;">
-                  📥 Descargar Dossier Oficial de Servicios UVa (PDF A4)
+                <button type="button" id="btn-open-custom-proposal-doc" class="btn btn-primary" style="font-weight: 700; font-size: 0.82rem; padding: 0.55rem 1.15rem; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border-color: #0284c7; display: flex; align-items: center; gap: 0.4rem; box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);" title="Generar dictamen ejecutivo A4 adaptado a los parámetros de su empresa">
+                  <span>📄</span> Generar Dictamen & Propuesta a Medida (PDF A4)
+                </button>
+                <button type="button" id="btn-download-commercial-dossier" class="btn btn-secondary" style="font-weight: 600; font-size: 0.82rem; padding: 0.55rem 1rem;" title="Ver o descargar el catálogo general de los 4 niveles de servicios de Due Diligence UVa">
+                  <span>📑</span> Catálogo General de Servicios UVa
                 </button>
                 <button type="button" id="btn-copy-custom-proposal" class="btn btn-secondary" style="font-size: 0.82rem; padding: 0.55rem 1rem;">
-                  📋 Copiar Solicitud
+                  <span>📋</span> Copiar Solicitud
                 </button>
                 <a id="btn-send-custom-proposal-gmail" 
                    href="https://mail.google.com/mail/?view=cm&fs=1&to=carlosmgutierrez05@gmail.com&su=Solicitud%20Estudio%20Due%20Diligence%20SMR&body=Estimado%20Carlos," target="_blank" rel="noopener noreferrer"
                    class="btn btn-primary" style="font-weight: 700; font-size: 0.82rem; padding: 0.55rem 1.25rem; background: linear-gradient(135deg, #059669 0%, #0d9488 100%); border-color: #10b981;">
-                  📨 Enviar Solicitud de Due Diligence por Email
+                  <span>📨</span> Enviar por Email
                 </a>
               </div>
             </div>
@@ -8183,8 +9137,11 @@ li.b2b-case-feature-item {
   <!-- =========================================================================
        MODAL 2: SIMULADOR TÉCNICO-ECONÓMICO LCOE, VAN Y RENTABILIDAD DE MERCADO
        ========================================================================= -->
+  <!-- =========================================================================
+       MODAL 2: SIMULADOR TÉCNICO-ECONÓMICO LCOE, FINANCIACIÓN Y RENTABILIDAD
+       ========================================================================= -->
   <div id="modal-calculator" class="modal-backdrop">
-    <div class="modal-dialog" style="max-width: 1040px;">
+    <div class="modal-dialog" style="max-width: 1060px;">
       <div class="modal-header">
         <h2 class="modal-title">
           <span>🧮</span> Simulador Técnico-Económico LCOE, Financiación y Rentabilidad
@@ -8193,9 +9150,33 @@ li.b2b-case-feature-item {
       </div>
       <div class="modal-body">
         
-        <!-- Barra de Escenarios Predefinidos de la Industria -->
-        <div class="calc-scenarios-bar">
-          <span class="calc-scenarios-lbl">Escenarios Predefinidos:</span>
+        <!-- Selector de Enfoque / Modalidad Financiera -->
+        <div class="calc-fin-mode-bar">
+          <div class="calc-fin-mode-header">
+            <span class="calc-fin-mode-lbl">Seleccione el Marco de Análisis Financiero:</span>
+            <span style="font-size: 0.70rem; color: #94a3b8;">Alternar entre perspectiva Promotor (CAPEX) o Consumidor (PPA)</span>
+          </div>
+          <div class="calc-fin-mode-switch">
+            <button type="button" class="btn-fin-mode active" data-finmode="project-finance" id="btn-mode-projfin">
+              <span class="fin-mode-icon">🏛️</span>
+              <div class="fin-mode-texts">
+                <strong>Inversión en Propiedad / Project Finance (SPV)</strong>
+                <span>Perspectiva Promotor / IPP / Fondo · Desglose LCOE, Capex I₀, TIR, VAN 60a y Payback</span>
+              </div>
+            </button>
+            <button type="button" class="btn-fin-mode" data-finmode="ppa-btm" id="btn-mode-ppa">
+              <span class="fin-mode-icon">⚡</span>
+              <div class="fin-mode-texts">
+                <strong>Corporate PPA Behind-The-Meter (CAPEX = 0 €)</strong>
+                <span>Perspectiva Cliente Industrial / Data Center · Tarifa Plana 24/7 y Ahorro en Factura</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Barra de Escenarios Predefinidos: Modalidad 1 (Project Finance) -->
+        <div id="calc-scenarios-projfin" class="calc-scenarios-bar">
+          <span class="calc-scenarios-lbl">Escenarios Predefinidos (Project Finance):</span>
           <div class="calc-scenarios-btns">
             <button class="btn-scenario active" data-scenario="noak" title="Planta comercial de serie madura (N-th of a Kind)">
               🏢 Comercial de Serie (NOAK)
@@ -8212,10 +9193,33 @@ li.b2b-case-feature-item {
           </div>
         </div>
 
+        <!-- Barra de Escenarios Predefinidos: Modalidad 2 (Corporate PPA Behind-The-Meter) -->
+        <div id="calc-scenarios-ppa" class="calc-scenarios-bar" style="display: none;">
+          <span class="calc-scenarios-lbl" style="color: #34d399;">Perfiles de Demanda PPA:</span>
+          <div class="calc-scenarios-btns">
+            <button class="btn-scenario-ppa active" data-ppascenario="dc-hyper" title="Campus Hyperscale de Data Centers e IA (120 MWe, Tarifa 68 €/MWh)">
+              🤖 Campus Data Center IA (120 MWe · 68 €)
+            </button>
+            <button class="btn-scenario-ppa" data-ppascenario="heavy-ind" title="Gran Siderurgia / Petroquímica (250 MWe, Tarifa 64 €/MWh)">
+              🏭 Gran Industria / Acero (250 MWe · 64 €)
+            </button>
+            <button class="btn-scenario-ppa" data-ppascenario="tech-hub" title="Cluster Tecnológico / Edge Computing (60 MWe, Tarifa 72 €/MWh)">
+              ⚡ Cluster IA / BTM (60 MWe · 72 €)
+            </button>
+            <button class="btn-scenario-ppa" data-ppascenario="co-invest" title="PPA Bilateral de Alta Capacidad (300 MWe, Tarifa 60 €/MWh)">
+              🤝 PPA Basal Escala (300 MWe · 60 €)
+            </button>
+          </div>
+        </div>
+
         <div class="calc-grid">
           
-          <!-- Columna Izquierda: Parámetros del SMR y Mercado -->
-          <div class="calc-params-panel">
+          <!-- ==========================================
+               COLUMNA IZQUIERDA: INPUTS
+               ========================================== -->
+          
+          <!-- Panel Inputs 1: Project Finance -->
+          <div id="calc-params-projfin" class="calc-params-panel">
             <h4 class="calc-section-title">
               1. Parámetros Técnicos y Financiación
             </h4>
@@ -8258,7 +9262,7 @@ li.b2b-case-feature-item {
 
             <div class="calc-input-group">
               <div class="calc-label-row">
-                <span>Precio Medio Mayorista Pool / PPA:</span>
+                <span>Precio Medio Mayorista Pool / Venta:</span>
                 <span id="val-disp-pool" class="calc-val-display">75 €/MWh</span>
               </div>
               <input type="range" id="calc-in-pool" class="custom-slider" min="40" max="140" step="5" value="75">
@@ -8273,8 +9277,74 @@ li.b2b-case-feature-item {
             </div>
           </div>
 
-          <!-- Columna Derecha: Resultados Financieros y Desglose Riguroso -->
-          <div class="calc-results-card">
+          <!-- Panel Inputs 2: Corporate PPA Behind-The-Meter -->
+          <div id="calc-params-ppa" class="calc-params-panel" style="display: none; border-color: rgba(16, 185, 129, 0.35);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem;">
+              <h4 class="calc-section-title" style="margin-bottom: 0; border: none; padding: 0; color: #10b981;">
+                1. Demanda y Contrato PPA SMR
+              </h4>
+              <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; font-size: 0.65rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 4px;">CAPEX = 0 €</span>
+            </div>
+
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <span>Potencia Contratada Dedicada:</span>
+                <span id="val-disp-ppa-capacity" class="calc-val-display">120 MWe</span>
+              </div>
+              <input type="range" id="calc-in-ppa-capacity" class="custom-slider" min="20" max="500" step="10" value="120">
+            </div>
+
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <span>Tarifa PPA SMR Behind-The-Meter:</span>
+                <span id="val-disp-ppa-price" class="calc-val-display" style="color: #34d399;">68 €/MWh</span>
+              </div>
+              <input type="range" id="calc-in-ppa-price" class="custom-slider" min="50" max="100" step="1" value="68">
+            </div>
+
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <span>Coste Red Tradicional (Pool + ATR + BESS):</span>
+                <span id="val-disp-ppa-grid" class="calc-val-display" style="color: #f87171;">125 €/MWh</span>
+              </div>
+              <input type="range" id="calc-in-ppa-grid" class="custom-slider" min="80" max="180" step="2" value="125">
+            </div>
+
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <span>Duración del Contrato PPA Privado:</span>
+                <span id="val-disp-ppa-years" class="calc-val-display">20 Años</span>
+              </div>
+              <input type="range" id="calc-in-ppa-years" class="custom-slider" min="10" max="30" step="5" value="20">
+            </div>
+
+            <h4 class="calc-section-title" style="margin-top: 1.1rem; color: #10b981;">
+              2. Fiabilidad y Continuidad Operativa
+            </h4>
+
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <span>Factor de Disponibilidad 24/7 (SMR):</span>
+                <span id="val-disp-ppa-cf" class="calc-val-display">93 %</span>
+              </div>
+              <input type="range" id="calc-in-ppa-cf" class="custom-slider" min="85" max="98" step="1" value="93">
+            </div>
+
+            <div class="calc-input-group">
+              <div class="calc-label-row">
+                <span>Coste Estimado de Downtime / Apagón IA:</span>
+                <span id="val-disp-ppa-downtime" class="calc-val-display">120.000 €/h</span>
+              </div>
+              <input type="range" id="calc-in-ppa-downtime" class="custom-slider" min="20000" max="300000" step="10000" value="120000">
+            </div>
+          </div>
+
+          <!-- ==========================================
+               COLUMNA DERECHA: RESULTADOS
+               ========================================== -->
+
+          <!-- Panel Resultados 1: Project Finance -->
+          <div id="calc-results-projfin" class="calc-results-card">
             
             <!-- Tarjeta Central de LCOE -->
             <div class="calc-main-kpi">
@@ -8312,7 +9382,7 @@ li.b2b-case-feature-item {
               </table>
             </div>
 
-            <!-- Tabla 2: Indicadores de Evaluación de Inversiones (VAN, Payback, Margen) -->
+            <!-- Tabla 2: Indicadores de Evaluación de Inversiones (VAN, TIR, Payback, Margen) -->
             <div class="calc-breakdown-box">
               <div class="calc-table-title">Evaluación de Rentabilidad del Proyecto (60 años)</div>
               <table class="calc-table">
@@ -8328,6 +9398,10 @@ li.b2b-case-feature-item {
                   <tr>
                     <td>Margen Operativo Anual (EBITDA):</td>
                     <td id="calc-res-ebitda" class="calc-num-cell">126.8 M€/año</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tasa Interna de Retorno (TIR del Proyecto):</strong></td>
+                    <td id="calc-res-tir" class="calc-num-cell calc-positive" style="font-weight: 800; color: #38bdf8;">11.2 %</td>
                   </tr>
                   <tr>
                     <td>Valor Actual Neto (VAN a 60 años):</td>
@@ -8367,6 +9441,95 @@ li.b2b-case-feature-item {
 
           </div>
 
+          <!-- Panel Resultados 2: Corporate PPA Behind-The-Meter -->
+          <div id="calc-results-ppa" class="calc-results-card" style="display: none; border-color: rgba(16, 185, 129, 0.35);">
+            
+            <!-- Tarjeta Central de Ahorro PPA -->
+            <div class="calc-main-kpi" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.16) 0%, rgba(6, 78, 59, 0.18) 100%); border: 1.5px solid rgba(16, 185, 129, 0.4);">
+              <div class="calc-kpi-sub" style="color: #34d399;">Ahorro Anual Neto Estimado en Factura Eléctrica</div>
+              <div id="calc-ppa-annual-savings" class="calc-lcoe-num" style="color: #10b981;">+55.4 M€/año</div>
+              <div id="calc-ppa-savings-pct" class="calc-lcoe-caption" style="color: #cbd5e1; font-weight: 600;">
+                Reducción del 42.2% frente al coste de suministro de red tradicional
+              </div>
+            </div>
+
+            <!-- Tabla 1: Comparativa Anual de Costes (Red vs SMR PPA) -->
+            <div class="calc-breakdown-box">
+              <div class="calc-table-title">Comparativa Anual de Suministro Energético</div>
+              <table class="calc-table">
+                <tbody>
+                  <tr>
+                    <td>Consumo Firme Anual Contratado:</td>
+                    <td id="calc-ppa-mwh-ann" class="calc-num-cell">977.616 MWh/año</td>
+                  </tr>
+                  <tr>
+                    <td>Factura con Red Tradicional (Pool + Peajes ATR + BESS):</td>
+                    <td id="calc-ppa-grid-bill" class="calc-num-cell" style="color: #f87171;">122.2 M€/año</td>
+                  </tr>
+                  <tr>
+                    <td>Factura SMR PPA Behind-The-Meter:</td>
+                    <td id="calc-ppa-smr-bill" class="calc-num-cell" style="color: #34d399;">66.5 M€/año</td>
+                  </tr>
+                  <tr class="calc-table-total" style="color: #10b981;">
+                    <td>Margen Unitario de Ahorro Neto:</td>
+                    <td id="calc-ppa-unit-spread" class="calc-num-cell" style="color: #10b981; font-weight: 800;">57.0 €/MWh</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Tabla 2: Retorno Financiero e Impacto en Cuenta de Resultados -->
+            <div class="calc-breakdown-box">
+              <div class="calc-table-title">Impacto en Balance Financiero del Cliente</div>
+              <table class="calc-table">
+                <tbody>
+                  <tr>
+                    <td>Inversión Inicial Exigida (CAPEX Cliente):</td>
+                    <td class="calc-num-cell" style="color: #10b981; font-weight: 800;">0,0 € (Sin Deuda)</td>
+                  </tr>
+                  <tr>
+                    <td>Garantía de Tarifa Plana Cerrada:</td>
+                    <td id="calc-ppa-disp-rate" class="calc-num-cell">68 €/MWh fija</td>
+                  </tr>
+                  <tr>
+                    <td>Ahorro Neto Acumulado en el Periodo PPA:</td>
+                    <td id="calc-ppa-cum-savings" class="calc-num-cell calc-positive" style="font-weight: 800; font-size: 0.88rem;">+1.108 M€</td>
+                  </tr>
+                  <tr>
+                    <td>Protección frente a Downtime de IA:</td>
+                    <td id="calc-ppa-downtime-val" class="calc-num-cell">~10.5 M€/año</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Tabla 3: Sostenibilidad y ESG -->
+            <div class="calc-breakdown-box">
+              <div class="calc-table-title">Indicadores Ambientales y Descarbonización (ESG)</div>
+              <div class="calc-comp-rows">
+                <div class="calc-comp-item">
+                  <span class="calc-comp-name">Emisiones Evitadas de CO₂:</span>
+                  <span id="calc-ppa-co2-avoided" class="calc-comp-val">371.500 t/año</span>
+                </div>
+                <div class="calc-comp-item">
+                  <span class="calc-comp-name">Ahorro en Derechos EU ETS (a 80 €/t):</span>
+                  <span id="calc-ppa-co2-savings" class="calc-comp-val">29.7 M€/año</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Acciones Directas del PPA -->
+            <div style="display: flex; gap: 0.65rem; margin-top: 0.2rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-primary btn-sm" id="btn-ppa-open-proposal-doc" style="flex: 1; min-width: 180px; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border-color: #0284c7; font-weight: 700;">
+                📄 Generar Dictamen PPA Oficial (PDF A4)
+              </button>
+              <button type="button" class="btn btn-success btn-sm" id="btn-ppa-open-consulting" style="flex: 1; min-width: 180px; background: linear-gradient(135deg, #059669 0%, #10b981 100%); border-color: #10b981; font-weight: 700; color: #ffffff;">
+                🤝 Solicitar Asesoría Due Diligence
+              </button>
+            </div>
+
+          </div>
+
         </div>
 
       </div>
@@ -8380,47 +9543,208 @@ li.b2b-case-feature-item {
        MODAL 3: DASHBOARD DE GRÁFICOS COMPARATIVOS
        ========================================================================= -->
   <div id="modal-charts" class="modal-backdrop">
-    <div class="modal-dialog" style="max-width: 1000px;">
+    <div class="modal-dialog" style="max-width: 1140px; width: 95vw;">
       <div class="modal-header">
         <h2 class="modal-title">
           <span>📊</span> Dashboard Analítico: Mercado, Tecnologías y Curvas de Aprendizaje
         </h2>
         <button class="btn-icon btn-close-modal">✕</button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="padding: 1.15rem 1.35rem; gap: 0.85rem;">
         
-        <div class="charts-grid-container">
-          <!-- Gráfico 1 -->
-          <div class="chart-card-box">
-            <div class="chart-title">🇪🇺 Capacidad SMR Prevista en Europa por País (MWe)</div>
-            <div class="chart-canvas-wrapper">
-              <canvas id="chart-europe-capacity"></canvas>
+        <!-- Barra de Pestañas del Dashboard Analítico -->
+        <div class="charts-view-nav">
+          <button type="button" class="btn-chart-tab active" data-chartview="overview" id="btn-chartview-overview">
+            <span>📊</span> Visión General: Parque Europeo & Tecnologías
+          </button>
+          <button type="button" class="btn-chart-tab" data-chartview="volatility" id="btn-chartview-volatility">
+            <span>⚡</span> Comparativa Dinámica: SMR vs Volatilidad OMIE / MIBEL
+          </button>
+        </div>
+
+        <!-- Vista 1: Visión General del Parque y Tecnologías (Existente) -->
+        <div id="charts-overview-view">
+          <div class="charts-grid-container">
+            <!-- Gráfico 1 -->
+            <div class="chart-card-box">
+              <div class="chart-title">🇪🇺 Capacidad SMR Prevista en Europa por País (MWe)</div>
+              <div class="chart-canvas-wrapper">
+                <canvas id="chart-europe-capacity"></canvas>
+              </div>
+              <div class="chart-explanation-box">
+                <strong>💡 Interpretación Económica y Estratégica:</strong> 
+                Lideran el despliegue <strong>Polonia, Chequia, Reino Unido y Rumanía</strong> para reconvertir centrales de carbón (<em>Coal-to-Nuclear</em>) y garantizar calor distrital sin gas ruso. En <strong>España</strong>, el PNIEC programa el cierre nuclear ordenado (2027-2035) y prioriza renovables y valles de hidrógeno verde (ej. Moeve en Huelva), reservando el SMR para entornos privados industriales aislados de red.
+              </div>
+            </div>
+
+            <!-- Gráfico 2 -->
+            <div class="chart-card-box">
+              <div class="chart-title">⚛️ Reparto de Potencia por Tecnología SMR (MWe)</div>
+              <div class="chart-canvas-wrapper">
+                <canvas id="chart-tech-distrib"></canvas>
+              </div>
+              <div class="chart-explanation-box">
+                <strong>💡 Clave Tecnológica y Licenciamiento:</strong> 
+                Los reactores integrados de agua ligera (<strong>iPWR e iBWR</strong>) concentran más del 70% de la capacidad por madurez regulatoria y uso de combustible comercial (<5% U-235). Las tecnologías de Generación IV (<strong>LFR plomo, HTGR gas y MSR sales</strong>) entrarán hacia 2035 para procesos industriales que requieren calor extremo (>550 °C).
+              </div>
+            </div>
+
+            <!-- Gráfico 3 -->
+            <div class="chart-card-box">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.45rem; flex-wrap: wrap; gap: 0.4rem;">
+                <div class="chart-title" style="margin-bottom: 0;">📊 <span id="chart-learning-title">Competitividad LCOE en el Mercado Eléctrico (€/MWh)</span></div>
+                <div class="chart-sub-toggle">
+                  <button type="button" class="btn-chart-sub active" data-chartmode="lcoe" id="btn-chart-mode-lcoe">LCOE Generación</button>
+                  <button type="button" class="btn-chart-sub" data-chartmode="ppa" id="btn-chart-mode-ppa">PPA SMR vs Red 24/7</button>
+                </div>
+              </div>
+              <div class="chart-canvas-wrapper">
+                <canvas id="chart-learning-curve"></canvas>
+              </div>
+              <div class="chart-explanation-box" id="chart-learning-explanation">
+                <strong>💡 Análisis de Costes Nivelados y Aprendizaje:</strong> 
+                Muestra el efecto de la fabricación seriada modular en fábrica (NOAK a ~56 €/MWh), que recorta un 43% el LCOE frente a la unidad prototipo FOAK (~98 €/MWh). En modo PPA Behind-The-Meter, el precio fijo (~68 €/MWh) bate el coste de la red (100–125 €/MWh) al eliminar peajes ATR 6.1TD de REE y baterías químicas.
+              </div>
+            </div>
+
+            <!-- Gráfico 4 -->
+            <div class="chart-card-box">
+              <div class="chart-title">🌱 Mitigación de CO₂ Acumulada Horizonte 2025-2050 (Mt/a)</div>
+              <div class="chart-canvas-wrapper">
+                <canvas id="chart-co2-mitigation"></canvas>
+              </div>
+              <div class="chart-explanation-box">
+                <strong>💡 Contribución Climática y Taxonomía Verde UE:</strong> 
+                Cuantifica las emisiones evitadas al suministrar energía firme síncrona neutra en carbono (5-12 g CO₂/kWh en ciclo de vida) frente al carbón (~850 g/kWh) y ciclos combinados de gas (~400 g/kWh). El parque SMR europeo evitará más de 300 Mt CO₂/año en 2050.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vista 2: Comparativa de Volatilidad OMIE / MIBEL vs SMR PPA -->
+        <div id="charts-volatility-view" class="volatility-panel" style="display: none;">
+          
+          <!-- Barra de Controles y Escenarios Horarios -->
+          <div class="volatility-controls-bar" style="padding: 0.5rem 0.85rem;">
+            <div class="vol-scenarios-group">
+              <span style="font-size: 0.72rem; font-weight: 700; color: #94a3b8; text-transform: uppercase;">Curva de Mercado:</span>
+              <button type="button" class="btn-vol-scenario active" data-volscenario="duck-curve" id="btn-vol-duck">
+                ☀️ Duck Curve (Primavera/Verano)
+              </button>
+              <button type="button" class="btn-vol-scenario" data-volscenario="winter-peak" id="btn-vol-winter">
+                ❄️ Invierno (Pico Demanda & Gas)
+              </button>
+              <button type="button" class="btn-vol-scenario" data-volscenario="market-stress" id="btn-vol-stress">
+                🌪️ Estrés / Tensión Mayorista
+              </button>
+              <button type="button" class="btn-vol-scenario" data-volscenario="monthly-avg" id="btn-vol-monthly">
+                📅 Media Mensual (12 Meses)
+              </button>
+            </div>
+
+            <div class="vol-slider-group">
+              <span style="font-size: 0.72rem; font-weight: 700; color: #34d399; text-transform: uppercase;">Tarifa PPA SMR:</span>
+              <span id="val-disp-vol-ppa" style="font-size: 0.78rem; font-weight: 800; color: #10b981; background: rgba(16, 185, 129, 0.15); padding: 0.15rem 0.45rem; border-radius: 4px;">68 €/MWh</span>
+              <input type="range" id="vol-in-ppa-rate" class="custom-slider" min="50" max="90" step="1" value="68" style="width: 100px;">
             </div>
           </div>
 
-          <!-- Gráfico 2 -->
-          <div class="chart-card-box">
-            <div class="chart-title">⚛️ Reparto de Potencia por Tecnología SMR (MWe)</div>
-            <div class="chart-canvas-wrapper">
-              <canvas id="chart-tech-distrib"></canvas>
+          <!-- Canvas del Gráfico Central de Volatilidad -->
+          <div class="chart-card-box" style="padding: 0.85rem 1.15rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+              <div class="chart-title" id="vol-chart-title" style="margin-bottom: 0;">
+                📈 Perfil Horario 24h: Mercado Mayorista OMIE vs Tarifa Plana SMR 24/7 Behind-The-Meter
+              </div>
+              <div style="font-size: 0.70rem; color: #94a3b8;">
+                Precios MIBEL España/Portugal (€/MWh) vs Suministro Privado Firme
+              </div>
+            </div>
+
+            <!-- Leyenda Interactiva Estilizada Prémium -->
+            <div class="vol-legend-bar">
+              <div class="vol-legend-item" data-vol-ds="0" id="vol-leg-grid" title="Clic para ocultar/mostrar curva de red">
+                <span class="vol-legend-swatch" style="background: #f59e0b;"></span>
+                <span class="vol-legend-label">Coste Total Red (Pool + Peaje ATR 6.1TD)</span>
+              </div>
+              <div class="vol-legend-item" data-vol-ds="1" id="vol-leg-pool" title="Clic para ocultar/mostrar precio pool">
+                <span class="vol-legend-swatch dashed"></span>
+                <span class="vol-legend-label">Pool Mayorista OMIE Spot</span>
+              </div>
+              <div class="vol-legend-item" data-vol-ds="2" id="vol-leg-ppa" title="Clic para ocultar/mostrar tarifa PPA">
+                <span class="vol-legend-swatch" style="background: #10b981; box-shadow: 0 0 6px rgba(16, 185, 129, 0.7);"></span>
+                <span class="vol-legend-label" style="color: #34d399; font-weight: 700;">Tarifa Plana SMR PPA (Behind-The-Meter)</span>
+              </div>
+              <div class="vol-legend-item" data-vol-ds="3" id="vol-leg-bess" title="Clic para ocultar/mostrar autoconsumo químico">
+                <span class="vol-legend-swatch dashed-cyan"></span>
+                <span class="vol-legend-label">Solar FV + BESS 24/7 (Firmeza Química)</span>
+              </div>
+              <div class="vol-legend-badge-saving">
+                <span class="badge-saving-dot"></span>
+                <span>Zona Verde: Ahorro Neto SMR vs Red</span>
+              </div>
+            </div>
+
+            <div class="chart-canvas-wrapper" style="height: 275px;">
+              <canvas id="chart-omie-volatility"></canvas>
             </div>
           </div>
 
-          <!-- Gráfico 3 -->
-          <div class="chart-card-box">
-            <div class="chart-title">📊 Competitividad LCOE en el Mercado Eléctrico Europeo (€/MWh)</div>
-            <div class="chart-canvas-wrapper">
-              <canvas id="chart-learning-curve"></canvas>
+          <!-- Guía Didáctica de Interpretación de la Curva Horaria -->
+          <div class="vol-explanation-card">
+            <div class="vol-exp-header">
+              <span>💡 Guía Didáctica: ¿Cómo interpretar esta curva de mercado eléctrico?</span>
+            </div>
+            <div class="vol-exp-grid">
+              <div class="vol-exp-item">
+                <span class="vol-exp-badge valley">☀️ 1. Valle Solar (10h - 16h)</span>
+                <p>La alta radiación hunde el precio spot OMIE a <strong>0–5 €/MWh</strong> (<em>canibalización</em>). Sin embargo, una industria conectada a la red sigue pagando peajes obligatorios ATR 6.1TD (~19,5 €/MWh) y servicios de ajuste.</p>
+              </div>
+              <div class="vol-exp-item">
+                <span class="vol-exp-badge peak">🔥 2. Pico Nocturno (19h - 23h)</span>
+                <p>Al caer el sol, los ciclos combinados de gas natural fijan el precio marginal con derechos de emisión CO₂ ETS, disparando la factura real a más de <strong>190–240 €/MWh</strong>, elevando el coste medio diario.</p>
+              </div>
+              <div class="vol-exp-item">
+                <span class="vol-exp-badge saving">🟢 3. Zona Verde de Ahorro SMR</span>
+                <p>El área sombreada verde representa el <strong>ahorro neto directo</strong> por MWh frente a la red. El Corporate PPA SMR Behind-The-Meter blinda el coste a precio plano (ej. 68 €/MWh) sin pagar peajes ni sufrir la volatilidad del gas.</p>
+              </div>
             </div>
           </div>
 
-          <!-- Gráfico 4 -->
-          <div class="chart-card-box">
-            <div class="chart-title">🌱 Mitigación de CO₂ Acumulada Horizonte 2025-2050 (Mt/a)</div>
-            <div class="chart-canvas-wrapper">
-              <canvas id="chart-co2-mitigation"></canvas>
+          <!-- Métricas de Estabilidad y Cobertura de Riesgo -->
+          <div class="vol-metrics-grid">
+            <div class="vol-metric-card accent-amber">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="vol-metric-title">Volatilidad de Precio (Desv. Típica σ)</span>
+                <span style="font-size: 0.65rem; font-weight: 700; color: #10b981; background: rgba(16,185,129,0.15); padding: 0.1rem 0.4rem; border-radius: 4px;">σ = 0 € en SMR</span>
+              </div>
+              <div id="vol-stat-sigma" class="vol-metric-value amber">± 46,8 €/MWh</div>
+              <span class="vol-metric-desc">Frente a <strong>σ = 0,0 €/MWh</strong> del SMR PPA (Previsibilidad de OPEX 100% cerrada a 20 años).</span>
+            </div>
+
+            <div class="vol-metric-card accent-emerald">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="vol-metric-title">Horas con Ahorro Neto Favorable</span>
+                <span style="font-size: 0.65rem; font-weight: 700; color: #10b981; background: rgba(16,185,129,0.15); padding: 0.1rem 0.4rem; border-radius: 4px;">Margen Competitivo</span>
+              </div>
+              <div id="vol-stat-hours-pct" class="vol-metric-value emerald">83,3 % del tiempo</div>
+              <span class="vol-metric-desc">Ahorro de hasta <strong>+122 €/MWh</strong> en horas nocturnas críticas de cálculo intensivo de GPU.</span>
+            </div>
+
+            <div class="vol-metric-card accent-cyan">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span class="vol-metric-title">Pico Máximo de Red Evitado</span>
+                <span style="font-size: 0.65rem; font-weight: 700; color: #38bdf8; background: rgba(56,189,248,0.15); padding: 0.1rem 0.4rem; border-radius: 4px;">Hedge de Gas CCGT</span>
+              </div>
+              <div id="vol-stat-max-peak" class="vol-metric-value cyan">198,0 €/MWh</div>
+              <span class="vol-metric-desc">Protección integral frente a picos marginales por gas CCGT o paradas de interconexión con Francia.</span>
             </div>
           </div>
+
+          <!-- Diagnóstico Técnico de Mercado -->
+          <div class="vol-callout">
+            <strong>💡 Diagnóstico de Ingeniería de Mercados:</strong> La penetración renovable genera precios próximos a 0 €/MWh durante las horas solares centrales (*canibalización fotovoltaica*), pero al caer la noche la red recurre al gas marginal disparando los costes a más de 160 €/MWh. Un gran consumidor continuo (Data Centers e Industria) no puede apagar sus sistemas de día y de noche. El Corporate PPA SMR Behind-The-Meter elimina esta exposición garantizando suministro continuo a precio plano sin pagar peajes ATR de transporte.
+          </div>
+
         </div>
 
       </div>
@@ -8472,6 +9796,58 @@ li.b2b-case-feature-item {
         <div id="smr-engineering-report-doc" class="report-sheet">
           <!-- Populated dynamically by generateSMRReportHtml(project, wacc) -->
         </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL: MODO PITCH EJECUTIVO B2B (DEMOSTRACIÓN GUIADA DE 5 PASOS)
+       ========================================================================= -->
+  <div id="modal-pitch-deck" class="pitch-modal-backdrop" style="display: none;">
+    <div class="pitch-modal-container">
+      
+      <!-- Barra Superior del Pitch -->
+      <div class="pitch-header">
+        <div class="pitch-brand">
+          <span class="pitch-badge-live">🎯 MODO PITCH B2B</span>
+          <span class="pitch-title-text">SMR Energy UVa · Presentación Ejecutiva a Comités</span>
+        </div>
+        <div class="pitch-step-counter">
+          Paso <span id="pitch-current-step-num">1</span> de 5
+        </div>
+        <button type="button" id="btn-close-pitch" class="pitch-close-btn" title="Salir de la presentación (Esc)">
+          ✕ Salir
+        </button>
+      </div>
+
+      <!-- Barra de Progreso Dinámica -->
+      <div class="pitch-progress-track">
+        <div id="pitch-progress-fill" class="pitch-progress-fill" style="width: 20%;"></div>
+      </div>
+
+      <!-- Contenedor del Slide Actual -->
+      <div class="pitch-body">
+        <div id="pitch-slide-content" class="pitch-slide-content">
+          <!-- Populated dynamically by JavaScript renderPitchStep() -->
+        </div>
+      </div>
+
+      <!-- Barra Inferior de Navegación -->
+      <div class="pitch-footer">
+        <button type="button" id="btn-pitch-prev" class="btn btn-secondary btn-pitch-nav" disabled>
+          ← Anterior
+        </button>
+        <div class="pitch-dots" id="pitch-dots-tray">
+          <span class="pitch-dot active" data-step="1" title="Paso 1: El Cuello de Botella"></span>
+          <span class="pitch-dot" data-step="2" title="Paso 2: La Solución Tecnológica SMR"></span>
+          <span class="pitch-dot" data-step="3" title="Paso 3: Modelo PPA CAPEX=0"></span>
+          <span class="pitch-dot" data-step="4" title="Paso 4: Rentabilidad y CO2"></span>
+          <span class="pitch-dot" data-step="5" title="Paso 5: Due Diligence UVa"></span>
+        </div>
+        <button type="button" id="btn-pitch-next" class="btn btn-primary btn-pitch-nav" style="background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); border-color: #818cf8; font-weight: 700;">
+          Siguiente Paso →
+        </button>
       </div>
 
     </div>
@@ -11855,6 +13231,50 @@ document.addEventListener('DOMContentLoaded', () => {
      11. SIMULADOR ECONÓMICO LCOE, FINANCIACIÓN Y RENTABILIDAD DE MERCADO
      ========================================================================= */
   function initEconomicCalculator() {
+    // -------------------------------------------------------------------------
+    // A. SELECTOR DE MODALIDAD FINANCIERA (PROJECT FINANCE vs CORPORATE PPA)
+    // -------------------------------------------------------------------------
+    let currentFinMode = 'project-finance'; // 'project-finance' | 'ppa-btm'
+    const btnModeProjFin = document.getElementById('btn-mode-projfin');
+    const btnModePpa = document.getElementById('btn-mode-ppa');
+    const secProjFinParams = document.getElementById('calc-params-projfin');
+    const secPpaParams = document.getElementById('calc-params-ppa');
+    const secProjFinResults = document.getElementById('calc-results-projfin');
+    const secPpaResults = document.getElementById('calc-results-ppa');
+    const scenariosProjFin = document.getElementById('calc-scenarios-projfin');
+    const scenariosPpa = document.getElementById('calc-scenarios-ppa');
+
+    function setFinMode(mode) {
+      currentFinMode = mode;
+      if (mode === 'project-finance') {
+        if (btnModeProjFin) btnModeProjFin.classList.add('active');
+        if (btnModePpa) btnModePpa.classList.remove('active');
+        if (secProjFinParams) secProjFinParams.style.display = 'flex';
+        if (secPpaParams) secPpaParams.style.display = 'none';
+        if (secProjFinResults) secProjFinResults.style.display = 'flex';
+        if (secPpaResults) secPpaResults.style.display = 'none';
+        if (scenariosProjFin) scenariosProjFin.style.display = 'flex';
+        if (scenariosPpa) scenariosPpa.style.display = 'none';
+        updateCalc();
+      } else {
+        if (btnModeProjFin) btnModeProjFin.classList.remove('active');
+        if (btnModePpa) btnModePpa.classList.add('active');
+        if (secProjFinParams) secProjFinParams.style.display = 'none';
+        if (secPpaParams) secPpaParams.style.display = 'flex';
+        if (secProjFinResults) secProjFinResults.style.display = 'none';
+        if (secPpaResults) secPpaResults.style.display = 'flex';
+        if (scenariosProjFin) scenariosProjFin.style.display = 'none';
+        if (scenariosPpa) scenariosPpa.style.display = 'flex';
+        updatePpaCalc();
+      }
+    }
+
+    if (btnModeProjFin) btnModeProjFin.addEventListener('click', () => setFinMode('project-finance'));
+    if (btnModePpa) btnModePpa.addEventListener('click', () => setFinMode('ppa-btm'));
+
+    // -------------------------------------------------------------------------
+    // B. MODALIDAD 1: PROJECT FINANCE / INVERSIÓN EN PROPIEDAD
+    // -------------------------------------------------------------------------
     const inputCapacity = document.getElementById('calc-in-capacity');
     const inputCapex = document.getElementById('calc-in-capex');
     const inputCf = document.getElementById('calc-in-cf');
@@ -11890,6 +13310,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const updateCalc = () => {
+      if (!inputCapacity) return;
       const capMWe = parseFloat(inputCapacity.value);
       const capexKw = parseFloat(inputCapex.value);
       const cf = parseFloat(inputCf.value) / 100;
@@ -11899,12 +13320,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const lifeYears = 60;
 
       // Actualizar valores textuales junto a sliders
-      document.getElementById('val-disp-capacity').textContent = `${capMWe} MWe`;
-      document.getElementById('val-disp-capex').textContent = `${capexKw.toLocaleString('es-ES')} €/kWe`;
-      document.getElementById('val-disp-cf').textContent = `${(cf * 100).toFixed(0)} %`;
-      document.getElementById('val-disp-wacc').textContent = `${(wacc * 100).toFixed(1)} %`;
-      document.getElementById('val-disp-co2').textContent = `${co2Price} €/t CO₂`;
-      document.getElementById('val-disp-pool').textContent = `${poolPrice} €/MWh`;
+      const dispCap = document.getElementById('val-disp-capacity');
+      if (dispCap) dispCap.textContent = `${capMWe} MWe`;
+      const dispCapex = document.getElementById('val-disp-capex');
+      if (dispCapex) dispCapex.textContent = `${capexKw.toLocaleString('es-ES')} €/kWe`;
+      const dispCf = document.getElementById('val-disp-cf');
+      if (dispCf) dispCf.textContent = `${(cf * 100).toFixed(0)} %`;
+      const dispWacc = document.getElementById('val-disp-wacc');
+      if (dispWacc) dispWacc.textContent = `${(wacc * 100).toFixed(1)} %`;
+      const dispCo2 = document.getElementById('val-disp-co2');
+      if (dispCo2) dispCo2.textContent = `${co2Price} €/t CO₂`;
+      const dispPool = document.getElementById('val-disp-pool');
+      if (dispPool) dispPool.textContent = `${poolPrice} €/MWh`;
 
       // 1. Inversión Total Inicial (I₀ en M€)
       const totalCapexM = (capMWe * 1000 * capexKw) / 1e6;
@@ -11928,11 +13355,35 @@ document.addEventListener('DOMContentLoaded', () => {
       // 5. Coste Nivelado Total LCOE (€/MWh)
       const lcoeSmr = lcoeCapex + lcoeOpex + fuelCostEurMWh + wasteDecomEurMWh;
 
-      // 6. Evaluación de Rentabilidad (Ingresos, EBITDA, VAN, Payback)
+      // 6. Evaluación de Rentabilidad (Ingresos, EBITDA, VAN, Payback, TIR)
       const annualRevenueM = (annualGenMWh * poolPrice) / 1e6;
       const annualOpexM = (fixedOmEurYear + (annualGenMWh * (varOmEurMWh + fuelCostEurMWh + wasteDecomEurMWh))) / 1e6;
       const ebitdaM = annualRevenueM - annualOpexM;
       const vanM = (ebitdaM / crf) - totalCapexM;
+
+      // TIR del Proyecto (Project IRR a 60 años) calculada numéricamente por bisección
+      let tirDisplay = 'N/A';
+      if (ebitdaM > 0 && (ebitdaM * lifeYears) > totalCapexM) {
+        let low = 0.0001;
+        let high = 0.50;
+        for (let iter = 0; iter < 40; iter++) {
+          const mid = (low + high) / 2;
+          const pvAnnuity = ebitdaM * ((1 - Math.pow(1 + mid, -lifeYears)) / mid);
+          if (pvAnnuity > totalCapexM) {
+            low = mid;
+          } else {
+            high = mid;
+          }
+        }
+        const tir = (low + high) / 2;
+        tirDisplay = `${(tir * 100).toFixed(1)} %`;
+      } else if (ebitdaM <= 0) {
+        tirDisplay = '< 0 % (EBITDA negativo)';
+      } else {
+        tirDisplay = '< 0 %';
+      }
+      const tirEl = document.getElementById('calc-res-tir');
+      if (tirEl) tirEl.textContent = tirDisplay;
 
       let paybackYears = '> 60 años';
       const pRatio = (totalCapexM * wacc) / ebitdaM;
@@ -11953,17 +13404,26 @@ document.addEventListener('DOMContentLoaded', () => {
       const annualCo2SavingsM = annualCo2AvoidedMt * co2Price;
       const spreadVsGas = lcoeCcgt - lcoeSmr;
 
-      // Renderizar Valores en Pantalla
-      document.getElementById('calc-res-lcoe-smr').textContent = `${lcoeSmr.toFixed(1)} €/MWh`;
-      document.getElementById('calc-breakdown-capex').textContent = `${lcoeCapex.toFixed(1)} €/MWh`;
-      document.getElementById('calc-breakdown-opex').textContent = `${lcoeOpex.toFixed(1)} €/MWh`;
-      document.getElementById('calc-breakdown-fuel').textContent = `${fuelCostEurMWh.toFixed(1)} €/MWh`;
-      document.getElementById('calc-breakdown-decom').textContent = `${wasteDecomEurMWh.toFixed(1)} €/MWh`;
-      document.getElementById('calc-breakdown-total').textContent = `${lcoeSmr.toFixed(1)} €/MWh`;
+      // Renderizar Valores en Pantalla (Project Finance)
+      const elLcoeSmr = document.getElementById('calc-res-lcoe-smr');
+      if (elLcoeSmr) elLcoeSmr.textContent = `${lcoeSmr.toFixed(1)} €/MWh`;
+      const elBkCapex = document.getElementById('calc-breakdown-capex');
+      if (elBkCapex) elBkCapex.textContent = `${lcoeCapex.toFixed(1)} €/MWh`;
+      const elBkOpex = document.getElementById('calc-breakdown-opex');
+      if (elBkOpex) elBkOpex.textContent = `${lcoeOpex.toFixed(1)} €/MWh`;
+      const elBkFuel = document.getElementById('calc-breakdown-fuel');
+      if (elBkFuel) elBkFuel.textContent = `${fuelCostEurMWh.toFixed(1)} €/MWh`;
+      const elBkDecom = document.getElementById('calc-breakdown-decom');
+      if (elBkDecom) elBkDecom.textContent = `${wasteDecomEurMWh.toFixed(1)} €/MWh`;
+      const elBkTotal = document.getElementById('calc-breakdown-total');
+      if (elBkTotal) elBkTotal.textContent = `${lcoeSmr.toFixed(1)} €/MWh`;
 
-      document.getElementById('calc-res-total-capex').textContent = `${Math.round(totalCapexM).toLocaleString('es-ES')} M€`;
-      document.getElementById('calc-res-annual-rev').textContent = `${annualRevenueM.toFixed(1)} M€/año`;
-      document.getElementById('calc-res-ebitda').textContent = `${ebitdaM.toFixed(1)} M€/año`;
+      const elTotCapex = document.getElementById('calc-res-total-capex');
+      if (elTotCapex) elTotCapex.textContent = `${Math.round(totalCapexM).toLocaleString('es-ES')} M€`;
+      const elAnnRev = document.getElementById('calc-res-annual-rev');
+      if (elAnnRev) elAnnRev.textContent = `${annualRevenueM.toFixed(1)} M€/año`;
+      const elEbitda = document.getElementById('calc-res-ebitda');
+      if (elEbitda) elEbitda.textContent = `${ebitdaM.toFixed(1)} M€/año`;
 
       const vanEl = document.getElementById('calc-res-van');
       if (vanEl) {
@@ -11971,15 +13431,19 @@ document.addEventListener('DOMContentLoaded', () => {
         vanEl.className = vanM >= 0 ? 'calc-num-cell calc-positive' : 'calc-num-cell';
       }
 
-      document.getElementById('calc-res-payback').textContent = paybackYears;
-      document.getElementById('calc-res-lcoe-ccgt').textContent = `${lcoeCcgt.toFixed(1)} €/MWh`;
-      document.getElementById('calc-res-lcoe-pv-bess').textContent = `${lcoeSolarPlusStorage.toFixed(1)} €/MWh`;
-      document.getElementById('calc-res-co2-savings').textContent = `${annualCo2SavingsM.toFixed(1)} M€/año`;
+      const pbEl = document.getElementById('calc-res-payback');
+      if (pbEl) pbEl.textContent = paybackYears;
+      const ccgtEl = document.getElementById('calc-res-lcoe-ccgt');
+      if (ccgtEl) ccgtEl.textContent = `${lcoeCcgt.toFixed(1)} €/MWh`;
+      const pvEl = document.getElementById('calc-res-lcoe-pv-bess');
+      if (pvEl) pvEl.textContent = `${lcoeSolarPlusStorage.toFixed(1)} €/MWh`;
+      const co2El = document.getElementById('calc-res-co2-savings');
+      if (co2El) co2El.textContent = `${annualCo2SavingsM.toFixed(1)} M€/año`;
 
       const compGasEl = document.getElementById('calc-res-spread-gas');
       if (compGasEl) {
         if (spreadVsGas >= 0) {
-          compGasEl.innerHTML = `<strong>Diagnóstico de Mercado:</strong> Ventaja económica de <strong>+${spreadVsGas.toFixed(1)} €/MWh</strong> frente a Ciclo Combinado de Gas. La central genera un VAN positivo de <strong>+${Math.round(vanM).toLocaleString('es-ES')} M€</strong> y recupera la inversión en <strong>${paybackYears}</strong>.`;
+          compGasEl.innerHTML = `<strong>Diagnóstico de Mercado:</strong> Ventaja económica de <strong>+${spreadVsGas.toFixed(1)} €/MWh</strong> frente a Ciclo Combinado de Gas. La central genera un VAN positivo de <strong>+${Math.round(vanM).toLocaleString('es-ES')} M€</strong> con una TIR del <strong>${tirDisplay}</strong> y recupera la inversión en <strong>${paybackYears}</strong>.`;
         } else {
           compGasEl.innerHTML = `<strong>Diagnóstico de Mercado:</strong> Sobrecoste de <strong>${Math.abs(spreadVsGas).toFixed(1)} €/MWh</strong> frente a gas fósil. Alcanzaría paridad económica si el derecho de emisión de CO₂ supera los <strong>${((lcoeSmr - ccgtCapitalOm - ccgtFuelGas) / 0.38).toFixed(0)} €/t</strong>.`;
         }
@@ -11990,7 +13454,161 @@ document.addEventListener('DOMContentLoaded', () => {
       if (input) input.addEventListener('input', updateCalc);
     });
 
+    // -------------------------------------------------------------------------
+    // C. MODALIDAD 2: CORPORATE PPA BEHIND-THE-METER (CAPEX = 0 €)
+    // -------------------------------------------------------------------------
+    const inputPpaCap = document.getElementById('calc-in-ppa-capacity');
+    const inputPpaPrice = document.getElementById('calc-in-ppa-price');
+    const inputPpaGrid = document.getElementById('calc-in-ppa-grid');
+    const inputPpaYears = document.getElementById('calc-in-ppa-years');
+    const inputPpaCf = document.getElementById('calc-in-ppa-cf');
+    const inputPpaDowntime = document.getElementById('calc-in-ppa-downtime');
+
+    const PPA_SCENARIOS = {
+      'dc-hyper':  { capacity: 120, price: 68, grid: 125, years: 20, cf: 94, downtime: 150000 },
+      'heavy-ind': { capacity: 250, price: 64, grid: 118, years: 25, cf: 92, downtime: 60000 },
+      'tech-hub':  { capacity: 60,  price: 72, grid: 130, years: 15, cf: 93, downtime: 90000 },
+      'co-invest': { capacity: 300, price: 60, grid: 115, years: 25, cf: 95, downtime: 50000 }
+    };
+
+    const ppaScenarioButtons = document.querySelectorAll('.btn-scenario-ppa');
+    ppaScenarioButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        ppaScenarioButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const sKey = btn.getAttribute('data-ppascenario');
+        const s = PPA_SCENARIOS[sKey];
+        if (s) {
+          if (inputPpaCap) inputPpaCap.value = s.capacity;
+          if (inputPpaPrice) inputPpaPrice.value = s.price;
+          if (inputPpaGrid) inputPpaGrid.value = s.grid;
+          if (inputPpaYears) inputPpaYears.value = s.years;
+          if (inputPpaCf) inputPpaCf.value = s.cf;
+          if (inputPpaDowntime) inputPpaDowntime.value = s.downtime;
+          updatePpaCalc();
+        }
+      });
+    });
+
+    const updatePpaCalc = () => {
+      if (!inputPpaCap) return;
+      const capMWe = parseFloat(inputPpaCap.value);
+      const ppaPrice = parseFloat(inputPpaPrice.value);
+      const gridCost = parseFloat(inputPpaGrid.value);
+      const years = parseFloat(inputPpaYears.value);
+      const cf = parseFloat(inputPpaCf.value) / 100;
+      const downtimeCostHour = parseFloat(inputPpaDowntime.value);
+
+      // Actualizar valores textuales junto a sliders
+      const dCap = document.getElementById('val-disp-ppa-capacity');
+      if (dCap) dCap.textContent = `${capMWe} MWe`;
+      const dPrice = document.getElementById('val-disp-ppa-price');
+      if (dPrice) dPrice.textContent = `${ppaPrice} €/MWh`;
+      const dGrid = document.getElementById('val-disp-ppa-grid');
+      if (dGrid) dGrid.textContent = `${gridCost} €/MWh`;
+      const dYears = document.getElementById('val-disp-ppa-years');
+      if (dYears) dYears.textContent = `${years} Años`;
+      const dCf = document.getElementById('val-disp-ppa-cf');
+      if (dCf) dCf.textContent = `${(cf * 100).toFixed(0)} %`;
+      const dDown = document.getElementById('val-disp-ppa-downtime');
+      if (dDown) dDown.textContent = `${downtimeCostHour.toLocaleString('es-ES')} €/h`;
+
+      // 1. Energía Anual Contratada (MWh)
+      const annualMWh = capMWe * 8760 * cf;
+
+      // 2. Facturación anual
+      const gridBillM = (annualMWh * gridCost) / 1e6;
+      const smrBillM = (annualMWh * ppaPrice) / 1e6;
+      const annualSavingsM = gridBillM - smrBillM;
+      const savingsPct = gridCost > 0 ? ((gridCost - ppaPrice) / gridCost) * 100 : 0;
+      const unitSpread = gridCost - ppaPrice;
+      const cumSavingsM = annualSavingsM * years;
+
+      // 3. Cobertura frente a downtime (87.6 horas de riesgo de microcortes/caídas de red evitadas)
+      const hoursProtected = 87.6;
+      const downtimeValM = (hoursProtected * downtimeCostHour) / 1e6;
+
+      // 4. Beneficios ambientales (CO2 a 0.38 t/MWh y derechos EU ETS a 80 €/t)
+      const co2AvoidedT = annualMWh * 0.38;
+      const co2SavingsM = (co2AvoidedT * 80) / 1e6;
+
+      // Renderizar valores en pantalla PPA
+      const elAnnSavings = document.getElementById('calc-ppa-annual-savings');
+      if (elAnnSavings) elAnnSavings.textContent = `${annualSavingsM >= 0 ? '+' : ''}${annualSavingsM.toFixed(1)} M€/año`;
+
+      const elSavingsPct = document.getElementById('calc-ppa-savings-pct');
+      if (elSavingsPct) {
+        if (savingsPct >= 0) {
+          elSavingsPct.textContent = `Reducción del ${savingsPct.toFixed(1)}% frente al coste de suministro de red tradicional`;
+        } else {
+          elSavingsPct.textContent = `Sobrecoste del ${Math.abs(savingsPct).toFixed(1)}% frente a red tradicional`;
+        }
+      }
+
+      const elMwhAnn = document.getElementById('calc-ppa-mwh-ann');
+      if (elMwhAnn) elMwhAnn.textContent = `${Math.round(annualMWh).toLocaleString('es-ES')} MWh/año`;
+
+      const elGridBill = document.getElementById('calc-ppa-grid-bill');
+      if (elGridBill) elGridBill.textContent = `${gridBillM.toFixed(1)} M€/año`;
+
+      const elSmrBill = document.getElementById('calc-ppa-smr-bill');
+      if (elSmrBill) elSmrBill.textContent = `${smrBillM.toFixed(1)} M€/año`;
+
+      const elUnitSpread = document.getElementById('calc-ppa-unit-spread');
+      if (elUnitSpread) elUnitSpread.textContent = `${unitSpread >= 0 ? '+' : ''}${unitSpread.toFixed(1)} €/MWh`;
+
+      const elDispRate = document.getElementById('calc-ppa-disp-rate');
+      if (elDispRate) elDispRate.textContent = `${ppaPrice} €/MWh fija`;
+
+      const elCumSavings = document.getElementById('calc-ppa-cum-savings');
+      if (elCumSavings) elCumSavings.textContent = `${cumSavingsM >= 0 ? '+' : ''}${Math.round(cumSavingsM).toLocaleString('es-ES')} M€`;
+
+      const elDowntimeVal = document.getElementById('calc-ppa-downtime-val');
+      if (elDowntimeVal) elDowntimeVal.textContent = `~${downtimeValM.toFixed(1)} M€/año`;
+
+      const elCo2Avoided = document.getElementById('calc-ppa-co2-avoided');
+      if (elCo2Avoided) elCo2Avoided.textContent = `${Math.round(co2AvoidedT).toLocaleString('es-ES')} t/año`;
+
+      const elCo2Savings = document.getElementById('calc-ppa-co2-savings');
+      if (elCo2Savings) elCo2Savings.textContent = `${co2SavingsM.toFixed(1)} M€/año`;
+    };
+
+    [inputPpaCap, inputPpaPrice, inputPpaGrid, inputPpaYears, inputPpaCf, inputPpaDowntime].forEach(input => {
+      if (input) input.addEventListener('input', updatePpaCalc);
+    });
+
+    // -------------------------------------------------------------------------
+    // D. ACCIONES DIRECTAS DESDE EL MODO PPA
+    // -------------------------------------------------------------------------
+    const btnPpaOpenProposal = document.getElementById('btn-ppa-open-proposal-doc');
+    if (btnPpaOpenProposal) {
+      btnPpaOpenProposal.addEventListener('click', () => {
+        closeModal('modal-calculator');
+        const fnPower = document.getElementById('fn-client-power-range');
+        if (fnPower && inputPpaCap) {
+          const p = parseFloat(inputPpaCap.value);
+          if (p <= 100) fnPower.value = '50-100';
+          else if (p <= 200) fnPower.value = '100-200';
+          else if (p <= 350) fnPower.value = '200-350';
+          else fnPower.value = '350+';
+        }
+        openB2bProposalModal();
+      });
+    }
+
+    const btnPpaOpenConsulting = document.getElementById('btn-ppa-open-consulting');
+    if (btnPpaOpenConsulting) {
+      btnPpaOpenConsulting.addEventListener('click', () => {
+        closeModal('modal-calculator');
+        openModal('modal-premium-intelligence');
+        const consTab = document.querySelector('.b2b-tab-btn[data-b2btab="tab-consulting"]');
+        if (consTab) consTab.click();
+      });
+    }
+
+    // Inicializar cálculos
     updateCalc();
+    updatePpaCalc();
   }
 
   function loadProjectIntoCalculator(p) {
@@ -12004,6 +13622,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.btn-scenario').forEach(b => b.classList.remove('active'));
 
+    const btnModeProjFin = document.getElementById('btn-mode-projfin');
+    if (btnModeProjFin) btnModeProjFin.click();
+
     inputCapacity.dispatchEvent(new Event('input'));
     openModal('modal-calculator');
   }
@@ -12011,11 +13632,111 @@ document.addEventListener('DOMContentLoaded', () => {
   /* =========================================================================
      12. DASHBOARD DE GRÁFICOS (Chart.js)
      ========================================================================= */
+  const VOL_SCENARIOS = {
+    'duck-curve': {
+      title: 'Curva de Pato MIBEL: Canibalización Fotovoltaica vs Pico Nocturno de Gas',
+      badge: 'Primavera / Verano (Alta Penetración Solar FV)',
+      labels: ['00h', '01h', '02h', '03h', '04h', '05h', '06h', '07h', '08h', '09h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h'],
+      poolPrices: [62, 55, 48, 44, 42, 50, 75, 92, 80, 45, 18, 5, 1, 0, 2, 8, 22, 58, 115, 162, 188, 195, 168, 110],
+      atr61TD: 19.5,
+      bessPrice: 82,
+      callout: '<strong>💡 Diagnóstico de Ingeniería de Mercados:</strong> La penetración de más de 30 GW solares en España provoca el desplome de precios al mediodía (canibalización fotovoltaica hasta 0 €/MWh). Sin embargo, un gran consumidor continuo (Data Centers o Industria) no puede apagar sus sistemas: al anochecer, la retirada solar obliga a quemar gas marginal CCGT disparando la red a más de 190 €/MWh. El Corporate PPA SMR Behind-The-Meter protege contra esta volatilidad extrema sin peajes de red.'
+    },
+    'winter-peak': {
+      title: 'Invierno Frío MIBEL: Demanda Máxima, Anticiclón y Coste Marginal de Gas CCGT',
+      badge: 'Invierno (Baja Generación Solar & Alta Demanda Térmica)',
+      labels: ['00h', '01h', '02h', '03h', '04h', '05h', '06h', '07h', '08h', '09h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h'],
+      poolPrices: [82, 78, 75, 72, 74, 88, 122, 155, 168, 162, 150, 142, 138, 135, 132, 140, 158, 185, 212, 235, 225, 192, 145, 105],
+      atr61TD: 19.5,
+      bessPrice: 82,
+      callout: '<strong>💡 Diagnóstico Invernal:</strong> Con baja insolación y vientos calmados (anticiclón invernal), los ciclos combinados fijan el precio marginal durante más del 70% de las horas. El coste de la electricidad en red se sitúa sistemáticamente por encima de 150-250 €/MWh (sumando peajes), haciendo que el SMR genere ahorros masivos continuos en todas las horas del día.'
+    },
+    'market-stress': {
+      title: 'Tensión Geopolítica / Estrés de Gas: Pico de Precios Mayoristas y Derechos ETS',
+      badge: 'Estrés de Mercado (Escenario de Alta Disrupción en Combustibles)',
+      labels: ['00h', '01h', '02h', '03h', '04h', '05h', '06h', '07h', '08h', '09h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h', '18h', '19h', '20h', '21h', '22h', '23h'],
+      poolPrices: [125, 118, 110, 105, 112, 130, 175, 215, 240, 235, 218, 205, 198, 195, 202, 215, 238, 268, 298, 315, 295, 260, 205, 160],
+      atr61TD: 19.5,
+      bessPrice: 82,
+      callout: '<strong>💡 Diagnóstico de Crisis de Mercado:</strong> En episodios de tensión en los gasoductos o alza en los derechos de emisión CO₂ (>90 €/t), el pool OMIE se dispara superando los 300 €/MWh. Para un Data Center de 100 MW, operar expuesto a este mercado supone un sobrecoste de más de 300.000 € al día, justificando plenamente el arbitraje de cobertura que ofrece el PPA SMR.'
+    },
+    'monthly-avg': {
+      title: 'Estacionalidad Anual MIBEL: Media Mensual Histórica y Variabilidad Anual',
+      badge: '12 Meses Consolidado (Comportamiento Estacional Medio)',
+      labels: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+      poolPrices: [88, 72, 46, 28, 35, 68, 86, 94, 85, 76, 96, 106],
+      atr61TD: 19.5,
+      bessPrice: 82,
+      callout: '<strong>💡 Diagnóstico Anual:</strong> Muestra la estacionalidad del mercado español: un valle pronunciado en primavera (lluvias e hidraulicidad + solar incipiente) compensado por fuertes tensiones en verano (olas de calor y aire acondicionado) e invierno (calefacción y escasez solar). El SMR ofrece una tarifa plana inmutable todo el año.'
+    }
+  };
+
+  function setupChartsTabsListeners() {
+    const btnOverview = document.getElementById('btn-chartview-overview');
+    const btnVol = document.getElementById('btn-chartview-volatility');
+
+    if (btnOverview && !btnOverview._wired) {
+      btnOverview._wired = true;
+      btnOverview.addEventListener('click', () => {
+        switchChartsView('overview');
+      });
+    }
+
+    if (btnVol && !btnVol._wired) {
+      btnVol._wired = true;
+      btnVol.addEventListener('click', () => {
+        switchChartsView('volatility');
+      });
+    }
+  }
+
+  function switchChartsView(targetView) {
+    state.activeChartsView = targetView;
+    const overviewView = document.getElementById('charts-overview-view');
+    const volView = document.getElementById('charts-volatility-view');
+    const btnOverview = document.getElementById('btn-chartview-overview');
+    const btnVol = document.getElementById('btn-chartview-volatility');
+
+    if (targetView === 'volatility') {
+      if (overviewView) overviewView.style.display = 'none';
+      if (volView) volView.style.display = 'block';
+      if (btnOverview) btnOverview.classList.remove('active');
+      if (btnVol) btnVol.classList.add('active');
+      renderVolatilityChart();
+    } else {
+      if (overviewView) overviewView.style.display = 'block';
+      if (volView) volView.style.display = 'none';
+      if (btnOverview) btnOverview.classList.add('active');
+      if (btnVol) btnVol.classList.remove('active');
+      renderOverviewCharts();
+    }
+  }
+
   function renderChartsDashboard() {
     if (typeof Chart === 'undefined') return;
+    if (!state.activeChartsView) state.activeChartsView = 'overview';
+    setupChartsTabsListeners();
+    if (state.activeChartsView === 'volatility') {
+      switchChartsView('volatility');
+    } else {
+      switchChartsView('overview');
+    }
+  }
 
-    Object.values(state.chartInstances).forEach(chart => chart.destroy());
-    state.chartInstances = {};
+  function renderOverviewCharts() {
+    if (typeof Chart === 'undefined') return;
+
+    if (state.chartInstances.volatility) {
+      state.chartInstances.volatility.destroy();
+      delete state.chartInstances.volatility;
+    }
+
+    ['europe', 'tech', 'learning', 'co2'].forEach(k => {
+      if (state.chartInstances[k]) {
+        state.chartInstances[k].destroy();
+        delete state.chartInstances[k];
+      }
+    });
 
     const isDark = state.theme === 'dark';
     const textColor = isDark ? '#94a3b8' : '#475569';
@@ -12142,27 +13863,78 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Gráfico 3: Benchmark de Competitividad LCOE en el Mercado Eléctrico Europeo (€/MWh)
+    // Gráfico 3: Benchmark de Competitividad LCOE / PPA (€/MWh)
     const ctxLearning = document.getElementById('chart-learning-curve');
     if (ctxLearning) {
-      const benchmarkData = [
-        { tech: '🎯 SMR Serie Comercial (NOAK)', lcoe: 56, type: 'smr-noak', color: '#00e5ff' },
-        { tech: '💨 Eólica Terrestre (Onshore)', lcoe: 62, type: 'renovable', color: '#0ea5e9' },
-        { tech: '☀️ Solar FV + Baterías (4h)', lcoe: 76, type: 'renovable', color: '#38bdf8' },
-        { tech: '🌊 Eólica Marina (Offshore)', lcoe: 88, type: 'renovable', color: '#0284c7' },
-        { tech: '⚡ SMR 1ª Unidad (FOAK)', lcoe: 98, type: 'smr-foak', color: '#f59e0b' },
-        { tech: '🔥 Gas CCGT (+ CO₂ ETS 80€/t)', lcoe: 112, type: 'fossil', color: '#f43f5e' },
-        { tech: '⚛️ Giga-Nuclear EPR (Convencional)', lcoe: 125, type: 'nuclear-conv', color: '#8b5cf6' }
+      if (!state.chartLearningMode) state.chartLearningMode = 'lcoe';
+
+      const isPpaMode = state.chartLearningMode === 'ppa';
+      const titleEl = document.getElementById('chart-learning-title');
+      if (titleEl) {
+        titleEl.textContent = isPpaMode 
+          ? 'Estructura PPA Cliente: SMR 24/7 vs Red Tradicional (€/MWh)'
+          : 'Competitividad LCOE en el Mercado Eléctrico (€/MWh)';
+      }
+
+      // Conectar botones de sub-toggle
+      const btnModeLcoe = document.getElementById('btn-chart-mode-lcoe');
+      const btnModePpaChart = document.getElementById('btn-chart-mode-ppa');
+      if (btnModeLcoe) {
+        btnModeLcoe.classList.toggle('active', !isPpaMode);
+        if (!btnModeLcoe._wired) {
+          btnModeLcoe._wired = true;
+          btnModeLcoe.addEventListener('click', () => {
+            state.chartLearningMode = 'lcoe';
+            renderChartsDashboard();
+          });
+        }
+      }
+      if (btnModePpaChart) {
+        btnModePpaChart.classList.toggle('active', isPpaMode);
+        if (!btnModePpaChart._wired) {
+          btnModePpaChart._wired = true;
+          btnModePpaChart.addEventListener('click', () => {
+            state.chartLearningMode = 'ppa';
+            renderChartsDashboard();
+          });
+        }
+      }
+
+      const expEl = document.getElementById('chart-learning-explanation');
+      if (expEl) {
+        expEl.innerHTML = isPpaMode
+          ? '<strong>💡 Análisis PPA Cliente 24/7:</strong> Compara la factura eléctrica real para consumo ininterrumpido. El Corporate PPA SMR Behind-The-Meter (68 €/MWh) ahorra entre 30 y 57 €/MWh frente a la red tradicional (Pool + Peajes ATR 6.1TD = 98-125 €/MWh) y prescinde de costosas baterías químicas BESS.'
+          : '<strong>💡 Análisis LCOE Generación:</strong> Muestra el efecto de la fabricación seriada modular en fábrica (NOAK a ~56 €/MWh), que recorta un 43% el LCOE frente a la unidad prototipo FOAK (~98 €/MWh). Es más competitivo que ciclos combinados expuestos a gas y derechos ETS (>112 €/MWh).';
+      }
+
+      const lcoeBenchmarkData = [
+        { tech: '🎯 SMR Serie Comercial (NOAK)', val: 56, type: 'smr-noak', color: '#00e5ff' },
+        { tech: '💨 Eólica Terrestre (Onshore)', val: 62, type: 'renovable', color: '#0ea5e9' },
+        { tech: '☀️ Solar FV + Baterías (4h)', val: 76, type: 'renovable', color: '#38bdf8' },
+        { tech: '🌊 Eólica Marina (Offshore)', val: 88, type: 'renovable', color: '#0284c7' },
+        { tech: '⚡ SMR 1ª Unidad (FOAK)', val: 98, type: 'smr-foak', color: '#f59e0b' },
+        { tech: '🔥 Gas CCGT (+ CO₂ ETS 80€/t)', val: 112, type: 'fossil', color: '#f43f5e' },
+        { tech: '⚛️ Giga-Nuclear EPR (Convencional)', val: 125, type: 'nuclear-conv', color: '#8b5cf6' }
       ];
+
+      const ppaBenchmarkData = [
+        { tech: '⚡ SMR Corporate PPA (Behind-The-Meter)', val: 68, type: 'ppa-btm', color: '#10b981' },
+        { tech: '⚛️ SMR PPA Híbrido (Respaldo Red)', val: 72, type: 'ppa-hib', color: '#059669' },
+        { tech: '☀️ Autoconsumo Solar + BESS 24/7', val: 82, type: 'sol-bess', color: '#0ea5e9' },
+        { tech: '🏭 Suministro AT Red Directo (6.1TD)', val: 98, type: 'at-grid', color: '#f59e0b' },
+        { tech: '🛑 Red Tradicional (Pool + Peajes + BESS)', val: 125, type: 'full-grid', color: '#ef4444' }
+      ];
+
+      const currentDataset = isPpaMode ? ppaBenchmarkData : lcoeBenchmarkData;
 
       state.chartInstances.learning = new Chart(ctxLearning, {
         type: 'bar',
         data: {
-          labels: benchmarkData.map(d => d.tech),
+          labels: currentDataset.map(d => d.tech),
           datasets: [{
-            label: 'Coste Nivelado (LCOE)',
-            data: benchmarkData.map(d => d.lcoe),
-            backgroundColor: benchmarkData.map(d => d.color),
+            label: isPpaMode ? 'Coste Total Suministro (€/MWh)' : 'Coste Nivelado (LCOE)',
+            data: currentDataset.map(d => d.val),
+            backgroundColor: currentDataset.map(d => d.color),
             borderRadius: 6,
             barThickness: 15
           }]
@@ -12176,17 +13948,20 @@ document.addEventListener('DOMContentLoaded', () => {
             tooltip: {
               callbacks: {
                 label: ctx => {
-                  const item = benchmarkData[ctx.dataIndex];
-                  if (item.type === 'smr-noak') {
-                    return ` LCOE: ${item.lcoe} €/MWh · Reducción de coste del 43% vs FOAK (Efecto serie en fábrica)`;
-                  } else if (item.type === 'smr-foak') {
-                    return ` LCOE: ${item.lcoe} €/MWh · Primera unidad comercial con 20% contingencias`;
-                  } else if (item.type === 'fossil') {
-                    return ` LCOE: ${item.lcoe} €/MWh · Ciclo combinado expuesto a ETS (>80€/t) y precio de gas`;
-                  } else if (item.type === 'nuclear-conv') {
-                    return ` LCOE: ${item.lcoe} €/MWh · Gigavatio convencional (Flamanville/HPC) con 10-15 años de obra`;
+                  const item = currentDataset[ctx.dataIndex];
+                  if (isPpaMode) {
+                    if (item.type === 'ppa-btm') return ` PPA: ${item.val} €/MWh · CAPEX = 0 €, tarifa plana sin indexar a gas ni peajes REE`;
+                    if (item.type === 'ppa-hib') return ` PPA: ${item.val} €/MWh · SMR dedicado con peaje mínimo de respaldo de seguridad`;
+                    if (item.type === 'sol-bess') return ` ${item.val} €/MWh · Sobrecoste de degradación y reposición de celdas a 10 años`;
+                    if (item.type === 'at-grid') return ` ${item.val} €/MWh · Sujeto a volatilidad del Pool OMIE y peaje ATR 6.1TD`;
+                    if (item.type === 'full-grid') return ` ${item.val} €/MWh · Pool 68€ + Peajes 19€ + Baterías químicas 38€`;
+                  } else {
+                    if (item.type === 'smr-noak') return ` LCOE: ${item.val} €/MWh · Reducción del 43% vs FOAK (Efecto serie en fábrica)`;
+                    if (item.type === 'smr-foak') return ` LCOE: ${item.val} €/MWh · Primera unidad comercial con 20% contingencias`;
+                    if (item.type === 'fossil') return ` LCOE: ${item.val} €/MWh · Ciclo combinado expuesto a ETS (>80€/t) y precio de gas`;
+                    if (item.type === 'nuclear-conv') return ` LCOE: ${item.val} €/MWh · Gigavatio convencional con 10-15 años de obra`;
                   }
-                  return ` LCOE: ${item.lcoe} €/MWh (Benchmark Mercado Europeo)`;
+                  return ` ${item.val} €/MWh`;
                 }
               }
             }
@@ -12195,7 +13970,7 @@ document.addEventListener('DOMContentLoaded', () => {
             x: {
               ticks: { color: textColor, callback: val => `${val} €` },
               grid: { color: gridColor },
-              title: { display: true, text: 'Coste Nivelado de la Electricidad (€/MWh)', color: textColor, font: { size: 10 } }
+              title: { display: true, text: isPpaMode ? 'Coste Integrado de Suministro (€/MWh)' : 'Coste Nivelado de la Electricidad (€/MWh)', color: textColor, font: { size: 10 } }
             },
             y: {
               ticks: { color: textColor, font: { size: 10.5, weight: '500' } },
@@ -12241,6 +14016,370 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     }
+  }
+
+  // Plugin Personalizado Chart.js: Visualización de la Zona de Ahorro SMR (Grid > PPA)
+  const smrSavingsAreaPlugin = {
+    id: 'smrSavingsAreaPlugin',
+    beforeDatasetsDraw(chart) {
+      const { ctx, chartArea } = chart;
+      if (!chartArea) return;
+
+      const gridMeta = chart.getDatasetMeta(0);
+      const ppaMeta = chart.getDatasetMeta(2);
+      if (!gridMeta || !ppaMeta || gridMeta.hidden || ppaMeta.hidden) return;
+
+      const gridPoints = gridMeta.data;
+      const ppaPoints = ppaMeta.data;
+      if (!gridPoints || !gridPoints.length || !ppaPoints || !ppaPoints.length) return;
+
+      const ppaY = ppaPoints[0].y; // Altura en píxeles de la línea horizontal de PPA
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+      ctx.clip(); // Limitar estrictamente dentro del marco del gráfico
+
+      let inSaving = false;
+      let savingPoints = [];
+
+      for (let i = 0; i < gridPoints.length; i++) {
+        const pt = gridPoints[i];
+        const isSaving = pt.y < ppaY; // En canvas Y menor significa mayor precio (por encima de PPA)
+
+        if (isSaving) {
+          if (!inSaving && i > 0) {
+            const prev = gridPoints[i - 1];
+            const t = (ppaY - prev.y) / (pt.y - prev.y);
+            const interX = prev.x + t * (pt.x - prev.x);
+            savingPoints = [{ x: interX, y: ppaY }];
+          }
+          savingPoints.push({ x: pt.x, y: pt.y });
+          inSaving = true;
+        } else {
+          if (inSaving) {
+            const prev = gridPoints[i - 1];
+            const t = (ppaY - prev.y) / (pt.y - prev.y);
+            const interX = prev.x + t * (pt.x - prev.x);
+            savingPoints.push({ x: interX, y: ppaY });
+            drawSavingPolygon(ctx, savingPoints, ppaY);
+            savingPoints = [];
+            inSaving = false;
+          }
+        }
+      }
+
+      if (inSaving && savingPoints.length > 0) {
+        drawSavingPolygon(ctx, savingPoints, ppaY);
+      }
+
+      ctx.restore();
+    }
+  };
+
+  function drawSavingPolygon(ctx, points, ppaY) {
+    if (points.length < 2) return;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(points[0].x, ppaY);
+    points.forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.lineTo(points[points.length - 1].x, ppaY);
+    ctx.closePath();
+
+    const minY = Math.min(...points.map(p => p.y));
+    const grad = ctx.createLinearGradient(0, minY, 0, ppaY);
+    grad.addColorStop(0, 'rgba(16, 185, 129, 0.40)');
+    grad.addColorStop(0.65, 'rgba(16, 185, 129, 0.16)');
+    grad.addColorStop(1, 'rgba(16, 185, 129, 0.04)');
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    // Línea superior con sutil halo esmeralda
+    ctx.strokeStyle = 'rgba(16, 185, 129, 0.85)';
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  // Vista 2: Gráfico Dinámico de Volatilidad OMIE / MIBEL vs SMR PPA
+  function renderVolatilityChart() {
+    if (typeof Chart === 'undefined') return;
+
+    const ctx = document.getElementById('chart-omie-volatility');
+    if (!ctx) return;
+
+    if (state.chartInstances.volatility) {
+      state.chartInstances.volatility.destroy();
+      delete state.chartInstances.volatility;
+    }
+
+    if (!state.activeVolScenario) state.activeVolScenario = 'duck-curve';
+    const scenarioKey = state.activeVolScenario;
+    const scenario = VOL_SCENARIOS[scenarioKey] || VOL_SCENARIOS['duck-curve'];
+
+    const slider = document.getElementById('vol-in-ppa-rate');
+    const ppaRate = slider ? parseFloat(slider.value) || 68 : 68;
+
+    const isDark = state.theme === 'dark';
+    const textColor = isDark ? '#94a3b8' : '#475569';
+    const gridColor = isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.08)';
+
+    // Calcular series de datos
+    const poolData = scenario.poolPrices;
+    const gridTotalData = poolData.map(p => +(p + scenario.atr61TD).toFixed(1));
+    const ppaData = new Array(poolData.length).fill(ppaRate);
+    const bessData = new Array(poolData.length).fill(scenario.bessPrice);
+
+    // Actualizar título y diagnóstico técnico de ingeniería
+    const titleEl = document.getElementById('vol-chart-title');
+    if (titleEl) titleEl.innerHTML = `📈 ${scenario.title}`;
+
+    const calloutEl = document.querySelector('.vol-callout');
+    if (calloutEl && scenario.callout) calloutEl.innerHTML = scenario.callout;
+
+    // Crear gradiente visual para la curva de red
+    const ctx2d = ctx.getContext('2d');
+    const gridGrad = ctx2d.createLinearGradient(0, 0, 0, 275);
+    gridGrad.addColorStop(0, isDark ? 'rgba(245, 158, 11, 0.28)' : 'rgba(245, 158, 11, 0.20)');
+    gridGrad.addColorStop(0.65, isDark ? 'rgba(245, 158, 11, 0.07)' : 'rgba(245, 158, 11, 0.04)');
+    gridGrad.addColorStop(1, 'rgba(245, 158, 11, 0.0)');
+
+    // Crear instancia de Chart.js con Plugins de visualización avanzada
+    state.chartInstances.volatility = new Chart(ctx, {
+      type: 'line',
+      plugins: [smrSavingsAreaPlugin],
+      data: {
+        labels: scenario.labels,
+        datasets: [
+          {
+            label: 'Coste Total Suministro Red (Pool + Peaje ATR 6.1TD)',
+            data: gridTotalData,
+            borderColor: '#f59e0b',
+            backgroundColor: gridGrad,
+            fill: true,
+            tension: 0.35,
+            borderWidth: 2.8,
+            pointRadius: 4,
+            pointHoverRadius: 7,
+            pointBackgroundColor: '#f59e0b',
+            pointBorderColor: '#ffffff',
+            pointBorderWidth: 1.5,
+            order: 3
+          },
+          {
+            label: 'Precio Pool Mayorista OMIE Spot (€/MWh)',
+            data: poolData,
+            borderColor: isDark ? '#94a3b8' : '#64748b',
+            borderDash: [5, 4],
+            borderWidth: 1.8,
+            fill: false,
+            tension: 0.35,
+            pointRadius: 2.5,
+            pointHoverRadius: 5,
+            order: 4
+          },
+          {
+            label: 'Tarifa Fija SMR PPA Behind-The-Meter',
+            data: ppaData,
+            borderColor: '#10b981',
+            borderWidth: 3.5,
+            tension: 0,
+            pointRadius: 0,
+            pointHoverRadius: 6,
+            pointBackgroundColor: '#10b981',
+            order: 1
+          },
+          {
+            label: 'Autoconsumo Solar FV + BESS 24/7 (Firmeza Química)',
+            data: bessData,
+            borderColor: '#0284c7',
+            borderDash: [6, 4],
+            borderWidth: 2,
+            fill: false,
+            tension: 0,
+            pointRadius: 0,
+            pointHoverRadius: 5,
+            order: 2
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: 'index',
+          intersect: false
+        },
+        plugins: {
+          legend: {
+            display: false // Usamos la barra de leyenda HTML personalizada
+          },
+          tooltip: {
+            backgroundColor: isDark ? 'rgba(15, 23, 42, 0.96)' : 'rgba(255, 255, 255, 0.96)',
+            titleColor: isDark ? '#ffffff' : '#0f172a',
+            bodyColor: isDark ? '#cbd5e1' : '#334155',
+            borderColor: isDark ? '#334155' : '#cbd5e1',
+            borderWidth: 1,
+            cornerRadius: 8,
+            padding: 12,
+            callbacks: {
+              label: function(ctx) {
+                const val = ctx.parsed.y;
+                const dsIdx = ctx.datasetIndex;
+                if (dsIdx === 0) {
+                  return ` ⚡ Red Total (Pool+ATR): ${val.toFixed(1)} €/MWh`;
+                } else if (dsIdx === 1) {
+                  return ` 📊 Pool OMIE Spot: ${val.toFixed(1)} €/MWh`;
+                } else if (dsIdx === 2) {
+                  const gridVal = gridTotalData[ctx.dataIndex];
+                  const diff = +(gridVal - val).toFixed(1);
+                  if (diff >= 0) {
+                    const pctDiff = Math.round((diff / gridVal) * 100);
+                    return ` ⚛️ SMR PPA Fijo: ${val} €/MWh · ✅ Ahorro: +${diff} €/MWh (-${pctDiff}%)`;
+                  } else {
+                    return ` ⚛️ SMR PPA Fijo: ${val} €/MWh · Diferencial Valle: ${diff} €/MWh`;
+                  }
+                } else if (dsIdx === 3) {
+                  return ` ☀️ Solar + BESS 24/7: ${val} €/MWh`;
+                }
+                return ` ${ctx.dataset.label}: ${val} €/MWh`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { color: textColor, font: { size: 10 } },
+            grid: { color: gridColor }
+          },
+          y: {
+            ticks: {
+              color: textColor,
+              font: { size: 10 },
+              callback: val => `${val} €`
+            },
+            grid: { color: gridColor },
+            title: {
+              display: true,
+              text: 'Coste Unitario Suministro (€/MWh)',
+              color: textColor,
+              font: { size: 10 }
+            },
+            min: 0,
+            suggestedMax: Math.max(...gridTotalData) + 20
+          }
+        }
+      }
+    });
+
+    updateVolatilityMetrics(gridTotalData, ppaRate, scenario);
+    wireVolatilityControls();
+  }
+
+  function updateVolatilityMetrics(gridTotalData, ppaRate, scenario) {
+    const n = gridTotalData.length;
+    if (!n) return;
+
+    // 1. Desviación típica (Volatilidad)
+    const sum = gridTotalData.reduce((acc, v) => acc + v, 0);
+    const mean = sum / n;
+    const variance = gridTotalData.reduce((acc, v) => acc + Math.pow(v - mean, 2), 0) / n;
+    const sigma = Math.sqrt(variance);
+
+    const sigmaEl = document.getElementById('vol-stat-sigma');
+    if (sigmaEl) {
+      sigmaEl.textContent = `± ${sigma.toFixed(1).replace('.', ',')} €/MWh`;
+    }
+
+    // 2. Horas o períodos con ahorro neto favorable
+    let favorableCount = 0;
+    let maxSavings = 0;
+    gridTotalData.forEach(g => {
+      if (g > ppaRate) {
+        favorableCount++;
+        const diff = g - ppaRate;
+        if (diff > maxSavings) maxSavings = diff;
+      }
+    });
+    const pctFavorable = ((favorableCount / n) * 100).toFixed(1).replace('.', ',');
+
+    const hoursEl = document.getElementById('vol-stat-hours-pct');
+    if (hoursEl) {
+      const unitLabel = scenario.labels.length === 12 ? '% de los meses' : '% del tiempo';
+      hoursEl.textContent = `${pctFavorable} ${unitLabel}`;
+    }
+
+    const hoursDesc = hoursEl ? hoursEl.nextElementSibling : null;
+    if (hoursDesc) {
+      hoursDesc.innerHTML = `Ahorro de hasta <strong>+${maxSavings.toFixed(1).replace('.', ',')} €/MWh</strong> en horas de alta tensión de red.`;
+    }
+
+    // 3. Pico máximo de red evitado
+    const maxPeak = Math.max(...gridTotalData);
+    const peakEl = document.getElementById('vol-stat-max-peak');
+    if (peakEl) {
+      peakEl.textContent = `${maxPeak.toFixed(1).replace('.', ',')} €/MWh`;
+    }
+
+    const peakDesc = peakEl ? peakEl.nextElementSibling : null;
+    if (peakDesc) {
+      peakDesc.innerHTML = `Protección integral frente a picos marginales por gas CCGT o paradas de interconexión con Francia.`;
+    }
+  }
+
+  function wireVolatilityControls() {
+    const slider = document.getElementById('vol-in-ppa-rate');
+    const valDisp = document.getElementById('val-disp-vol-ppa');
+
+    if (slider && !slider._wired) {
+      slider._wired = true;
+      slider.addEventListener('input', (e) => {
+        const newPpa = parseFloat(e.target.value) || 68;
+        if (valDisp) valDisp.textContent = `${newPpa} €/MWh`;
+
+        if (state.chartInstances.volatility) {
+          const scenarioKey = state.activeVolScenario || 'duck-curve';
+          const scenario = VOL_SCENARIOS[scenarioKey] || VOL_SCENARIOS['duck-curve'];
+          const gridTotalData = scenario.poolPrices.map(p => +(p + scenario.atr61TD).toFixed(1));
+
+          // Actualizar dataset del PPA en el gráfico
+          state.chartInstances.volatility.data.datasets[2].data = new Array(scenario.poolPrices.length).fill(newPpa);
+          state.chartInstances.volatility.update('none'); // Renderizado fluido a 60fps
+
+          updateVolatilityMetrics(gridTotalData, newPpa, scenario);
+        }
+      });
+    }
+
+    // Conectar leyenda interactiva personalizada (toggle de datasets)
+    document.querySelectorAll('.vol-legend-item').forEach(item => {
+      if (!item._wired) {
+        item._wired = true;
+        item.addEventListener('click', () => {
+          const dsIdx = parseInt(item.getAttribute('data-vol-ds'), 10);
+          if (state.chartInstances.volatility) {
+            const isVis = state.chartInstances.volatility.isDatasetVisible(dsIdx);
+            state.chartInstances.volatility.setDatasetVisibility(dsIdx, !isVis);
+            item.classList.toggle('dimmed', isVis);
+            state.chartInstances.volatility.update();
+          }
+        });
+      }
+    });
+
+    // Botones de Escenarios de Mercado
+    const scenarioBtns = document.querySelectorAll('.btn-vol-scenario');
+    scenarioBtns.forEach(btn => {
+      if (!btn._wired) {
+        btn._wired = true;
+        btn.addEventListener('click', () => {
+          scenarioBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.activeVolScenario = btn.getAttribute('data-volscenario');
+          renderVolatilityChart();
+        });
+      }
+    });
   }
 
   /* =========================================================================
@@ -13551,9 +15690,20 @@ document.addEventListener('DOMContentLoaded', () => {
       if (el) el.addEventListener('input', updateDataCenterKpis);
     });
 
-    // Generador de Ficha Ejecutiva B2B Oficial en Documento A4
+    // Generador de Ficha Ejecutiva B2B Oficial en Documento A4 (Personalizado por Cliente)
     function generateB2bProposalHtml() {
-      const pMw = parseFloat(document.getElementById('range-dc-power')?.value || 120);
+      // Captura dinámica de datos del embudo de consultoría
+      const companyInput = document.getElementById('fn-client-company');
+      const sectorSelect = document.getElementById('fn-client-sector');
+      const serviceSelect = document.getElementById('fn-client-service');
+      const fnPowerRange = document.getElementById('fn-client-power-range');
+
+      const company = (companyInput && companyInput.value.trim()) ? companyInput.value.trim() : 'Data Center / Complejo Industrial';
+      const sector = sectorSelect ? sectorSelect.value : 'Data Center & Inteligencia Artificial';
+      const selectedService = serviceSelect ? serviceSelect.value : 'Nivel 1: Dictamen Preliminar de Viabilidad (OPEX vs Red)';
+
+      // Potencia: si se invoca desde el embudo interactivo usamos fnPowerRange, sino range-dc-power
+      const pMw = fnPowerRange ? parseFloat(fnPowerRange.value || 120) : parseFloat(document.getElementById('range-dc-power')?.value || 120);
       const ppaPrice = parseFloat(document.getElementById('range-dc-ppa')?.value || 68);
       const gridPrice = parseFloat(document.getElementById('range-dc-grid')?.value || 125);
       const downtimeCostK = parseFloat(document.getElementById('range-dc-downtime')?.value || 120);
@@ -13589,43 +15739,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const today = new Date();
       const dateStr = today.toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' });
+      const expHash = Math.abs(Math.floor(pMw * 179 + (company.length * 29) + 1042)).toString(16).toUpperCase().padStart(4, '0');
+
+      // Tecnología recomendada según potencia
+      let smrRecTech = '';
+      if (pMw <= 77) {
+        smrRecTech = 'NuScale VOYGR-1 (77 MWe) / Microreactores modulares';
+      } else if (pMw <= 160) {
+        smrRecTech = `1 módulo SMR de ${pMw} MWe (GE Hitachi BWRX-300 / Rolls-Royce SMR)`;
+      } else if (pMw <= 320) {
+        smrRecTech = `Planta multimodular 2x SMR (2x ${Math.round(pMw/2)} MWe o 2x BWRX-300)`;
+      } else {
+        smrRecTech = `Campus nuclear multimodular de alta capacidad (${pMw} MWe)`;
+      }
+
+      // Función auxiliar para determinar si un servicio es el solicitado
+      const isServ1 = selectedService.includes('Nivel 1');
+      const isServ2 = selectedService.includes('Nivel 2');
+      const isServ3 = selectedService.includes('Nivel 3');
+      const isServ4 = selectedService.includes('Nivel 4');
 
       return `
-        <!-- Encabezado Oficial Institucional -->
-        <div style="border-bottom: 2px solid #0284c7; padding-bottom: 1rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
+        <!-- Encabezado Oficial Institucional con Membrete y Destinatario -->
+        <div class="b2b-print-avoid" style="border-bottom: 2.5px solid #0284c7; padding-bottom: 1.15rem; margin-bottom: 1.35rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; flex-wrap: wrap;">
           <div>
-            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem;">
-              <span style="font-size: 1.5rem;">⚛</span>
-              <span style="font-weight: 800; font-size: 1.15rem; color: #0f172a; letter-spacing: -0.01em;">SMR ENERGY UVa · ASESORÍA TÉCNICO-ECONÓMICA</span>
-              <span style="font-size: 0.65rem; background: #0284c7; color: #ffffff; padding: 0.15rem 0.45rem; border-radius: 3px; font-weight: 800;">CONFIDENCIAL</span>
+            <div style="display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.35rem;">
+              <span style="font-size: 1.65rem;">⚛</span>
+              <div>
+                <span style="font-weight: 900; font-size: 1.10rem; color: #0f172a; letter-spacing: -0.01em;">UNIVERSIDAD DE VALLADOLID · ESCUELA DE INGENIERÍAS INDUSTRIALES</span>
+                <div style="font-size: 0.72rem; font-weight: 700; color: #0284c7; letter-spacing: 0.04em; text-transform: uppercase;">Área de Economía de los Sistemas Energéticos (ESE) · Plataforma SMR Energy</div>
+              </div>
             </div>
-            <h1 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin: 0 0 0.3rem 0; line-height: 1.3;">
-              DICTAMEN DE VIABILIDAD B2B: SUMINISTRO FIRME SMR PPA 24/7
+            <h1 style="font-size: 1.35rem; font-weight: 800; color: #0f172a; margin: 0.45rem 0 0.25rem 0; line-height: 1.25;">
+              DICTAMEN DE PRE-FACTIBILIDAD & DUE DILIGENCE SMR 24/7
             </h1>
-            <div style="font-size: 0.78rem; color: #475569;">
-              Campus de Centros de Datos (IA) & Grandes Consumidores Industriales Electrointensivos
+            <div style="font-size: 0.78rem; color: #475569; display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <span>Suministro Firme Tras Contador (Behind-The-Meter)</span>
+              <span style="color: #cbd5e1;">•</span>
+              <span style="font-weight: 700; color: #059669;">Metodología Oficial IEA Projected Costs 2025 & EPRI</span>
             </div>
           </div>
-          <div style="text-align: right; font-size: 0.72rem; color: #64748b; line-height: 1.45;">
-            <div><strong>EXPEDIENTE:</strong> EXP-UVa-SMR-B2B-2026-X12</div>
-            <div><strong>FECHA:</strong> ${dateStr}</div>
-            <div><strong>REFERENCIA:</strong> IAEA-TECDOC / EPRI Assessment</div>
-            <div><strong>ESTADO:</strong> DICTAMEN PRELIMINAR BANCABLE</div>
+          
+          <!-- Ficha de Expediente y Destinatario -->
+          <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 6px; padding: 0.65rem 0.85rem; font-size: 0.72rem; color: #475569; min-width: 260px; line-height: 1.5;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+              <span style="color: #64748b; font-weight: 600;">EXPEDIENTE:</span>
+              <strong style="color: #0f172a; font-family: monospace;">EXP-UVa-SMR-${expHash}</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+              <span style="color: #64748b; font-weight: 600;">FECHA EMISIÓN:</span>
+              <span style="font-weight: 600; color: #0f172a;">${dateStr}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+              <span style="color: #64748b; font-weight: 600;">DESTINATARIO:</span>
+              <strong style="color: #0284c7;">${company}</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+              <span style="color: #64748b; font-weight: 600;">SECTOR:</span>
+              <span>${sector}</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-top: 1px dashed #cbd5e1; padding-top: 0.25rem; margin-top: 0.25rem;">
+              <span style="color: #64748b; font-weight: 600;">CLASIFICACIÓN:</span>
+              <span style="background: #e0f2fe; color: #0369a1; padding: 0.1rem 0.35rem; border-radius: 3px; font-weight: 800; font-size: 0.65rem;">B2B / CONFIDENCIAL</span>
+            </div>
           </div>
         </div>
 
-        <!-- Resumen Ejecutivo -->
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #0284c7; padding: 0.85rem 1.15rem; border-radius: 6px; margin-bottom: 1.25rem;">
-          <div style="font-size: 0.70rem; font-weight: 800; color: #0284c7; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
-            1. OBJETO Y ALCANCE DEL DICTAMEN
+        <!-- 1. Objeto y Arquitectura SMR Recomendada -->
+        <div class="b2b-print-avoid" style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #0284c7; padding: 0.90rem 1.15rem; border-radius: 6px; margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.35rem;">
+            <div style="font-size: 0.70rem; font-weight: 800; color: #0284c7; text-transform: uppercase; letter-spacing: 0.05em;">
+              1. OBJETO DEL DICTAMEN Y ARQUITECTURA SMR RECOMENDADA
+            </div>
+            <span style="background: #dcfce7; color: #15803d; font-size: 0.68rem; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 3px; border: 1px solid #86efac;">
+              ${smrRecTech}
+            </span>
           </div>
           <p style="font-size: 0.78rem; color: #334155; line-height: 1.55; margin: 0;">
-            El presente dictamen evalúa la estructuración técnica y bancable para el suministro continuo de <strong>${pMw} MWe</strong> (${Math.round(totalDemandMWh).toLocaleString('es-ES')} MWh/año) en carga base 24/7/365 mediante reactores modulares pequeños (SMR) en conexión privada tras contador (<em>Behind-The-Meter</em>), eludiendo la saturación estructural de la red de transporte de Red Eléctrica de España (REE) y blindando al consumidor frente a la volatilidad del pool y los costes de almacenamiento BESS.
+            El presente dictamen evalúa la estructuración técnica y bancable para el suministro continuo de <strong>${pMw} MWe</strong> (${Math.round(totalDemandMWh).toLocaleString('es-ES')} MWh/año) en carga base firme 24/7/365 para las instalaciones de <strong>${company}</strong> (${sector}). Mediante un reactor modular pequeño (SMR) en conexión privada tras contador (<em>Behind-The-Meter</em>), la entidad elude los <strong>cuellos de botella y listas de espera de 5 a 8 años</strong> en la red de transporte de 400 kV de Red Eléctrica de España (REE), blindándose con tarifa plana a 20-25 años sin exposición a la volatilidad del pool eléctrico ni a los costes de baterías químicas de respaldo.
           </p>
         </div>
 
-        <!-- 3 KPIs Clave de Ahorro y Rentabilidad -->
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.25rem;">
+        <!-- 2. KPIs Clave de Ahorro y Rentabilidad -->
+        <div class="b2b-print-avoid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.25rem;">
           <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-top: 4px solid #059669; border-radius: 6px; padding: 0.90rem 1rem; text-align: center;">
             <div style="font-size: 0.65rem; color: #059669; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">Ahorro OPEX Anual en Factura</div>
             <div style="font-size: 1.65rem; font-weight: 800; color: #059669; font-family: monospace; margin: 0.2rem 0;">+${netSavingsM.toFixed(2).replace('.', ',')} M€/año</div>
@@ -13645,14 +15841,14 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
 
-        <!-- Clarificación Contractual: PPA vs Coinversión -->
-        <div style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 1rem 1.15rem; margin-bottom: 1.25rem;">
+        <!-- 3. Estructuración Financiera: PPA vs Coinversión -->
+        <div class="b2b-print-avoid" style="background: #ffffff; border: 1px solid #cbd5e1; border-radius: 6px; padding: 1rem 1.15rem; margin-bottom: 1.25rem;">
           <div style="font-size: 0.72rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.5rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.35rem;">
             2. ESTRUCTURACIÓN FINANCIERA: MODALIDAD PPA (CAPEX 0 €) VS COINVERSIÓN EN ACTIVO
           </div>
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.75rem; line-height: 1.55;">
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.75rem 0.90rem;">
-              <strong style="color: #0284c7; display: block; margin-bottom: 0.25rem;">Modalidad A: Corporate PPA 24/7 (SaaS / Utility SMR)</strong>
+              <strong style="color: #0284c7; display: block; margin-bottom: 0.25rem;">Modalidad A: Corporate PPA 24/7 (SaaS / Utility SMR BTM)</strong>
               <div style="color: #475569;">
                 • <strong>Inversión CAPEX Cliente:</strong> <span style="color: #059669; font-weight: 700;">0 € (Sin desembolso inicial)</span>.<br>
                 • <strong>Riesgo de Construcción/Licencia:</strong> Asumido por el desarrollador/IPP nuclear.<br>
@@ -13673,8 +15869,8 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
 
-        <!-- Tabla de Auditoría Comparativa de Flujos -->
-        <div style="margin-bottom: 1.25rem;">
+        <!-- 4. Tabla de Auditoría Financiera Comparativa de Costes Anuales -->
+        <div class="b2b-print-avoid" style="margin-bottom: 1.25rem;">
           <div style="font-size: 0.72rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.45rem;">
             3. AUDITORÍA FINANCIERA COMPARATIVA DE COSTES ANUALES (ESTÁNDAR EPRI / IAEA)
           </div>
@@ -13705,7 +15901,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <span style="font-size: 0.70rem; color: #64748b;">Desglose de Composición:</span>
                 </td>
                 <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; font-size: 0.70rem; color: #64748b;">
-                  Pool (68 €) + ATR 6.1TD (18,5 €) + BESS (38,5 €)
+                  Pool OMIE (68 €) + ATR 6.1TD (18,5 €) + BESS (38,5 €)
                 </td>
                 <td style="border: 1px solid #cbd5e1; padding: 0.45rem 0.65rem; text-align: right; font-size: 0.70rem; color: #64748b;">
                   SMR 92,5% CF (${ppaPrice} €) + Respaldo Parada 7,5% (${gridPrice} €)
@@ -13742,22 +15938,80 @@ document.addEventListener('DOMContentLoaded', () => {
           </table>
         </div>
 
-        <!-- Glosario Condensado para Comité de Inversión -->
-        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
-          <div style="font-size: 0.70rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.35rem;">
-            4. GLOSARIO METODOLÓGICO CLAVE PARA COMITÉ DE INVERSIÓN
+        <!-- 5. Cartera de Servicios de Due Diligence UVa y Alcance Seleccionado -->
+        <div class="b2b-print-avoid" style="margin-bottom: 1.25rem;">
+          <div style="font-size: 0.72rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.45rem; display: flex; justify-content: space-between; align-items: center;">
+            <span>4. CARTERA DE SERVICIOS DE DUE DILIGENCE Y ALCANCE RECOMENDADO</span>
+            <span style="font-size: 0.68rem; color: #059669; font-weight: 700;">ÁREA ESE · UNIVERSIDAD DE VALLADOLID</span>
           </div>
-          <div style="font-size: 0.72rem; line-height: 1.45; color: #475569;">
-            <p style="margin: 0 0 0.3rem 0;"><strong>• PPA 24/7 (Power Purchase Agreement Baseload):</strong> Contrato bilateral a 20–25 años con perfil plano continuo hora a hora, eliminando costes de perfilado y baterías químicas de respaldo.</p>
-            <p style="margin: 0 0 0.3rem 0;"><strong>• Behind-The-Meter (Tras Contador):</strong> Conexión física privada dedicada sin peajes de acceso a red de transporte (peajes ATR 6.1TD de REE) y libre de listas de espera de capacidad.</p>
-            <p style="margin: 0 0 0.3rem 0;"><strong>• CfD Simétrico:</strong> Mecanismo de cobertura bidireccional promovido por la Reforma de Mercado de la UE (Directiva 2024/1747) que fija un precio strike garantizado.</p>
-            <p style="margin: 0 0 0.3rem 0;"><strong>• SRMC (Short-Run Marginal Cost):</strong> Coste variable de combustible nuclear UO₂ (9,5 a 13 €/MWh), asegurando despacho en la base del orden de mérito de OMIE.</p>
-            <p style="margin: 0;"><strong>• LCOE Nivelado:</strong> Coste total de generación a 60 años considerando CAPEX, OPEX, combustible enriquecido y fondos de desmantelamiento regulados.</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            
+            <div style="background: ${isServ1 ? '#ecfdf5' : '#ffffff'}; border: 1.5px solid ${isServ1 ? '#10b981' : '#cbd5e1'}; border-radius: 6px; padding: 0.65rem 0.80rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                <strong style="color: #059669; font-size: 0.78rem;">Nivel 1: Dictamen Preliminar de Viabilidad</strong>
+                ${isServ1 ? '<span style="background: #10b981; color: #ffffff; font-size: 0.60rem; padding: 0.1rem 0.35rem; border-radius: 3px; font-weight: 800;">✓ ALCANCE SELECCIONADO</span>' : '<span style="font-size: 0.65rem; color: #64748b;">24–48 HORAS</span>'}
+              </div>
+              <div style="font-size: 0.72rem; color: #475569; line-height: 1.45;">
+                Auditoría comparativa frente a red (Pool + ATR 6.1TD + BESS), simulación de ahorro en EBITDA, derechos EU ETS y dictamen ejecutivo para Comité de Dirección.
+              </div>
+            </div>
+
+            <div style="background: ${isServ2 ? '#f0f9ff' : '#ffffff'}; border: 1.5px solid ${isServ2 ? '#0284c7' : '#cbd5e1'}; border-radius: 6px; padding: 0.65rem 0.80rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                <strong style="color: #0284c7; font-size: 0.78rem;">Nivel 2: Due Diligence Financiera LCOE & Monte Carlo</strong>
+                ${isServ2 ? '<span style="background: #0284c7; color: #ffffff; font-size: 0.60rem; padding: 0.1rem 0.35rem; border-radius: 3px; font-weight: 800;">✓ ALCANCE SELECCIONADO</span>' : '<span style="font-size: 0.65rem; color: #64748b;">2–3 SEMANAS</span>'}
+              </div>
+              <div style="font-size: 0.72rem; color: #475569; line-height: 1.45;">
+                Modelado a 60 años con simulación Monte Carlo de combustible UO₂, sensibilidad al WACC y ratios de cobertura del servicio de la deuda (DSCR para Project Finance).
+              </div>
+            </div>
+
+            <div style="background: ${isServ3 ? '#faf5ff' : '#ffffff'}; border: 1.5px solid ${isServ3 ? '#7e22ce' : '#cbd5e1'}; border-radius: 6px; padding: 0.65rem 0.80rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                <strong style="color: #7e22ce; font-size: 0.78rem;">Nivel 3: Scoring Geoespacial de Emplazamiento (GIS)</strong>
+                ${isServ3 ? '<span style="background: #7e22ce; color: #ffffff; font-size: 0.60rem; padding: 0.1rem 0.35rem; border-radius: 3px; font-weight: 800;">✓ ALCANCE SELECCIONADO</span>' : '<span style="font-size: 0.65rem; color: #64748b;">3–4 SEMANAS</span>'}
+              </div>
+              <div style="font-size: 0.72rem; color: #475569; line-height: 1.45;">
+                Evaluación geoespacial de recursos hídricos de refrigeración, capacidad de evacuación en nudos de 400 kV de REE, mapas de calor y microzonificación sísmica.
+              </div>
+            </div>
+
+            <div style="background: ${isServ4 ? '#fffbeb' : '#ffffff'}; border: 1.5px solid ${isServ4 ? '#d97706' : '#cbd5e1'}; border-radius: 6px; padding: 0.65rem 0.80rem;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                <strong style="color: #d97706; font-size: 0.78rem;">Nivel 4: Estructuración PPA 24/7 Behind-The-Meter</strong>
+                ${isServ4 ? '<span style="background: #d97706; color: #ffffff; font-size: 0.60rem; padding: 0.1rem 0.35rem; border-radius: 3px; font-weight: 800;">✓ ALCANCE SELECCIONADO</span>' : '<span style="font-size: 0.65rem; color: #64748b;">A MEDIDA</span>'}
+              </div>
+              <div style="font-size: 0.72rem; color: #475569; line-height: 1.45;">
+                Asesoría regulatoria en contratos bilaterales privados sin desembolso CAPEX para el cliente, salvaguardas frente a indexaciones de gas y tramitación CSN.
+              </div>
+            </div>
+
           </div>
         </div>
 
-        <!-- Cláusula de Salvaguarda Legal y Exención de Responsabilidad Técnica (Safe Harbor) -->
-        <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-left: 4px solid #d97706; border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
+        <!-- 6. Hoja de Ruta de Ejecución Técnica -->
+        <div class="b2b-print-avoid" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
+          <div style="font-size: 0.70rem; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.35rem;">
+            5. PROTOCOLO DE CONTRATACIÓN & HOJA DE RUTA OPERATIVA
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; font-size: 0.72rem; line-height: 1.45;">
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 4px; padding: 0.55rem 0.70rem;">
+              <strong style="color: #0284c7; display: block; margin-bottom: 0.15rem;">Fase 1: NDA & Alcance</strong>
+              Firma de Acuerdo de Confidencialidad bilateral (NDA) y toma de datos específicos de potencia y geolocalización de planta.
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 4px; padding: 0.55rem 0.70rem;">
+              <strong style="color: #059669; display: block; margin-bottom: 0.15rem;">Fase 2: Modelado ESE UVa</strong>
+              Ejecución del modelo analítico LCOE, simulación de curva horaria 8.760h y auditoría de nudo de transporte con el operador.
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 4px; padding: 0.55rem 0.70rem;">
+              <strong style="color: #7e22ce; display: block; margin-bottom: 0.15rem;">Fase 3: Dictamen & Defensa</strong>
+              Entrega del informe bancable visado y sesión de defensa técnica presencial/telemática ante el Comité de Inversión del cliente.
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Cláusula de Salvaguarda Legal y Exención de Responsabilidad Técnica (Safe Harbor) -->
+        <div class="b2b-print-avoid" style="background: #fffbeb; border: 1.5px solid #fde68a; border-left: 4px solid #d97706; border-radius: 6px; padding: 0.85rem 1rem; margin-bottom: 1.25rem;">
           <div style="font-size: 0.68rem; font-weight: 800; color: #92400e; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; display: flex; align-items: center; gap: 0.35rem;">
             <span>⚖️</span> CLÁUSULA DE SALVAGUARDA TÉCNICA Y AVISO LEGAL (SAFE HARBOR DISCLAIMER)
           </div>
@@ -13768,16 +16022,17 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
 
-        <!-- Sello de Autoría y Contacto Institucional -->
-        <div style="border-top: 1px solid #cbd5e1; padding-top: 0.85rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.74rem;">
+        <!-- 8. Sello de Autoría, Visado y Contacto Institucional -->
+        <div class="b2b-print-avoid" style="border-top: 1.5px solid #cbd5e1; padding-top: 0.85rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.74rem;">
           <div>
             <div style="font-weight: 800; color: #0f172a;">Carlos Moreno Gutiérrez</div>
-            <div style="color: #475569;">Área de Economía de los Sistemas Energéticos (ESE) · Escuela de Ingenierías Industriales</div>
-            <div style="color: #64748b;">Universidad de Valladolid (UVa) · Canal de Asesoría: <strong style="color: #0284c7;">carlosmgutierrez05@gmail.com</strong></div>
+            <div style="color: #475569;">Investigador Principal · Área de Economía de los Sistemas Energéticos (ESE)</div>
+            <div style="color: #64748b;">Escuela de Ingenierías Industriales · Universidad de Valladolid (UVa) · Canal de Asesoría: <strong style="color: #0284c7;">carlosmgutierrez05@gmail.com</strong></div>
           </div>
           <div style="text-align: right; color: #64748b; font-size: 0.68rem;">
-            <div>Plataforma SMR Energy Economics UVa</div>
+            <div style="font-weight: 700; color: #0f172a;">Plataforma SMR Energy Economics UVa</div>
             <div>Validado con Metodología Oficial IEA / EPRI</div>
+            <div style="color: #059669; font-weight: 700;">Documento Oficial Generado para ${company}</div>
           </div>
         </div>
       `;
@@ -13787,6 +16042,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function openB2bProposalModal() {
       updateDataCenterKpis();
       const container = document.getElementById('b2b-proposal-report-doc');
+      const titleEl = document.querySelector('#modal-b2b-proposal-report .report-modal-title div div:first-child');
+      if (titleEl) {
+        titleEl.textContent = 'Dictamen Técnico-Económico B2B · Propuesta a Medida PPA 24/7';
+      }
       if (container) {
         container.innerHTML = generateB2bProposalHtml();
       }
@@ -13799,9 +16058,9 @@ document.addEventListener('DOMContentLoaded', () => {
       btnExportB2b1.addEventListener('click', openB2bProposalModal);
     }
 
-    const btnExportB2b2 = document.getElementById('btn-export-b2b-proposal-2');
-    if (btnExportB2b2) {
-      btnExportB2b2.addEventListener('click', openB2bProposalModal);
+    const btnOpenCustomProposalDoc = document.getElementById('btn-open-custom-proposal-doc');
+    if (btnOpenCustomProposalDoc) {
+      btnOpenCustomProposalDoc.addEventListener('click', openB2bProposalModal);
     }
 
     // Botones de Acción dentro del Modal B2B Report
@@ -13819,19 +16078,38 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Descargar Documento Autónomo HTML (.html)
+    // Descargar Documento Autónomo HTML (.html) con estilo corporativo offline
     const btnDownloadB2bHtml = document.getElementById('btn-download-b2b-html');
     if (btnDownloadB2bHtml) {
       btnDownloadB2bHtml.addEventListener('click', () => {
-        const bodyContent = generateB2bProposalHtml();
+        const docContainer = document.getElementById('b2b-proposal-report-doc');
+        const bodyContent = docContainer ? docContainer.innerHTML : generateB2bProposalHtml();
+        const company = document.getElementById('fn-client-company')?.value.trim() || 'Empresa';
+        const cleanName = company.replace(/[^a-zA-Z0-9_-]/g, '_');
+        
         const fullHtml = `<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Dictamen B2B · Suministro Firme SMR PPA 24/7 · UVa</title>
+  <title>Dictamen Tecno-Economico SMR · ${company} · UVa</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #0f172a; padding: 2.5rem; max-width: 900px; margin: 0 auto; line-height: 1.5; background: #ffffff; }
-    @media print { body { padding: 0.5rem; } }
+    @page { size: A4 portrait; margin: 12mm 15mm 15mm 15mm; }
+    *, *::before, *::after { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      color: #0f172a; 
+      padding: 2.5rem; 
+      max-width: 950px; 
+      margin: 0 auto; 
+      line-height: 1.5; 
+      background: #ffffff; 
+    }
+    table { width: 100%; border-collapse: collapse; page-break-inside: avoid; }
+    th, td { border: 1px solid #cbd5e1; }
+    .b2b-print-avoid { page-break-inside: avoid; break-inside: avoid; }
+    @media print { 
+      body { padding: 0.5rem; max-width: 100%; } 
+    }
   </style>
 </head>
 <body>
@@ -13842,7 +16120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'Dictamen_Tecnico_Economico_B2B_SMR_24_7.html';
+        a.download = `Dictamen_SMR_UVa_${cleanName}.html`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -13854,24 +16132,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnCopyB2bSummary = document.getElementById('btn-copy-b2b-summary');
     if (btnCopyB2bSummary) {
       btnCopyB2bSummary.addEventListener('click', () => {
-        const pMw = document.getElementById('disp-dc-power')?.textContent || '120 MWe';
-        const ppa = document.getElementById('disp-dc-ppa')?.textContent || '68 €/MWh';
-        const grid = document.getElementById('disp-dc-grid')?.textContent || '125 €/MWh';
-        const savings = document.getElementById('kpi-dc-savings')?.textContent || '+55,42 M€ / año';
-        const savings25 = document.getElementById('kpi-dc-savings-25y')?.textContent || '~1.386 M€';
-        const co2 = document.getElementById('kpi-dc-co2')?.textContent || '359.800 t';
-        const ets = document.getElementById('kpi-dc-ets-val')?.textContent || '+25,19 M€/año';
+        const company = document.getElementById('fn-client-company')?.value.trim() || 'Empresa Solicitante';
+        const sector = document.getElementById('fn-client-sector')?.value || 'Data Center IA';
+        const pMw = document.getElementById('fn-client-power-disp')?.textContent || document.getElementById('disp-dc-power')?.textContent || '120 MWe';
+        const savings = document.getElementById('fn-preview-savings')?.textContent || document.getElementById('kpi-dc-savings')?.textContent || '+55,42 M€ / año';
+        const co2 = document.getElementById('fn-preview-co2')?.textContent || document.getElementById('kpi-dc-co2')?.textContent || '359.800 t';
+        const service = document.getElementById('fn-client-service')?.value || 'Nivel 1: Dictamen Preliminar';
 
         const summaryText = `DICTAMEN TÉCNICO-ECONÓMICO B2B · PPA SMR 24/7 (UVa)
 --------------------------------------------------
-• Potencia Contratada: ${pMw} (Demanda Continua 24/7)
-• Precio PPA SMR Fijo (25 años): ${ppa}
-• Coste Alternativo de Red (Pool + ATR + BESS): ${grid}
-• Ahorro Operativo Anual Neto (OPEX): ${savings} (Reducción del 42,2%)
-• Flujo de Caja Acumulado (25 años): ${savings25}
-• CO₂ Evitado Anual: ${co2} (Valoración EU ETS: ${ets})
+• Destinatario / Empresa: ${company}
+• Sector: ${sector}
+• Potencia Contratada: ${pMw} (Demanda Continua Firme 24/7)
+• Alcance Solicitado: ${service}
+• Ahorro Operativo Anual Neto (OPEX): ${savings} frente a red
+• Descarbonización Anual (CO₂ Evitado): ${co2}
 • Modelo Contractual: Corporate PPA Behind-The-Meter (CAPEX = 0 € para el cliente)
-• Contacto Due Diligence: Carlos M. Gutiérrez (carlosmgutierrez05@gmail.com)
+• Contacto Due Diligence: Carlos Moreno Gutiérrez (carlosmgutierrez05@gmail.com)
+• Universidad de Valladolid · Escuela de Ingenierías Industriales · Área ESE
 • Disclaimer: Dictamen orientativo preliminar basado en IAEA/EPRI/IEA 2025. Sujeto a Due Diligence vinculante.`;
 
         navigator.clipboard.writeText(summaryText).then(() => {
@@ -14101,6 +16379,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Apertura del Modal con el Dossier Comercial Oficial
     function openCommercialDossierModal() {
       const container = document.getElementById('b2b-proposal-report-doc');
+      const titleEl = document.querySelector('#modal-b2b-proposal-report .report-modal-title div div:first-child');
+      if (titleEl) {
+        titleEl.textContent = 'Catálogo Oficial de Servicios de Asesoría y Due Diligence UVa';
+      }
       if (container) {
         container.innerHTML = generateB2bCommercialDossierHtml();
       }
@@ -14355,11 +16637,404 @@ ${company}`
       btnToggleTheme.textContent = state.theme === 'dark' ? '☀️' : '🌙';
     }
 
+    // =========================================================================
+    // 17. MODO PITCH EJECUTIVO B2B (DEMOSTRACIÓN COMERCIAL DE 5 PASOS)
+    // =========================================================================
+    let currentPitchStep = 1;
+    const totalPitchSteps = 5;
+
+    const pitchStepsData = [
+      {
+        num: 1,
+        pillClass: 'pill-problem',
+        pillText: 'PASO 1 · EL RETO ESTRATÉGICO EN ESPAÑA Y LA UE',
+        title: 'El Cuello de Botella de los 400 kV: Red Eléctrica Saturada y Esperas de 5 a 8 Años',
+        lead: 'La expansión masiva de la Inteligencia Artificial y la gran industria colisiona en España con una barrera crítica: los nudos de transporte de Red Eléctrica (REE) están saturados y la energía renovable intermitente no puede garantizar suministro continuo sin incurrir en costes desorbitados de almacenamiento.',
+        renderHtml: () => `
+          <div class="pitch-grid-3">
+            <div class="pitch-card">
+              <span style="font-size: 1.5rem;">🛑</span>
+              <span class="pitch-card-metric red">5–8 años</span>
+              <div class="pitch-card-title">Saturación de Nudos de 400 kV (REE)</div>
+              <p class="pitch-card-desc">Los concursos de capacidad de acceso en Madrid, Aragón y Castilla-La Mancha tienen listas de espera kilométricas que paralizan la inversión en campus hyperscale de IA.</p>
+            </div>
+
+            <div class="pitch-card">
+              <span style="font-size: 1.5rem;">🔋</span>
+              <span class="pitch-card-metric amber">+38,5 €/MWh</span>
+              <div class="pitch-card-title">Sobrecoste de Intermitencia & BESS</div>
+              <p class="pitch-card-desc">Respaldar energía solar y eólica mediante baterías químicas para lograr un perfil 24/7 dispara la factura eléctrica y añade riesgos de degradación de celdas a 10 años.</p>
+            </div>
+
+            <div class="pitch-card">
+              <span style="font-size: 1.5rem;">⚡</span>
+              <span class="pitch-card-metric red">120.000 €/h</span>
+              <div class="pitch-card-title">Riesgo Financiero de Caída (Downtime)</div>
+              <p class="pitch-card-desc">Una sola hora de interrupción en un campus de GPU (NVIDIA H100/Blackwell) destruye checkpoints de entrenamiento de modelos LLM y activa penalizaciones SLA multimillonarias.</p>
+            </div>
+          </div>
+
+          <div class="pitch-callout-box" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <strong style="color: #38bdf8;">Diagnóstico Económico:</strong> El coste integrado de la red tradicional (Pool OMIE 68 € + Peajes ATR 6.1TD 19 € + Baterías BESS 38 €) supera los <strong>125 €/MWh</strong> (~131 M€/año para 120 MWe).
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-pitch-jump-cases" style="white-space: nowrap; font-size: 0.76rem;">
+              🏭 Ver Casos Reales en España →
+            </button>
+          </div>
+        `
+      },
+      {
+        num: 2,
+        pillClass: 'pill-tech',
+        pillText: 'PASO 2 · LA ARQUITECTURA TÉCNICA FIRME',
+        title: 'Suministro Dedicado 24/7: Cero Dependencia de Nudos Saturados',
+        lead: 'Los Reactores Modulares Pequeños (SMR) se instalan directamente en el emplazamiento del cliente en conexión privada tras contador (Behind-The-Meter), suministrando electricidad firme y vapor de proceso con un factor de disponibilidad superior al 92,5%.',
+        renderHtml: () => `
+          <div class="pitch-grid-3">
+            <div class="pitch-card">
+              <span style="font-size: 1.5rem;">🔌</span>
+              <span class="pitch-card-metric cyan">Behind-The-Meter</span>
+              <div class="pitch-card-title">Conexión Privada Tras Contador</div>
+              <p class="pitch-card-desc">Línea directa privada entre el reactor y el campus de datos o factoría. Elude al 100% los peajes de acceso a red de transporte de REE y evita las listas de espera.</p>
+            </div>
+
+            <div class="pitch-card">
+              <span style="font-size: 1.5rem;">🛡️</span>
+              <span class="pitch-card-metric emerald">> 92,5% CF</span>
+              <div class="pitch-card-title">Factor de Capacidad Continuo</div>
+              <p class="pitch-card-desc">Inercia síncrona real de 50 Hz sin microcortes de tensión, con recarga programada cada 2 a 5 años y refrigeración pasiva por convección natural autónoma.</p>
+            </div>
+
+            <div class="pitch-card">
+              <span style="font-size: 1.5rem;">🌐</span>
+              <span class="pitch-card-metric purple">32 Modelos SMR</span>
+              <div class="pitch-card-title">Líderes de Mercado Internacional</div>
+              <p class="pitch-card-desc">GE Hitachi BWRX-300 (300 MWe), NuScale VOYGR (77 MWe/módulo), Rolls-Royce SMR (470 MWe) y Westinghouse AP300 en fase avanzada de licenciamiento.</p>
+            </div>
+          </div>
+
+          <div style="background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 8px; padding: 0.90rem 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <span style="font-size: 0.72rem; color: #38bdf8; font-weight: 800; text-transform: uppercase;">Herramientas Visuales Interactivas:</span>
+              <div style="font-size: 0.82rem; color: #f1f5f9; margin-top: 0.15rem;">Explore el reactor en detalle o consulte los proyectos mundiales geolocalizados.</div>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <a href="explorador-smr-3d.html" target="_blank" class="btn btn-secondary btn-sm" style="font-size: 0.76rem; display: flex; align-items: center; gap: 0.35rem; color: #38bdf8; border-color: rgba(56, 189, 248, 0.4);">
+                <span>🔍</span> Explorador 3D del Reactor
+              </a>
+              <button type="button" class="btn btn-secondary btn-sm" id="btn-pitch-jump-map" style="font-size: 0.76rem;">
+                <span>🗺️</span> Ver Mapa Global
+              </button>
+            </div>
+          </div>
+        `
+      },
+      {
+        num: 3,
+        pillClass: 'pill-finance',
+        pillText: 'PASO 3 · INGENIERÍA FINANCIERA BANCABLE',
+        title: 'Energía Limpia como Servicio: Corporate PPA con CAPEX = 0 €',
+        lead: 'El cliente no tiene que comprar un reactor ni asumir riesgos de obra o de licenciamiento regulatorio ante el CSN. Contrata la energía mediante un PPA privado a 20–25 años con tarifa plana cerrada, del mismo modo que Microsoft, Amazon y Google en Estados Unidos.',
+        renderHtml: () => `
+          <div class="pitch-grid-2">
+            <div class="pitch-card" style="border-left: 3px solid #64748b; background: rgba(15, 23, 42, 0.5);">
+              <div style="font-size: 0.70rem; color: #94a3b8; font-weight: 800; text-transform: uppercase;">Modelo Tradicional (Compra Directa)</div>
+              <span class="pitch-card-metric amber">~504 M€</span>
+              <div class="pitch-card-title">Inversión Patrimonial (SPV / Capex)</div>
+              <p class="pitch-card-desc">
+                • Desembolso de capital masivo (~4.200 €/kWe).<br>
+                • El cliente asume el riesgo de construcción y tramitación ante el CSN.<br>
+                • Periodo de amortización (Payback) de 7 a 9 años.<br>
+                • Compromiso de balance financiero elevado.
+              </p>
+            </div>
+
+            <div class="pitch-card" style="border-left: 3px solid #10b981; background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.35);">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="font-size: 0.70rem; color: #10b981; font-weight: 800; text-transform: uppercase;">Modelo Recomendado (PPA 24/7 Behind-The-Meter)</div>
+                <span style="background: #10b981; color: #ffffff; font-size: 0.60rem; font-weight: 800; padding: 0.1rem 0.35rem; border-radius: 3px;">ESTÁNDAR BIG TECH</span>
+              </div>
+              <span class="pitch-card-metric emerald">CAPEX = 0 €</span>
+              <div class="pitch-card-title">Corporate PPA (Utility Nuclear Dedicada)</div>
+              <p class="pitch-card-desc">
+                • <strong>Cero desembolso de capital</strong> por parte del cliente.<br>
+                • Tarifa plana cerrada a 20–25 años (ej. <strong>~68 €/MWh</strong>) sin indexación a gas.<br>
+                • El promotor nuclear asume el riesgo de licencia, obra y combustible.<br>
+                • <strong>Impacto EBITDA positivo inmediato</strong> desde el primer mes.
+              </p>
+            </div>
+          </div>
+
+          <div class="pitch-callout-box">
+            <strong style="color: #818cf8;">Precedente Internacional:</strong> Microsoft formalizó en 2024 un PPA a 20 años con Constellation (Crane Clean Energy Center, 835 MW) y Amazon AWS cerró acuerdos bilaterales de reactores dedicados con X-energy y Talen Energy.
+          </div>
+        `
+      },
+      {
+        num: 4,
+        pillClass: 'pill-roi',
+        pillText: 'PASO 4 · EL RETORNO DE LA INVERSIÓN (ROI & ESG)',
+        title: '-42% en Factura Eléctrica y 359.800 t de CO₂ Evitadas al Año',
+        lead: 'Simulación cuantitativa contrastada con la metodología IEA 2025 para un campus de 120 MWe (demanda anual de 1.051.200 MWh). La combinación de tarifa plana y ausencia de peajes de red genera un flujo de ahorro acumulado extraordinario.',
+        renderHtml: () => `
+          <div class="pitch-grid-3">
+            <div class="pitch-card" style="text-align: center; border-top: 3px solid #10b981;">
+              <span style="font-size: 0.68rem; color: #10b981; font-weight: 800; text-transform: uppercase;">Ahorro OPEX Anual</span>
+              <span class="pitch-card-metric emerald">+55,42 M€/año</span>
+              <div style="font-size: 0.74rem; color: #94a3b8;">Reducción del <strong>42,2%</strong> frente al coste de red</div>
+            </div>
+
+            <div class="pitch-card" style="text-align: center; border-top: 3px solid #0284c7;">
+              <span style="font-size: 0.68rem; color: #0284c7; font-weight: 800; text-transform: uppercase;">Flujo a 25 Años</span>
+              <span class="pitch-card-metric cyan">~1.386 M€</span>
+              <div style="font-size: 0.74rem; color: #94a3b8;">Ahorro neto acumulado en la vida del PPA</div>
+            </div>
+
+            <div class="pitch-card" style="text-align: center; border-top: 3px solid #c084fc;">
+              <span style="font-size: 0.68rem; color: #c084fc; font-weight: 800; text-transform: uppercase;">Derechos EU ETS Evitados</span>
+              <span class="pitch-card-metric purple">+25,18 M€/año</span>
+              <div style="font-size: 0.74rem; color: #94a3b8;">359.800 tCO₂/año a 70 €/t EUA</div>
+            </div>
+          </div>
+
+          <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; padding: 0.85rem 1.15rem;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: #cbd5e1; margin-bottom: 0.35rem;">
+              📊 Benchmark Unitario por MWh Consumido:
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; font-size: 0.80rem;">
+              <div>• Coste Red Tradicional (Pool + ATR 6.1TD + BESS): <strong style="color: #f87171;">125,00 €/MWh</strong></div>
+              <div>• SMR PPA 24/7 Behind-The-Meter (eq. con respaldo): <strong style="color: #34d399;">72,28 €/MWh</strong></div>
+              <div style="background: rgba(16, 185, 129, 0.15); color: #10b981; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 4px;">
+                Margen Neto: 52,72 €/MWh de Ahorro
+              </div>
+            </div>
+          </div>
+        `
+      },
+      {
+        num: 5,
+        pillClass: 'pill-advisory',
+        pillText: 'PASO 5 · EL CIERRE: ASESORÍA Y DUE DILIGENCE UVa',
+        title: 'Área de Economía de los Sistemas Energéticos: Su Asesor Independiente',
+        lead: 'Acompañamos a promotores de Data Centers, complejos industriales y fondos de inversión con dictámenes independientes visados por el marco académico y metodológico de la Universidad de Valladolid.',
+        renderHtml: () => `
+          <div class="pitch-grid-2">
+            <div class="pitch-card" style="border-top: 3px solid #10b981;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                <strong style="color: #10b981; font-size: 0.82rem;">Nivel 1: Dictamen Preliminar de Viabilidad</strong>
+                <span style="font-size: 0.65rem; background: rgba(16, 185, 129, 0.15); color: #10b981; padding: 0.1rem 0.35rem; border-radius: 3px; font-weight: 700;">24–48 HORAS</span>
+              </div>
+              <p class="pitch-card-desc">Auditoría rápida de costes frente a red, cómputo de derechos EU ETS de CO₂ y dictamen ejecutivo A4 para Comité de Dirección.</p>
+            </div>
+
+            <div class="pitch-card" style="border-top: 3px solid #0284c7;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                <strong style="color: #0284c7; font-size: 0.82rem;">Nivel 2: Due Diligence Financiera LCOE & Monte Carlo</strong>
+                <span style="font-size: 0.65rem; background: rgba(2, 132, 199, 0.15); color: #38bdf8; padding: 0.1rem 0.35rem; border-radius: 3px; font-weight: 700;">2–3 SEMANAS</span>
+              </div>
+              <p class="pitch-card-desc">Modelización a 60 años con simulación Monte Carlo de precios de combustible UO₂, sensibilidad al WACC y ratios de cobertura (DSCR).</p>
+            </div>
+
+            <div class="pitch-card" style="border-top: 3px solid #7e22ce;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                <strong style="color: #c084fc; font-size: 0.82rem;">Nivel 3: Scoring Geoespacial de Emplazamientos (GIS)</strong>
+                <span style="font-size: 0.65rem; background: rgba(168, 85, 247, 0.15); color: #c084fc; padding: 0.1rem 0.35rem; border-radius: 3px; font-weight: 700;">3–4 SEMANAS</span>
+              </div>
+              <p class="pitch-card-desc">Evaluación multicriterio de disponibilidad de refrigeración hídrica, proximidad a subestaciones de 400 kV de REE y microzonificación sísmica.</p>
+            </div>
+
+            <div class="pitch-card" style="border-top: 3px solid #f59e0b;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+                <strong style="color: #fbbf24; font-size: 0.82rem;">Nivel 4: Estructuración PPA 24/7 Behind-The-Meter</strong>
+                <span style="font-size: 0.65rem; background: rgba(245, 158, 11, 0.15); color: #fbbf24; padding: 0.1rem 0.35rem; border-radius: 3px; font-weight: 700;">A MEDIDA</span>
+              </div>
+              <p class="pitch-card-desc">Asesoría regulatoria para la firma de contratos bilaterales privados sin desembolso CAPEX y acompañamiento en tramitación ante el CSN.</p>
+            </div>
+          </div>
+
+          <div style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.12) 0%, rgba(16, 185, 129, 0.12) 100%); border: 1.5px solid rgba(16, 185, 129, 0.4); border-radius: 8px; padding: 1.15rem 1.35rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <div style="font-weight: 800; font-size: 0.92rem; color: #ffffff;">¿Desea formalizar este estudio para su instalación?</div>
+              <div style="font-size: 0.78rem; color: #94a3b8; margin-top: 0.15rem;">Podemos generar su Dictamen Preliminar personalizado en PDF A4 o concertar una reunión técnica.</div>
+            </div>
+            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-primary" id="btn-pitch-open-custom-doc" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); border-color: #0284c7; font-weight: 700; font-size: 0.80rem; padding: 0.55rem 1.1rem;">
+                📄 Generar Dictamen Oficial (PDF A4)
+              </button>
+              <button type="button" class="btn btn-primary" id="btn-pitch-jump-consulting" style="background: linear-gradient(135deg, #059669 0%, #0d9488 100%); border-color: #10b981; font-weight: 700; font-size: 0.80rem; padding: 0.55rem 1.1rem;">
+                🤝 Abrir Formulario Due Diligence
+              </button>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    function renderPitchStep(step) {
+      currentPitchStep = Math.max(1, Math.min(totalPitchSteps, step));
+      const stepData = pitchStepsData[currentPitchStep - 1];
+
+      const numEl = document.getElementById('pitch-current-step-num');
+      if (numEl) numEl.textContent = currentPitchStep;
+
+      const fillEl = document.getElementById('pitch-progress-fill');
+      if (fillEl) fillEl.style.width = ((currentPitchStep / totalPitchSteps) * 100) + '%';
+
+      document.querySelectorAll('#pitch-dots-tray .pitch-dot').forEach((dot, idx) => {
+        if (idx + 1 === currentPitchStep) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+
+      const prevBtn = document.getElementById('btn-pitch-prev');
+      const nextBtn = document.getElementById('btn-pitch-next');
+      if (prevBtn) prevBtn.disabled = (currentPitchStep === 1);
+      if (nextBtn) {
+        if (currentPitchStep === totalPitchSteps) {
+          nextBtn.textContent = '🚀 Finalizar y Abrir Due Diligence';
+          nextBtn.style.background = 'linear-gradient(135deg, #059669 0%, #10b981 100%)';
+          nextBtn.style.borderColor = '#10b981';
+        } else {
+          nextBtn.textContent = 'Siguiente Paso →';
+          nextBtn.style.background = 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)';
+          nextBtn.style.borderColor = '#818cf8';
+        }
+      }
+
+      const container = document.getElementById('pitch-slide-content');
+      if (container && stepData) {
+        container.innerHTML = `
+          <div class="pitch-slide-hero">
+            <span class="pitch-pill ${stepData.pillClass}">${stepData.pillText}</span>
+            <h2 class="pitch-slide-title">${stepData.title}</h2>
+            <p class="pitch-slide-lead">${stepData.lead}</p>
+          </div>
+          ${stepData.renderHtml()}
+        `;
+
+        // Enganchar listeners contextuales del slide
+        const btnJumpCases = document.getElementById('btn-pitch-jump-cases');
+        if (btnJumpCases) {
+          btnJumpCases.addEventListener('click', () => {
+            closePitchDeck();
+            openModal('modal-premium-intelligence');
+            const indTab = document.querySelector('.b2b-tab-btn[data-b2btab="tab-ind"]');
+            if (indTab) indTab.click();
+          });
+        }
+
+        const btnJumpMap = document.getElementById('btn-pitch-jump-map');
+        if (btnJumpMap) {
+          btnJumpMap.addEventListener('click', () => {
+            closePitchDeck();
+            if (state.map) {
+              state.map.flyTo([40.4168, -3.7038], 5, { duration: 1.2 });
+            }
+          });
+        }
+
+        const btnPitchCustomDoc = document.getElementById('btn-pitch-open-custom-doc');
+        if (btnPitchCustomDoc) {
+          btnPitchCustomDoc.addEventListener('click', () => {
+            closePitchDeck();
+            openB2bProposalModal();
+          });
+        }
+
+        const btnPitchConsulting = document.getElementById('btn-pitch-jump-consulting');
+        if (btnPitchConsulting) {
+          btnPitchConsulting.addEventListener('click', () => {
+            closePitchDeck();
+            openModal('modal-premium-intelligence');
+            const consTab = document.querySelector('.b2b-tab-btn[data-b2btab="tab-consulting"]');
+            if (consTab) consTab.click();
+          });
+        }
+      }
+    }
+
+    function openPitchDeck() {
+      currentPitchStep = 1;
+      renderPitchStep(1);
+      const modal = document.getElementById('modal-pitch-deck');
+      if (modal) {
+        modal.classList.add('open');
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closePitchDeck() {
+      const modal = document.getElementById('modal-pitch-deck');
+      if (modal) {
+        modal.classList.remove('open');
+        modal.style.display = 'none';
+      }
+    }
+
+    const btnOpenPitch = document.getElementById('btn-open-pitch');
+    if (btnOpenPitch) btnOpenPitch.addEventListener('click', openPitchDeck);
+
+    const btnClosePitch = document.getElementById('btn-close-pitch');
+    if (btnClosePitch) btnClosePitch.addEventListener('click', closePitchDeck);
+
+    const btnPitchPrev = document.getElementById('btn-pitch-prev');
+    if (btnPitchPrev) {
+      btnPitchPrev.addEventListener('click', () => {
+        if (currentPitchStep > 1) {
+          renderPitchStep(currentPitchStep - 1);
+        }
+      });
+    }
+
+    const btnPitchNext = document.getElementById('btn-pitch-next');
+    if (btnPitchNext) {
+      btnPitchNext.addEventListener('click', () => {
+        if (currentPitchStep < totalPitchSteps) {
+          renderPitchStep(currentPitchStep + 1);
+        } else {
+          closePitchDeck();
+          openB2bProposalModal();
+        }
+      });
+    }
+
+    document.querySelectorAll('#pitch-dots-tray .pitch-dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        const step = parseInt(dot.getAttribute('data-step') || 1, 10);
+        renderPitchStep(step);
+      });
+    });
+
+    // Navegación con teclado (Flechas izq/dcha)
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('modal-pitch-deck');
+      if (modal && (modal.classList.contains('open') || modal.style.display === 'flex')) {
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+          e.preventDefault();
+          if (currentPitchStep < totalPitchSteps) {
+            renderPitchStep(currentPitchStep + 1);
+          } else {
+            closePitchDeck();
+            openB2bProposalModal();
+          }
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          if (currentPitchStep > 1) {
+            renderPitchStep(currentPitchStep - 1);
+          }
+        }
+      }
+    });
+
     // 11. Tecla Escape para cerrar drawer o cualquier modal
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         closeProjectDrawer();
-        document.querySelectorAll('.modal-backdrop.open, .report-modal-backdrop.open, #modal-b2b-proposal-report, #modal-engineering-report').forEach(m => {
+        closePitchDeck();
+        document.querySelectorAll('.modal-backdrop.open, .report-modal-backdrop.open, .pitch-modal-backdrop.open, #modal-b2b-proposal-report, #modal-engineering-report, #modal-pitch-deck').forEach(m => {
           m.classList.remove('open');
           m.style.display = 'none';
         });
